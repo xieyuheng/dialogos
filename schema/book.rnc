@@ -5,7 +5,11 @@ title = element title { text }
 preface = element preface { title, text }
 chapter = element chapter { title, frame* }
 
+content = (frame | card | title)
+
 frame = element frame { question, answer }
 question = element question { text, note? }
 answer = element answer { text, note? }
 note = element note { text }
+
+card = element card { attribute kind { text }, title, text }

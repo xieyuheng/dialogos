@@ -118,16 +118,17 @@ TODO
 </answer>
 </frame>
 
-
 <!-- - The aim of the above frames is to explain the following law. -->
 
 <!-- - **The Didactics of forwarding engaging examples** -->
 <!--   To introduce a new concept, first give many engaging examples. -->
 
-<!-- <law> -->
+<!-- <title>The Law of Tick Marks</title> -->
+
+<!-- <card kind="law"> -->
 <!-- <title>The Law of Tick Marks</title> -->
 <!-- A tick mark directly followed by one or more letters and hyphens is an Atom. -->
-<!-- </law> -->
+<!-- </card> -->
 
 <!-- - The concept of judgment occurs next. -->
 <!--   Laws are about the first form of judgment, -->
@@ -198,8 +199,6 @@ TODO
 <!-- <answer> -->
 
 <!-- </answer> -->
-
-
 </chapter>
 
 <!-- ## 2. Doin' What Comes Naturally -->
@@ -221,5 +220,4 @@ TODO
 <!-- ## 16. If It's All the Same to You -->
 <!-- ## A. The Way Forward -->
 <!-- ## B. Rules Are Made to Be Spoken -->
-
 </book>
