@@ -52,6 +52,8 @@ Good luck! We hope you enjoy the book.
 
 - Learning in this way is viewed as "expanding your mind".
 
+## 1. The More Things Change, the More They Stay the Same
+
 <chapter>
 
 <title>
@@ -84,19 +86,83 @@ Not at all. What does Atom mean?
 
 - The aim of the above frames is to explain the following law.
 
+- **The Didactics of forwarding engaging examples**
+  To introduce a new concept, first give many engaging examples.
+
 <law>
 <title>The Law of Tick Marks</title>
 A tick mark directly followed by one or more letters and hyphens is an Atom.
 </law>
 
 - The concept of judgment occurs next.
+  Laws are about the first form of judgment,
+  but the concept of judgment is more formal than Laws.
+
+- **The Didactics of familiar concept**
+  More formal concept should be introduced
+  after the introduction of the equivalent more familiar concept.
+  (Explain judgment as Laws in English is more familiar
+  than direct introduction of formal judgment.)
+
+- "The Law of Tick Marks" is an instance of the first form of judgment.
+  (Introduce instance first, then introduce class.)
+
+<frame>
+<question>
+Sentences such as
+  'ratatouille is an Atom
+and
+  'cœurs-d-artichauts is an Atom
+are called judgments.^[+]
+</question>
+<answer>
+What is the point of a judgment?
+</answer>
+<note>
+[+] Thanks, Per Martin-Löf (1942-).
+</note>
+</frame>
 
 </TODO>
 
-// use text^[+] for reference to note in a frame.
+- The aim of the above frames is to explain the following commandment.
 
-// <note>
-// [+] ...
-// </note>
+<commandment>
+<title>The Commandment of Tick Marks</title>
+Two expressions are the same Atom if their values are tick marks
+followed by identical letters and hyphens.
+</commandment>
+
+<frame>
+<question>
+The second form of judgment is that
+  ____ is the same ____ as ____.
+</question>
+<answer>
+So
+  'citron is the same Atom as 'citron
+is a judgment.
+</answer>
+</frame>
+
+- From question "Is 'citron the same Atom as 'citron",
+  to "Is ('citron is the same Atom as 'citron) a judgment",
+  the abstraction goes one level higher.
+
+  One level of quotation occurred,
+  and this kind of quotation is represented in the frame by indentation.
+
+<frame>
+<question>
+It is a judgment, and we have reason to believe it.
+
+Is
+  'pomme is the same Atom as 'orange
+a judgment?
+</question>
+<answer>
+
+</answer>
+
 
 </chapter>
