@@ -1,0 +1,11 @@
+start = book
+
+book = element book { title, preface, chapter* }
+title = element title { text }
+preface = element preface { title, text }
+chapter = element chapter { title, frame* }
+
+frame = element frame { question, answer }
+question = element question { text, note? }
+answer = element answer { text, note? }
+note = element note { text }
