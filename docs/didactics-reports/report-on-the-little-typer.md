@@ -82,6 +82,31 @@ Not at all. What does Atom mean?
 </answer>
 </frame>
 
+<frame>
+<question>
+To be an Atom is to be an atom.^[+]
+</question>
+<note>
+[+] In Lisp, atoms are symbols, numbers, and many other things.
+Here, atoms are only symbols.
+</note>
+<answer>
+Then 'atom is an Atom because 'atom is an atom.
+</answer>
+</frame>
+
+<frame>
+<question>
+Is it obvious that this is an Atom?
+  'ratatouille
+</question>
+<answer>
+Yes, because 'ratatouille is also an atom.
+
+But what does it precisely mean to be an atom?
+</answer>
+</frame>
+
 </TODO>
 
 - The aim of the above frames is to explain the following law.
@@ -114,13 +139,13 @@ Sentences such as
 and
   'cœurs-d-artichauts is an Atom
 are called judgments.^[+]
+<note>
+[+] Thanks, Per Martin-Löf (1942-).
+</note>
 </question>
 <answer>
 What is the point of a judgment?
 </answer>
-<note>
-[+] Thanks, Per Martin-Löf (1942-).
-</note>
 </frame>
 
 </TODO>
@@ -163,6 +188,5 @@ a judgment?
 <answer>
 
 </answer>
-
 
 </chapter>
