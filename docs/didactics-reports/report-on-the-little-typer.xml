@@ -114,110 +114,179 @@ directly followed by one or more letters and hyphens.^[+]
 </note>
 </question>
 <answer>
-TODO
+So, is it obvious that
+  'is-it-obvious-that-this-is-an-atom
+is an Atom?
 </answer>
 </frame>
 
-<!-- - The aim of the above frames is to explain the following law. -->
+<!-- TODO -->
 
-<!-- - **The Didactics of forwarding engaging examples** -->
-<!--   To introduce a new concept, first give many engaging examples. -->
+<comment>
+- The aim of the above frames is to explain the following law.
 
-<!-- <title>The Law of Tick Marks</title> -->
+- **The Didactics of forwarding engaging examples**
+  To introduce a new concept, first give many engaging examples.
+</comment>
 
-<!-- <card kind="law"> -->
-<!-- <title>The Law of Tick Marks</title> -->
-<!-- A tick mark directly followed by one or more letters and hyphens is an Atom. -->
-<!-- </card> -->
+<card kind="law">
+<title>The Law of Tick Marks</title>
+A tick mark directly followed by one or more letters and hyphens is an Atom.
+</card>
 
-<!-- - The concept of judgment occurs next. -->
-<!--   Laws are about the first form of judgment, -->
-<!--   but the concept of judgment is more formal than Laws. -->
+<comment>
+- The concept of judgment occurs next.
+  Laws are about the first form of judgment,
+  but the concept of judgment is more formal than Laws.
 
-<!-- - **The Didactics of familiar concept** -->
-<!--   More formal concept should be introduced -->
-<!--   after the introduction of the equivalent more familiar concept. -->
-<!--   (Explain judgment as Laws in English is more familiar -->
-<!--   than direct introduction of formal judgment.) -->
+- **The Didactics of familiar concept**
+  More formal concept should be introduced
+  after the introduction of the equivalent more familiar concept.
+  (Explain judgment as Laws in English is more familiar
+  than direct introduction of formal judgment.)
 
-<!-- - "The Law of Tick Marks" is an instance of the first form of judgment. -->
-<!--   (Introduce instance first, then introduce class.) -->
+- "The Law of Tick Marks" is an instance of the first form of judgment.
+  (Introduce instance first, then introduce class.)
+</comment>
 
-<!-- <frame> -->
-<!-- <question> -->
-<!-- Sentences such as -->
-<!--   'ratatouille is an Atom -->
-<!-- and -->
-<!--   'cœurs-d-artichauts is an Atom -->
-<!-- are called judgments.^[+] -->
-<!-- <note> -->
-<!-- [+] Thanks, Per Martin-Löf (1942-). -->
-<!-- </note> -->
-<!-- </question> -->
-<!-- <answer> -->
-<!-- What is the point of a judgment? -->
-<!-- </answer> -->
-<!-- </frame> -->
+<frame>
+<question>
+Sentences such as
+  'ratatouille is an Atom
+and
+  'cœurs-d-artichauts is an Atom
+are called judgments.^[+]
+<note>
+[+] Thanks, Per Martin-Löf (1942-).
+</note>
+</question>
+<answer>
+What is the point of a judgment?
+</answer>
+</frame>
 
-<!-- <TODO></TODO> -->
+<!-- TODO -->
 
-<!-- - The aim of the above frames is to explain the following commandment. -->
+<comment>
+- The aim of the above frames is to explain the following commandment.
+</comment>
 
-<!-- <commandment> -->
-<!-- <title>The Commandment of Tick Marks</title> -->
-<!-- Two expressions are the same Atom if their values are tick marks -->
-<!-- followed by identical letters and hyphens. -->
-<!-- </commandment> -->
+<card kind="commandment">
+<title>The Commandment of Tick Marks</title>
+Two expressions are the same Atom if their values are tick marks
+followed by identical letters and hyphens.
+</card>
 
-<!-- <frame> -->
-<!-- <question> -->
-<!-- The second form of judgment is that -->
-<!--   ____ is the same ____ as ____. -->
-<!-- </question> -->
-<!-- <answer> -->
-<!-- So -->
-<!--   'citron is the same Atom as 'citron -->
-<!-- is a judgment. -->
-<!-- </answer> -->
-<!-- </frame> -->
+<frame>
+<question>
+The second form of judgment is that
+  ____ is the same ____ as ____.
+</question>
+<answer>
+So
+  'citron is the same Atom as 'citron
+is a judgment.
+</answer>
+</frame>
 
-<!-- - From question "Is 'citron the same Atom as 'citron", -->
-<!--   to "Is ('citron is the same Atom as 'citron) a judgment", -->
-<!--   the abstraction goes one level higher. -->
+<comment>
+- From question "Is 'citron the same Atom as 'citron",
+  to "Is ('citron is the same Atom as 'citron) a judgment",
+  the abstraction goes one level higher.
 
-<!--   One level of quotation occurred, -->
-<!--   and this kind of quotation is represented in the frame by indentation. -->
+  One level of quotation occurred,
+  and this kind of quotation is represented in the frame by indentation.
+</comment>
 
-<!-- <frame> -->
-<!-- <question> -->
-<!-- It is a judgment, and we have reason to believe it. -->
+<frame>
+<question>
+It is a judgment, and we have reason to believe it.
 
-<!-- Is -->
-<!--   'pomme is the same Atom as 'orange -->
-<!-- a judgment? -->
-<!-- </question> -->
-<!-- <answer> -->
-
-<!-- </answer> -->
+Is
+  'pomme is the same Atom as 'orange
+a judgment?
+</question>
+<answer>
+It is a judgment, but we have no reason to believe it.
+After all, one should not compare apples and oranges.
+</answer>
+</frame>
 </chapter>
 
-<!-- ## 2. Doin' What Comes Naturally -->
-<!-- ## Recess: A Forkful of Pie -->
-<!-- ## 3. Eliminate All Natural Numbers! -->
-<!-- ## 4. Easy as Pie -->
-<!-- ## 5. Lists, Lists, and More Lists -->
-<!-- ## 6. Precisely How Many? -->
-<!-- ## 7. It All Depends On the Motive -->
-<!-- ## Recess: One Piece at a Time -->
-<!-- ## 8. Pick a Number, Any Number -->
-<!-- ## 9. Double Your Money, Get Twice as Much -->
-<!-- ## 10. It Also Depends On the List -->
-<!-- ## 11. All Lists Are Created Equal -->
-<!-- ## 12. Even Numbers Can Be Odd -->
-<!-- ## 13. Even Haf a Baker's Dozen -->
-<!-- ## 14. There's Safety in Numbers -->
-<!-- ## 15. Imagine That .. -->
-<!-- ## 16. If It's All the Same to You -->
-<!-- ## A. The Way Forward -->
-<!-- ## B. Rules Are Made to Be Spoken -->
+<chapter>
+<title>2. Doin' What Comes Naturally</title>
+</chapter>
+
+<chapter>
+<title>Recess: A Forkful of Pie</title>
+</chapter>
+
+<chapter>
+<title>3. Eliminate All Natural Numbers!</title>
+</chapter>
+
+<chapter>
+<title>4. Easy as Pie</title>
+</chapter>
+
+<chapter>
+<title>5. Lists, Lists, and More Lists</title>
+</chapter>
+
+<chapter>
+<title>6. Precisely How Many?</title>
+</chapter>
+
+<chapter>
+<title>7. It All Depends On the Motive</title>
+</chapter>
+
+<chapter>
+<title>Recess: One Piece at a Time</title>
+</chapter>
+
+<chapter>
+<title>8. Pick a Number, Any Number</title>
+</chapter>
+
+<chapter>
+<title>9. Double Your Money, Get Twice as Much</title>
+</chapter>
+
+<chapter>
+<title>10. It Also Depends On the List</title>
+</chapter>
+
+<chapter>
+<title>11. All Lists Are Created Equal</title>
+</chapter>
+
+<chapter>
+<title>12. Even Numbers Can Be Odd</title>
+</chapter>
+
+<chapter>
+<title>13. Even Haf a Baker's Dozen</title>
+</chapter>
+
+<chapter>
+<title>14. There's Safety in Numbers</title>
+</chapter>
+
+<chapter>
+<title>15. Imagine That ..</title>
+</chapter>
+
+<chapter>
+<title>16. If It's All the Same to You</title>
+</chapter>
+
+<chapter>
+<title>A. The Way Forward</title>
+</chapter>
+
+<chapter>
+<title>B. Rules Are Made to Be Spoken</title>
+</chapter>
+
 </book>

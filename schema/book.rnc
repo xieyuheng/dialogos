@@ -3,13 +3,15 @@ start = book
 book = element book { title, preface, chapter* }
 title = element title { text }
 preface = element preface { title, text }
-chapter = element chapter { title, frame* }
+chapter = element chapter { title, content* }
 
-content = (frame | card | title)
+content = frame | card | comment
 
 frame = element frame { question, answer }
 question = element question { text, note? }
 answer = element answer { text, note? }
 note = element note { text }
 
-card = element card { attribute kind { text }, title, text }
+card = element card { attribute kind { "law" | "commandment" }, title, text }
+
+comment = element comment { text }
