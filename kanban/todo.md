@@ -1,4 +1,4 @@
-- 使用浏览器的 xml parse 处理文件。
+- 用自己的 xml parser。
 - 生成简单的 HTMLElement。
   - 实时预览所生成的页面。
 
