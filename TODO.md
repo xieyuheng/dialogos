@@ -1,7 +1,3 @@
-- `grammars/little-node.ts`
-
-- 用 partech 写 xml parser。
-
 - 生成简单的 HTMLElement。
   - 实时预览所生成的页面。
 
