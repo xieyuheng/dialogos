@@ -1,10 +1,9 @@
-- 用 浏览器的 xml parser。
-  - 用 jsdom on nodejs。
+- 用 partech 写 xml parser。-- `Ele` and `Txt`
 
 - 生成简单的 HTMLElement。
   - 实时预览所生成的页面。
 
-- 用 cypress 做浏览器的 xml parser 相关的测试。
+- 用 cypress 做测试。
 
 # 教学法调查报告。
 
