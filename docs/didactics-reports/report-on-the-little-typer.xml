@@ -120,7 +120,68 @@ is an Atom?
 </answer>
 </frame>
 
-<!-- TODO -->
+<frame>
+<question>
+Certainly, because atoms can contain hyphens.
+
+What about
+  '---
+and
+  ---
+and
+  '
+Are they atoms?
+</question>
+<answer>
+  '---
+is an atom because hyphens can appear anywhere in an atom;
+  ---
+is not an atom because it's missing the tick mark; and
+  '
+is not an atom because it is neither followed by a letter nor by a hyphen.
+</answer>
+</frame>
+
+<frame>
+<question>
+Is 'Atom an Atom?
+</question>
+<answer>
+Yes, even 'Atom is an Atom, because it is a tick mark followed by one or more letters or hyphens.
+</answer>
+</frame>
+
+<frame>
+<question>
+Is 'atOm an Atom?
+</question>
+<answer>
+No, because atoms can contain only letters and hyphens,
+as mentioned in frame 5,
+and the character 0 is not a letter.
+It is the digit zero.
+</answer>
+</frame>
+
+<frame>
+<question>
+Is 'cœurs-d-artichauts an Atom?
+</question>
+<answer>
+Yes, because œ is a letter.
+</answer>
+</frame>
+
+<frame>
+<question>
+Is 'ἄτομον an Atom?
+</question>
+<answer>
+That's Greek to me!
+
+But Greek letters are letters, so it must also be an Atom.
+</answer>
+</frame>
 
 <comment>
 - The aim of the above frames is to explain the following law.
