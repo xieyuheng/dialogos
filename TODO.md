@@ -1,5 +1,6 @@
-- 生成简单的 HTMLElement。
-  - 实时预览所生成的页面。
+- 生成简单的 HTMLElement -- `book-rander.ts`
+
+- 实时预览所生成的页面。
 
 - 用 cypress 做测试。
 
