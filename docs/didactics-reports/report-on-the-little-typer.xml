@@ -82,9 +82,9 @@ Not at all. What does Atom mean?
 
 <frame>
 <question>
-To be an Atom is to be an atom.^[+]
-<note>
-[+] In Lisp, atoms are symbols, numbers, and many other things.
+To be an Atom is to be an atom.<ref name="+"/>
+<note name="+">
+In Lisp, atoms are symbols, numbers, and many other things.
 Here, atoms are only symbols.
 </note>
 </question>
@@ -108,9 +108,9 @@ But what does it precisely mean to be an atom?
 <frame>
 <question>
 Atoms are built from a tick mark
-directly followed by one or more letters and hyphens.^[+]
-<note>
-[+] In Pie, only atoms use the tick mark.
+directly followed by one or more letters and hyphens.<ref name="+"/>
+<note name="+">
+In Pie, only atoms use the tick mark.
 </note>
 </question>
 <answer>
@@ -216,9 +216,9 @@ Sentences such as
   'ratatouille is an Atom
 and
   'cœurs-d-artichauts is an Atom
-are called judgments.^[+]
-<note>
-[+] Thanks, Per Martin-Löf (1942-).
+are called judgments.<ref name="+"/>
+<note name="+">
+Thanks, Per Martin-Löf (1942-).
 </note>
 </question>
 <answer>
