@@ -254,7 +254,56 @@ Are there other forms of judgment?
 </answer>
 </frame>
 
-<TODO>A good joke.</TODO>
+<frame>
+<question>
+Another form of "judgment" is "judgement."
+</question>
+<answer>
+Very funny.
+</answer>
+</frame>
+
+<comment>
+Another form of "judgment" is "the same" judgement.
+But when read it out, the this explanation
+can also be understood as the about question.
+
+This is funny because of the joy of debugging the ambiguity.
+</comment>
+
+<frame>
+<question>
+Is
+  'ratatouille
+the same
+  Atom
+as
+  'ratatouille?
+</question>
+<answer>
+Yes.
+
+They are the same Atom because both have the same letters after the tick mark.
+</answer>
+</frame>
+
+<frame>
+<question>
+Is
+  'ratatouille
+the same
+  Atom
+as
+  'baguette?
+</question>
+<answer>
+No.
+
+They have different letters after the tick mark.
+</answer>
+</frame>
+
+<TODO></TODO>
 
 <comment topic="didactics">
 When teaching, use sentences with consistent pattern.
@@ -284,8 +333,8 @@ is a judgment.
 </frame>
 
 <comment>
-From question "Is 'citron the same Atom as 'citron",
-to "Is ('citron is the same Atom as 'citron) a judgment",
+From the question "Is 'citron the same Atom as 'citron",
+to the question "Is ('citron is the same Atom as 'citron) a judgment",
 the abstraction goes one level higher.
 
 One level of quotation occurred,
