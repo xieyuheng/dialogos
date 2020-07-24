@@ -5,7 +5,7 @@ title = element title { text }
 preface = element preface { title, text }
 chapter = element chapter { title, content* }
 
-content = frame | card | comment
+content = frame | card | comment | TODO
 
 frame = element frame { question, answer }
 question = element question { text & ref? & note? }
@@ -15,4 +15,6 @@ note = element note { attribute name { text }, text }
 
 card = element card { attribute kind { "law" | "commandment" }, title, text }
 
-comment = element comment { text }
+comment = element comment { attribute topic { text }?, title?, text }
+
+TODO = element TODO { text }

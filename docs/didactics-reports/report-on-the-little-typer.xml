@@ -184,16 +184,19 @@ But Greek letters are letters, so it must also be an Atom.
 </frame>
 
 <comment>
-- The aim of the above frames is to explain the following law.
-
-- **The Didactics of forwarding engaging examples**
-  To introduce a new concept, first give many engaging examples.
+The aim of the above frames is to explain the following law.
 </comment>
 
 <card kind="law">
 <title>The Law of Tick Marks</title>
 A tick mark directly followed by one or more letters and hyphens is an Atom.
 </card>
+
+<comment topic="didactics">
+<title>The Didactics of forwarding engaging examples</title>
+
+To introduce a new concept, first give many engaging examples.
+</comment>
 
 <frame>
 <question>
@@ -212,24 +215,54 @@ What is the point of a judgment?
 </frame>
 
 <comment>
-- The concept of judgment occurs here.
-  Laws are about the first form of judgment,
-  but the concept of judgment is more formal than Laws.
-
-- **The Didactics of familiar concept**
-  More formal concept should be introduced
-  after the introduction of the equivalent more familiar concept.
-  (Explain judgment as Laws in English is more familiar
-  than direct introduction of formal judgment.)
-
-- "The Law of Tick Marks" is an instance of the first form of judgment.
-  (Introduce instance first, then introduce class.)
+The concept of judgment occurs here.
+Laws are about the first form of judgment,
+but the concept of judgment is more formal than Laws.
 </comment>
 
-<!-- TODO -->
+<comment topic="didactics">
+<title>The Didactics of familiar concept</title>
+
+More formal concept should be introduced
+after the introduction of the equivalent more familiar concept.
+(Explain judgment as Laws in English is more familiar
+than direct introduction of formal judgment.)
+
+"The Law of Tick Marks" is an instance of the first form of judgment.
+(Introduce instance first, then introduce class.)
+</comment>
+
+<frame>
+<question>
+A judgment is an attitude that a person takes towards expressions.
+When we come to know something, we are making a judgment.
+
+What can be judged about Atom and 'courgette?
+</question>
+<answer>
+'courgette is an Atom?
+</answer>
+</frame>
+
+<frame>
+<question>
+A form of judgment is an observation with blank spaces in it, such as
+  ___ is a ___.
+</question>
+<answer>
+Are there other forms of judgment?
+</answer>
+</frame>
+
+<TODO>A good joke.</TODO>
+
+<comment topic="didactics">
+When teaching, use sentences with consistent pattern.
+Repeat the pattern. student will find it out.
+</comment>
 
 <comment>
-- The aim of the above frames is to explain the following commandment.
+The aim of the above frames is to explain the following commandment.
 </comment>
 
 <card kind="commandment">
@@ -251,12 +284,12 @@ is a judgment.
 </frame>
 
 <comment>
-- From question "Is 'citron the same Atom as 'citron",
-  to "Is ('citron is the same Atom as 'citron) a judgment",
-  the abstraction goes one level higher.
+From question "Is 'citron the same Atom as 'citron",
+to "Is ('citron is the same Atom as 'citron) a judgment",
+the abstraction goes one level higher.
 
-  One level of quotation occurred,
-  and this kind of quotation is represented in the frame by indentation.
+One level of quotation occurred,
+and this kind of quotation is represented in the frame by indentation.
 </comment>
 
 <frame>
