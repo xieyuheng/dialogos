@@ -1,6 +1,9 @@
 # typescript
 lib
 
+# vue
+dist
+
 # npm
 node_modules
 

@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 
 function install {
-    npm install
+    yarn
 }
 
 function build {
-    npm run build
+    yarn run build
 }
 
 function watch {
-    npm run watch
+    yarn run watch
 }
 
 function format {
-    npm run format
+    yarn run format
 }
 
 function t {
