@@ -1,4 +1,4 @@
-import { LittleNode, LittleElement, LittleText } from "../little"
+import * as Node from "../node"
 import * as Err from "../err"
 import * as ut from "../ut"
 
@@ -10,7 +10,7 @@ export interface Opts {
   no_blank_text_node: boolean
 }
 
-export function from_node(node: Node, opts: Opts): undefined | LittleNode {
+export function from_node(node: Node, opts: Opts): undefined | Node.Node {
   if (node.nodeType === window.Node.ELEMENT_NODE) {
     const element = node as Element
     return from_element(element, opts)
@@ -27,7 +27,7 @@ export function from_node(node: Node, opts: Opts): undefined | LittleNode {
   }
 }
 
-export function from_element(element: Element, opts: Opts): LittleElement {
+export function from_element(element: Element, opts: Opts): Node.Element {
   const tag = element.tagName
   const attributes: { [key: string]: string } = {}
   for (const name of element.getAttributeNames()) {
@@ -40,13 +40,13 @@ export function from_element(element: Element, opts: Opts): LittleElement {
       contents.push(little_node)
     }
   }
-  return new LittleElement(tag, attributes, contents)
+  return new Node.Element(tag, attributes, contents)
 }
 
-export function from_text(text: Text, opts: Opts): LittleText {
+export function from_text(text: Text, opts: Opts): Node.Text {
   if (opts.trim) {
-    return new LittleText(text.wholeText.trim())
+    return new Node.Text(text.wholeText.trim())
   } else {
-    return new LittleText(text.wholeText)
+    return new Node.Text(text.wholeText)
   }
 }

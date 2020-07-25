@@ -1,5 +1,4 @@
-import * as little from "../little"
-import { LittleNode, LittleElement, LittleText } from "../little"
+import * as Node from "../node"
 
 const Window = require("window")
 const window = new Window()
@@ -7,11 +6,11 @@ const parser = new window.DOMParser()
 
 export function parse_element(
   text: string,
-  opts: little.Opts = {
+  opts: Node.Opts = {
     trim: true,
     no_blank_text_node: true,
   }
-): LittleElement {
+): Node.Element {
   const document: Document = parser.parseFromString(text, "text/xml")
-  return little.from_element(document.documentElement, opts)
+  return Node.from_element(document.documentElement, opts)
 }

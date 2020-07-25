@@ -1,15 +1,15 @@
-export abstract class LittleNode {}
+export abstract class Node {}
 
-export class LittleElement extends LittleNode {
+export class Element extends Node {
   constructor(
     public tag: string,
     public attributes: { [key: string]: string },
-    public contents: Array<LittleNode>
+    public contents: Array<Node>
   ) {
     super()
   }
 }
-export class LittleText extends LittleNode {
+export class Text extends Node {
   constructor(public text: string) {
     super()
   }

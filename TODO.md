@@ -1,5 +1,4 @@
 - rander list
-- pattern matching for using LittleNode
 - basic view
 - take hub url from query string -- ?hub=http://localhost:3000/api/book
 - more frames
