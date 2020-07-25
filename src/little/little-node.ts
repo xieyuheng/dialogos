@@ -10,9 +10,7 @@ export class LittleElement extends LittleNode {
   }
 }
 export class LittleText extends LittleNode {
-  constructor(
-    public text: string,
-  ) {
+  constructor(public text: string) {
     super()
   }
 }

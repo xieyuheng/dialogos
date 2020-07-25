@@ -10,10 +10,7 @@ export interface Opts {
   no_blank_text_node: boolean
 }
 
-export function from_node(
-  node: Node,
-  opts: Opts
-): undefined | LittleNode {
+export function from_node(node: Node, opts: Opts): undefined | LittleNode {
   if (node.nodeType === window.Node.ELEMENT_NODE) {
     const element = node as Element
     return from_element(element, opts)
@@ -30,10 +27,7 @@ export function from_node(
   }
 }
 
-export function from_element(
-  element: Element,
-  opts: Opts
-): LittleElement {
+export function from_element(element: Element, opts: Opts): LittleElement {
   const tag = element.tagName
   const attributes: { [key: string]: string } = {}
   for (const name of element.getAttributeNames()) {
