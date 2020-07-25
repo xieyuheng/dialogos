@@ -4,7 +4,8 @@
   "scripts": {
     "build": "npx tsc",
     "watch": "npx tsc --watch",
-    "serve": "npx vue serve web/App.vue",
+    "web-serve": "npx vue serve web/App.vue",
+    "web-build": "npx vue build web/App.vue",
     "format": "npx prettier src web --write"
   },
   "devDependencies": {
