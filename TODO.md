@@ -5,6 +5,20 @@
 - 生成简单的页面。
 - 实时预览所生成的页面。
 - 用 cypress 做测试。
+- vxcode xml mode
+  - no auto saving
+  - folding by tab
+
+# template
+
+<frame>
+<question>
+
+</question>
+<answer>
+
+</answer>
+</frame>
 
 # 教学法调查报告。
 
