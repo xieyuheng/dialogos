@@ -22,7 +22,7 @@
 </script>
 
 <style scoped>
- * body {
+ * {
    font-family: "Noto Mono", monospace;
  }
 </style>

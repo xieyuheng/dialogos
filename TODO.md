@@ -1,7 +1,7 @@
-- basic vue.
-  - take hub url from query string
-    ?hub=http://localhost:3000/api/book
-- pattern matching for using LittleNode.
+- fetch data from book hub api
+- take hub url from query string -- ?hub=http://localhost:3000/api/book
+- pattern matching for using LittleNode
+- basic view
 - 生成简单的页面。
 - 实时预览所生成的页面。
 - 用 cypress 做测试。
