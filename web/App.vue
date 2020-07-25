@@ -1,17 +1,25 @@
 <template>
   <div>
     <h1>The Little Books</h1>
-    <p>Original message: "{{ message }}"</p>
-    <p>Computed reversed message: "{{ reversed_message() }}"</p>
+    <p>book: "{{ book }}"</p>
   </div>
 </template>
 
 <script>
+const hub = "http://localhost:3000/api"
+
 export default {
   data() {
     return {
-      message: "1234567",
+      book: null,
     }
+  },
+  mounted() {
+    fetch(`${hub}/book`)
+      .then((response) => response.json())
+      .then((data) => {
+        this.book = data
+      })
   },
   methods: {
     reversed_message() {

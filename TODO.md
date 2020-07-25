@@ -1,8 +1,7 @@
-- fetch data from book hub api
 - rander list
-- take hub url from query string -- ?hub=http://localhost:3000/api/book
 - pattern matching for using LittleNode
 - basic view
+- take hub url from query string -- ?hub=http://localhost:3000/api/book
 - more frames
 - 实时预览所生成的页面
 - finish chapter 1
