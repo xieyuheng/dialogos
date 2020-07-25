@@ -459,9 +459,78 @@ as
 </answer>
 </frame>
 
+<frame>
+<question>
+Is
+  (cons 'ratatouille 'baguette)
+the same
+  (Pair Atom Atom)
+as
+  (cons 'baguette 'baguette)?
+</question>
+<answer>
+The car of
+  (cons 'ratatouille 'baguette)
+is 'ratatouille, while the car of
+  (cons 'baguette 'baguette)
+is 'baguette.
+
+So we have no reason to believe that
+they are the same (Pair Atom Atom).
+</answer>
+</frame>
+
+<frame>
+<question>
+How can
+  (cdr
+    (cons 'ratatouille 'baguette))
+be described?
+</question>
+<answer>
+It is an
+  Atom.
+</answer>
+</frame>
+
+<frame>
+<question>
+Expressions that describe other expressions,
+such as Atom, are called types.
+
+Is (Pair Atom Atom)<ref name="+"/> a type?
+<note name="+">
+When a name, such as Pair or Atom, refers to a type,
+it starts with an upper-case letter.
+</note>
+</question>
+<answer>
+Yes, because it describes pairs where the car and cdr are both Atoms.
+</answer>
+</frame>
+
+<frame>
+<question>
+The third form of judgment is
+  ___ is a type.
+</question>
+<answer>
+This means that both
+  Atom is a type
+and
+  (Pair Atom Atom) is a type
+are judgments.
+</answer>
+</frame>
+
+<card kind="law">
+<title>The Law of Atom</title>
+Atom is a type.
+</card>
+
 <TODO>
-page:8
-frame:24
+page:9
+frame:28
 </TODO>
 
 </chapter>

@@ -1,4 +1,5 @@
 - fetch data from book hub api
+- rander list
 - take hub url from query string -- ?hub=http://localhost:3000/api/book
 - pattern matching for using LittleNode
 - basic view
@@ -17,6 +18,8 @@
   http://localhost:3000/api/book
 
 # template
+
+frame:
 
 <frame>
 <question>

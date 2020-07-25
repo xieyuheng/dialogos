@@ -7,22 +7,22 @@
 </template>
 
 <script>
- export default {
-   data() {
-     return {
-       message: "1234567",
-     }
-   },
-   methods: {
-     reversed_message() {
-       return this.message.split('').reverse().join('')
-     }
-   }
- }
+export default {
+  data() {
+    return {
+      message: "1234567",
+    }
+  },
+  methods: {
+    reversed_message() {
+      return this.message.split("").reverse().join("")
+    },
+  },
+}
 </script>
 
 <style scoped>
- * {
-   font-family: "Noto Mono", monospace;
- }
+* {
+  font-family: "Noto Mono", monospace;
+}
 </style>
