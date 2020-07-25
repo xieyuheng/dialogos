@@ -10,6 +10,12 @@
   - no auto saving
   - folding by tab
 
+# info
+
+- test:
+  http://localhost:8080
+  http://localhost:3000/api/book
+
 # template
 
 <frame>
