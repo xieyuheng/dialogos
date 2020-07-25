@@ -303,11 +303,9 @@ They have different letters after the tick mark.
 </answer>
 </frame>
 
-<TODO></TODO>
-
 <comment topic="didactics">
 When teaching, use sentences with consistent pattern.
-Repeat the pattern. student will find it out.
+Repeat the pattern, student will find it out.
 </comment>
 
 <comment>
@@ -355,7 +353,116 @@ After all, one should not compare apples and oranges.
 </answer>
 </frame>
 
-<TODO></TODO>
+<frame>
+<question>
+Is it obvious that
+  (cons 'ratatouille 'baguette)<ref name="+"/>
+is a
+  (Pair Atom Atom)?
+<note name="+">
+When ready, see page 62 for "typing" instructions.
+</note>
+</question>
+<answer>
+No, it isn't.
+
+What does it mean to be a
+  (Pair Atom Atom)?
+</answer>
+</frame>
+
+<comment>
+What not obvious should be further explained.
+
+We want to ask the question "Is (cons 'ratatouille 'baguette) a (Pair Atom Atom)?",
+but we have not explained the meaning of Pair,
+thus we ask "Is it obvious that ...",
+and give reason to explain the meaning of Pair.
+</comment>
+
+<frame>
+<question>
+To be a
+  (Pair Atom Atom)
+is to be a pair whose car is an Atom, like 'ratatouille,
+and whose cdr is also an Atom, like 'baguette.
+</question>
+<answer>
+The names cons, car, and cdr seem familiar.
+What do they mean again?
+And what do they have to do with pairs?
+</answer>
+</frame>
+
+<frame>
+<question>
+A pair begins with cons<ref name="+"/>
+and ends with two more parts,
+call its car and its cdr.
+<note name="+">
+In Lisp, cons is used to make lists longer.
+Here, cons only constructs pairs.
+</note>
+</question>
+<answer>
+Okay. That means that
+  (cons 'ratatouille 'baguette)
+is a
+  (Pair Atom Atom)
+because (cons 'ratatouille 'baguette)
+is a pair whose car is an Atom,
+and whose cdr is also an Atom.
+
+Is cons a Pair, then?
+</answer>
+</frame>
+
+<comment>
+The question in the above answer might be feedback from a student.
+Feedback is always important in any system.
+</comment>
+
+<frame>
+<question>
+Neither cons nor Pair alone is even an expression.
+Both require two arguments.<ref name="+"/>
+
+Is
+  (cons 'ratatouille 'baguette)
+the same
+  (Pair Atom Atom)
+as
+  (cons 'ratatouille 'baguette)?
+<note name="+">
+In Lisp, cons is a procedure and has meaning on its own,
+but forms such as cond or lambda are meaningless if they appear alone.
+</note>
+</question>
+<answer>
+What does it mean for two expressions to be the same
+  (Pair Atom Atom)?
+</answer>
+</frame>
+
+<frame>
+<question>
+It means that both cars are the same Atom
+ and that both cdrs are the same Atom.
+</question>
+<answer>
+Then
+  (cons 'ratatouille 'baguette)
+is indeed the same
+  (Pair Atom Atom)
+as
+  (cons 'ratatouille 'baguette).
+</answer>
+</frame>
+
+<TODO>
+page:8
+frame:24
+</TODO>
 
 </chapter>
 
