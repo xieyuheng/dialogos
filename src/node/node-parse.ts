@@ -6,7 +6,7 @@ const parser = new window.DOMParser()
 
 export function parse_element(
   text: string,
-  opts: Node.Opts = {
+  opts: Node.ParseOpts = {
     trim: true,
     no_blank_text_node: true,
   }

@@ -1,4 +1,4 @@
 export * from "./node"
-export * from "./node-from"
 export * from "./node-parse"
-// export * from "./node-match"
+export * from "./node-parse-opts"
+export * from "./node-from"

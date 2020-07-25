@@ -5,12 +5,7 @@ import * as ut from "../ut"
 const Window = require("window")
 const window = new Window()
 
-export interface Opts {
-  trim: boolean
-  no_blank_text_node: boolean
-}
-
-export function from_node(node: Node, opts: Opts): undefined | Node.Node {
+export function from_node(node: Node, opts: Node.ParseOpts): undefined | Node.Node {
   if (node.nodeType === window.Node.ELEMENT_NODE) {
     const element = node as Element
     return from_element(element, opts)
@@ -27,7 +22,7 @@ export function from_node(node: Node, opts: Opts): undefined | Node.Node {
   }
 }
 
-export function from_element(element: Element, opts: Opts): Node.Element {
+export function from_element(element: Element, opts: Node.ParseOpts): Node.Element {
   const tag = element.tagName
   const attributes: { [key: string]: string } = {}
   for (const name of element.getAttributeNames()) {
@@ -43,7 +38,7 @@ export function from_element(element: Element, opts: Opts): Node.Element {
   return new Node.Element(tag, attributes, contents)
 }
 
-export function from_text(text: Text, opts: Opts): Node.Text {
+export function from_text(text: Text, opts: Node.ParseOpts): Node.Text {
   if (opts.trim) {
     return new Node.Text(text.wholeText.trim())
   } else {
