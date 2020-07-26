@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>The Little Books</h1>
-    <p>book: "{{ book }}"</p>
+    <br><pre>{{ book }}</pre>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
     fetch(`${hub}/book`)
       .then((response) => response.json())
       .then((data) => {
-        this.book = data
+        this.book = JSON.stringify(data, null, 2)
       })
   },
   methods: {
