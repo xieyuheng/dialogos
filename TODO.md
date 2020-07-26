@@ -1,4 +1,4 @@
-- rander list
+- rander lists -- chapters and frames
 - basic view
 - take hub url from query string -- ?hub=http://localhost:3000/api/book
 - more frames
@@ -8,6 +8,11 @@
 - vxcode xml mode
   - no auto saving
   - folding by tab
+
+# question
+
+- vue `computed` vs `methods`?
+  - why I need to use `methods` when matching.
 
 # info
 

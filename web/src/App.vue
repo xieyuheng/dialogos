@@ -1,13 +1,11 @@
 <template>
   <div>
-    <h1>The Little Books</h1>
-    <br />
-    <pre>{{ title }}</pre>
+    <h1>{{ title() }}</h1>
   </div>
 </template>
 
 <script>
-import little from "little"
+import li from "little"
 const hub = "http://localhost:3000/api"
 
 export default {
@@ -24,9 +22,26 @@ export default {
         this.book = data
       })
   },
-  computed: {
+  methods: {
     title() {
-      return little.Pattern.match(little.Pattern.Var("x"), this.book)
+      if (this.book === null) {
+        return null
+      } else {
+        const result = li.Pattern.match(
+          li.Pattern.Element(
+            "book",
+            {},
+            [
+              li.Pattern.Element("title", {}, [li.Pattern.Var("title")]),
+              li.Pattern.Var("preface"),
+            ],
+            "_"
+          ),
+          this.book
+        )
+        const title = result?.vars["title"].text
+        return title
+      }
     },
   },
 }
