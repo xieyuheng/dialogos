@@ -1,30 +1,28 @@
 import * as Node from "../node"
 
-export abstract class Pattern {}
+export type Pattern = Var | Element | Text
 
-export class Var extends Pattern {
-  constructor(
-    public name: string,
-  ) {
-    super()
+export interface Var {
+  kind: "Pattern.Var"
+  name: string
+}
+
+export function Var(name: string): Var {
+  return {
+    kind: "Pattern.Var",
+    name
   }
 }
 
-export class Element extends Pattern {
-  constructor(
-    public tag: string,
-    public attributes: { [key: string]: string | RegExp },
-    public contents: Array<Pattern>,
-    public tail?: string,
-  ) {
-    super()
-  }
+export interface Element {
+  kind: "Pattern.Element"
+  tag: string
+  attributes: { [key: string]: string | RegExp }
+  contents: Array<Pattern>
+  tail?: string
 }
 
-export class Text extends Pattern {
-  constructor(
-    public text: string | RegExp,
-  ) {
-    super()
-  }
+export interface Text {
+  kind: "Pattern.Text"
+  text: string | RegExp
 }

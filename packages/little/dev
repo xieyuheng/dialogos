@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
 
 function t {
-    test-lib node js &&
-        test-schema
-}
-
-function test-schema {
-    jing -c ../../schema/book.rnc ../../docs/didactics-reports/report-on-the-little-typer.xml
+    test-lib node js
 }
 
 function test-lib {

@@ -14,7 +14,7 @@ export function match(
   node: Node.Node,
   result: MatchResult = new MatchResult()
 ): null | MatchResult {
-  if (pattern instanceof Pattern.Var) {
+  if (pattern.kind === "Pattern.Var") {
     const previous_node = result.vars[pattern.name]
     if (previous_node === undefined) {
       return new MatchResult(
@@ -27,8 +27,8 @@ export function match(
       return null
     }
   } else if (
-    pattern instanceof Pattern.Element &&
-    node instanceof Node.Element
+    pattern.kind === "Pattern.Element" &&
+    node.kind === "Node.Element"
   ) {
     if (pattern.tag !== node.tag) {
       return null
@@ -59,7 +59,7 @@ export function match(
       }
       return new_result
     }
-  } else if (pattern instanceof Pattern.Text && node instanceof Node.Text) {
+  } else if (pattern.kind === "Pattern.Text" && node.kind === "Node.Text") {
     if (typeof pattern.text === "string") {
       return pattern.text === node.text ? result : null
     } else {

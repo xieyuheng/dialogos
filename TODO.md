@@ -1,4 +1,4 @@
-- use tagged union for ADT -- so serialization do not loss data.
+- use same name constructor for ADT -- instead of object with kind.
 - rander list
 - basic view
 - take hub url from query string -- ?hub=http://localhost:3000/api/book

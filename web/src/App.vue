@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1>The Little Books</h1>
-    <br><pre>{{ book }}</pre>
-    <br><pre>{{ title }}</pre>
+    <br />
+    <pre>{{ title }}</pre>
   </div>
 </template>
 
@@ -26,9 +26,9 @@ export default {
   },
   computed: {
     title() {
-      // return little.Pattern.match(new little.Pattern.Var("x"), this.book)
+      return little.Pattern.match({ kind: "Pattern.Var", name: "x" }, this.book)
     },
-  }
+  },
 }
 </script>
 

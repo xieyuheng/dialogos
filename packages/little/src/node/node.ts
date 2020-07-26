@@ -1,16 +1,13 @@
-export abstract class Node {}
+export type Node = Element | Text
 
-export class Element extends Node {
-  constructor(
-    public tag: string,
-    public attributes: { [key: string]: string },
-    public contents: Array<Node>
-  ) {
-    super()
-  }
+export interface Element {
+  kind: "Node.Element"
+  tag: string
+  attributes: { [key: string]: string }
+  contents: Array<Node>
 }
-export class Text extends Node {
-  constructor(public text: string) {
-    super()
-  }
+
+export interface Text {
+  kind: "Node.Text"
+  text: string
 }

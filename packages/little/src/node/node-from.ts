@@ -35,13 +35,15 @@ export function from_element(element: Element, opts: Node.ParseOpts): Node.Eleme
       contents.push(little_node)
     }
   }
-  return new Node.Element(tag, attributes, contents)
+  return {
+    kind: "Node.Element",
+    tag, attributes, contents
+  }
 }
 
 export function from_text(text: Text, opts: Node.ParseOpts): Node.Text {
-  if (opts.trim) {
-    return new Node.Text(text.wholeText.trim())
-  } else {
-    return new Node.Text(text.wholeText)
+  return {
+    kind: "Node.Text",
+    text: opts.trim ? text.wholeText.trim() : text.wholeText
   }
 }
