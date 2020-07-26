@@ -1,5 +1,5 @@
-import * as Node from "../node"
 import * as Pattern from "../pattern"
+import * as Node from "../node"
 import * as ut from "../ut"
 
 export class MatchResult {
@@ -54,6 +54,8 @@ export function match(
           ...new_result.tails,
           [pattern.tail]: node.contents.slice(pattern.contents.length),
         })
+      } else if (pattern.contents.length !== node.contents.length) {
+        return null
       }
       return new_result
     }
