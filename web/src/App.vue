@@ -2,13 +2,16 @@
   <div>
     <h1>The Little Books</h1>
     <br><pre>{{ book }}</pre>
+    <br><pre>{{ title }}</pre>
   </div>
 </template>
 
 <script>
+import little from "little"
 const hub = "http://localhost:3000/api"
 
 export default {
+  name: "App",
   data() {
     return {
       book: null,
@@ -18,14 +21,14 @@ export default {
     fetch(`${hub}/book`)
       .then((response) => response.json())
       .then((data) => {
-        this.book = JSON.stringify(data, null, 2)
+        this.book = data
       })
   },
-  methods: {
-    reversed_message() {
-      return this.message.split("").reverse().join("")
+  computed: {
+    title() {
+      // return little.Pattern.match(new little.Pattern.Var("x"), this.book)
     },
-  },
+  }
 }
 </script>
 

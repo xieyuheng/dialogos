@@ -1,3 +1,4 @@
+- use tagged union for ADT -- so serialization do not loss data.
 - rander list
 - basic view
 - take hub url from query string -- ?hub=http://localhost:3000/api/book

@@ -3,7 +3,7 @@ import * as cli_hub from "./cli-hub"
 import * as ut from "../ut"
 
 export function run(config: any): void {
-  program.name("book")
+  program.name("little")
   program.version(config.version)
   program.description("Command line interface of the-little-books.")
 

@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+function t {
+    test-lib node js &&
+        test-schema
+}
+
+function test-schema {
+    jing -c ../../schema/book.rnc ../../docs/didactics-reports/report-on-the-little-typer.xml
+}
+
+function test-lib {
+    prog=$1
+    ext=$2
+
+    for file in $(find . | grep -v "node_modules/" | grep "./*/lib/" | grep "\.test.*$" | grep "\.${ext}$")
+    do
+        echo ""
+        echo "[test] $file"
+        if ! time $prog $file
+        then
+            exit 1
+        fi
+    done
+}
+
+function main {
+    for TASK in $@
+    do
+        $TASK
+    done
+}
+
+main $@
