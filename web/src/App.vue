@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     title() {
-      return little.Pattern.match({ kind: "Pattern.Var", name: "x" }, this.book)
+      return little.Pattern.match(little.Pattern.Var("x"), this.book)
     },
   },
 }
