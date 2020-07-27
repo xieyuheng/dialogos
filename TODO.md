@@ -1,5 +1,5 @@
-- rander lists -- chapters and frames
-- basic view
+- be able to write pattern in xml -- parse xml to Pattern
+- contents as components
 - take hub url from query string -- ?hub=http://localhost:3000/api/book
 - more frames
 - 实时预览所生成的页面

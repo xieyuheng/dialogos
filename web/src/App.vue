@@ -1,6 +1,9 @@
 <template>
   <div>
     <h1>{{ title() }}</h1>
+    <div v-for="chapter of chapters()">
+      <pre v-for="content of contents(chapter)">{{ content }}</pre>
+    </div>
   </div>
 </template>
 
@@ -24,24 +27,51 @@ export default {
   },
   methods: {
     title() {
-      if (this.book === null) {
-        return null
-      } else {
-        const result = li.Pattern.match(
-          li.Pattern.Element(
-            "book",
-            {},
-            [
-              li.Pattern.Element("title", {}, [li.Pattern.Var("title")]),
-              li.Pattern.Var("preface"),
-            ],
-            "_"
-          ),
-          this.book
-        )
-        const title = result?.vars["title"].text
-        return title
-      }
+      if (this.book === null) return null
+      // `<book>
+      //    <title>$title</title>
+      //    $preface
+      //    ...$tail
+      //  </book>`
+      const result = li.Pattern.match(
+        li.Pattern.Element(
+          "book",
+          {},
+          [
+            li.Pattern.Element("title", {}, [li.Pattern.Var("title")]),
+            li.Pattern.Var("preface"),
+          ],
+          "_"
+        ),
+        this.book
+      )
+      return result?.vars["title"].text
+    },
+    chapters() {
+      if (this.book === null) return []
+
+      const result = li.Pattern.match(
+        li.Pattern.Element(
+          "book",
+          {},
+          [
+            li.Pattern.Element("title", {}, [li.Pattern.Var("title")]),
+            li.Pattern.Var("preface"),
+          ],
+          "chapters"
+        ),
+        this.book
+      )
+      return result?.tails["chapters"]
+    },
+    contents(chapter) {
+      const result = li.Pattern.match(
+        li.Pattern.Element("chapter", {}, [
+          li.Pattern.Element("title", {}, [li.Pattern.Var("title")]),
+        ], "contents"),
+        chapter
+      )
+      return result?.tails["contents"]
     },
   },
 }
