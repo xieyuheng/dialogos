@@ -1,13 +1,15 @@
 <template>
   <div>
-    <hr />
     <div v-if="content.tag === 'frame'"
          class="frame">
-      <pre class="question">{{ match_question(content) }}</pre>
-      <pre class="answer">{{ match_answer(content) }}</pre>
+      <pre class="question">{{ rander_side(match_frame(content).tails.question) }}</pre>
+      <pre class="answer">{{ rander_side(match_frame(content).tails.answer) }}</pre>
     </div>
-    <pre v-else-if="content.tag === 'card'">{{ match_card(content) }}</pre>
-    <pre v-else>{{ content }}</pre>
+    <div v-else-if="content.tag === 'card'"
+      class="card">
+      <h3 class="title">{{ match_card(content).vars.title.text }}</h3>
+      <pre>{{ match_card(content).vars.text.text }}</pre>
+    </div>
   </div>
 </template>
 
@@ -35,21 +37,13 @@ export default {
   methods: {
     match_frame(content) {
       const frame = li.Pattern.Element("frame", {}, [
-        li.Pattern.Element("question", {}, [], "question_body"),
-        li.Pattern.Element("answer", {}, [], "answer_body"),
+        li.Pattern.Element("question", {}, [], "question"),
+        li.Pattern.Element("answer", {}, [], "answer"),
       ])
       const result = li.Pattern.match(frame, content)
       if (result) {
         return result
       }
-    },
-
-    match_question(content) {
-      return this.match_frame(content).tails.question_body
-    },
-
-    match_answer(content) {
-      return this.match_frame(content).tails.answer_body
     },
 
     match_card(content) {
@@ -62,6 +56,16 @@ export default {
         return result
       }
     },
+
+    rander_side(side) {
+      let s = ""
+      for (const node of side) {
+        if (node.kind === "Node.Text") {
+          s += node.text
+        }
+      }
+      return s
+    }
   },
 }
 </script>
@@ -73,14 +77,31 @@ export default {
 
 .frame {
   display: flex;
+  border-top: 1px solid #666666;
+  border-bottom: 1px solid #666666;
 }
 
 .question {
   flex: 50%;
+  margin-left: 1em;
 }
 
 .answer {
   flex: 50%;
+  margin-left: 2em;
+}
+
+.card {
+  text-align: center;
+  margin-left: 4em;
+  margin-right: 4em;
+
+  margin-top: 2em;
+  margin-bottom: 2em;
+
+  padding: 1em;
+
+  border-style: double;
 }
 
 pre {

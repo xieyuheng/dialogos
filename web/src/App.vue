@@ -37,4 +37,8 @@ export default {
 * {
   font-family: "Noto Mono", monospace;
 }
+
+h1 {
+  text-align: center;
+}
 </style>
