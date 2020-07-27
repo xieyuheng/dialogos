@@ -1,4 +1,5 @@
 import * as Node from "../node"
+import { h, text } from "../node"
 import * as ut from "../ut"
 
 {
@@ -8,9 +9,9 @@ import * as ut from "../ut"
 
   ut.assert_equal(
     element,
-    Node.Element("div", { class: "frame" }, [
-      Node.Element("p", {}, [Node.Text("abc")]),
-      Node.Element("p", {}, [Node.Text("123")]),
-    ])
+    h( "div", { class: "frame" },
+       h("p", {}, text("abc")),
+       h("p", {}, text("123"))
+     )
   )
 }

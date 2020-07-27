@@ -1,3 +1,5 @@
+- frame index
+- insert <href> to plaintext
 - link ^[] to <note>
 - router for `Preface`
 - `Preface` as component

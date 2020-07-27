@@ -1,12 +1,14 @@
 <template>
   <div>
-    <div v-if="content.tag === 'frame'"
-         class="frame">
-      <pre class="question">{{ rander_side(match_frame(content).tails.question) }}</pre>
-      <pre class="answer">{{ rander_side(match_frame(content).tails.answer) }}</pre>
+    <div v-if="content.tag === 'frame'" class="frame">
+      <pre class="question">{{
+        rander_side(match_frame(content).tails.question)
+      }}</pre>
+      <pre class="answer">{{
+        rander_side(match_frame(content).tails.answer)
+      }}</pre>
     </div>
-    <div v-else-if="content.tag === 'card'"
-      class="card">
+    <div v-else-if="content.tag === 'card'" class="card">
       <h3 class="title">{{ match_card(content).vars.title.text }}</h3>
       <pre>{{ match_card(content).vars.text.text }}</pre>
     </div>
@@ -36,10 +38,12 @@ export default {
 
   methods: {
     match_frame(content) {
-      const frame = li.Pattern.Element("frame", {}, [
-        li.Pattern.Element("question", {}, [], "question"),
-        li.Pattern.Element("answer", {}, [], "answer"),
-      ])
+      const frame = li.p(
+        "frame",
+        {},
+        li.ptail("question")("question"),
+        li.ptail("answer")("answer")
+      )
       const result = li.Pattern.match(frame, content)
       if (result) {
         return result
@@ -47,10 +51,12 @@ export default {
     },
 
     match_card(content) {
-      const card = li.Pattern.Element("card", {}, [
-        li.Pattern.Element("title", {}, [li.Pattern.Var("title")]),
-        li.Pattern.Var("text"),
-      ])
+      const card = li.p(
+        "card",
+        {},
+        li.p("title", {}, li.v("title")),
+        li.v("text")
+      )
       const result = li.Pattern.match(card, content)
       if (result) {
         return result
@@ -65,7 +71,7 @@ export default {
         }
       }
       return s
-    }
+    },
   },
 }
 </script>

@@ -1,4 +1,5 @@
 import * as Node from "../node"
+import { h, text } from "../node"
 import * as Err from "../err"
 import * as ut from "../ut"
 
@@ -13,8 +14,7 @@ export function nodes_from_node(
     const element = node as Element
     return [from_element(element, opts)]
   } else if (node.nodeType === window.Node.TEXT_NODE) {
-    const text = node as Text
-    return nodes_from_text(text, opts)
+    return nodes_from_text(node as Text, opts)
   } else {
     return []
   }
@@ -28,23 +28,23 @@ export function from_element(
   for (const name of element.getAttributeNames()) {
     attributes[name] = element.getAttribute(name) as string
   }
-  return Node.Element(
+  return h(
     element.tagName,
     attributes,
-    Array.from(element.childNodes).flatMap((node) =>
+    ...Array.from(element.childNodes).flatMap((node) =>
       nodes_from_node(node, opts)
     )
   )
 }
 
 export function nodes_from_text(
-  text: Text,
+  s: Text,
   opts: Node.ParseOpts
 ): Array<Node.Text> {
-  const wholeText = opts.trim ? text.wholeText.trim() : text.wholeText
+  const wholeText = opts.trim ? s.wholeText.trim() : s.wholeText
   if (ut.blank_p(wholeText) && opts.no_blank_text_node) {
     return []
   } else {
-    return [Node.Text(wholeText)]
+    return [text(wholeText)]
   }
 }

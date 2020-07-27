@@ -7,21 +7,17 @@ import actions from "./actions"
 Vue.use(Vuex)
 
 const patterns = {
-  book: li.Pattern.Element(
+  book: li.ptail(
     "book",
     {},
-    [
-      li.Pattern.Element("title", {}, [li.Pattern.Var("title")]),
-      li.Pattern.Var("preface"),
-    ],
-    "chapters"
-  ),
-  chapter: li.Pattern.Element(
+    li.p("title", {}, li.v("title")),
+    li.v("preface")
+  )("chapters"),
+  chapter: li.ptail(
     "chapter",
     {},
-    [li.Pattern.Element("title", {}, [li.Pattern.Var("title")])],
-    "contents"
-  ),
+    li.p("title", {}, li.v("title"))
+  )("contents"),
 }
 
 const store = new Vuex.Store({

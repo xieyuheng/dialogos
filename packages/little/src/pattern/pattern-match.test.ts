@@ -1,53 +1,33 @@
 import * as Pattern from "../pattern"
+import { p, ptail, v, regex } from "../pattern"
 import * as Node from "../node"
+import { h, text } from "../node"
 import * as ut from "../ut"
 
-ut.assert_equal(Pattern.match(Pattern.Text("a"), Node.Text("b")), null)
+ut.assert_equal(Pattern.match(regex("a"), text("b")), null)
 
-ut.assert_equal(
-  Pattern.match(Pattern.Text("a"), Node.Text("a")),
-  new Pattern.MatchResult()
-)
+ut.assert_equal(Pattern.match(regex("a"), text("a")), new Pattern.MatchResult())
 
 ut.assert_equal(
   Pattern.match(
-    Pattern.Element("frame", {}, [
-      Pattern.Element("question", {}, [Pattern.Var("x")]),
-    ]),
-    Node.Element("frame", {}, [Node.Element("question", {}, [Node.Text("a")])])
+    p("frame", {}, p("question", {}, v("x"))),
+    h("frame", {}, h("question", {}, text("a")))
   ),
-  new Pattern.MatchResult({ x: Node.Text("a") }, {})
+  new Pattern.MatchResult({ x: text("a") }, {})
 )
 
 ut.assert_equal(
   Pattern.match(
-    Pattern.Element("frame", {}, [
-      Pattern.Element("question", {}, [Pattern.Var("x")]),
-    ]),
-    Node.Element("frame", {}, [
-      Node.Element("question", {}, [Node.Text("a"), Node.Text("b")]),
-    ])
+    p("frame", {}, p("question", {}, v("x"))),
+    h("frame", {}, h("question", {}, text("a"), text("b")))
   ),
   null
 )
 
 ut.assert_equal(
   Pattern.match(
-    Pattern.Element("frame", {}, [
-      Pattern.Element("question", {}, [Pattern.Var("x")], "t"),
-    ]),
-    Node.Element("frame", {}, [
-      Node.Element("question", {}, [
-        Node.Text("a"),
-        Node.Text("b"),
-        Node.Text("c"),
-      ]),
-    ])
+    p("frame", {}, ptail("question", {}, v("x"))("t")),
+    h("frame", {}, h("question", {}, text("a"), text("b"), text("c")))
   ),
-  new Pattern.MatchResult(
-    { x: Node.Text("a") },
-    {
-      t: [Node.Text("b"), Node.Text("c")],
-    }
-  )
+  new Pattern.MatchResult({ x: text("a") }, { t: [text("b"), text("c")] })
 )
