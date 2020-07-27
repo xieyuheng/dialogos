@@ -1,5 +1,6 @@
-- be able to write pattern in xml -- parse xml to Pattern -- pattern-parse.ts
-- contents as components
+- `Content` as component
+- router for `Preface`
+- `Preface` as component
 - take hub url from query string -- ?hub=http://localhost:3000/api/book
 - more frames
 - 实时预览所生成的页面

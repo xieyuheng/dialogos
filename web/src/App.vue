@@ -1,78 +1,34 @@
 <template>
   <div>
-    <h1>{{ title() }}</h1>
-    <div v-for="chapter of chapters()">
-      <pre v-for="content of contents(chapter)">{{ content }}</pre>
-    </div>
+    <h1>{{ title }}</h1>
+    <Chapter
+      v-for="(chapter, index) of chapters"
+      v-bind:key="index"
+      v-bind:index="index" />
   </div>
 </template>
 
 <script>
-import li from "little"
+import Vue from "vue"
+import Vuex from "vuex"
+import store from "./store"
+import Chapter from "./components/Chapter"
+
 const hub = "http://localhost:3000/api"
 
 export default {
   name: "App",
-  data() {
-    return {
-      book: null,
-    }
-  },
-  mounted() {
+  store,
+  created() {
     fetch(`${hub}/book`)
       .then((response) => response.json())
-      .then((data) => {
-        this.book = data
-      })
+      .then((book) => store.commit("set_book", { book }))
   },
-  methods: {
-    title() {
-      if (this.book === null) return null
-      // `<book>
-      //    <title>$title</title>
-      //    $preface
-      //    ...$tail
-      //  </book>`
-      const result = li.Pattern.match(
-        li.Pattern.Element(
-          "book",
-          {},
-          [
-            li.Pattern.Element("title", {}, [li.Pattern.Var("title")]),
-            li.Pattern.Var("preface"),
-          ],
-          "_"
-        ),
-        this.book
-      )
-      return result?.vars["title"].text
-    },
-    chapters() {
-      if (this.book === null) return []
-
-      const result = li.Pattern.match(
-        li.Pattern.Element(
-          "book",
-          {},
-          [
-            li.Pattern.Element("title", {}, [li.Pattern.Var("title")]),
-            li.Pattern.Var("preface"),
-          ],
-          "chapters"
-        ),
-        this.book
-      )
-      return result?.tails["chapters"]
-    },
-    contents(chapter) {
-      const result = li.Pattern.match(
-        li.Pattern.Element("chapter", {}, [
-          li.Pattern.Element("title", {}, [li.Pattern.Var("title")]),
-        ], "contents"),
-        chapter
-      )
-      return result?.tails["contents"]
-    },
+  computed: {
+    ...Vuex.mapGetters(["title", "chapters"]),
+  },
+  components: {
+    Chapter,
   },
 }
 </script>
