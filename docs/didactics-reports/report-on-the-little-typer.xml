@@ -342,14 +342,16 @@ and this kind of quotation is represented in the frame by indentation.
 
 <frame>
 <question>
-It is a judgment, and we have reason to believe it.
+It is a judgment,
+and we have reason to believe it.
 
 Is
   'pomme is the same Atom as 'orange
 a judgment?
 </question>
 <answer>
-It is a judgment, but we have no reason to believe it.
+It is a judgment,
+but we have no reason to believe it.
 After all, one should not compare apples and oranges.
 </answer>
 </frame>
