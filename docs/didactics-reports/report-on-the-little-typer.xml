@@ -82,7 +82,7 @@ Not at all. What does Atom mean?
 
 <frame>
 <question>
-To be an Atom is to be an atom.<ref name="+"/>
+To be an Atom is to be an atom.^[+]
 <note name="+">
 In Lisp, atoms are symbols, numbers, and many other things.
 Here, atoms are only symbols.
@@ -108,7 +108,7 @@ But what does it precisely mean to be an atom?
 <frame>
 <question>
 Atoms are built from a tick mark
-directly followed by one or more letters and hyphens.<ref name="+"/>
+directly followed by one or more letters and hyphens.^[+]
 <note name="+">
 In Pie, only atoms use the tick mark.
 </note>
@@ -205,7 +205,7 @@ Sentences such as
   'ratatouille is an Atom
 and
   'cœurs-d-artichauts is an Atom
-are called judgments.<ref name="+"/>
+are called judgments.^[+]
 <note name="+">
 Thanks, Per Martin-Löf (1942-).
 </note>
@@ -357,7 +357,7 @@ After all, one should not compare apples and oranges.
 <frame>
 <question>
 Is it obvious that
-  (cons 'ratatouille 'baguette)<ref name="+"/>
+  (cons 'ratatouille 'baguette)^[+]
 is a
   (Pair Atom Atom)?
 <note name="+">
@@ -397,7 +397,7 @@ And what do they have to do with pairs?
 
 <frame>
 <question>
-A pair begins with cons<ref name="+"/>
+A pair begins with cons^[+]
 and ends with two more parts,
 call its car and its cdr.
 <note name="+">
@@ -426,7 +426,7 @@ Feedback is always important in any system.
 <frame>
 <question>
 Neither cons nor Pair alone is even an expression.
-Both require two arguments.<ref name="+"/>
+Both require two arguments.^[+]
 
 Is
   (cons 'ratatouille 'baguette)
@@ -448,7 +448,7 @@ What does it mean for two expressions to be the same
 <frame>
 <question>
 It means that both cars are the same Atom
- and that both cdrs are the same Atom.
+and that both cdrs are the same Atom.
 </question>
 <answer>
 Then
@@ -499,7 +499,7 @@ It is an
 Expressions that describe other expressions,
 such as Atom, are called types.
 
-Is (Pair Atom Atom)<ref name="+"/> a type?
+Is (Pair Atom Atom)^[+] a type?
 <note name="+">
 When a name, such as Pair or Atom, refers to a type,
 it starts with an upper-case letter.

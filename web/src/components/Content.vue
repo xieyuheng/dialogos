@@ -73,6 +73,7 @@ export default {
 <style scoped>
 * {
   font-family: "Noto Mono", monospace;
+  line-height: 1.5;
 }
 
 .frame {
@@ -84,11 +85,13 @@ export default {
 .question {
   flex: 50%;
   margin-left: 1em;
+  margin-right: 2em;
 }
 
 .answer {
   flex: 50%;
-  margin-left: 2em;
+  margin-left: 1em;
+  margin-right: 2em;
 }
 
 .card {

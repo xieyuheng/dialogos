@@ -9,9 +9,8 @@ chapter = element chapter { title, content* }
 content = frame | card | comment | TODO
 
 frame = element frame { question, answer }
-question = element question { text & ref? & note? }
-answer = element answer { text & ref? & note? }
-ref = element ref { attribute name { text } }
+question = element question { text, note* }
+answer = element answer { text, note* }
 note = element note { attribute name { text }, text }
 
 card = element card { attribute kind { "law" | "commandment" }, title, text }
