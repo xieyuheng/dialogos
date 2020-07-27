@@ -1,4 +1,4 @@
-- be able to write pattern in xml -- parse xml to Pattern
+- be able to write pattern in xml -- parse xml to Pattern -- pattern-parse.ts
 - contents as components
 - take hub url from query string -- ?hub=http://localhost:3000/api/book
 - more frames
