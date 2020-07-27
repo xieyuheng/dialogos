@@ -1,4 +1,4 @@
-- `Content` as component
+- style for `Frame`
 - router for `Preface`
 - `Preface` as component
 - take hub url from query string -- ?hub=http://localhost:3000/api/book

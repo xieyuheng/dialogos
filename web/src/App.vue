@@ -4,7 +4,7 @@
     <Chapter
       v-for="(chapter, index) of chapters"
       v-bind:key="index"
-      v-bind:index="index" />
+      v-bind:chapter_index="index" />
   </div>
 </template>
 
