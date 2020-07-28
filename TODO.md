@@ -1,4 +1,3 @@
-- change vue code to hyperapp
 - frame index
 - insert <href> to plaintext
 - link ^[] to <note>
