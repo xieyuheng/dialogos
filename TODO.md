@@ -1,4 +1,3 @@
-- improve `li.Pattern.match` -- api `li.match`
 - frame index
 - insert <href> to plaintext
 - link ^[] to <note>

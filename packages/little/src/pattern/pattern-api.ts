@@ -1,5 +1,8 @@
 import * as Pattern from "../pattern"
 
+export const match = Pattern.match
+export const match_one = Pattern.match_one
+
 export function v(name: string): Pattern.Var {
   return {
     kind: "Pattern.Var",

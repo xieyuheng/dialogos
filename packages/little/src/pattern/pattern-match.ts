@@ -9,7 +9,7 @@ export class MatchResult {
   ) {}
 }
 
-export function match(
+export function match_one(
   pattern: Pattern.Pattern,
   node: Node.Node,
   result: MatchResult = new MatchResult()
@@ -43,7 +43,7 @@ export function match(
       for (let i = 0; i < pattern.contents.length; i++) {
         const sub_pattern = pattern.contents[i]
         const sub_node = node.contents[i]
-        new_result = Pattern.match(sub_pattern, sub_node, new_result)
+        new_result = Pattern.match_one(sub_pattern, sub_node, new_result)
         if (new_result === null) {
           return null
         }
@@ -68,4 +68,29 @@ export function match(
   } else {
     return null
   }
+}
+
+export function match<A>(
+  node: Node.Node,
+  cases: Array<
+    [Pattern.Pattern, (result: MatchResult) => A] | ["default", () => A]
+  >
+): A {
+  for (const [pattern, handler] of cases) {
+    if (pattern === "default") {
+      return (handler as () => A)()
+    } else {
+      const result = Pattern.match_one(pattern, node)
+      if (result !== null) {
+        return handler(result)
+      }
+    }
+  }
+  throw new Error(
+    ut.aline(`
+      |Pattern mismatch,
+      |node: ${ut.inspect(node)},
+      |cases: ${ut.inspect(cases)},
+      |`)
+  )
 }

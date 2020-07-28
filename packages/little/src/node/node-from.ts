@@ -1,5 +1,5 @@
 import * as Node from "../node"
-import { h, text } from "../node"
+import { h, text } from "./node-api"
 import * as Err from "../err"
 import * as ut from "../ut"
 

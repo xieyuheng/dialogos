@@ -17,104 +17,72 @@ const GotBook = (state, book) => ({ ...state, book })
 
 // -- VIEWS ---
 
-const patterns = {
-  book: p("book", {}, [p("title", {}, v("title")), v("preface")], {
-    tail: "chapters",
-  }),
-  chapter: p("chapter", {}, p("title", {}, v("title")), {
-    tail: "frames",
-  }),
-}
+const titleView = (state) =>
+  state.book &&
+  li.match(state.book, [
+    [
+      p("book", {}, [p("title", {}, v("title"))], { tail: "_" }),
+      ({ vars: { title } }) => h("h1", {}, text(title.text)),
+    ],
+  ])
 
-const titleView = (state) => {
-  if (state.book === null) return null
-
-  const title = li.Pattern.match(
-    p("book", {}, [p("title", {}, v("title"))], { tail: "_" }),
-    state.book
-  ).vars["title"].text
-
-  return h("h1", {}, text(title))
-}
-
-const frameView = (state, frame, index) => {
-  if (state.book === null) return null
-
-  // Pattern.match(frame, [
-  //   [
-  //     p("dialog", {}, [
-  //       p("question", {}, [v("question")], { tail: "question_notes" }),
-  //       p("answer", {}, [v("answer")], { tail: "answer_notes" }),
-  //     ]),
-  //     ({ vars: { question, answer } }) =>
-  //       h("div", { class: "dialog" }, [
-  //         h("pre", { class: "question" }, text(question.text)),
-  //         h("pre", { class: "answer" }, text(answer.text)),
-  //       ]),
-  //   ],
-  //   [
-  //     p("card", {}, [p("title", {}, v("title")), v("text")]),
-  //     ({ vars: { title, text } }) =>
-  //       h("div", { class: "card" }, [
-  //         h("h3", { class: "title" }, text(card.vars.title.text)),
-  //         h("pre", {}, text(card.vars.text.text)),
-  //       ]),
-  //   ],
-  // ])
-
-  if (frame.tag === "dialog") {
-    const dialog = li.Pattern.match(
+const frameView = (state, frame, index) =>
+  li.match(frame, [
+    [
       p("dialog", {}, [
         p("question", {}, [v("question")], { tail: "question_notes" }),
         p("answer", {}, [v("answer")], { tail: "answer_notes" }),
       ]),
-      frame
-    )
-    return h("div", { class: "dialog" }, [
-      h("pre", { class: "question" }, text(dialog.vars.question.text)),
-      h("pre", { class: "answer" }, text(dialog.vars.answer.text)),
-    ])
-  } else if (frame.tag === "card") {
-    const card = li.Pattern.match(
+      ({ vars: { question, answer } }) =>
+        h("div", { class: "dialog" }, [
+          h("pre", { class: "question" }, text(question.text)),
+          h("pre", { class: "answer" }, text(answer.text)),
+        ]),
+    ],
+    [
       p("card", {}, [p("title", {}, v("title")), v("content")]),
-      frame
-    )
-    return h("div", { class: "card" }, [
-      h("h3", { class: "title" }, text(card.vars.title.text)),
-      h("pre", {}, text(card.vars.content.text)),
-    ])
-  } else {
-    return null
-  }
-}
+      ({ vars: { title, content } }) =>
+        h("div", { class: "card" }, [
+          h("h3", { class: "title" }, text(title.text)),
+          h("pre", {}, text(text.content)),
+        ]),
+    ],
+    ["default", () => null],
+  ])
 
-const chapterView = (state, chapter, index) => {
-  if (state.book === null) return null
+const chapterView = (state, chapter, index) =>
+  state.book &&
+  li.match(chapter, [
+    [
+      p("chapter", {}, p("title", {}, v("title")), { tail: "frames" }),
+      ({ tails: { frames } }) =>
+        h(
+          "div",
+          { class: "chapter" },
+          h(
+            "div",
+            { class: "frames" },
+            frames.map((frame, index) => frameView(state, frame, index))
+          )
+        ),
+    ],
+  ])
 
-  const frames = li.Pattern.match(patterns.chapter, chapter).tails.frames
-
-  return h(
-    "div",
-    { class: "chapter" },
-    h(
-      "div",
-      { class: "frames" },
-      frames.map((frame, index) => frameView(state, frame, index))
-    )
-  )
-}
-
-const chapterList = (state) => {
-  if (state.book === null) return null
-
-  const chapters = li.Pattern.match(patterns.book, state.book).tails.chapters
-
-  return h(
-    "div",
-    { class: "chapters" },
-    chapters.map((chapter, index) => chapterView(state, chapter, index))
-  )
-}
+const chapterList = (state) =>
+  state.book &&
+  li.match(state.book, [
+    [
+      p("book", {}, [p("title", {}, v("title")), v("preface")], {
+        tail: "chapters",
+      }),
+      ({ tails: { chapters } }) =>
+        h(
+          "div",
+          { class: "chapters" },
+          chapters.map((chapter, index) => chapterView(state, chapter, index))
+        ),
+    ],
+  ])
 
 const container = (contents) => h("div", { class: "container" }, contents)
 
