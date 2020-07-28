@@ -1,5 +1,5 @@
 import { h, text, app } from "hyperapp"
-import li from "little"
+import li, { p, v } from "little"
 import "./index.css"
 
 // -- EFFECTS & SUBSCRIPTIONS --
@@ -18,10 +18,10 @@ const GotBook = (state, book) => ({ ...state, book })
 // -- VIEWS ---
 
 const patterns = {
-  book: li.p("book", {}, [li.p("title", {}, li.v("title")), li.v("preface")], {
+  book: p("book", {}, [p("title", {}, v("title")), v("preface")], {
     tail: "chapters",
   }),
-  chapter: li.p("chapter", {}, li.p("title", {}, li.v("title")), {
+  chapter: p("chapter", {}, p("title", {}, v("title")), {
     tail: "contents",
   }),
 }
@@ -29,56 +29,34 @@ const patterns = {
 const titleView = (state) => {
   if (state.book === null) return null
 
-  return h(
-    "h1",
-    {},
-    text(li.Pattern.match(patterns.book, state.book).vars["title"].text)
-  )
-}
+  const title = li.Pattern.match(
+    p("book", {}, [p("title", {}, v("title"))], { tail: "_" }),
+    state.book
+  ).vars["title"].text
 
-function matchFrame(content) {
-  const frame = li.p("frame", {}, [
-    li.p("question", {}, [], { tail: "question" }),
-    li.p("answer", {}, [], { tail: "answer" }),
-  ])
-  const result = li.Pattern.match(frame, content)
-  if (result) {
-    return result
-  }
-}
-
-function matchCard(content) {
-  const card = li.p("card", {}, [
-    li.p("title", {}, li.v("title")),
-    li.v("text"),
-  ])
-  const result = li.Pattern.match(card, content)
-  if (result) {
-    return result
-  }
-}
-
-function randerSide(side) {
-  let s = ""
-  for (const node of side) {
-    if (node.kind === "Node.Text") {
-      s += node.text
-    }
-  }
-  return s
+  return h("h1", {}, text(title))
 }
 
 const contentView = (state, content, index) => {
   if (state.book === null) return null
 
   if (content.tag === "frame") {
-    const frame = matchFrame(content)
+    const frame = li.Pattern.match(
+      p("frame", {}, [
+        p("question", {}, [v("question")], { tail: "question_notes" }),
+        p("answer", {}, [v("answer")], { tail: "answer_notes" }),
+      ]),
+      content
+    )
     return h("div", { class: "frame" }, [
-      h("pre", { class: "question" }, text(randerSide(frame.tails.question))),
-      h("pre", { class: "answer" }, text(randerSide(frame.tails.answer))),
+      h("pre", { class: "question" }, text(frame.vars.question.text)),
+      h("pre", { class: "answer" }, text(frame.vars.answer.text)),
     ])
   } else if (content.tag === "card") {
-    const card = matchCard(content)
+    const card = li.Pattern.match(
+      p("card", {}, [p("title", {}, v("title")), v("text")]),
+      content
+    )
     return h("div", { class: "card" }, [
       h("h3", { class: "title" }, text(card.vars.title.text)),
       h("pre", {}, text(card.vars.text.text)),
@@ -91,7 +69,7 @@ const contentView = (state, content, index) => {
 const chapterView = (state, chapter, index) => {
   if (state.book === null) return null
 
-  const contents = li.Pattern.match(patterns.chapter, chapter).tails["contents"]
+  const contents = li.Pattern.match(patterns.chapter, chapter).tails.contents
 
   return h(
     "div",
@@ -107,7 +85,7 @@ const chapterView = (state, chapter, index) => {
 const chapterList = (state) => {
   if (state.book === null) return null
 
-  const chapters = li.Pattern.match(patterns.book, state.book).tails["chapters"]
+  const chapters = li.Pattern.match(patterns.book, state.book).tails.chapters
 
   return h(
     "div",
@@ -125,13 +103,7 @@ const hub = "http://localhost:3000/api"
 app({
   init: [
     { book: null },
-    [
-      fetchJSONData,
-      {
-        url: `${hub}/book`,
-        onresponse: GotBook,
-      },
-    ],
+    [fetchJSONData, { url: `${hub}/book`, onresponse: GotBook }],
   ],
 
   node: document.getElementById("app"),
