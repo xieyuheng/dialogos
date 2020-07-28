@@ -22,7 +22,7 @@ const patterns = {
     tail: "chapters",
   }),
   chapter: p("chapter", {}, p("title", {}, v("title")), {
-    tail: "contents",
+    tail: "frames",
   }),
 }
 
@@ -37,29 +37,51 @@ const titleView = (state) => {
   return h("h1", {}, text(title))
 }
 
-const contentView = (state, content, index) => {
+const frameView = (state, frame, index) => {
   if (state.book === null) return null
 
-  if (content.tag === "frame") {
-    const frame = li.Pattern.match(
-      p("frame", {}, [
+  // Pattern.match(frame, [
+  //   [
+  //     p("dialog", {}, [
+  //       p("question", {}, [v("question")], { tail: "question_notes" }),
+  //       p("answer", {}, [v("answer")], { tail: "answer_notes" }),
+  //     ]),
+  //     ({ vars: { question, answer } }) =>
+  //       h("div", { class: "dialog" }, [
+  //         h("pre", { class: "question" }, text(question.text)),
+  //         h("pre", { class: "answer" }, text(answer.text)),
+  //       ]),
+  //   ],
+  //   [
+  //     p("card", {}, [p("title", {}, v("title")), v("text")]),
+  //     ({ vars: { title, text } }) =>
+  //       h("div", { class: "card" }, [
+  //         h("h3", { class: "title" }, text(card.vars.title.text)),
+  //         h("pre", {}, text(card.vars.text.text)),
+  //       ]),
+  //   ],
+  // ])
+
+  if (frame.tag === "dialog") {
+    const dialog = li.Pattern.match(
+      p("dialog", {}, [
         p("question", {}, [v("question")], { tail: "question_notes" }),
         p("answer", {}, [v("answer")], { tail: "answer_notes" }),
       ]),
-      content
+      frame
     )
-    return h("div", { class: "frame" }, [
-      h("pre", { class: "question" }, text(frame.vars.question.text)),
-      h("pre", { class: "answer" }, text(frame.vars.answer.text)),
+    return h("div", { class: "dialog" }, [
+      h("pre", { class: "question" }, text(dialog.vars.question.text)),
+      h("pre", { class: "answer" }, text(dialog.vars.answer.text)),
     ])
-  } else if (content.tag === "card") {
+  } else if (frame.tag === "card") {
     const card = li.Pattern.match(
-      p("card", {}, [p("title", {}, v("title")), v("text")]),
-      content
+      p("card", {}, [p("title", {}, v("title")), v("content")]),
+      frame
     )
     return h("div", { class: "card" }, [
       h("h3", { class: "title" }, text(card.vars.title.text)),
-      h("pre", {}, text(card.vars.text.text)),
+      h("pre", {}, text(card.vars.content.text)),
     ])
   } else {
     return null
@@ -69,15 +91,15 @@ const contentView = (state, content, index) => {
 const chapterView = (state, chapter, index) => {
   if (state.book === null) return null
 
-  const contents = li.Pattern.match(patterns.chapter, chapter).tails.contents
+  const frames = li.Pattern.match(patterns.chapter, chapter).tails.frames
 
   return h(
     "div",
     { class: "chapter" },
     h(
       "div",
-      { class: "contents" },
-      contents.map((content, index) => contentView(state, content, index))
+      { class: "frames" },
+      frames.map((frame, index) => frameView(state, frame, index))
     )
   )
 }
@@ -94,7 +116,7 @@ const chapterList = (state) => {
   )
 }
 
-const container = (content) => h("div", { class: "container" }, content)
+const container = (contents) => h("div", { class: "container" }, contents)
 
 // -- RUN --
 

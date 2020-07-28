@@ -4,11 +4,11 @@ book = element book { title, preface, chapter* }
 
 title = element title { text }
 preface = element preface { title, text }
-chapter = element chapter { title, content* }
+chapter = element chapter { title, frame* }
 
-content = frame | card | comment | TODO
+frame = dialog | card | comment | TODO
 
-frame = element frame { question, answer }
+dialog = element dialog { question, answer }
 question = element question { text, note* }
 answer = element answer { text, note* }
 note = element note { attribute name { text }, text }

@@ -58,16 +58,16 @@ Good luck! We hope you enjoy the book.
 
 <title>1. The More Things Change, the More They Stay the Same</title>
 
-<frame>
+<dialog>
 <question>
 Welcome back!
 </question>
 <answer>
 It's good to be here!
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 Let's dust off and update some of our old toys
 for a new language called Pie.
@@ -78,9 +78,9 @@ Is it obvious that this is an Atom?
 <answer>
 Not at all. What does Atom mean?
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 To be an Atom is to be an atom.^[+]
 <note name="+">
@@ -91,9 +91,9 @@ Here, atoms are only symbols.
 <answer>
 Then 'atom is an Atom because 'atom is an atom.
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 Is it obvious that this is an Atom?
   'ratatouille
@@ -103,9 +103,9 @@ Yes, because 'ratatouille is also an atom.
 
 But what does it precisely mean to be an atom?
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 Atoms are built from a tick mark
 directly followed by one or more letters and hyphens.^[+]
@@ -118,9 +118,9 @@ So, is it obvious that
   'is-it-obvious-that-this-is-an-atom
 is an Atom?
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 Certainly, because atoms can contain hyphens.
 
@@ -141,18 +141,18 @@ is not an atom because it's missing the tick mark; and
   '
 is not an atom because it is neither followed by a letter nor by a hyphen.
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 Is 'Atom an Atom?
 </question>
 <answer>
 Yes, even 'Atom is an Atom, because it is a tick mark followed by one or more letters or hyphens.
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 Is 'atOm an Atom?
 </question>
@@ -162,18 +162,18 @@ as mentioned in frame 5,
 and the character 0 is not a letter.
 It is the digit zero.
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 Is 'cœurs-d-artichauts an Atom?
 </question>
 <answer>
 Yes, because œ is a letter.
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 Is 'ἄτομον an Atom?
 </question>
@@ -182,7 +182,7 @@ That's Greek to me!
 
 But Greek letters are letters, so it must also be an Atom.
 </answer>
-</frame>
+</dialog>
 
 <comment>
 The aim of the above frames is to explain the following law.
@@ -199,7 +199,7 @@ A tick mark directly followed by one or more letters and hyphens is an Atom.
 To introduce a new concept, first give many engaging examples.
 </comment>
 
-<frame>
+<dialog>
 <question>
 Sentences such as
   'ratatouille is an Atom
@@ -213,7 +213,7 @@ Thanks, Per Martin-Löf (1942-).
 <answer>
 What is the point of a judgment?
 </answer>
-</frame>
+</dialog>
 
 <comment>
 The concept of judgment occurs here.
@@ -233,7 +233,7 @@ than direct introduction of formal judgment.)
 (Introduce instance first, then introduce class.)
 </comment>
 
-<frame>
+<dialog>
 <question>
 A judgment is an attitude that a person takes towards expressions.
 When we come to know something, we are making a judgment.
@@ -243,9 +243,9 @@ What can be judged about Atom and 'courgette?
 <answer>
 'courgette is an Atom?
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 A form of judgment is an observation with blank spaces in it, such as
   ___ is a ___.
@@ -253,16 +253,16 @@ A form of judgment is an observation with blank spaces in it, such as
 <answer>
 Are there other forms of judgment?
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 Another form of "judgment" is "judgement."
 </question>
 <answer>
 Very funny.
 </answer>
-</frame>
+</dialog>
 
 <comment>
 Another form of "judgment" is "the same" judgement.
@@ -272,7 +272,7 @@ can also be understood as the about question.
 This is funny because of the joy of debugging the ambiguity.
 </comment>
 
-<frame>
+<dialog>
 <question>
 Is
   'ratatouille
@@ -286,9 +286,9 @@ Yes.
 
 They are the same Atom because both have the same letters after the tick mark.
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 Is
   'ratatouille
@@ -302,7 +302,7 @@ No.
 
 They have different letters after the tick mark.
 </answer>
-</frame>
+</dialog>
 
 <comment topic="didactics">
 When teaching, use sentences with consistent pattern.
@@ -319,7 +319,7 @@ Two expressions are the same Atom if their values are tick marks
 followed by identical letters and hyphens.
 </card>
 
-<frame>
+<dialog>
 <question>
 The second form of judgment is that
   ____ is the same ____ as ____.
@@ -329,7 +329,7 @@ So
   'citron is the same Atom as 'citron
 is a judgment.
 </answer>
-</frame>
+</dialog>
 
 <comment>
 From the question "Is 'citron the same Atom as 'citron",
@@ -340,7 +340,7 @@ One level of quotation occurred,
 and this kind of quotation is represented in the frame by indentation.
 </comment>
 
-<frame>
+<dialog>
 <question>
 It is a judgment,
 and we have reason to believe it.
@@ -354,9 +354,9 @@ It is a judgment,
 but we have no reason to believe it.
 After all, one should not compare apples and oranges.
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 Is it obvious that
   (cons 'ratatouille 'baguette)^[+]
@@ -372,7 +372,7 @@ No, it isn't.
 What does it mean to be a
   (Pair Atom Atom)?
 </answer>
-</frame>
+</dialog>
 
 <comment>
 What not obvious should be further explained.
@@ -383,7 +383,7 @@ thus we ask "Is it obvious that ...",
 and give reason to explain the meaning of Pair.
 </comment>
 
-<frame>
+<dialog>
 <question>
 To be a
   (Pair Atom Atom)
@@ -395,9 +395,9 @@ The names cons, car, and cdr seem familiar.
 What do they mean again?
 And what do they have to do with pairs?
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 A pair begins with cons^[+]
 and ends with two more parts,
@@ -418,14 +418,14 @@ and whose cdr is also an Atom.
 
 Is cons a Pair, then?
 </answer>
-</frame>
+</dialog>
 
 <comment>
 The question in the above answer might be feedback from a student.
 Feedback is always important in any system.
 </comment>
 
-<frame>
+<dialog>
 <question>
 Neither cons nor Pair alone is even an expression.
 Both require two arguments.^[+]
@@ -445,9 +445,9 @@ but forms such as cond or lambda are meaningless if they appear alone.
 What does it mean for two expressions to be the same
   (Pair Atom Atom)?
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 It means that both cars are the same Atom
 and that both cdrs are the same Atom.
@@ -460,9 +460,9 @@ is indeed the same
 as
   (cons 'ratatouille 'baguette).
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 Is
   (cons 'ratatouille 'baguette)
@@ -481,9 +481,9 @@ is 'baguette.
 So we have no reason to believe that
 they are the same (Pair Atom Atom).
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 How can
   (cdr
@@ -494,9 +494,9 @@ be described?
 It is an
   Atom.
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 Expressions that describe other expressions,
 such as Atom, are called types.
@@ -510,9 +510,9 @@ it starts with an upper-case letter.
 <answer>
 Yes, because it describes pairs where the car and cdr are both Atoms.
 </answer>
-</frame>
+</dialog>
 
-<frame>
+<dialog>
 <question>
 The third form of judgment is
   ___ is a type.
@@ -524,7 +524,7 @@ and
   (Pair Atom Atom) is a type
 are judgments.
 </answer>
-</frame>
+</dialog>
 
 <card kind="law">
 <title>The Law of Atom</title>
