@@ -3,13 +3,13 @@ import * as Node from "../node"
 export function h(
   tag: string,
   attributes: { [key: string]: string } = {},
-  ...contents: Array<Node.Node>
+  ch: Node.Node | Array<Node.Node>
 ): Node.Element {
   return {
     kind: "Node.Element",
     tag,
     attributes,
-    contents,
+    contents: Array.isArray(ch) ? ch : ch == null ? [] : [ch],
   }
 }
 

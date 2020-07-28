@@ -1,4 +1,5 @@
 - single html page web app -- by hyperapp
+  - use hyperapp locally
 - frame index
 - insert <href> to plaintext
 - link ^[] to <note>

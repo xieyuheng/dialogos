@@ -38,12 +38,10 @@ export default {
 
   methods: {
     match_frame(content) {
-      const frame = li.p(
-        "frame",
-        {},
-        li.ptail("question")("question"),
-        li.ptail("answer")("answer")
-      )
+      const frame = li.p("frame", {}, [
+        li.p("question", {}, [], { tail: "question" }),
+        li.p("answer", {}, [], { tail: "answer" }),
+      ])
       const result = li.Pattern.match(frame, content)
       if (result) {
         return result
@@ -51,12 +49,10 @@ export default {
     },
 
     match_card(content) {
-      const card = li.p(
-        "card",
-        {},
+      const card = li.p("card", {}, [
         li.p("title", {}, li.v("title")),
-        li.v("text")
-      )
+        li.v("text"),
+      ])
       const result = li.Pattern.match(card, content)
       if (result) {
         return result

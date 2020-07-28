@@ -10,29 +10,17 @@ export function v(name: string): Pattern.Var {
 export function p(
   tag: string,
   attributes: { [key: string]: string | RegExp } = {},
-  ...contents: Array<Pattern.Pattern>
+  ch: Pattern.Pattern | Array<Pattern.Pattern>,
+  opts: {
+    tail?: string,
+  } = {}
 ): Pattern.Element {
   return {
     kind: "Pattern.Element",
     tag,
     attributes,
-    contents,
-  }
-}
-
-export function ptail(
-  tag: string,
-  attributes: { [key: string]: string | RegExp } = {},
-  ...contents: Array<Pattern.Pattern>
-): (tail: string) => Pattern.Element {
-  return (tail) => {
-    return {
-      kind: "Pattern.Element",
-      tag,
-      attributes,
-      contents,
-      tail,
-    }
+    contents: Array.isArray(ch) ? ch : ch == null ? [] : [ch],
+    tail: opts.tail,
   }
 }
 

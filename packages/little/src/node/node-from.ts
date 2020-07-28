@@ -31,7 +31,7 @@ export function from_element(
   return h(
     element.tagName,
     attributes,
-    ...Array.from(element.childNodes).flatMap((node) =>
+    Array.from(element.childNodes).flatMap((node) =>
       nodes_from_node(node, opts)
     )
   )

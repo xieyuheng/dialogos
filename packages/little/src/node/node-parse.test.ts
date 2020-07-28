@@ -9,9 +9,9 @@ import * as ut from "../ut"
 
   ut.assert_equal(
     element,
-    h( "div", { class: "frame" },
-       h("p", {}, text("abc")),
-       h("p", {}, text("123"))
-     )
+    h( "div", { class: "frame" }, [
+      h("p", {}, text("abc")),
+      h("p", {}, text("123"))
+    ])
   )
 }
