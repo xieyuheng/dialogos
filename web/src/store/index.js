@@ -1,8 +1,6 @@
 import li from "little"
 import Vue from "vue"
 import Vuex from "vuex"
-import mutations from "./mutations"
-import actions from "./actions"
 
 Vue.use(Vuex)
 
@@ -39,8 +37,11 @@ const store = new Vuex.Store({
       )
     },
   },
-  mutations,
-  actions,
+  mutations: {
+    set_book: (state, payload) => {
+      state.book = payload.book
+    },
+  },
 })
 
 export default store
