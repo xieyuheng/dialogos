@@ -15,7 +15,7 @@ export function p(
   attributes: { [key: string]: string | RegExp } = {},
   ch: Pattern.Pattern | Array<Pattern.Pattern>,
   opts: {
-    tail?: string,
+    tail?: string
   } = {}
 ): Pattern.Element {
   return {
@@ -23,7 +23,7 @@ export function p(
     tag,
     attributes,
     contents: Array.isArray(ch) ? ch : ch == null ? [] : [ch],
-    tail: opts.tail,
+    opts,
   }
 }
 

@@ -10,7 +10,9 @@ export interface Element {
   tag: string
   attributes: { [key: string]: string | RegExp }
   contents: Array<Pattern>
-  tail?: string
+  opts: {
+    tail?: string
+  }
 }
 
 export interface Text {

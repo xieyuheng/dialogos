@@ -35,7 +35,6 @@ export function match_one(
     } else if (pattern.contents.length > node.contents.length) {
       return null
     } else {
-      // TODO filter by pattern attributes
       let new_result: null | MatchResult = new MatchResult(
         result.vars,
         result.tails
@@ -49,10 +48,10 @@ export function match_one(
         }
       }
       // TODO handle the same tail name
-      if (pattern.tail !== undefined) {
+      if (pattern.opts.tail !== undefined) {
         new_result = new MatchResult(new_result.vars, {
           ...new_result.tails,
-          [pattern.tail]: node.contents.slice(pattern.contents.length),
+          [pattern.opts.tail]: node.contents.slice(pattern.contents.length),
         })
       } else if (pattern.contents.length !== node.contents.length) {
         return null

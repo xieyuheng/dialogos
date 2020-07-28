@@ -1,3 +1,4 @@
+- no attributes Pattern -- in opts of Pattern in the future
 - frame index
 - insert <href> to plaintext
 - link ^[] to <note>
