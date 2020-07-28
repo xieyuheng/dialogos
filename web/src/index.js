@@ -40,7 +40,7 @@ const titleView = (state) => {
   )
 }
 
-function match_frame(content) {
+function matchFrame(content) {
   const frame = li.p("frame", {}, [
     li.p("question", {}, [], { tail: "question" }),
     li.p("answer", {}, [], { tail: "answer" }),
@@ -51,7 +51,7 @@ function match_frame(content) {
   }
 }
 
-function match_card(content) {
+function matchCard(content) {
   const card = li.p("card", {}, [
     li.p("title", {}, li.v("title")),
     li.v("text"),
@@ -62,7 +62,7 @@ function match_card(content) {
   }
 }
 
-function rander_side(side) {
+function randerSide(side) {
   let s = ""
   for (const node of side) {
     if (node.kind === "Node.Text") {
@@ -76,7 +76,7 @@ const contentView = (state, content, index) => {
   if (state.book === null) return null
 
   if (content.tag === "frame") {
-    const frame = match_frame(content)
+    const frame = matchFrame(content)
     return h(
       "div",
       {
@@ -98,7 +98,7 @@ const contentView = (state, content, index) => {
               "margin-right": "2em",
             },
           },
-          text(rander_side(frame.tails.question))
+          text(randerSide(frame.tails.question))
         ),
         h(
           "pre",
@@ -110,12 +110,12 @@ const contentView = (state, content, index) => {
               "margin-right": "2em",
             },
           },
-          text(rander_side(frame.tails.answer))
+          text(randerSide(frame.tails.answer))
         ),
       ]
     )
   } else if (content.tag === "card") {
-    const card = match_card(content)
+    const card = matchCard(content)
     return h(
       "div",
       {
