@@ -10,7 +10,7 @@ ut.assert_equal(Pattern.match_one(regex("a"), text("a")), new Pattern.MatchResul
 
 ut.assert_equal(
   Pattern.match_one(
-    p("frame", {}, p("question", {}, v("x"))),
+    p("frame", p("question", v("x"))),
     h("frame", {}, h("question", {}, text("a")))
   ),
   new Pattern.MatchResult({ x: text("a") }, {})
@@ -18,7 +18,7 @@ ut.assert_equal(
 
 ut.assert_equal(
   Pattern.match_one(
-    p("frame", {}, p("question", {}, v("x"))),
+    p("frame", p("question", v("x"))),
     h("frame", {}, h("question", {}, [text("a"), text("b")]))
   ),
   null
@@ -26,7 +26,7 @@ ut.assert_equal(
 
 ut.assert_equal(
   Pattern.match_one(
-    p("frame", {}, p("question", {}, v("x"), { tail: "t" })),
+    p("frame", p("question", v("x"), { tail: "t" })),
     h("frame", {}, h("question", {}, [text("a"), text("b"), text("c")]))
   ),
   new Pattern.MatchResult({ x: text("a") }, { t: [text("b"), text("c")] })

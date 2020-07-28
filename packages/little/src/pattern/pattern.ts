@@ -8,7 +8,6 @@ export interface Var {
 export interface Element {
   kind: "Pattern.Element"
   tag: string
-  attributes: { [key: string]: string | RegExp }
   contents: Array<Pattern>
   opts: {
     tail?: string

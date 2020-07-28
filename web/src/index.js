@@ -21,7 +21,7 @@ const titleView = (state) =>
   state.book &&
   li.match(state.book, [
     [
-      p("book", {}, [p("title", {}, v("title"))], { tail: "_" }),
+      p("book", [p("title", v("title"))], { tail: "_" }),
       ({ vars: { title } }) => h("h1", {}, text(title.text)),
     ],
   ])
@@ -29,9 +29,9 @@ const titleView = (state) =>
 const frameView = (state, frame, index) =>
   li.match(frame, [
     [
-      p("dialog", {}, [
-        p("question", {}, [v("question")], { tail: "question_notes" }),
-        p("answer", {}, [v("answer")], { tail: "answer_notes" }),
+      p("dialog", [
+        p("question", [v("question")], { tail: "question_notes" }),
+        p("answer", [v("answer")], { tail: "answer_notes" }),
       ]),
       ({ vars: { question, answer } }) =>
         h("div", { class: "dialog" }, [
@@ -40,7 +40,7 @@ const frameView = (state, frame, index) =>
         ]),
     ],
     [
-      p("card", {}, [p("title", {}, v("title")), v("content")]),
+      p("card", [p("title", v("title")), v("content")]),
       ({ vars: { title, content } }) =>
         h("div", { class: "card" }, [
           h("h3", { class: "title" }, text(title.text)),
@@ -54,7 +54,7 @@ const chapterView = (state, chapter, index) =>
   state.book &&
   li.match(chapter, [
     [
-      p("chapter", {}, p("title", {}, v("title")), { tail: "frames" }),
+      p("chapter", p("title", v("title")), { tail: "frames" }),
       ({ tails: { frames } }) =>
         h(
           "div",
@@ -72,7 +72,7 @@ const chapterList = (state) =>
   state.book &&
   li.match(state.book, [
     [
-      p("book", {}, [p("title", {}, v("title")), v("preface")], {
+      p("book", [p("title", v("title")), v("preface")], {
         tail: "chapters",
       }),
       ({ tails: { chapters } }) =>

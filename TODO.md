@@ -1,4 +1,5 @@
-- no attributes Pattern -- in opts of Pattern in the future
+- node api can `h` can go without attributes
+- `text` field should be called `value`
 - frame index
 - insert <href> to plaintext
 - link ^[] to <note>
