@@ -8,9 +8,6 @@
 - 实时预览所生成的页面
 - finish chapter 1
 - 用 cypress 做测试
-- vxcode xml mode
-  - no auto saving
-  - folding by tab
 
 # question
 
