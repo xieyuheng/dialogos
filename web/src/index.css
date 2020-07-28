@@ -1,0 +1,39 @@
+h1 {
+  font-family: "Noto Mono", monospace;
+  text-align: center;
+}
+
+pre {
+  white-space: pre-wrap;
+}
+
+.frame {
+  display: flex;
+  border-top: 1px solid #666666;
+  border-bottom: 1px solid #666666;
+}
+
+.question {
+  flex: 50%;
+  margin-left: 1em;
+  margin-right: 2em;
+}
+
+.answer {
+  flex: 50%;
+  margin-left: 1em;
+  margin-right: 2em;
+}
+
+.card {
+  text-align: center;
+  margin-left: 4em;
+  margin-right: 4em;
+
+  margin-top: 2em;
+  margin-bottom: 2em;
+
+  padding: 1em;
+
+  border-style: double;
+}

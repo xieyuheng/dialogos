@@ -1,5 +1,6 @@
 import { h, text, app } from "hyperapp"
 import li from "little"
+import "./index.css"
 
 // -- EFFECTS & SUBSCRIPTIONS --
 
@@ -30,12 +31,7 @@ const titleView = (state) => {
 
   return h(
     "h1",
-    {
-      style: {
-        "font-family": '"Noto Mono", monospace',
-        "text-align": "center",
-      },
-    },
+    {},
     text(li.Pattern.match(patterns.book, state.book).vars["title"].text)
   )
 }
@@ -77,75 +73,16 @@ const contentView = (state, content, index) => {
 
   if (content.tag === "frame") {
     const frame = matchFrame(content)
-    return h(
-      "div",
-      {
-        class: "frame",
-        style: {
-          display: "flex",
-          "border-top": "1px solid #666666",
-          "border-bottom": "1px solid #666666",
-        },
-      },
-      [
-        h(
-          "pre",
-          {
-            class: "question",
-            style: {
-              flex: "50%",
-              "margin-left": "1em",
-              "margin-right": "2em",
-            },
-          },
-          text(randerSide(frame.tails.question))
-        ),
-        h(
-          "pre",
-          {
-            class: "answer",
-            style: {
-              flex: "50%",
-              "margin-left": "1em",
-              "margin-right": "2em",
-            },
-          },
-          text(randerSide(frame.tails.answer))
-        ),
-      ]
-    )
+    return h("div", { class: "frame" }, [
+      h("pre", { class: "question" }, text(randerSide(frame.tails.question))),
+      h("pre", { class: "answer" }, text(randerSide(frame.tails.answer))),
+    ])
   } else if (content.tag === "card") {
     const card = matchCard(content)
-    return h(
-      "div",
-      {
-        class: "card",
-        style: {
-          "text-align": "center",
-          "margin-left": "4em",
-          "margin-right": "4em",
-
-          "margin-top": "2em",
-          "margin-bottom": "2em",
-
-          padding: "1em",
-
-          "border-style": "double",
-        },
-      },
-      [
-        h("h3", { class: "title" }, text(card.vars.title.text)),
-        h(
-          "pre",
-          {
-            style: {
-              "white-space": "pre-wrap",
-            },
-          },
-          text(card.vars.text.text)
-        ),
-      ]
-    )
+    return h("div", { class: "card" }, [
+      h("h3", { class: "title" }, text(card.vars.title.text)),
+      h("pre", {}, text(card.vars.text.text)),
+    ])
   } else {
     return null
   }

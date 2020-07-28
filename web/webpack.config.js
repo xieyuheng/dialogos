@@ -12,7 +12,7 @@ module.exports = {
   },
 
   module: {
-    rules: [{ test: /\.css$/, use: "css-loader" }],
+    rules: [{ test: /\.css$/, use: ["style-loader", "css-loader"] }],
   },
 
   node: {
