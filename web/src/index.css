@@ -40,6 +40,10 @@ pre {
   margin-right: 2em;
 }
 
+.note {
+  font-size: 0.8em;
+}
+
 .card {
   text-align: center;
   padding: 1em;

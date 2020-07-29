@@ -26,29 +26,20 @@ const titleView = (state) =>
     ],
   ])
 
-const frameView = (state, frame, index) =>
-  li.match(frame, [
+const chapterList = (state) =>
+  state.book &&
+  li.match(state.book, [
     [
-      p("dialog", [
-        p("question", [v("question")], { tail: "_question_notes" }),
-        p("answer", [v("answer")], { tail: "_answer_notes" }),
-      ]),
-      ({ vars: { question, answer } }) =>
-        h("div", { class: "dialog" }, [
-          h("pre", { class: "question" }, text(question.value)),
-          h("pre", { class: "index" }, text(index + 1)),
-          h("pre", { class: "answer" }, text(answer.value)),
-        ]),
+      p("book", [p("title", v("title")), v("preface")], {
+        tail: "chapters",
+      }),
+      ({ tails: { chapters } }) =>
+        h(
+          "div",
+          { class: "chapters" },
+          chapters.map((chapter, index) => chapterView(state, chapter, index))
+        ),
     ],
-    [
-      p("card", [p("title", v("title")), v("content")]),
-      ({ vars: { title, content } }) =>
-        h("div", { class: "card" }, [
-          h("h3", { class: "title" }, text(title.value)),
-          h("pre", {}, text(content.value)),
-        ]),
-    ],
-    ["default", () => null],
   ])
 
 const chapterView = (state, chapter, index) =>
@@ -69,23 +60,58 @@ const chapterView = (state, chapter, index) =>
     ],
   ])
 
-const chapterList = (state) =>
-  state.book &&
-  li.match(state.book, [
+const frameView = (state, frame, index) =>
+  li.match(frame, [
     [
-      p("book", [p("title", v("title")), v("preface")], {
-        tail: "chapters",
-      }),
-      ({ tails: { chapters } }) =>
-        h(
-          "div",
-          { class: "chapters" },
-          chapters.map((chapter, index) => chapterView(state, chapter, index))
-        ),
+      p("dialog", [
+        p("question", [v("question")], { tail: "question_notes" }),
+        p("answer", [v("answer")], { tail: "answer_notes" }),
+      ]),
+      ({
+        vars: { question, answer },
+        tails: { question_notes, answer_notes },
+      }) =>
+        h("div", { class: "dialog" }, [
+          h("pre", { class: "question" }, [
+            text(question.value),
+            question_notes.length > 0 ? h("hr", {}) : null,
+            ...question_notes.map((note) => noteView(state, note)),
+          ]),
+          h("pre", { class: "index" }, text(index + 1)),
+          h("pre", { class: "answer" }, [
+            text(answer.value),
+            answer_notes.length > 0 ? h("hr", {}) : null,
+            ...answer_notes.map((note) => noteView(state, note)),
+          ]),
+        ]),
+    ],
+    [
+      p("card", [p("title", v("title")), v("content")]),
+      ({ vars: { title, content } }) =>
+        h("div", { class: "card" }, [
+          h("h3", { class: "title" }, text(title.value)),
+          h("pre", {}, text(content.value)),
+        ]),
+    ],
+    ["default", () => null],
+  ])
+
+const noteView = (state, note) =>
+  li.match(note, [
+    [
+      p("note", [v("content")]),
+      ({ vars: { content } }) =>
+        h("pre", { class: "note" }, [
+          text(" "),
+          text(note.attributes.name),
+          text(" "),
+          text(content.value),
+        ]),
     ],
   ])
 
-const container = (contents) => h("div", { class: "container" }, contents)
+const container = (state, contents) =>
+  h("div", { class: "container" }, contents)
 
 // -- RUN --
 
@@ -99,5 +125,5 @@ app({
 
   node: document.getElementById("app"),
 
-  view: (state) => container([titleView(state), chapterList(state)]),
+  view: (state) => container(state, [titleView(state), chapterList(state)]),
 })
