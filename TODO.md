@@ -1,8 +1,9 @@
-- frame index
+- learn more about flex -- to be sure about the flex values
+- frame index for dialog
+- noteView
 - insert <href> to plaintext
 - link ^[] to <note>
 - router for `Preface`
-- `Preface` as component
 - take hub url from query string -- ?hub=http://localhost:3000/api/book
 - more frames
 - 实时预览所生成的页面

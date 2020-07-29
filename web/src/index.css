@@ -19,8 +19,13 @@ pre {
   margin-right: 2em;
 }
 
+.index {
+  font-size: 8px;
+  flex: 3%;
+}
+
 .answer {
-  flex: 50%;
+  flex: 47%;
   margin-left: 1em;
   margin-right: 2em;
 }

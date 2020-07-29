@@ -36,6 +36,7 @@ const frameView = (state, frame, index) =>
       ({ vars: { question, answer } }) =>
         h("div", { class: "dialog" }, [
           h("pre", { class: "question" }, text(question.value)),
+          h("pre", { class: "index" }, text(index + 1)),
           h("pre", { class: "answer" }, text(answer.value)),
         ]),
     ],
