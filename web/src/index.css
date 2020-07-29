@@ -1,5 +1,13 @@
+* {
+  font-family:
+    "Sarasa Mono SC",
+    "Noto Mono",
+    "Monaco",
+    monospace;
+  line-height: 1.5;
+}
+
 h1 {
-  font-family: "Noto Mono", monospace;
   text-align: center;
 }
 
@@ -9,6 +17,8 @@ pre {
 
 .dialog {
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   border-top: 1px solid #666666;
   border-bottom: 1px solid #666666;
 }
@@ -21,24 +31,21 @@ pre {
 
 .index {
   font-size: 8px;
-  flex: 3%;
+  flex: 4%;
 }
 
 .answer {
-  flex: 47%;
+  flex: 50%;
   margin-left: 1em;
   margin-right: 2em;
 }
 
 .card {
   text-align: center;
+  padding: 1em;
   margin-left: 4em;
   margin-right: 4em;
-
   margin-top: 2em;
   margin-bottom: 2em;
-
-  padding: 1em;
-
   border-style: double;
 }

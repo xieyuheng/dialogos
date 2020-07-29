@@ -1,4 +1,3 @@
-- learn more about flex -- to be sure about the flex values
 - frame index for dialog
 - noteView
 - insert <href> to plaintext
