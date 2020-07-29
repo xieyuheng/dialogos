@@ -27,6 +27,11 @@ pre {
   text-align: center;
 }
 
+.book-date {
+  margin: 1em;
+  text-align: center;
+}
+
 .dialog {
   display: flex;
   flex-direction: row;

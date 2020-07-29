@@ -53,7 +53,7 @@ export function match_one(
           ...new_result.tails,
           [pattern.opts.tail]: node.contents.slice(pattern.contents.length),
         })
-      } else if (pattern.contents.length !== node.contents.length) {
+      } else if (pattern.opts.end && pattern.contents.length !== node.contents.length) {
         return null
       }
       return new_result

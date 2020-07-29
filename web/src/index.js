@@ -23,13 +23,13 @@ const frontCover = (state) =>
     [
       p(
         "book",
-        p("info", [p("title", v("title")), p("authors", v("authors"))]),
-        { tail: "_" }
+        p("info", [p("title", v("title")), p("authors", v("authors")), p("date", v("date"))])
       ),
-      ({ vars: { title, authors } }) =>
+      ({ vars: { title, authors, date } }) =>
         h("div", { class: "front-cover" }, [
           h("h1", { class: "book-title" }, text(title.value)),
           h("h2", { class: "book-authors" }, h("pre", {}, text(authors.value))),
+          h("h3", { class: "book-date" }, h("pre", {}, text(date.value))),
         ]),
     ],
   ])

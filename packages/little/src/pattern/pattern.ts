@@ -11,6 +11,7 @@ export interface Element {
   contents: Array<Pattern>
   opts: {
     tail?: string
+    end?: boolean
   }
 }
 

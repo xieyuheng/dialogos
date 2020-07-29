@@ -1,9 +1,3 @@
-- <date> in <info>
-
-- `opts: { end: boolean }` for `match`
-
-  - to avoid unnecessary `{ tail: ... }`
-
 - frame one by one.
 - show question, then answer.
 - `Contents`
