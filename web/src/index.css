@@ -44,6 +44,12 @@ pre {
   font-size: 0.8em;
 }
 
+.note-name {
+  color: blue;
+  position: relative;
+  top: -0.3em;
+}
+
 .card {
   text-align: center;
   padding: 1em;

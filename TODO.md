@@ -1,6 +1,4 @@
-- insert <span> to plaintext for ^[...] in <dialog>
-  - link ^[...] to <note>
-  - highlight and jump when click
+- highlight <note> when hover ^[...]
 - router for `Preface`
 - take hub url from query string -- ?hub=http://localhost:3000/api/book
 - more frames

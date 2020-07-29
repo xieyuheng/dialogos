@@ -60,6 +60,17 @@ const chapterView = (state, chapter, index) =>
     ],
   ])
 
+const markup = (state, str) => {
+  const result = str.match(/(.*)\^\[(.*?)\](.*)/mu)
+
+  if (result !== null) {
+    const [_target, prev, name, rest] = result
+    return [text(prev), h("span", { class: "note-name" }, text(name)), ...markup(state, rest)]
+  } else {
+    return [text(str)]
+  }
+}
+
 const frameView = (state, frame, index) =>
   li.match(frame, [
     [
@@ -73,13 +84,13 @@ const frameView = (state, frame, index) =>
       }) =>
         h("div", { class: "dialog" }, [
           h("pre", { class: "question" }, [
-            text(question.value),
+            ...markup(state, question.value),
             question_notes.length > 0 ? h("hr", {}) : null,
             ...question_notes.map((note) => noteView(state, note)),
           ]),
           h("pre", { class: "index" }, text(index + 1)),
           h("pre", { class: "answer" }, [
-            text(answer.value),
+            ...markup(state, answer.value),
             answer_notes.length > 0 ? h("hr", {}) : null,
             ...answer_notes.map((note) => noteView(state, note)),
           ]),
@@ -103,7 +114,7 @@ const noteView = (state, note) =>
       ({ vars: { content } }) =>
         h("pre", { class: "note" }, [
           text(" "),
-          text(note.attributes.name),
+          h("span", { class: "note-name" }, text(note.attributes.name)),
           text(" "),
           text(content.value),
         ]),

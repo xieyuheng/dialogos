@@ -21,8 +21,6 @@
   },
   "dependencies": {
     "@caporal/core": "^2.0.2",
-    "@forchange/partech": "^1.0.13",
-    "@forchange/readable-regular-expression": "^0.0.10",
     "@types/deep-diff": "^1.0.0",
     "express": "^4.17.1",
     "bluebird": "^3.7.2",
