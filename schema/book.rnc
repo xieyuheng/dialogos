@@ -1,6 +1,8 @@
 start = book
 
-book = element book { title, authors, preface, chapter* }
+book = element book { info, preface, chapter* }
+
+info = element info { title, authors }
 
 title = element title { text }
 authors = element authors { text }

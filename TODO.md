@@ -1,3 +1,11 @@
+- <date> in <info>
+
+- `opts: { end: boolean }` for `match`
+
+  - to avoid unnecessary `{ tail: ... }`
+
+- frame one by one.
+- show question, then answer.
 - `Contents`
 - `Preface`
 - 实时预览所生成的页面
@@ -38,6 +46,6 @@ frame:
 # The Little Books webapp 功能
 
 - 默认不显示回答，可以填写用户自己对问题的回答，并且做记录。
-- 可以生成解释程序运行的对话（程序，参数 -- 对话）。
 - 涂抹果酱的地方给一个 canvas 画板。
 - 适配手机屏幕。
+- 可以生成解释程序运行的对话（程序，参数 -- 对话）。

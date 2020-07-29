@@ -1,10 +1,12 @@
 <book>
-<title>The Little Typer</title>
 
+<info>
+<title>The Little Typer</title>
 <authors>
 Daniel P. Friedman
 David Thrane Christiansen
 </authors>
+</info>
 
 <preface>
 <title>Guidelines for The Reader</title>

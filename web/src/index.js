@@ -21,9 +21,11 @@ const frontCover = (state) =>
   state.book &&
   li.match(state.book, [
     [
-      p("book", [p("title", v("title")), p("authors", v("authors"))], {
-        tail: "_",
-      }),
+      p(
+        "book",
+        p("info", [p("title", v("title")), p("authors", v("authors"))]),
+        { tail: "_" }
+      ),
       ({ vars: { title, authors } }) =>
         h("div", { class: "front-cover" }, [
           h("h1", { class: "book-title" }, text(title.value)),
@@ -36,13 +38,7 @@ const chapterList = (state) =>
   state.book &&
   li.match(state.book, [
     [
-      p(
-        "book",
-        [p("title", v("title")), p("authors", v("authors")), v("preface")],
-        {
-          tail: "chapters",
-        }
-      ),
+      p("book", [v("_info"), v("_preface")], { tail: "chapters" }),
       ({ tails: { chapters } }) =>
         h(
           "div",
@@ -71,7 +67,7 @@ const chapterView = (state, chapter, index) =>
   ])
 
 const markup = (state, str) => {
-  const result = str.match(/^(.*?)\^\[(.*?)\](.*)/usm)
+  const result = str.match(/^(.*?)\^\[(.*?)\](.*)/msu)
 
   if (result !== null) {
     const [_target, prev, name, rest] = result
