@@ -1,35 +1,14 @@
-- frame one by one.
-- show question, then answer.
+- take hub url from query string -- ?hub=http://localhost:3000/api/book
+- preview in time.
 - `Contents`
 - `Preface`
-- 实时预览所生成的页面
-- take hub url from query string -- ?hub=http://localhost:3000/api/book
+- frame one by one.
+- show question, then answer.
+- remember reader's progress.
+- let reader answer first, then show the answer.
+- let reader make comments, and export new commented books.
 - finish chapter 1
 - 用 cypress 做测试
-
-# question
-
-- vue `computed` vs `methods`?
-  - why I need to use `methods` when matching.
-
-# info
-
-- test:
-  http://localhost:8080
-  http://localhost:3000/api/book
-
-# template
-
-frame:
-
-<frame>
-<question>
-
-</question>
-<answer>
-
-</answer>
-</frame>
 
 # 教学法调查报告。
 
