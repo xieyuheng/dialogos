@@ -30,8 +30,8 @@ const frameView = (state, frame, index) =>
   li.match(frame, [
     [
       p("dialog", [
-        p("question", [v("question")], { tail: "question_notes" }),
-        p("answer", [v("answer")], { tail: "answer_notes" }),
+        p("question", [v("question")], { tail: "_question_notes" }),
+        p("answer", [v("answer")], { tail: "_answer_notes" }),
       ]),
       ({ vars: { question, answer } }) =>
         h("div", { class: "dialog" }, [
@@ -45,7 +45,7 @@ const frameView = (state, frame, index) =>
       ({ vars: { title, content } }) =>
         h("div", { class: "card" }, [
           h("h3", { class: "title" }, text(title.value)),
-          h("pre", {}, text(text.content)),
+          h("pre", {}, text(content.value)),
         ]),
     ],
     ["default", () => null],
