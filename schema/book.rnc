@@ -2,10 +2,12 @@ start = book
 
 book = element book { info, preface, chapter* }
 
-info = element info { title, authors }
+info = element info { title, authors, date }
 
 title = element title { text }
 authors = element authors { text }
+date = element date { text }
+
 preface = element preface { title, text }
 chapter = element chapter { title, frame* }
 

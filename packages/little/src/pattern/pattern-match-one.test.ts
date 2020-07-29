@@ -18,10 +18,18 @@ ut.assert_equal(
 
 ut.assert_equal(
   Pattern.match_one(
-    p("frame", p("question", v("x"))),
+    p("frame", p("question", v("x"), { end: true })),
     h("frame", {}, h("question", {}, [text("a"), text("b")]))
   ),
   null
+)
+
+ut.assert_equal(
+  Pattern.match_one(
+    p("frame", p("question", v("x"))),
+    h("frame", {}, h("question", {}, [text("a"), text("b")]))
+  ),
+  new Pattern.MatchResult({ x: text("a") })
 )
 
 ut.assert_equal(
