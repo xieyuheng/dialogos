@@ -71,7 +71,7 @@ const chapterView = (state, chapter, index) =>
   ])
 
 const markup = (state, str) => {
-  const result = str.match(/(.*)\^\[(.*?)\](.*)/mu)
+  const result = str.match(/^(.*?)\^\[(.*?)\](.*)/usm)
 
   if (result !== null) {
     const [_target, prev, name, rest] = result
