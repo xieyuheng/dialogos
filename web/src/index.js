@@ -23,7 +23,11 @@ const frontCover = (state) =>
     [
       p(
         "book",
-        p("info", [p("title", v("title")), p("authors", v("authors")), p("date", v("date"))])
+        p("info", [
+          p("title", v("title")),
+          p("authors", v("authors")),
+          p("date", v("date")),
+        ])
       ),
       ({ vars: { title, authors, date } }) =>
         h("div", { class: "front-cover" }, [
@@ -136,12 +140,15 @@ const container = (state, contents) =>
 
 // -- RUN --
 
-const hub = "http://localhost:3000/api"
+const hub = () => {
+  const url = new URL(document.location)
+  return url.searchParams.get("hub")
+}
 
 app({
   init: [
     { book: null },
-    [fetchJSONData, { url: `${hub}/book`, onresponse: GotBook }],
+    [fetchJSONData, { url: `${hub()}/book`, onresponse: GotBook }],
   ],
 
   node: document.getElementById("app"),

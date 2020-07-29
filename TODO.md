@@ -1,7 +1,9 @@
-- take hub url from query string -- ?hub=http://localhost:3000/api/book
+- handle the error when fail to fetch book from `hub`.
+- show usage when no `hub` in `searchParams`.
 - preview in time.
 - `Contents`
 - `Preface`
+- indented text in dialog code block.
 - frame one by one.
 - show question, then answer.
 - remember reader's progress.
