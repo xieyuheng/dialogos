@@ -17,12 +17,18 @@ const GotBook = (state, book) => ({ ...state, book })
 
 // -- VIEWS ---
 
-const titleView = (state) =>
+const frontCover = (state) =>
   state.book &&
   li.match(state.book, [
     [
-      p("book", [p("title", v("title"))], { tail: "_" }),
-      ({ vars: { title } }) => h("h1", {}, text(title.value)),
+      p("book", [p("title", v("title")), p("authors", v("authors"))], {
+        tail: "_",
+      }),
+      ({ vars: { title, authors } }) =>
+        h("div", { class: "front-cover" }, [
+          h("h1", { class: "book-title" }, text(title.value)),
+          h("h2", { class: "book-authors" }, h("pre", {}, text(authors.value))),
+        ]),
     ],
   ])
 
@@ -30,9 +36,13 @@ const chapterList = (state) =>
   state.book &&
   li.match(state.book, [
     [
-      p("book", [p("title", v("title")), v("preface")], {
-        tail: "chapters",
-      }),
+      p(
+        "book",
+        [p("title", v("title")), p("authors", v("authors")), v("preface")],
+        {
+          tail: "chapters",
+        }
+      ),
       ({ tails: { chapters } }) =>
         h(
           "div",
@@ -65,7 +75,11 @@ const markup = (state, str) => {
 
   if (result !== null) {
     const [_target, prev, name, rest] = result
-    return [text(prev), h("span", { class: "note-name" }, text(name)), ...markup(state, rest)]
+    return [
+      text(prev),
+      h("span", { class: "note-name" }, text(name)),
+      ...markup(state, rest),
+    ]
   } else {
     return [text(str)]
   }
@@ -100,7 +114,7 @@ const frameView = (state, frame, index) =>
       p("card", [p("title", v("title")), v("content")]),
       ({ vars: { title, content } }) =>
         h("div", { class: "card" }, [
-          h("h3", { class: "title" }, text(title.value)),
+          h("h3", { class: "card-title" }, text(title.value)),
           h("pre", {}, text(content.value)),
         ]),
     ],
@@ -136,5 +150,5 @@ app({
 
   node: document.getElementById("app"),
 
-  view: (state) => container(state, [titleView(state), chapterList(state)]),
+  view: (state) => container(state, [frontCover(state), chapterList(state)]),
 })

@@ -1,8 +1,7 @@
-- highlight <note> when hover ^[...]
-- router for `Preface`
-- take hub url from query string -- ?hub=http://localhost:3000/api/book
-- more frames
+- `Contents`
+- `Preface`
 - 实时预览所生成的页面
+- take hub url from query string -- ?hub=http://localhost:3000/api/book
 - finish chapter 1
 - 用 cypress 做测试
 
