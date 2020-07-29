@@ -15,6 +15,7 @@ export function p(
   ch: Pattern.Pattern | Array<Pattern.Pattern>,
   opts: {
     tail?: string
+    end?: boolean
   } = {}
 ): Pattern.Element {
   return {
