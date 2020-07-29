@@ -25,9 +25,9 @@ export function p(
   }
 }
 
-export function regex(text: string | RegExp): Pattern.Text {
+export function regex(value: string | RegExp): Pattern.Text {
   return {
     kind: "Pattern.Text",
-    text,
+    value,
   }
 }

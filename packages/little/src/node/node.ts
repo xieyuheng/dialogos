@@ -9,5 +9,5 @@ export interface Element {
 
 export interface Text {
   kind: "Node.Text"
-  text: string
+  value: string
 }

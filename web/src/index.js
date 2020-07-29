@@ -22,7 +22,7 @@ const titleView = (state) =>
   li.match(state.book, [
     [
       p("book", [p("title", v("title"))], { tail: "_" }),
-      ({ vars: { title } }) => h("h1", {}, text(title.text)),
+      ({ vars: { title } }) => h("h1", {}, text(title.value)),
     ],
   ])
 
@@ -35,15 +35,15 @@ const frameView = (state, frame, index) =>
       ]),
       ({ vars: { question, answer } }) =>
         h("div", { class: "dialog" }, [
-          h("pre", { class: "question" }, text(question.text)),
-          h("pre", { class: "answer" }, text(answer.text)),
+          h("pre", { class: "question" }, text(question.value)),
+          h("pre", { class: "answer" }, text(answer.value)),
         ]),
     ],
     [
       p("card", [p("title", v("title")), v("content")]),
       ({ vars: { title, content } }) =>
         h("div", { class: "card" }, [
-          h("h3", { class: "title" }, text(title.text)),
+          h("h3", { class: "title" }, text(title.value)),
           h("pre", {}, text(text.content)),
         ]),
     ],

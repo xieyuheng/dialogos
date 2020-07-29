@@ -13,9 +13,9 @@ export function h(
   }
 }
 
-export function text(text: string): Node.Text {
+export function text(value: string): Node.Text {
   return {
     kind: "Node.Text",
-    text,
+    value,
   }
 }

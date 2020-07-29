@@ -16,5 +16,5 @@ export interface Element {
 
 export interface Text {
   kind: "Pattern.Text"
-  text: string | RegExp
+  value: string | RegExp
 }

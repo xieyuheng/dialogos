@@ -59,10 +59,10 @@ export function match_one(
       return new_result
     }
   } else if (pattern.kind === "Pattern.Text" && node.kind === "Node.Text") {
-    if (typeof pattern.text === "string") {
-      return pattern.text === node.text ? result : null
+    if (typeof pattern.value === "string") {
+      return pattern.value === node.value ? result : null
     } else {
-      return pattern.text.test(node.text) ? result : null
+      return pattern.value.test(node.value) ? result : null
     }
   } else {
     return null
