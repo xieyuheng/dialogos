@@ -1,7 +1,6 @@
 - preview in time.
 - `Contents`
 - `Preface`
-- indented text in dialog code block.
 - frame one by one.
 - show question, then answer.
 - remember reader's progress.

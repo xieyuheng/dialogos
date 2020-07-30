@@ -1,23 +1,26 @@
 * {
   font-family: "Sarasa Mono SC", "Noto Mono", "Monaco", monospace;
   line-height: 1.5;
+  /* margin: 0; */
+  /* padding: 0; */
 }
 
-html,
-body {
+html, body, h1, h2, h3 {
   margin: 0;
   padding: 0;
 }
 
 .error {
-  margin: 1em;
+  padding: 1em;
 }
 
 .usage {
-  margin: 1em;
+  padding: 1em;
 }
 
 pre {
+  margin-top: 1em;
+  margin-bottom: 1em;
   white-space: pre-wrap;
 }
 
@@ -26,32 +29,40 @@ pre {
 }
 
 .book-title {
-  margin: 1em;
   text-align: center;
+  padding: 1em;
 }
 
 .book-authors {
-  margin: 1em;
   text-align: center;
+  padding: 1em;
 }
 
 .book-date {
-  margin: 1em;
   text-align: center;
+  padding: 1em;
+}
+
+.chapter-title {
+  text-align: center;
+  padding-top: 3em;
+  padding-bottom: 3em;
+  border-top: thin solid;
+  border-bottom: thin solid;
 }
 
 .dialog {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  border-top: 1px solid #666666;
-  border-bottom: 1px solid #666666;
+  border-top: thin solid #666666;
+  border-bottom: thin solid #666666;
 }
 
 .dialog .question {
   flex: 50%;
-  margin-left: 1em;
-  margin-right: 2em;
+  padding-left: 1em;
+  padding-right: 2em;
 }
 
 .dialog .index {
@@ -61,8 +72,8 @@ pre {
 
 .dialog .answer {
   flex: 50%;
-  margin-left: 1em;
-  margin-right: 2em;
+  padding-left: 1em;
+  padding-right: 2em;
 }
 
 .dialog .note {
@@ -82,5 +93,5 @@ pre {
   margin-right: 4em;
   margin-top: 2em;
   margin-bottom: 2em;
-  border-style: double;
+  border: thick double;
 }

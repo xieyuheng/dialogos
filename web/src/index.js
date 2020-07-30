@@ -85,16 +85,15 @@ const chapterView = (state, data, index) =>
   li.match(data, [
     [
       p("chapter", p("title", v("title")), { tail: "frames" }),
-      ({ tails: { frames } }) =>
-        h(
-          "div",
-          { class: "chapter" },
+      ({ vars: { title }, tails: { frames } }) =>
+        h("div", { class: "chapter" }, [
+          h("h3", { class: "chapter-title" }, text(title.value)),
           h(
             "div",
             { class: "frames" },
             frames.map((frame, index) => frameView(state, frame, index))
-          )
-        ),
+          ),
+        ]),
     ],
   ])
 
@@ -172,7 +171,7 @@ const errorView = (state, error) =>
 const usageView = (state) => {
   const url = new URL(document.location)
   return h("div", { class: "usage" }, [
-    text("To use The Litte Books, we need to provide an url to book hub api."),
+    text("To use The Litte Books, we need to provide a URL to book hub api."),
     h("br", {}),
     text("Like the following:"),
     h("pre", {}, text(`${url.origin}/?hub=<url-to-book-hub-api>`)),
