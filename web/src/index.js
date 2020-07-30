@@ -17,9 +17,8 @@ const GotBook = (state, book) => ({ ...state, book })
 
 // -- VIEWS ---
 
-const frontCover = (state) =>
-  state.book &&
-  li.match(state.book, [
+const frontCover = (state, data) =>
+  li.match(data, [
     [
       p(
         "book",
@@ -38,9 +37,8 @@ const frontCover = (state) =>
     ],
   ])
 
-const chapterList = (state) =>
-  state.book &&
-  li.match(state.book, [
+const chapterList = (state, data) =>
+  li.match(data, [
     [
       p("book", [v("_info"), v("_preface")], { tail: "chapters" }),
       ({ tails: { chapters } }) =>
@@ -52,9 +50,8 @@ const chapterList = (state) =>
     ],
   ])
 
-const chapterView = (state, chapter, index) =>
-  state.book &&
-  li.match(chapter, [
+const chapterView = (state, data, index) =>
+  li.match(data, [
     [
       p("chapter", p("title", v("title")), { tail: "frames" }),
       ({ tails: { frames } }) =>
@@ -85,8 +82,8 @@ const markup = (state, str) => {
   }
 }
 
-const frameView = (state, frame, index) =>
-  li.match(frame, [
+const frameView = (state, data, index) =>
+  li.match(data, [
     [
       p("dialog", [
         p("question", [v("question")], { tail: "question_notes" }),
@@ -121,19 +118,21 @@ const frameView = (state, frame, index) =>
     ["default", null],
   ])
 
-const noteView = (state, note) =>
-  li.match(note, [
+const noteView = (state, data) =>
+  li.match(data, [
     [
       p("note", [v("content")]),
       ({ vars: { content } }) =>
         h("pre", { class: "note" }, [
           text(" "),
-          h("span", { class: "note-name" }, text(note.attributes.name)),
+          h("span", { class: "note-name" }, text(data.attributes.name)),
           text(" "),
           text(content.value),
         ]),
     ],
   ])
+
+// const Error
 
 const container = (state, contents) =>
   h("div", { class: "container" }, contents)
@@ -153,5 +152,11 @@ app({
 
   node: document.getElementById("app"),
 
-  view: (state) => container(state, [frontCover(state), chapterList(state)]),
+  view: (state) =>
+    state.book
+      ? container(state, [
+          frontCover(state, state.book),
+          chapterList(state, state.book),
+        ])
+      : container(state, []),
 })
