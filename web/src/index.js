@@ -4,11 +4,11 @@ import "./index.css"
 
 // -- EFFECTS & SUBSCRIPTIONS --
 
-const fetchJSONData = (dispatch, options) => {
-  fetch(options.url)
+const fetchJSONData = (dispatch, opts) => {
+  fetch(opts.url)
     .then((response) => response.json())
-    .then((data) => dispatch(options.onresponse, data))
-    .catch(() => dispatch(options.onresponse, null))
+    .then((data) => dispatch(opts.onresponse, data))
+    .catch(() => dispatch(opts.onresponse, null))
 }
 
 // -- ACTIONS --
@@ -118,7 +118,7 @@ const frameView = (state, frame, index) =>
           h("pre", {}, text(content.value)),
         ]),
     ],
-    ["default", () => null],
+    ["default", null],
   ])
 
 const noteView = (state, note) =>

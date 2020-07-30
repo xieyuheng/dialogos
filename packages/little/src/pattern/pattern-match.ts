@@ -53,7 +53,10 @@ export function match_one(
           ...new_result.tails,
           [pattern.opts.tail]: node.contents.slice(pattern.contents.length),
         })
-      } else if (pattern.opts.end && pattern.contents.length !== node.contents.length) {
+      } else if (
+        pattern.opts.end &&
+        pattern.contents.length !== node.contents.length
+      ) {
         return null
       }
       return new_result
@@ -72,16 +75,20 @@ export function match_one(
 export function match<A>(
   node: Node.Node,
   cases: Array<
-    [Pattern.Pattern, (result: MatchResult) => A] | ["default", () => A]
+    | [Pattern.Pattern, (result: MatchResult) => A]
+    | ["default", A]
+    | ["default-gen", () => A]
   >
 ): A {
   for (const [pattern, handler] of cases) {
     if (pattern === "default") {
+      return handler as A
+    } else if (pattern === "default-gen") {
       return (handler as () => A)()
     } else {
       const result = Pattern.match_one(pattern, node)
       if (result !== null) {
-        return handler(result)
+        return (handler as (result: MatchResult) => A)(result)
       }
     }
   }
