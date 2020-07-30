@@ -1,5 +1,3 @@
-- handle the error when fail to fetch book from `hub`.
-- show usage when no `hub` in `searchParams`.
 - preview in time.
 - `Contents`
 - `Preface`

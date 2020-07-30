@@ -4,16 +4,47 @@ import "./index.css"
 
 // -- EFFECTS & SUBSCRIPTIONS --
 
-const fetchJSONData = (dispatch, opts) => {
-  fetch(opts.url)
-    .then((response) => response.json())
-    .then((data) => dispatch(opts.onresponse, data))
-    .catch(() => dispatch(opts.onresponse, null))
+const connectHub = (dispatch, { onhub }) => {
+  const url = new URL(document.location)
+  const hub = url.searchParams.get("hub")
+
+  if (hub) {
+    dispatch(onhub, hub)
+  }
 }
+
+const fetchJSONData = (dispatch, { url, onresponse, onerror }) =>
+  fetch(url)
+    .then((response) =>
+      response.status === 200
+        ? response.json()
+        : dispatch(onerror, {
+            message: "fail to fetch url",
+            url,
+            response: {
+              status: response.status,
+              statusText: response.statusText,
+            },
+          })
+    )
+    .then((data) => dispatch(onresponse, data))
+    .catch((error) => dispatch(onerror, error))
 
 // -- ACTIONS --
 
-const GotBook = (state, book) => ({ ...state, book })
+const SetBook = (state, book) => ({ ...state, book })
+const SetError = (state, error) => ({ ...state, error })
+const SetHub = (state, hub) => [
+  { ...state, hub },
+  [
+    fetchJSONData,
+    {
+      url: `${hub}/book`,
+      onresponse: SetBook,
+      onerror: SetError,
+    },
+  ],
+]
 
 // -- VIEWS ---
 
@@ -132,22 +163,35 @@ const noteView = (state, data) =>
     ],
   ])
 
-// const Error
+const errorView = (state, error) =>
+  h("div", { class: "error" }, [
+    text("An error occured:"),
+    h("pre", {}, text(JSON.stringify(error, null, 2))),
+  ])
+
+const usageView = (state) => {
+  const url = new URL(document.location)
+  return h("div", { class: "usage" }, [
+    text("To use The Litte Books, we need to provide an url to book hub api."),
+    h("br", {}),
+    text("Like the following:"),
+    h("pre", {}, text(`${url.origin}/?hub=<url-to-book-hub-api>`)),
+  ])
+}
 
 const container = (state, contents) =>
   h("div", { class: "container" }, contents)
 
 // -- RUN --
 
-const hub = () => {
-  const url = new URL(document.location)
-  return url.searchParams.get("hub")
-}
-
-app({
+const init = app({
   init: [
-    { book: null },
-    [fetchJSONData, { url: `${hub()}/book`, onresponse: GotBook }],
+    {
+      book: null,
+      error: null,
+      hub: null,
+    },
+    [connectHub, { onhub: SetHub }],
   ],
 
   node: document.getElementById("app"),
@@ -158,5 +202,7 @@ app({
           frontCover(state, state.book),
           chapterList(state, state.book),
         ])
-      : container(state, []),
+      : state.error
+      ? container(state, [errorView(state, state.error)])
+      : container(state, [usageView(state)]),
 })

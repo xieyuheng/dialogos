@@ -9,6 +9,14 @@ body {
   padding: 0;
 }
 
+.error {
+  margin: 1em;
+}
+
+.usage {
+  margin: 1em;
+}
+
 pre {
   white-space: pre-wrap;
 }
@@ -40,28 +48,28 @@ pre {
   border-bottom: 1px solid #666666;
 }
 
-.question {
+.dialog .question {
   flex: 50%;
   margin-left: 1em;
   margin-right: 2em;
 }
 
-.index {
+.dialog .index {
   font-size: 8px;
   flex: 4%;
 }
 
-.answer {
+.dialog .answer {
   flex: 50%;
   margin-left: 1em;
   margin-right: 2em;
 }
 
-.note {
+.dialog .note {
   font-size: 0.8em;
 }
 
-.note-name {
+.dialog .note-name {
   color: blue;
   position: relative;
   top: -0.3em;
