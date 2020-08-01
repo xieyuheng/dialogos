@@ -11,7 +11,7 @@ date = element date { text }
 preface = element preface { title, text }
 chapter = element chapter { title, frame* }
 
-frame = dialog | card | comment | TODO
+frame = dialog | card | comment
 
 dialog = element dialog { question, answer }
 question = element question { text, note* }
@@ -21,5 +21,3 @@ note = element note { attribute name { text }, text }
 card = element card { attribute kind { "law" | "commandment" }, title, text }
 
 comment = element comment { attribute topic { text }?, title?, text }
-
-TODO = element TODO { text }

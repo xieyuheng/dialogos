@@ -1,8 +1,8 @@
+- next by enter.
+- show question, then answer.
 - preview in time.
 - `Contents`
 - `Preface`
-- frame one by one.
-- show question, then answer.
 - remember reader's progress.
 - let reader answer first, then show the answer.
 - let reader make comments, and export new commented books.

@@ -1,11 +1,6 @@
 * {
   font-family: "Sarasa Mono SC", "Noto Mono", "Monaco", monospace;
   line-height: 1.5;
-  /* margin: 0; */
-  /* padding: 0; */
-}
-
-html, body, h1, h2, h3 {
   margin: 0;
   padding: 0;
 }
@@ -19,8 +14,6 @@ html, body, h1, h2, h3 {
 }
 
 pre {
-  margin-top: 1em;
-  margin-bottom: 1em;
   white-space: pre-wrap;
 }
 
@@ -51,12 +44,24 @@ pre {
   border-bottom: thin solid;
 }
 
+.frame {
+  position: relative;
+  padding: 1em;
+  border-top: thin solid;
+  border-bottom: thin solid;
+}
+
+.frame-control {
+  background: grey;
+  position: absolute;
+  right: 0.3em;
+  bottom: 0.3em;
+}
+
 .dialog {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  border-top: thin solid #666666;
-  border-bottom: thin solid #666666;
 }
 
 .dialog .question {
@@ -74,6 +79,11 @@ pre {
   flex: 50%;
   padding-left: 1em;
   padding-right: 2em;
+}
+
+.dialog hr {
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .dialog .note {
@@ -94,4 +104,11 @@ pre {
   margin-top: 2em;
   margin-bottom: 2em;
   border: thick double;
+}
+
+.comment {
+  margin: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  border-left: thin dashed;
 }

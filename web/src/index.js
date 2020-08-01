@@ -30,6 +30,19 @@ const fetchJSONData = (dispatch, { url, onresponse, onerror }) =>
     .then((data) => dispatch(onresponse, data))
     .catch((error) => dispatch(onerror, error))
 
+const scrollToBottom = (dispatch) => {
+  // NOTE need a delay here,
+  //   because we can only scrollToBottom
+  //   after the new node is rendered,
+  //   and updating a node on the page need time.
+  setTimeout(() => {
+    window.scrollBy({
+      top: 100000,
+      behavior: "smooth",
+    })
+  }, 100)
+}
+
 // -- ACTIONS --
 
 const SetBook = (state, book) => ({ ...state, book })
@@ -44,6 +57,16 @@ const SetHub = (state, hub) => [
       onerror: SetError,
     },
   ],
+]
+const NextFrame = (state) => [
+  {
+    ...state,
+    studying: {
+      ...state.studying,
+      frame: state.studying.frame + 1,
+    },
+  },
+  [scrollToBottom],
 ]
 
 // -- VIEWS ---
@@ -76,7 +99,11 @@ const chapterList = (state, data) =>
         h(
           "div",
           { class: "chapters" },
-          chapters.map((chapter, index) => chapterView(state, chapter, index))
+          chapters.map((chapter, index) =>
+            index <= state.studying.chapter
+              ? chapterView(state, chapter, index)
+              : null
+          )
         ),
     ],
   ])
@@ -91,7 +118,11 @@ const chapterView = (state, data, index) =>
           h(
             "div",
             { class: "frames" },
-            frames.map((frame, index) => frameView(state, frame, index))
+            frames.map((frame, index) =>
+              index <= state.studying.frame
+                ? frameView(state, frame, index)
+                : null
+            )
           ),
         ]),
     ],
@@ -113,6 +144,12 @@ const markup = (state, str) => {
 }
 
 const frameView = (state, data, index) =>
+  h("div", { class: "frame" }, [
+    frameContent(state, data, index),
+    frameControl(state, data, index),
+  ])
+
+const frameContent = (state, data, index) =>
   li.match(data, [
     [
       p("dialog", [
@@ -145,7 +182,27 @@ const frameView = (state, data, index) =>
           h("pre", {}, text(content.value)),
         ]),
     ],
-    ["default", null],
+    [
+      p("comment", [p("title", v("title")), v("content")]),
+      ({ vars: { title, content } }) =>
+        h("div", { class: "comment" }, [
+          h("h3", { class: "comment-title" }, text(title.value)),
+          h("br", {}),
+          h("pre", {}, text(content.value)),
+        ]),
+    ],
+    [
+      p("comment", [v("content")]),
+      ({ vars: { title, content } }) =>
+        h("div", { class: "comment" }, [h("pre", {}, text(content.value))]),
+    ],
+  ])
+
+const frameControl = (state, data, index) =>
+  h("div", { class: "frame-control" }, [
+    index === state.studying.frame
+      ? h("button", { onclick: NextFrame }, text("NEXT"))
+      : null,
   ])
 
 const noteView = (state, data) =>
@@ -189,6 +246,10 @@ const init = app({
       book: null,
       error: null,
       hub: null,
+      studying: {
+        chapter: 0,
+        frame: 0,
+      },
     },
     [connectHub, { onhub: SetHub }],
   ],
