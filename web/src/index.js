@@ -43,6 +43,19 @@ const scrollToBottom = (dispatch) => {
   }, 100)
 }
 
+const keySub = (dispatch, props) => {
+  // Hook up dispatch to external events
+  const handler = (event) => {
+    if (props.keys.includes(event.key)) {
+      dispatch(props.action, event.key)
+    }
+  }
+  window.addEventListener("keydown", handler)
+
+  // Cleanup function
+  return () => window.removeEventListener("keydown", handler)
+}
+
 // -- ACTIONS --
 
 const SetBook = (state, book) => ({ ...state, book })
@@ -265,4 +278,14 @@ const init = app({
       : state.error
       ? container(state, [errorView(state, state.error)])
       : container(state, [usageView(state)]),
+
+  subscriptions: (state) => [
+    [
+      keySub,
+      {
+        keys: ["Enter"],
+        action: NextFrame,
+      },
+    ],
+  ],
 })
