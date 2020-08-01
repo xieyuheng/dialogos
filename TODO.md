@@ -1,4 +1,5 @@
 - `Contents`
+- handle last frame specially.
 - show question, then answer.
 - preview in time.
 - remember reader's progress.

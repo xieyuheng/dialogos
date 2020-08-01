@@ -36,8 +36,8 @@ const scrollToBottom = (dispatch) => {
   //   after the new node is rendered,
   //   and updating a node on the page need time.
   setTimeout(() => {
-    window.scrollBy({
-      top: 100000,
+    window.scrollTo({
+      top: document.body.scrollHeight,
       behavior: "smooth",
     })
   }, 100)
