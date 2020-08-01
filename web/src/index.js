@@ -5,12 +5,21 @@ import "./index.css"
 
 // -- EFFECTS & SUBSCRIPTIONS --
 
-const connectHub = (dispatch, { onhub }) => {
+const connectHub = (dispatch, { onhub, onfilechange }) => {
   const url = new URL(document.location)
   const hub = url.searchParams.get("hub")
 
   if (hub) {
     dispatch(onhub, hub)
+
+    const ws = new WebSocket("ws://localhost:3001")
+
+    ws.onopen = (event) => {
+      ws.send("watch")
+      ws.onmessage = (event) => {
+        dispatch(onfilechange, event.data)
+      }
+    }
   }
 }
 
@@ -82,6 +91,17 @@ const SetHub = (state, hub) => [
     fetchJSONData,
     {
       url: `${hub}/book`,
+      onresponse: SetBook,
+      onerror: SetError,
+    },
+  ],
+]
+const UpdateBook = (state) => [
+  state,
+  [
+    fetchJSONData,
+    {
+      url: `${state.hub}/book`,
       onresponse: SetBook,
       onerror: SetError,
     },
@@ -287,7 +307,7 @@ const init = app({
         frame: 0,
       },
     },
-    [connectHub, { onhub: SetHub }],
+    [connectHub, { onhub: SetHub, onfilechange: UpdateBook }],
     [resumeStudy],
   ],
 
