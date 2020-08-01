@@ -214,7 +214,7 @@ const frameContent = (state, data, index) =>
 const frameControl = (state, data, index) =>
   h("div", { class: "frame-control" }, [
     index === state.studying.frame
-      ? h("button", { onclick: NextFrame }, text("NEXT"))
+      ? h("button", { class: "next-frame", onclick: NextFrame }, text("NEXT"))
       : null,
   ])
 
