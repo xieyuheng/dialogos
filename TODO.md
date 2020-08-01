@@ -1,4 +1,3 @@
-- remember reader's progress.
 - table of contents, jump to chapters.
 - handle last frame specially.
 - let reader answer first, then show the answer.

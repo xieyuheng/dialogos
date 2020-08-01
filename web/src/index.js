@@ -1,5 +1,6 @@
 import { h, text, app } from "hyperapp"
 import li, { p, v } from "little"
+import Cookies from "js-cookie"
 import "./index.css"
 
 // -- EFFECTS & SUBSCRIPTIONS --
@@ -43,11 +44,11 @@ const scrollToBottom = (dispatch) => {
   }, 100)
 }
 
-const keySub = (dispatch, props) => {
+const keySub = (dispatch, { keys, action }) => {
   // Hook up dispatch to external events
   const handler = (event) => {
-    if (props.keys.includes(event.key)) {
-      dispatch(props.action, event.key)
+    if (keys.includes(event.key)) {
+      dispatch(action, event.key)
     }
   }
   window.addEventListener("keydown", handler)
@@ -56,7 +57,22 @@ const keySub = (dispatch, props) => {
   return () => window.removeEventListener("keydown", handler)
 }
 
-// -- ACTIONS --
+const setCookie = (dispatch, { key, value, opts }) => {
+  console.log({ key, value, opts })
+  Cookies.set(key, value, opts)
+}
+
+const resumeStudy = (dispatch) => {
+  const chapter = Cookies.get("study.chapter")
+  const frame = Cookies.get("study.frame")
+
+  dispatch(SetStudy, {
+    chapter: chapter ? Number(chapter) : 0,
+    frame: frame ? Number(frame) : 0,
+  })
+}
+
+// --ACTIONS--
 
 const SetBook = (state, book) => ({ ...state, book })
 const SetError = (state, error) => ({ ...state, error })
@@ -71,15 +87,24 @@ const SetHub = (state, hub) => [
     },
   ],
 ]
+const SetStudy = (state, study) => ({ ...state, study })
 const NextFrame = (state) => [
   {
     ...state,
-    studying: {
-      ...state.studying,
-      frame: state.studying.frame + 1,
+    study: {
+      ...state.study,
+      frame: state.study.frame + 1,
     },
   },
   [scrollToBottom],
+  [
+    setCookie,
+    {
+      key: "study.frame",
+      value: state.study.frame + 1,
+      opts: { expires: 365 },
+    },
+  ],
 ]
 
 // -- VIEWS ---
@@ -113,7 +138,7 @@ const chapterList = (state, data) =>
           "div",
           { class: "chapters" },
           chapters.map((chapter, index) =>
-            index <= state.studying.chapter
+            index <= state.study.chapter
               ? chapterView(state, chapter, index)
               : null
           )
@@ -132,9 +157,7 @@ const chapterView = (state, data, index) =>
             "div",
             { class: "frames" },
             frames.map((frame, index) =>
-              index <= state.studying.frame
-                ? frameView(state, frame, index)
-                : null
+              index <= state.study.frame ? frameView(state, frame, index) : null
             )
           ),
         ]),
@@ -213,7 +236,7 @@ const frameContent = (state, data, index) =>
 
 const frameControl = (state, data, index) =>
   h("div", { class: "frame-control" }, [
-    index === state.studying.frame
+    index === state.study.frame
       ? h("button", { class: "next-frame", onclick: NextFrame }, text("NEXT"))
       : null,
   ])
@@ -259,12 +282,13 @@ const init = app({
       book: null,
       error: null,
       hub: null,
-      studying: {
+      study: {
         chapter: 0,
         frame: 0,
       },
     },
     [connectHub, { onhub: SetHub }],
+    [resumeStudy],
   ],
 
   node: document.getElementById("app"),

@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "hyperapp": "^2.0.8",
+    "js-cookie": "^2.2.1",
     "little": "file:../packages/little"
   },
   "devDependencies": {
