@@ -1,11 +1,19 @@
-- `Contents`
-- handle last frame specially.
 - show question, then answer.
-- preview in time.
 - remember reader's progress.
+- table of contents, jump to chapters.
+- handle last frame specially.
 - let reader answer first, then show the answer.
 - let reader make comments, and export new commented books.
+
+# content
+
 - finish chapter 1
+
+# control flow
+
+# tooling
+
+- preview in time.
 - 用 cypress 做测试
 
 # xml & 组建池 & semantic web
@@ -28,9 +36,10 @@
   little book 好像在于给每部分实现代码写测试用例。
   - 并且用到了某个解释范式。
 
-# The Little Books webapp 功能
+# canvas
 
-- 默认不显示回答，可以填写用户自己对问题的回答，并且做记录。
 - 涂抹果酱的地方给一个 canvas 画板。
-- 适配手机屏幕。
+
+# dialog gen
+
 - 可以生成解释程序运行的对话（程序，参数 -- 对话）。
