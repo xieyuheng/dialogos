@@ -5,20 +5,22 @@ import "./index.css"
 
 // -- EFFECTS & SUBSCRIPTIONS --
 
-const connectHub = (dispatch, { onhub, onfilechange }) => {
+const connectHub = (dispatch, { onhub }) => {
   const url = new URL(document.location)
   const hub = url.searchParams.get("hub")
 
   if (hub) {
     dispatch(onhub, hub)
+  }
+}
 
-    const ws = new WebSocket("ws://localhost:3001")
+const watchFileChange = (dispatch, { host, port, onfilechange }) => {
+  const ws = new WebSocket(`ws://${host}:${port}`)
 
-    ws.onopen = (event) => {
-      ws.send("watch")
-      ws.onmessage = (event) => {
-        dispatch(onfilechange, event.data)
-      }
+  ws.onopen = (_event) => {
+    ws.send("watch")
+    ws.onmessage = (event) => {
+      dispatch(onfilechange, event.data)
     }
   }
 }
@@ -29,18 +31,18 @@ const fetchJSONData = (dispatch, { url, onresponse, onerror }) =>
       response.status === 200
         ? response.json()
         : dispatch(onerror, {
-            message: "fail to fetch url",
-            url,
-            response: {
-              status: response.status,
-              statusText: response.statusText,
-            },
-          })
+          message: "fail to fetch url",
+          url,
+          response: {
+            status: response.status,
+            statusText: response.statusText,
+          },
+        })
     )
     .then((data) => dispatch(onresponse, data))
     .catch((error) => dispatch(onerror, error))
 
-const scrollToBottom = (dispatch) => {
+const scrollToBottom = (_dispatch) => {
   // NOTE need a delay here,
   //   because we can only scrollToBottom
   //   after the new node is rendered,
@@ -66,7 +68,7 @@ const keySub = (dispatch, { keys, action }) => {
   return () => window.removeEventListener("keydown", handler)
 }
 
-const setCookie = (dispatch, { key, value, opts }) => {
+const setCookie = (_dispatch, { key, value, opts }) => {
   console.log({ key, value, opts })
   Cookies.set(key, value, opts)
 }
@@ -84,7 +86,9 @@ const resumeStudy = (dispatch) => {
 // --ACTIONS--
 
 const SetBook = (state, book) => ({ ...state, book })
+
 const SetError = (state, error) => ({ ...state, error })
+
 const SetHub = (state, hub) => [
   { ...state, hub },
   [
@@ -95,7 +99,28 @@ const SetHub = (state, hub) => [
       onerror: SetError,
     },
   ],
+  [
+    fetchJSONData,
+    {
+      url: `${hub}/websocket`,
+      onresponse: StartFileWatcher,
+      onerror: SetError,
+    },
+  ],
 ]
+
+const StartFileWatcher = (state, { host, port }) => [
+  state,
+
+  [
+    watchFileChange,
+    {
+      host, port,
+      onfilechange: UpdateBook
+    }
+  ],
+]
+
 const UpdateBook = (state) => [
   state,
   [
@@ -107,7 +132,9 @@ const UpdateBook = (state) => [
     },
   ],
 ]
+
 const SetStudy = (state, study) => ({ ...state, study })
+
 const NextFrame = (state) => [
   {
     ...state,
@@ -296,7 +323,7 @@ const container = (state, contents) =>
 
 // -- RUN --
 
-const init = app({
+app({
   init: [
     {
       book: null,
@@ -307,7 +334,8 @@ const init = app({
         frame: 0,
       },
     },
-    [connectHub, { onhub: SetHub, onfilechange: UpdateBook }],
+    [connectHub, { onhub: SetHub }],
+    // [connectHub, { onhub: SetHub, onfilechange: UpdateBook }],    
     [resumeStudy],
   ],
 
@@ -316,12 +344,12 @@ const init = app({
   view: (state) =>
     state.book
       ? container(state, [
-          frontCover(state, state.book),
-          chapterList(state, state.book),
-        ])
+        frontCover(state, state.book),
+        chapterList(state, state.book),
+      ])
       : state.error
-      ? container(state, [errorView(state, state.error)])
-      : container(state, [usageView(state)]),
+        ? container(state, [errorView(state, state.error)])
+        : container(state, [usageView(state)]),
 
   subscriptions: (state) => [
     [

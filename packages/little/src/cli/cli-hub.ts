@@ -1,6 +1,4 @@
 import * as hub from "../hub"
-import path from "path"
-import fs from "fs"
 import portfinder from "portfinder"
 
 export function run(file: string, opts: any): void {

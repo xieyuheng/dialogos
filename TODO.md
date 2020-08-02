@@ -1,6 +1,3 @@
-- [server] portfinder for wss.
-- [server] api for wss url.
-- get wss url from api.
 - simplify preview logic.
 - improve preview log and error report.
 - table of contents, jump to chapters.
