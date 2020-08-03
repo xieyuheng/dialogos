@@ -1,13 +1,14 @@
 import * as Router from "../router"
+import { logger } from "../logger"
 import chokidar from "chokidar"
 import WebSocket from "ws"
-import portfinder from "portfinder"
-import { logger } from "../logger"
 
-export function websocket(file: string): Router.Router {
+export function filewatcher(
+  wss: WebSocket.Server,
+  file: string,
+  port: number
+): Router.Router {
   return Router.safe(async (req, res) => {
-    const port = await portfinder.getPortPromise({ port: 3000 })
-    const wss = new WebSocket.Server({ port })
     wss.on("connection", (ws) => {
       ws.on("message", (message) => {
         if (message === "watch") {
@@ -22,11 +23,6 @@ export function websocket(file: string): Router.Router {
       host: req.headers.host?.split(":")[0],
       port,
     }
-
-    logger.log({
-      level: "info",
-      message: `ws://${info.host}:${info.port}`,
-    })
 
     res.json(info)
   })

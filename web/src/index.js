@@ -102,7 +102,7 @@ const SetHub = (state, hub) => [
   [
     fetchJSONData,
     {
-      url: `${hub}/websocket`,
+      url: `${hub}/filewatcher`,
       onresponse: StartFileWatcher,
       onerror: SetError,
     },
@@ -335,7 +335,7 @@ app({
       },
     },
     [connectHub, { onhub: SetHub }],
-    // [connectHub, { onhub: SetHub, onfilechange: UpdateBook }],    
+    // [connectHub, { onhub: SetHub, onfilechange: UpdateBook }],
     [resumeStudy],
   ],
 

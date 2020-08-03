@@ -1,18 +1,8 @@
 import * as hub from "../hub"
 import portfinder from "portfinder"
 
-export function run(file: string, opts: any): void {
-  if (opts.port !== undefined) {
-    const port = opts.port
-    hub.server.run(file, port)
-  } else {
-    portfinder
-      .getPortPromise({ port: 3000 })
-      .then((port) => {
-        hub.server.run(file, port)
-      })
-      .catch((error) => {
-        console.log(error.message)
-      })
-  }
+export async function run(file: string, opts: any): Promise<void> {
+  const port = opts.port || (await portfinder.getPortPromise({ port: 3000 }))
+  const wsport = await portfinder.getPortPromise({ port: port + 100 })
+  hub.server.run(file, port, wsport)
 }

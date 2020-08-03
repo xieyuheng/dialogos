@@ -1,5 +1,3 @@
-- simplify preview logic.
-- improve preview log and error report.
 - table of contents, jump to chapters.
 - handle last frame specially.
 - let reader answer first, then show the answer.
