@@ -2,6 +2,7 @@ import * as Router from "../router"
 import chokidar from "chokidar"
 import WebSocket from "ws"
 import portfinder from "portfinder"
+import { logger } from "../logger"
 
 export function websocket(file: string): Router.Router {
   return Router.safe(async (req, res) => {
@@ -21,6 +22,11 @@ export function websocket(file: string): Router.Router {
       host: req.headers.host?.split(":")[0],
       port,
     }
+
+    logger.log({
+      level: "info",
+      message: `ws://${info.host}:${info.port}`
+    })
 
     res.json(info)
   })

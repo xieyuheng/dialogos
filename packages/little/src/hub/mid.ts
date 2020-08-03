@@ -1,11 +1,17 @@
 import express from "express"
+import moment from "moment"
+import { logger } from "./logger"
+
 
 export function request_time(
   req: express.Request,
   res: express.Response,
   next: express.NextFunction
 ) {
-  console.log(`[info] ${req.method} "${req.path}" at ${new Date()}`)
+  logger.log({
+    level: "info",
+    message: `${req.method} "${req.path}" at ${moment().format()}`,
+  })
   next()
 }
 
