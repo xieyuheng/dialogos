@@ -157,6 +157,22 @@ const NextFrame = (state) => [
 
 // -- VIEWS ---
 
+const bookView = (state, data) =>
+  li.match(data, [
+    [
+      p("book"),
+      (_) => h("div", {}, [frontCover(state, data), chapterList(state, data)]),
+    ],
+    [
+      p("parsererror", v("message")),
+      ({ vars: { message } }) =>
+        h("div", { class: "parsererror" }, [
+          h("h3", {}, [text("XML parser error:")]),
+          h("pre", {}, [text(message.value)]),
+        ]),
+    ],
+  ])
+
 const frontCover = (state, data) =>
   li.match(data, [
     [
@@ -319,9 +335,6 @@ const usageView = (state) => {
   ])
 }
 
-const container = (state, contents) =>
-  h("div", { class: "container" }, contents)
-
 // -- RUN --
 
 app({
@@ -343,13 +356,10 @@ app({
 
   view: (state) =>
     state.book
-      ? container(state, [
-          frontCover(state, state.book),
-          chapterList(state, state.book),
-        ])
+      ? bookView(state, state.book)
       : state.error
-      ? container(state, [errorView(state, state.error)])
-      : container(state, [usageView(state)]),
+      ? errorView(state, state.error)
+      : usageView(state),
 
   subscriptions: (state) => [
     [
