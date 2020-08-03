@@ -335,7 +335,6 @@ app({
       },
     },
     [connectHub, { onhub: SetHub }],
-    // [connectHub, { onhub: SetHub, onfilechange: UpdateBook }],
     [resumeStudy],
   ],
 
