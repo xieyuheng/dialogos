@@ -1,5 +1,5 @@
+- improve `hub` url error handling. -- not showing the correct error message.
 - table of contents, jump to chapters.
-- during preview we need to handle error when we can not parse book.
 - handle last frame specially.
 - let reader answer first, then show the answer.
 - let reader make comments, and export new commented books.

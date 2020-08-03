@@ -296,6 +296,7 @@ const frameContent = (state, data, index) =>
       ({ vars: { title, content } }) =>
         h("div", { class: "comment" }, [h("pre", {}, text(content.value))]),
     ],
+    ["default", null]
   ])
 
 const frameControl = (state, data, index) =>

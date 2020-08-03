@@ -539,10 +539,58 @@ are judgments.
 Atom is a type.
 </card>
 
+<dialog>
+<question>
+Is
+  'courgette is a type
+a judgment?
+</question>
+<answer>
+It is a judgment,
+but we have no reason to believe it
+because 'courgette doesn't describe other expressions.
+</answer>
+</dialog>
+
+<dialog>
+<question>
+Are Atom and Atom the same type?
+</question>
+<answer>
+Presumably.
+They certainly look like they should be.
+</answer>
+</dialog>
+
+<dialog>
+<question>
+The fourth and final form of judgment is
+  ___ and ___ are the same type.
+</question>
+<answer>
+Ah, so
+  Atom and Atom are the same type
+is a judgment, and we have reason to believe it.
+</answer>
+</dialog>
+
+<card>
+<title>The Four Forms of Judgment</title>
+(1)                   ___ is a ___.
+(2)     ___ is the same ___ as ___.
+(3)                  ___ is a type.
+(4)  ___ and ___ are the same type.
+</card>
+
+<comment>
+The (3) seems like special (1),
+and the (4) seems like special (2).
+</comment>
+
 <comment>
 TODO
 page:9
-frame:28
+frame:31
 </comment>
 
 </chapter>

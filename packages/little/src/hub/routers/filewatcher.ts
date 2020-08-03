@@ -3,13 +3,17 @@ import { logger } from "../logger"
 import chokidar from "chokidar"
 import WebSocket from "ws"
 
+const MAX_LISTENERS = Infinity
+
 export function filewatcher(
   wss: WebSocket.Server,
   file: string,
   port: number
 ): Router.Router {
   return Router.safe(async (req, res) => {
+    wss.setMaxListeners(MAX_LISTENERS)
     wss.on("connection", (ws) => {
+      ws.setMaxListeners(MAX_LISTENERS)
       ws.on("message", (message) => {
         if (message === "watch") {
           chokidar.watch(file).on("change", (path) => {
