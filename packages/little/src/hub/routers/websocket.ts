@@ -25,7 +25,7 @@ export function websocket(file: string): Router.Router {
 
     logger.log({
       level: "info",
-      message: `ws://${info.host}:${info.port}`
+      message: `ws://${info.host}:${info.port}`,
     })
 
     res.json(info)

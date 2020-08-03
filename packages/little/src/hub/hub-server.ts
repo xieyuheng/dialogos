@@ -1,8 +1,9 @@
 import express from "express"
-import compression from 'compression'
+import compression from "compression"
 import path from "path"
 import * as mid from "./mid"
 import * as routers from "./routers"
+import { logger } from "./logger"
 
 const app = express()
 
@@ -14,6 +15,9 @@ export function run(file: string, port: number): void {
   app.get("/api/websocket", routers.websocket(path.resolve(file)))
   app.use(mid.error_handling)
   app.listen(port, () => {
-    console.log(`[info] The liitle book hub begins on port: ${port}.`)
+    logger.log({
+      level: "info",
+      message: `The liitle book hub begins on port: ${port}.`,
+    })
   })
 }
