@@ -2,7 +2,6 @@ import express from "express"
 import moment from "moment"
 import { logger } from "./logger"
 
-
 export function request_time(
   req: express.Request,
   res: express.Response,
@@ -10,7 +9,7 @@ export function request_time(
 ) {
   logger.log({
     level: "info",
-    message: `${req.method} "${req.path}" at ${moment().format()}`,
+    message: `${req.method.toLowerCase()}: "${req.path}", time: ${moment().format()}`,
   })
   next()
 }

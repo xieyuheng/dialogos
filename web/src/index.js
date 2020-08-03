@@ -23,6 +23,8 @@ const watchFileChange = (dispatch, { host, port, onfilechange }) => {
       dispatch(onfilechange, event.data)
     }
   }
+
+  return () => ws.close()
 }
 
 const fetchJSONData = (dispatch, { url, onresponse, onerror }) =>
@@ -31,13 +33,13 @@ const fetchJSONData = (dispatch, { url, onresponse, onerror }) =>
       response.status === 200
         ? response.json()
         : dispatch(onerror, {
-          message: "fail to fetch url",
-          url,
-          response: {
-            status: response.status,
-            statusText: response.statusText,
-          },
-        })
+            message: "fail to fetch url",
+            url,
+            response: {
+              status: response.status,
+              statusText: response.statusText,
+            },
+          })
     )
     .then((data) => dispatch(onresponse, data))
     .catch((error) => dispatch(onerror, error))
@@ -64,7 +66,6 @@ const keySub = (dispatch, { keys, action }) => {
   }
   window.addEventListener("keydown", handler)
 
-  // Cleanup function
   return () => window.removeEventListener("keydown", handler)
 }
 
@@ -111,13 +112,13 @@ const SetHub = (state, hub) => [
 
 const StartFileWatcher = (state, { host, port }) => [
   state,
-
   [
     watchFileChange,
     {
-      host, port,
-      onfilechange: UpdateBook
-    }
+      host,
+      port,
+      onfilechange: UpdateBook,
+    },
   ],
 ]
 
@@ -343,12 +344,12 @@ app({
   view: (state) =>
     state.book
       ? container(state, [
-        frontCover(state, state.book),
-        chapterList(state, state.book),
-      ])
+          frontCover(state, state.book),
+          chapterList(state, state.book),
+        ])
       : state.error
-        ? container(state, [errorView(state, state.error)])
-        : container(state, [usageView(state)]),
+      ? container(state, [errorView(state, state.error)])
+      : container(state, [usageView(state)]),
 
   subscriptions: (state) => [
     [

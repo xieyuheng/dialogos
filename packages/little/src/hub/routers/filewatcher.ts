@@ -12,8 +12,10 @@ export function filewatcher(
     wss.on("connection", (ws) => {
       ws.on("message", (message) => {
         if (message === "watch") {
-          chokidar.watch(file).on("all", (event, path) => {
-            ws.send(`event: ${event}, path: ${path}`)
+          chokidar.watch(file).on("change", (path) => {
+            const message = `file changed: ${path}`
+            logger.log({ level: "info", message })
+            ws.send(message)
           })
         }
       })

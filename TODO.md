@@ -1,4 +1,3 @@
-- create only one ws listener, in preview.
 - table of contents, jump to chapters.
 - during preview we need to handle error when we can not parse book.
 - handle last frame specially.
