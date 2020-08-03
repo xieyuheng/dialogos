@@ -19,11 +19,9 @@ export function filewatcher(
       })
     })
 
-    const info = {
+    res.json({
       host: req.headers.host?.split(":")[0],
       port,
-    }
-
-    res.json(info)
+    })
   })
 }
