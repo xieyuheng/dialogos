@@ -7,9 +7,9 @@
     "serve": "webpack-dev-server"
   },
   "dependencies": {
+    "@the-little-books/little": "0.0.2",
     "hyperapp": "^2.0.8",
-    "js-cookie": "^2.2.1",
-    "little": "file:../packages/little"
+    "js-cookie": "^2.2.1"
   },
   "devDependencies": {
     "css-loader": "^4.0.0",

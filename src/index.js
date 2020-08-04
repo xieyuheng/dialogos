@@ -1,5 +1,5 @@
 import { h, text, app } from "hyperapp"
-import li, { p, v } from "little"
+import li, { p, v } from "@the-little-books/little"
 import Cookies from "js-cookie"
 import "./index.css"
 
