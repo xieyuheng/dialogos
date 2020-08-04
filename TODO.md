@@ -1,5 +1,7 @@
 # navigation
 - table of contents, jump to chapters.
+  - https://github.com/mrozbarry/hyperapp-router
+  - learn: https://github.com/zaceno/hyperapp-form
 - handle last frame specially.
 # dialog
 - make the dialog looks like im apps.
