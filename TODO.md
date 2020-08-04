@@ -1,6 +1,7 @@
-- improve `hub` url error handling. -- not showing the correct error message.
 - table of contents, jump to chapters.
 - handle last frame specially.
+- less padding and margin for thin screen.
+- improve `hub` url error handling. -- not showing the correct error message.
 - let reader answer first, then show the answer.
 - let reader make comments, and export new commented books.
 # canvas
