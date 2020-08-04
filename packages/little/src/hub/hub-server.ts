@@ -1,6 +1,7 @@
 import express from "express"
 import compression from "compression"
 import path from "path"
+import http from "http"
 import WebSocket from "ws"
 import * as mid from "./mid"
 import * as routers from "./routers"
@@ -10,6 +11,7 @@ const app = express()
 
 export async function run(
   file: string,
+  host: string,
   port: number,
   wsport: number
 ): Promise<void> {
@@ -19,6 +21,8 @@ export async function run(
   app.use(mid.request_time)
   app.use(mid.cors)
 
+  app.get("/api", routers.book(path.resolve(file)))
+
   app.get("/api/book", routers.book(path.resolve(file)))
   app.get(
     "/api/filewatcher",
@@ -27,7 +31,12 @@ export async function run(
 
   app.use(mid.error_handling)
 
-  app.listen(port, () => {
-    logger.info({ message: "The liitle book hub begins.", port, wsport })
+  const server = http.createServer(app).listen({ host, port })
+  logger.info({
+    message: "The liitle book hub begins.",
+    host,
+    port,
+    wsport,
+    link: `http://${host}:${port}/api`
   })
 }

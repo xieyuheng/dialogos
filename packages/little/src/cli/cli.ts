@@ -19,7 +19,8 @@ export function run(config: any): void {
   program
     .command("hub", "An example book server.")
     .argument("<file>", "A xml book file.")
-    .option("--port <number>", "port number")
+    .option("--host <string>", "host")
+    .option("--port <number>", "port")
     .action(({ args, options }) => cli_hub.run(is_string(args.file), options))
 
   program.run()
