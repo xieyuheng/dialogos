@@ -1,9 +1,10 @@
+# control flow -- pure linear
+- `jump`, `call` and `branch` as special frames (contents)
+  - outside the frames, keep the tree structure of the documents.
 # navigation
 - table of contents, jump to chapters.
-  - https://github.com/mrozbarry/hyperapp-router
-  - learn: https://github.com/zaceno/hyperapp-form
 - handle last frame specially.
-# dialog
+# dialog & im-app ux
 - make the dialog looks like im apps.
 - less padding and margin for thin screen.
 # canvas
@@ -13,10 +14,9 @@
 # for reader
 - let reader answer first, then show the answer.
 - let reader make comments, and export new commented books.
-# control flow
-- `jump`, `call` and `branch` as special frames (contents)
-  - outside the frames, keep the tree structure of the documents.
 # test
 - 用 cypress 做测试
 # dialog gen
 - 可以生成解释程序运行的对话（程序，参数 -- 对话）。
+# backend
+- real backend
