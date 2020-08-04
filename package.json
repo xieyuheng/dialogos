@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "@the-little-books/little": "0.0.3",
-    "@types/page": "^1.8.0",
     "hyperapp": "^2.0.8",
     "js-cookie": "^2.2.1"
   },
