@@ -28,9 +28,6 @@ export async function run(
   app.use(mid.error_handling)
 
   app.listen(port, () => {
-    logger.log({
-      level: "info",
-      message: `The liitle book hub begins on port: ${port}, ws on port: ${wsport}.`,
-    })
+    logger.info({ message: "The liitle book hub begins.", port, wsport })
   })
 }

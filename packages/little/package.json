@@ -23,6 +23,7 @@
     "@caporal/core": "^2.0.2",
     "@types/compression": "^1.7.0",
     "@types/deep-diff": "^1.0.0",
+    "@types/prettyjson": "0.0.29",
     "@types/ws": "^7.2.6",
     "bluebird": "^3.7.2",
     "chalk": "^4.1.0",
@@ -37,6 +38,7 @@
     "moment": "^2.27.0",
     "nanoid": "^3.1.10",
     "plaintext": "^0.2.4",
+    "prettyjson": "^1.2.1",
     "window": "^4.2.7",
     "ws": "^7.3.1"
   },

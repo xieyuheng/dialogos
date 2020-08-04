@@ -7,9 +7,9 @@ export function request_time(
   res: express.Response,
   next: express.NextFunction
 ) {
-  logger.log({
-    level: "info",
-    message: `${req.method.toLowerCase()}: "${req.path}", time: ${moment().format()}`,
+  logger.info({
+    [req.method.toLowerCase()]: req.path,
+    time: moment().format(),
   })
   next()
 }

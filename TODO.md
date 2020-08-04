@@ -1,4 +1,4 @@
-- log by pretty print color json, and separate log entries by info line.
+- deploy on gitee.
 - improve `hub` url error handling. -- not showing the correct error message.
 - table of contents, jump to chapters.
 - handle last frame specially.

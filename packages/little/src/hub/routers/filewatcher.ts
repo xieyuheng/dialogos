@@ -18,7 +18,7 @@ export function filewatcher(
         if (message === "watch") {
           chokidar.watch(file).on("change", (path) => {
             const message = `file changed: ${path}`
-            logger.log({ level: "info", message })
+            logger.info({ message: "File changed.", file: path })
             ws.send(message)
           })
         }

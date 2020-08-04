@@ -1,13 +1,10 @@
+import prettyjson from "prettyjson"
 import chalk from "chalk"
 
 export const logger = {
-  log(the: { level: string; message: string }): void {
-    const { level, message } = the
-    const head =
-      level === "info"
-        ? chalk.blue.bold(`[${level}]`)
-        : chalk.bold(`[${level}]`)
-    const body = message
-    console.log(head, body)
+  info(body: object): void {
+    console.log(chalk.blue.bold("[info]"))
+    console.log(prettyjson.render(body))
+    console.log()
   },
 }
