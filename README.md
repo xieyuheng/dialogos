@@ -2,13 +2,6 @@
 
 Web app to create little books.
 
-## Schema
-
-References:
-- https://en.wikipedia.org/wiki/RELAX_NG
-- https://relaxng.org/compact-tutorial.html
-- https://relaxng.org/compact.html
-
 ## Community
 
 Contributions are welcome, see [current TODO list](TODO.md) for tasks. <br>

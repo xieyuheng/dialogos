@@ -1,3 +1,6 @@
+- single api -- no prefix.
+- `little book` instead of `little hub` -- for we have only one book.
+- deploy server on heroku.
 - improve `hub` url error handling. -- not showing the correct error message.
 - table of contents, jump to chapters.
 - handle last frame specially.
