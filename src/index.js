@@ -331,8 +331,11 @@ const usageView = (state) => {
   return h("div", { class: "usage" }, [
     text("To use The Litte Books, we need to provide a URL to book server."),
     h("br", {}),
+    h("br", {}),
     text("Like the following:"),
-    h("pre", {}, text(`${url.origin}/?server=<url-to-book-server>`)),
+    h("pre", {}, text(`  ${url.origin}/?server=<url-to-book-server>`)),
+    h("br", {}),
+    text("It might take a few seconds to load the book."),
   ])
 }
 
