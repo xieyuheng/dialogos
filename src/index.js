@@ -330,6 +330,7 @@ const usageView = (state) => {
   const url = new URL(document.location)
   return h("div", { class: "usage" }, [
     h("h2", {}, text("The Litte Books")),
+    h("br", {}),
     text("To use this WebApp, you need to provide a URL to book server."),
     h("br", {}),
     h("br", {}),
