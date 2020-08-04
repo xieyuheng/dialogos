@@ -329,7 +329,8 @@ const errorView = (state, error) =>
 const usageView = (state) => {
   const url = new URL(document.location)
   return h("div", { class: "usage" }, [
-    text("To use The Litte Books, we need to provide a URL to book server."),
+    h("h2", {}, text("The Litte Books")),
+    text("To use this WebApp, you need to provide a URL to book server."),
     h("br", {}),
     h("br", {}),
     text("Like the following:"),
