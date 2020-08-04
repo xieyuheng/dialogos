@@ -5,12 +5,12 @@ import "./index.css"
 
 // -- EFFECTS & SUBSCRIPTIONS --
 
-const connectHub = (dispatch, { onhub }) => {
+const connectServer = (dispatch, { onserver }) => {
   const url = new URL(document.location)
-  const hub = url.searchParams.get("hub")
+  const server = url.searchParams.get("server")
 
-  if (hub) {
-    dispatch(onhub, hub)
+  if (server) {
+    dispatch(onserver, server)
   }
 }
 
@@ -90,12 +90,12 @@ const SetBook = (state, book) => ({ ...state, book })
 
 const SetError = (state, error) => ({ ...state, error })
 
-const SetHub = (state, hub) => [
-  { ...state, hub },
+const SetServer = (state, server) => [
+  { ...state, server },
   [
     fetchJSONData,
     {
-      url: `${hub}/book`,
+      url: `${server}/`,
       onresponse: SetBook,
       onerror: SetError,
     },
@@ -103,7 +103,7 @@ const SetHub = (state, hub) => [
   [
     fetchJSONData,
     {
-      url: `${hub}/filewatcher`,
+      url: `${server}/filewatcher`,
       onresponse: StartFileWatcher,
       onerror: SetError,
     },
@@ -127,7 +127,7 @@ const UpdateBook = (state) => [
   [
     fetchJSONData,
     {
-      url: `${state.hub}/book`,
+      url: `${state.server}/`,
       onresponse: SetBook,
       onerror: SetError,
     },
@@ -329,10 +329,10 @@ const errorView = (state, error) =>
 const usageView = (state) => {
   const url = new URL(document.location)
   return h("div", { class: "usage" }, [
-    text("To use The Litte Books, we need to provide a URL to book hub api."),
+    text("To use The Litte Books, we need to provide a URL to book server."),
     h("br", {}),
     text("Like the following:"),
-    h("pre", {}, text(`${url.origin}/?hub=<url-to-book-hub-api>`)),
+    h("pre", {}, text(`${url.origin}/?server=<url-to-book-server>`)),
   ])
 }
 
@@ -343,13 +343,13 @@ app({
     {
       book: null,
       error: null,
-      hub: null,
+      server: null,
       study: {
         chapter: 0,
         frame: 0,
       },
     },
-    [connectHub, { onhub: SetHub }],
+    [connectServer, { onserver: SetServer }],
     [resumeStudy],
   ],
 
