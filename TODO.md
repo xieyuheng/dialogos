@@ -1,5 +1,5 @@
-- (state, data, props)
-- <dialog> as component -- (state, data, props)
+- <card> as component
+- <comment> as component
 # control flow -- pure linear
 - `jump`, `call` and `branch` as special frames (contents)
   - outside the frames, keep the tree structure of the documents.

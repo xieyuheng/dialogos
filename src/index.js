@@ -1,6 +1,7 @@
 import { h, text, app } from "hyperapp"
 import li, { p, v } from "@the-little-books/little"
 import Cookies from "js-cookie"
+import { dialog } from "./dialog"
 import "./index.css"
 
 // -- EFFECTS & SUBSCRIPTIONS --
@@ -228,21 +229,6 @@ const chapterView = (state, data, index) =>
     ],
   ])
 
-const markup = (state, str) => {
-  const result = str.match(/^(.*?)\^\[(.*?)\](.*)/msu)
-
-  if (result !== null) {
-    const [_target, prev, name, rest] = result
-    return [
-      text(prev),
-      h("span", { class: "note-name" }, text(name)),
-      ...markup(state, rest),
-    ]
-  } else {
-    return [text(str)]
-  }
-}
-
 const frameView = (state, data, index) =>
   h("div", { class: "frame" }, [
     frameContent(state, data, index),
@@ -251,29 +237,7 @@ const frameView = (state, data, index) =>
 
 const frameContent = (state, data, index) =>
   li.match(data, [
-    [
-      p("dialog", [
-        p("teacher", [v("teacher")], { tail: "teacher_notes" }),
-        p("student", [v("student")], { tail: "student_notes" }),
-      ]),
-      ({
-        vars: { teacher, student },
-        tails: { teacher_notes, student_notes },
-      }) =>
-        h("div", { class: "dialog" }, [
-          h("pre", { class: "teacher" }, [
-            ...markup(state, teacher.value),
-            teacher_notes.length > 0 ? h("hr", {}) : null,
-            ...teacher_notes.map((note) => noteView(state, note)),
-          ]),
-          h("pre", { class: "index" }, text(index + 1)),
-          h("pre", { class: "student" }, [
-            ...markup(state, student.value),
-            student_notes.length > 0 ? h("hr", {}) : null,
-            ...student_notes.map((note) => noteView(state, note)),
-          ]),
-        ]),
-    ],
+    ...dialog(index),
     [
       p("card", [p("title", v("title")), v("content")]),
       ({ vars: { title, content } }) =>
@@ -304,20 +268,6 @@ const frameControl = (state, data, index) =>
     index === state.study.frame
       ? h("button", { class: "next-frame", onclick: NextFrame }, text("NEXT"))
       : null,
-  ])
-
-const noteView = (state, data) =>
-  li.match(data, [
-    [
-      p("note", [v("content")]),
-      ({ vars: { content } }) =>
-        h("pre", { class: "note" }, [
-          text(" "),
-          h("span", { class: "note-name" }, text(data.attributes.name)),
-          text(" "),
-          text(content.value),
-        ]),
-    ],
   ])
 
 const errorView = (state, error) =>
