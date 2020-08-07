@@ -238,12 +238,7 @@ const frameView = (state, data, index) =>
   ])
 
 const frameContent = (state, data, index) =>
-  li.match(data, [
-    ...dialog(index),
-    ...card(),
-    ...comment(),
-    ["default", null],
-  ])
+  li.match(data, [dialog(index), card, comment, ["default", null]])
 
 const frameControl = (state, data, index) =>
   h("div", { class: "frame-control" }, [
