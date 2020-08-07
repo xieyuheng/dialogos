@@ -253,24 +253,24 @@ const frameContent = (state, data, index) =>
   li.match(data, [
     [
       p("dialog", [
-        p("question", [v("question")], { tail: "question_notes" }),
-        p("answer", [v("answer")], { tail: "answer_notes" }),
+        p("teacher", [v("teacher")], { tail: "teacher_notes" }),
+        p("student", [v("student")], { tail: "student_notes" }),
       ]),
       ({
-        vars: { question, answer },
-        tails: { question_notes, answer_notes },
+        vars: { teacher, student },
+        tails: { teacher_notes, student_notes },
       }) =>
         h("div", { class: "dialog" }, [
-          h("pre", { class: "question" }, [
-            ...markup(state, question.value),
-            question_notes.length > 0 ? h("hr", {}) : null,
-            ...question_notes.map((note) => noteView(state, note)),
+          h("pre", { class: "teacher" }, [
+            ...markup(state, teacher.value),
+            teacher_notes.length > 0 ? h("hr", {}) : null,
+            ...teacher_notes.map((note) => noteView(state, note)),
           ]),
           h("pre", { class: "index" }, text(index + 1)),
-          h("pre", { class: "answer" }, [
-            ...markup(state, answer.value),
-            answer_notes.length > 0 ? h("hr", {}) : null,
-            ...answer_notes.map((note) => noteView(state, note)),
+          h("pre", { class: "student" }, [
+            ...markup(state, student.value),
+            student_notes.length > 0 ? h("hr", {}) : null,
+            ...student_notes.map((note) => noteView(state, note)),
           ]),
         ]),
     ],

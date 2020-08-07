@@ -1,5 +1,5 @@
-- it should be <teacher> and <student> -- instead of <question> and <answer>.
-- should we use <dialog>?
+- (state, data, props)
+- <dialog> as component -- (state, data, props)
 # control flow -- pure linear
 - `jump`, `call` and `branch` as special frames (contents)
   - outside the frames, keep the tree structure of the documents.

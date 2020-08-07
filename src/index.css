@@ -69,7 +69,7 @@ pre {
   flex-wrap: nowrap;
 }
 
-.dialog .question {
+.dialog .teacher {
   flex: 50%;
   padding: 1em;
 }
@@ -80,7 +80,7 @@ pre {
   padding: 1em;
 }
 
-.dialog .answer {
+.dialog .student {
   flex: 50%;
   padding: 1em;
 }
