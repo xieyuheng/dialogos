@@ -2,6 +2,8 @@ import { h, text, app } from "hyperapp"
 import li, { p, v } from "@the-little-books/little"
 import Cookies from "js-cookie"
 import { dialog } from "./dialog"
+import { card } from "./card"
+import { comment } from "./comment"
 import "./index.css"
 
 // -- EFFECTS & SUBSCRIPTIONS --
@@ -238,28 +240,8 @@ const frameView = (state, data, index) =>
 const frameContent = (state, data, index) =>
   li.match(data, [
     ...dialog(index),
-    [
-      p("card", [p("title", v("title")), v("content")]),
-      ({ vars: { title, content } }) =>
-        h("div", { class: "card" }, [
-          h("h3", { class: "card-title" }, text(title.value)),
-          h("pre", {}, text(content.value)),
-        ]),
-    ],
-    [
-      p("comment", [p("title", v("title")), v("content")]),
-      ({ vars: { title, content } }) =>
-        h("div", { class: "comment" }, [
-          h("h3", { class: "comment-title" }, text(title.value)),
-          h("br", {}),
-          h("pre", {}, text(content.value)),
-        ]),
-    ],
-    [
-      p("comment", [v("content")]),
-      ({ vars: { title, content } }) =>
-        h("div", { class: "comment" }, [h("pre", {}, text(content.value))]),
-    ],
+    ...card(),
+    ...comment(),
     ["default", null],
   ])
 

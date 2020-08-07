@@ -62,19 +62,3 @@ pre {
   right: 0.3em;
   bottom: 0.3em;
 }
-
-.card {
-  text-align: center;
-  padding: 1em;
-  margin-left: 4em;
-  margin-right: 4em;
-  margin-top: 2em;
-  margin-bottom: 2em;
-  border: thick double;
-}
-
-.comment {
-  margin: 1em;
-  padding: 1em;
-  border-left: thin dashed;
-}

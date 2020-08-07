@@ -1,5 +1,4 @@
-- <card> as component
-- <comment> as component
+- use function clause in `li.match`
 # control flow -- pure linear
 - `jump`, `call` and `branch` as special frames (contents)
   - outside the frames, keep the tree structure of the documents.
