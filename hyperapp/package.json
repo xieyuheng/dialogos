@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "webpack --mode=production",
+    "build": "npx tsc",
+    "watch": "npx tsc --watch",
+    "start": "./bin/little.js book books/the-little-typer.xml",
+    "web-build": "webpack --mode=production",
     "serve": "webpack-dev-server"
   },
   "dependencies": {
