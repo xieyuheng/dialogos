@@ -1,10 +1,12 @@
 <script>
+  import Card from "./Card.svelte"
   export let title;
 </script>
 
 <main>
   <h1>The Little Books</h1>
   <h2>{title}</h2>
+  <!-- <Card></Card> -->
 </main>
 
 <style>

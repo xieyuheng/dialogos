@@ -1,8 +1,18 @@
 <script>
-  export let card;
+  import li, { p, v } from "@the-little-books/little"
+  export let data
+
+  $: result = li.match(data, [
+    [
+      p("card", [p("title", v("title")), v("content")]),
+      ({ vars: { title, content } }) => ({ title, content })
+    ],
+  ])
 </script>
 
-<div>
+<div class="card">
+  <h3 class="card-title">{result.title.value}</h3>
+  <pre>{result.content.value}</pre>
 </div>
 
 <style>
