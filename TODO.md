@@ -1,4 +1,6 @@
-- [svelte] Dialog
+- [svelte] Frame
+- [svelte] Chapter
+- move hyperapp to dustbin
 - make components preview-able.
 - storyteller -- to preview components.
 - use docker to deploy frontend.
