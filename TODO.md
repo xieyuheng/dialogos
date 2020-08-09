@@ -1,4 +1,4 @@
-- use typescript.
+- [svelte] Dialog
 - make components preview-able.
 - storyteller -- to preview components.
 - use docker to deploy frontend.

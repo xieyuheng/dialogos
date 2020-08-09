@@ -4,15 +4,19 @@
   export let data
 
   $: result =
-    li.match(p("card", [p("title", v("title")), v("content")]), data)
+    li.match(p("comment", [p("title", v("title")), v("content")]), data) ||
+    li.match(p("comment", [v("content")]), data)
 
   $: title = result && result.vars.title.value
   $: content = result && result.vars.content.value
 </script>
 
 {#if result}
-  <div class="card">
-    <h3 class="card-title">{title}</h3>
+  <div class="comment">
+    {#if title}
+      <h3 class="comment-title">{title}</h3>
+      <br/>
+    {/if}
     <pre>{content}</pre>
   </div>
 {/if}
@@ -20,13 +24,9 @@
 <style>
   @import "./base.css";
 
-  .card {
-    text-align: center;
+  .comment {
+    margin: 1em;
     padding: 1em;
-    margin-left: 4em;
-    margin-right: 4em;
-    margin-top: 2em;
-    margin-bottom: 2em;
-    border: thick double;
+    border-left: thin dashed;
   }
 </style>
