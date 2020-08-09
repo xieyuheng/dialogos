@@ -1,12 +1,11 @@
 <script>
   import li from "@the-little-books/little"
-  import Dialog from "./Dialog.svelte"
-  import Card from "./Card.svelte"
-  import Comment from "./Comment.svelte"
+  import Frame from "./Frame.svelte"
 
   export let title
 
-  const dialog = li.Node.parse_element(`
+  const frames = [
+    li.Node.parse_element(`
 <dialog>
 <teacher>
 Sentences such as
@@ -22,29 +21,30 @@ Thanks, Per Martin-Löf (1942-).
 What is the point of a judgment?
 </student>
 </dialog>
-  `)
+    `),
 
-  const card = li.Node.parse_element(`
+    li.Node.parse_element(`
 <card kind="law">
 <title>The Law of Tick Marks</title>
 A tick mark directly followed by one or more letters and hyphens is an Atom.
 </card>
-  `)
+    `),
 
-  const comment = li.Node.parse_element(`
+    li.Node.parse_element(`
 <comment topic="didactics">
 <title>The Didactics of forwarding engaging examples</title>
 
 To introduce a new concept, first give many engaging examples.
 </comment>
-  `)
-
+    `)
+  ]
 </script>
 
 <h2>{title}</h2>
-<Dialog data={dialog} index={110}></Dialog>
-<Card data={card}></Card>
-<Comment data={comment}></Comment>
+
+{#each frames as data, index}
+  <Frame {data} {index} />
+{/each}
 
 <style>
   @import "./base.css";

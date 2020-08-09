@@ -50,8 +50,6 @@ pre {
 
 .frame {
   position: relative;
-  padding-left: 2em;
-  padding-right: 2em;
   border-top: thin solid;
   border-bottom: thin solid;
 }

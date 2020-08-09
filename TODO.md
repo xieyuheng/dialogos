@@ -1,4 +1,3 @@
-- [svelte] Frame
 - [svelte] Chapter
 - move hyperapp to dustbin
 - make components preview-able.
