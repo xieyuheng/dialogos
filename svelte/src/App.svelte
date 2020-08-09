@@ -45,7 +45,3 @@ To introduce a new concept, first give many engaging examples.
 {#each frames as data, index}
   <Frame {data} {index} />
 {/each}
-
-<style>
-  @import "./base.css";
-</style>

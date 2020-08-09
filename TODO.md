@@ -1,4 +1,5 @@
-- [svelte] Chapter
+- [svelte] Chapter -- SSR?
+- [svelte] Book
 - move hyperapp to dustbin
 - make components preview-able.
 - storyteller -- to preview components.
