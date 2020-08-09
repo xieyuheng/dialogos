@@ -161,7 +161,7 @@ const NextFrame = (state) => [
 // -- VIEWS ---
 
 const bookView = (state, data) =>
-  li.match(data, [
+  li.cases(data, [
     [
       p("book"),
       (_) => h("div", {}, [frontCover(state, data), chapterList(state, data)]),
@@ -177,7 +177,7 @@ const bookView = (state, data) =>
   ])
 
 const frontCover = (state, data) =>
-  li.match(data, [
+  li.cases(data, [
     [
       p(
         "book",
@@ -197,7 +197,7 @@ const frontCover = (state, data) =>
   ])
 
 const chapterList = (state, data) =>
-  li.match(data, [
+  li.cases(data, [
     [
       p("book", [v("_info"), v("_preface")], { tail: "chapters" }),
       ({ tails: { chapters } }) =>
@@ -214,7 +214,7 @@ const chapterList = (state, data) =>
   ])
 
 const chapterView = (state, data, index) =>
-  li.match(data, [
+  li.cases(data, [
     [
       p("chapter", p("title", v("title")), { tail: "frames" }),
       ({ vars: { title }, tails: { frames } }) =>
@@ -238,7 +238,7 @@ const frameView = (state, data, index) =>
   ])
 
 const frameContent = (state, data, index) =>
-  li.match(data, [dialog(index), card, comment, ["default", null]])
+  li.cases(data, [dialog(index), card, comment, ["default", null]])
 
 const frameControl = (state, data, index) =>
   h("div", { class: "frame-control" }, [

@@ -3,7 +3,7 @@ import li, { p, v } from "@the-little-books/little"
 import "./dialog.css"
 
 export const dialog = (index) => (data) =>
-  li.match(data, [
+  li.cases(data, [
     [
       p("dialog", [
         p("teacher", [v("teacher")], { tail: "teacher_notes" }),
@@ -45,7 +45,7 @@ const markup = (str) => {
 }
 
 const noteView = (data) =>
-  li.match(data, [
+  li.cases(data, [
     [
       p("note", [v("content")]),
       ({ vars: { content } }) =>

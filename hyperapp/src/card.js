@@ -3,7 +3,7 @@ import li, { p, v } from "@the-little-books/little"
 import "./card.css"
 
 export const card = (data) =>
-  li.match(data, [
+  li.cases(data, [
     [
       p("card", [p("title", v("title")), v("content")]),
       ({ vars: { title, content } }) =>

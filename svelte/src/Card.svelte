@@ -1,21 +1,21 @@
 <script>
   import li, { p, v } from "@the-little-books/little"
+
   export let data
 
-  $: result = li.match(data, [
-    [
-      p("card", [p("title", v("title")), v("content")]),
-      ({ vars: { title, content } }) => ({ title, content })
-    ],
-  ])
+  $: result = li.match(p("card", [p("title", v("title")), v("content")]), data)
 </script>
 
-<div class="card">
-  <h3 class="card-title">{result.title.value}</h3>
-  <pre>{result.content.value}</pre>
-</div>
+{#if result}
+  <div class="card">
+    <h3 class="card-title">{result.vars.title.value}</h3>
+    <pre>{result.vars.content.value}</pre>
+  </div>
+{/if}
 
 <style>
+  /* @import "./base.css"; */
+
   .card {
     text-align: center;
     padding: 1em;

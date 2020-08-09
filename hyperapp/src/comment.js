@@ -3,7 +3,7 @@ import li, { p, v } from "@the-little-books/little"
 import "./comment.css"
 
 export const comment = (data) =>
-  li.match(data, [
+  li.cases(data, [
     [
       p("comment", [p("title", v("title")), v("content")]),
       ({ vars: { title, content } }) =>
