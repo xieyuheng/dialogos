@@ -10,11 +10,11 @@ module.exports = {
     index: ["./src/index.js"],
   },
   resolve: {
-    alias: {
-      svelte: path.resolve("node_modules", "svelte"),
-    },
-    extensions: [".mjs", ".js", ".svelte"],
-    mainFields: ["svelte", "browser", "module", "main"],
+    // alias: {
+    //   svelte: path.resolve("node_modules", "svelte"),
+    // },
+    extensions: [".js", ".svelte"],
+    // mainFields: ["svelte", "browser", "module", "main"],
   },
   output: {
     filename: "[name].bundle.js",
@@ -33,12 +33,12 @@ module.exports = {
         },
       },
       {
+        /**
+         * MiniCssExtractPlugin doesn't support HMR.
+         * For developing, use 'style-loader' instead.
+         * */
         test: /\.css$/,
         use: [
-          /**
-           * MiniCssExtractPlugin doesn't support HMR.
-           * For developing, use 'style-loader' instead.
-           * */
           prod ? MiniCssExtractPlugin.loader : "style-loader",
           "css-loader",
         ],
@@ -61,7 +61,7 @@ module.exports = {
       template: "templates/index.html",
       chunks: ["index"],
       title: "The Little Books",
-    })
+    }),
   ],
   devtool: prod ? false : "source-map",
 }

@@ -14,7 +14,7 @@
 {/if}
 
 <style>
-  /* @import "./base.css"; */
+  @import "./base.css";
 
   .card {
     text-align: center;
