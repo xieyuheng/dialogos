@@ -16,6 +16,7 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "@the-little-books/little": "0.0.4",
     "sirv-cli": "^1.0.0"
   }
 }

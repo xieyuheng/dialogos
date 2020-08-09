@@ -1,10 +1,10 @@
 <script>
-  export let name;
+  export let title;
 </script>
 
 <main>
-  <h1>Hello {name}!</h1>
-  <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+  <h1>The Little Books</h1>
+  <h2>{title}</h2>
 </main>
 
 <style>

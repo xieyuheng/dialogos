@@ -1,0 +1,18 @@
+<script>
+  export let card;
+</script>
+
+<div>
+</div>
+
+<style>
+  .card {
+    text-align: center;
+    padding: 1em;
+    margin-left: 4em;
+    margin-right: 4em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border: thick double;
+  }
+</style>
