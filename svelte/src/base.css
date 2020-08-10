@@ -47,16 +47,3 @@ pre {
   border-top: thin solid;
   border-bottom: thin solid;
 }
-
-.frame {
-  position: relative;
-  border-top: thin solid;
-  border-bottom: thin solid;
-}
-
-.frame-control {
-  background: grey;
-  position: absolute;
-  right: 0.3em;
-  bottom: 0.3em;
-}
