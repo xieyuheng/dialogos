@@ -1,0 +1,62 @@
+* {
+  font-family: "Sarasa Mono SC", "Noto Mono", "Monaco", monospace;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+.error {
+  padding: 1em;
+}
+
+.parsererror {
+  padding: 1em;
+}
+
+.usage {
+  padding: 1em;
+}
+
+pre {
+  white-space: pre-wrap;
+}
+
+.front-cover {
+  height: 100vh;
+}
+
+.book-title {
+  text-align: center;
+  padding: 1em;
+}
+
+.book-authors {
+  text-align: center;
+  padding: 1em;
+}
+
+.book-date {
+  text-align: center;
+  padding: 1em;
+}
+
+.chapter-title {
+  text-align: center;
+  padding-top: 3em;
+  padding-bottom: 3em;
+  border-top: thin solid;
+  border-bottom: thin solid;
+}
+
+.frame {
+  position: relative;
+  border-top: thin solid;
+  border-bottom: thin solid;
+}
+
+.frame-control {
+  background: grey;
+  position: absolute;
+  right: 0.3em;
+  bottom: 0.3em;
+}
