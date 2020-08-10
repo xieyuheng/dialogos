@@ -1,6 +1,3 @@
-- [svelte] Chapter -- SSR?
-- [svelte] Book
-- move hyperapp to dustbin
 - make components preview-able.
 - storyteller -- to preview components.
 - use docker to deploy frontend.
