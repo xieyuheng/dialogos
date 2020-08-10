@@ -10,15 +10,15 @@
     "serve": "webpack-dev-server"
   },
   "dependencies": {
-    "@the-little-books/little": "0.0.5",
+    "@the-little-books/little": "0.0.6",
     "hyperapp": "^2.0.8",
     "js-cookie": "^2.2.1"
   },
   "devDependencies": {
-    "css-loader": "^4.0.0",
+    "css-loader": "^4.2.1",
     "html-webpack-plugin": "^4.3.0",
     "style-loader": "^1.2.1",
-    "webpack": "^4.44.0",
+    "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   }

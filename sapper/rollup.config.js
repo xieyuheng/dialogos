@@ -1,4 +1,5 @@
 import resolve from "@rollup/plugin-node-resolve"
+import nodePolyfills from "rollup-plugin-node-polyfills"
 import replace from "@rollup/plugin-replace"
 import commonjs from "@rollup/plugin-commonjs"
 import svelte from "rollup-plugin-svelte"
@@ -13,8 +14,7 @@ const legacy = !!process.env.SAPPER_LEGACY_BUILD
 
 const onwarn = (warning, onwarn) =>
   (warning.code === "MISSING_EXPORT" && /'preload'/.test(warning.message)) ||
-  (warning.code === "CIRCULAR_DEPENDENCY" &&
-    /[/\\]@sapper[/\\]/.test(warning.message)) ||
+  warning.code === "CIRCULAR_DEPENDENCY" ||
   onwarn(warning)
 
 export default {
@@ -36,6 +36,7 @@ export default {
         dedupe: ["svelte"],
       }),
       commonjs(),
+      nodePolyfills(),
 
       legacy &&
         babel({
