@@ -10,6 +10,7 @@
 </script>
 
 {#if result}
+  <!-- prettier-ignore -->
   <pre class="note"> <span class="note-name">{name}</span> {content}</pre>
 {/if}
 

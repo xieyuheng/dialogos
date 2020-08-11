@@ -42,11 +42,10 @@ A tick mark directly followed by one or more letters and hyphens is an Atom.
 To introduce a new concept, first give many engaging examples.
 </comment>
   `)
-
 </script>
 
 <svelte:head>
   <title>Chapter: {chapter}</title>
 </svelte:head>
 
-<Frame data={frames[index]} {index} />
+<Frame data="{frames[index]}" {index} />
