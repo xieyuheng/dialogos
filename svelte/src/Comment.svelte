@@ -15,7 +15,7 @@
   <div class="comment">
     {#if title}
       <h3 class="comment-title">{title}</h3>
-      <br/>
+      <br />
     {/if}
     <pre>{content}</pre>
   </div>

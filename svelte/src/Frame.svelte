@@ -8,11 +8,11 @@
 </script>
 
 <div class="frame">
-  {#if data.tag === "dialog"}
+  {#if data.tag === 'dialog'}
     <Dialog {data} {index} />
-  {:else if data.tag === "card"}
+  {:else if data.tag === 'card'}
     <Card {data} {index} />
-  {:else if data.tag === "comment"}
+  {:else if data.tag === 'comment'}
     <Comment {data} {index} />
   {/if}
 </div>

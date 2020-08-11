@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "scripts": {
     "build": "webpack --mode=production",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "format": "npx prettier src --write --plugin-search-dir=."
   },
   "devDependencies": {
     "css-loader": "^4.2.1",
     "html-webpack-plugin": "^4.3.0",
     "http-server": "^0.12.3",
     "mini-css-extract-plugin": "^0.10.0",
+    "prettier": "^2.0.5",
+    "prettier-plugin-svelte": "^1.1.0",
     "style-loader": "^1.2.1",
     "svelte": "^3.24.1",
     "svelte-loader": "2.13.6",

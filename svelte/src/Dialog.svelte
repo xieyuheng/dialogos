@@ -5,11 +5,13 @@
   export let data
   export let index
 
-  $: result =
-    li.match(p("dialog", [
+  $: result = li.match(
+    p("dialog", [
       p("teacher", [v("teacher")], { tail: "teacher_notes" }),
       p("student", [v("student")], { tail: "student_notes" }),
-    ]), data)
+    ]),
+    data
+  )
 
   $: teacher = result && result.vars.teacher.value
   $: student = result && result.vars.student.value
@@ -21,11 +23,7 @@
 
     if (result !== null) {
       const [_target, prev, name, rest] = result
-      return [
-        prev,
-        `<span class="note-name">${name}</span>`,
-        ...markup(rest),
-      ]
+      return [prev, `<span class="note-name">${name}</span>`, ...markup(rest)]
     } else {
       return [str]
     }
@@ -35,21 +33,25 @@
 {#if result}
   <div class="dialog">
     <div class="teacher">
-      <pre>{@html markup(teacher).join("")}</pre>
+      <pre>
+        {@html markup(teacher).join('')}
+      </pre>
       {#if teacher_notes.length > 0}
-        <hr/>
+        <hr />
         {#each teacher_notes as note}
-          <Note data={note}></Note>
+          <Note data="{note}" />
         {/each}
       {/if}
     </div>
     <div class="index">{index + 1}</div>
     <div class="student">
-      <pre>{@html markup(student).join("")}</pre>
+      <pre>
+        {@html markup(student).join('')}
+      </pre>
       {#if student_notes.length > 0}
-        <hr/>
+        <hr />
         {#each student_notes as note}
-          <Note data={note}></Note>
+          <Note data="{note}" />
         {/each}
       {/if}
     </div>

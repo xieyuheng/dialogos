@@ -38,11 +38,11 @@ A tick mark directly followed by one or more letters and hyphens is an Atom.
 
 To introduce a new concept, first give many engaging examples.
 </comment>
-    `)
+    `),
   ]
 </script>
 
-<Router url="{url}">
+<Router {url}>
   <nav>
     <Link to="frame/0">0</Link>
     <Link to="frame/1">1</Link>
@@ -50,7 +50,7 @@ To introduce a new concept, first give many engaging examples.
   </nav>
   <div>
     <Route path="frame/:id" let:params>
-      <Frame data={frames[params.id]} index={params.id} />
+      <Frame data="{frames[params.id]}" index="{params.id}" />
     </Route>
   </div>
 </Router>

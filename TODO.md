@@ -1,4 +1,4 @@
-- use rollup docs.
+- [sapper]
 - [maybe] [for learning] back to vue use prop to pass xml data.
 - make components preview-able.
 - storyteller -- to preview components.

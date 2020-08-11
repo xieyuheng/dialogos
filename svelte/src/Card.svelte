@@ -3,8 +3,7 @@
 
   export let data
 
-  $: result =
-    li.match(p("card", [p("title", v("title")), v("content")]), data)
+  $: result = li.match(p("card", [p("title", v("title")), v("content")]), data)
 
   $: title = result && result.vars.title.value
   $: content = result && result.vars.content.value
