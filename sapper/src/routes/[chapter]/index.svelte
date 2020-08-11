@@ -1,13 +1,20 @@
+<script context="module">
+  export async function preload({ host, path, params, query }) {
+    const { chapter } = params
+    return { chapter, host, path }
+  }
+</script>
+
 <script>
   import li from "@the-little-books/little"
-  import { Router, Link, Route } from "svelte-routing"
-  import Frame from "./Frame.svelte"
+  import Frame from "../../components/Frame.svelte"
 
+  export let chapter
   export let title
-  export let url = ""
 
-  const frames = [
-    li.Node.parse_element(`
+  const index = Number(chapter)
+
+  const frames = li.Node.parse_nodes(`
 <dialog>
 <teacher>
 Sentences such as
@@ -23,34 +30,23 @@ Thanks, Per Martin-Löf (1942-).
 What is the point of a judgment?
 </student>
 </dialog>
-    `),
 
-    li.Node.parse_element(`
 <card kind="law">
 <title>The Law of Tick Marks</title>
 A tick mark directly followed by one or more letters and hyphens is an Atom.
 </card>
-    `),
 
-    li.Node.parse_element(`
 <comment topic="didactics">
 <title>The Didactics of forwarding engaging examples</title>
 
 To introduce a new concept, first give many engaging examples.
 </comment>
-    `),
-  ]
+  `)
+
 </script>
 
-<Router {url}>
-  <nav>
-    <Link to="frame/0">0</Link>
-    <Link to="frame/1">1</Link>
-    <Link to="frame/2">2</Link>
-  </nav>
-  <div>
-    <Route path="frame/:id" let:params>
-      <Frame data="{frames[params.id]}" index="{params.id}" />
-    </Route>
-  </div>
-</Router>
+<svelte:head>
+  <title>Chapter: {chapter}</title>
+</svelte:head>
+
+<Frame data={frames[index]} {index} />

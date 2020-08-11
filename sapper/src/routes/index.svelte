@@ -1,7 +1,7 @@
 <script>
   import li from "@the-little-books/little"
 
-  const node = li.Node.parse_element(
+  const node = li.Node.parse_nodes(
     `<div class="frame"><p>abc</p><p>123</p></div>`
   )
 </script>
