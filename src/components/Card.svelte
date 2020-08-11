@@ -17,7 +17,16 @@
 {/if}
 
 <style>
-  @import "./base.css";
+  * {
+    font-family: "Sarasa Mono SC", "Noto Mono", "Monaco", monospace;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+  }
+
+  pre {
+    white-space: pre-wrap;
+  }
 
   .card {
     text-align: center;
