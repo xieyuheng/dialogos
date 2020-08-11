@@ -2,6 +2,5 @@
   <title>About</title>
 </svelte:head>
 
-<h1>About this site</h1>
-
-<p>This is the 'about' page. There's not much here.</p>
+<p>An online dialectic teaching system.</p>
+<p>Inspired by Socrates, George Pólya and Dan Friedman's little books.</p>
