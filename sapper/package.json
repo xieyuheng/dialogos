@@ -1,5 +1,5 @@
 {
-  "name": "TODO",
+  "name": "the-little-books",
   "description": "TODO",
   "version": "0.0.1",
   "scripts": {
@@ -7,7 +7,7 @@
     "build": "sapper build --legacy",
     "export": "sapper export --legacy",
     "start": "node __sapper__/build",
-    "format": "npx prettier src --write --plugin-search-dir=."
+    "format": "prettier src --write"
   },
   "dependencies": {
     "@the-little-books/little": "0.0.6",

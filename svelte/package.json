@@ -4,7 +4,7 @@
   "scripts": {
     "build": "webpack --mode=production",
     "dev": "webpack-dev-server",
-    "format": "npx prettier src --write --plugin-search-dir=."
+    "format": "prettier src --write"
   },
   "devDependencies": {
     "css-loader": "^4.2.1",
