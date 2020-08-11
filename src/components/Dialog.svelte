@@ -59,17 +59,6 @@
 {/if}
 
 <style>
-  * {
-    font-family: "Sarasa Mono SC", "Noto Mono", "Monaco", monospace;
-    line-height: 1.5;
-    margin: 0;
-    padding: 0;
-  }
-
-  pre {
-    white-space: pre-wrap;
-  }
-
   .dialog {
     display: flex;
     flex-direction: row;

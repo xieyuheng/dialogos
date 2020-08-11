@@ -18,27 +18,16 @@
 </div>
 
 <style>
-  * {
-    font-family: "Sarasa Mono SC", "Noto Mono", "Monaco", monospace;
-    line-height: 1.5;
-    margin: 0;
-    padding: 0;
-  }
-
-  pre {
-    white-space: pre-wrap;
-  }
-
   .frame {
     position: relative;
     border-top: thin solid;
     border-bottom: thin solid;
   }
 
-  .frame-control {
-    background: grey;
-    position: absolute;
-    right: 0.3em;
-    bottom: 0.3em;
-  }
+  /* .frame-control {
+     background: grey;
+     position: absolute;
+     right: 0.3em;
+     bottom: 0.3em;
+     } */
 </style>

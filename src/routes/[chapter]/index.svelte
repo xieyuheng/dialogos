@@ -10,7 +10,6 @@
   import Frame from "../../components/Frame.svelte"
 
   export let chapter
-  export let title
 
   const index = Number(chapter)
 

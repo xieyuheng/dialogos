@@ -1,14 +1,3 @@
-* {
-  font-family: "Sarasa Mono SC", "Noto Mono", "Monaco", monospace;
-  line-height: 1.5;
-  margin: 0;
-  padding: 0;
-}
-
-pre {
-  white-space: pre-wrap;
-}
-
 .error {
   padding: 1em;
 }
@@ -19,10 +8,6 @@ pre {
 
 .usage {
   padding: 1em;
-}
-
-pre {
-  white-space: pre-wrap;
 }
 
 .front-cover {
