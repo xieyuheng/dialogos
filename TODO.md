@@ -1,4 +1,3 @@
-- [maybe] [for learning] back to vue use prop to pass xml data.
 - make components preview-able.
 - storyteller -- to preview components.
 - use docker to deploy frontend.
