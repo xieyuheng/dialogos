@@ -1,3 +1,4 @@
+- fix css.
 - make components preview-able.
 - storyteller -- to preview components.
 - use docker to deploy frontend.
