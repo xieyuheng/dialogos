@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@rollup/plugin-json": "^4.1.0",
-    "@the-little-books/little": "^0.0.8",
+    "@the-little-books/little": "^0.1.0",
     "compression": "^1.7.4",
     "express": "^4.17.1"
   },

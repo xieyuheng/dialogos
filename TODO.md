@@ -1,17 +1,22 @@
-- use the server side to serve book json from xml
-
-  - instead of appending a book server in url.
 - fix docker file.
+- fix heroku file.
 - book as page.
   - chapter as page.
   - control flow -- pure linear
     - `jump`, `call` and `branch` as special frames (contents)
+- per frame schema.
 - make components preview-able.
 - storyteller -- to preview components.
 - use docker to deploy frontend.
 # navigation
 - table of contents, jump to chapters.
 - handle last frame specially.
+# content
+- finish chapter 1
+# 教学法调查报告。
+- 考虑 little book 与所实现的语言之间的关系，
+  little book 好像在于给每部分实现代码写测试用例。
+  - 并且用到了某个解释范式。
 # dialog & im-app ux
 - make the dialog looks like im apps.
 - less padding and margin for thin screen.
