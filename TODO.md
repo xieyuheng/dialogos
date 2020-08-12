@@ -1,4 +1,6 @@
+- use `express` to serve `static/` -- instead of `sirv`
 - use the server side -- instead of appending a book server in url.
+- remove `routes/blog/`
 - book as page.
   - chapter as page.
   - control flow -- pure linear

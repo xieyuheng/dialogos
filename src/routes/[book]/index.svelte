@@ -1,7 +1,7 @@
 <script context="module">
   export async function preload({ host, path, params, query }) {
-    const { chapter } = params
-    return { chapter, host, path }
+    const { book } = params
+    return { book, host, path }
   }
 </script>
 
@@ -9,9 +9,9 @@
   import li from "@the-little-books/little"
   import Frame from "../../components/Frame.svelte"
 
-  export let chapter
+  export let book
 
-  const index = Number(chapter)
+  const index = Number(book)
 
   const frames = li.Node.parse_nodes(`
 <dialog>
@@ -44,7 +44,7 @@ To introduce a new concept, first give many engaging examples.
 </script>
 
 <svelte:head>
-  <title>Chapter: {chapter}</title>
+  <title>Book: {book}</title>
 </svelte:head>
 
 <Frame data="{frames[index]}" {index} />
