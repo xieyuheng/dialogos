@@ -2,20 +2,29 @@
   import Dialog from "./Dialog.svelte"
   import Card from "./Card.svelte"
   import Comment from "./Comment.svelte"
+  import ChapterStart from "./ChapterStart.svelte"
 
   export let data
   export let index
 </script>
 
-<div class="frame">
-  {#if data.tag === 'dialog'}
+{#if data.tag === 'dialog'}
+  <div class="frame">
     <Dialog {data} {index} />
-  {:else if data.tag === 'card'}
+  </div>
+{:else if data.tag === 'card'}
+  <div class="frame">
     <Card {data} {index} />
-  {:else if data.tag === 'comment'}
+  </div>
+{:else if data.tag === 'comment'}
+  <div class="frame">
     <Comment {data} {index} />
-  {/if}
-</div>
+  </div>
+{:else if data.tag === 'chapter-start'}
+  <div class="frame">
+    <ChapterStart {data} {index} />
+  </div>
+{/if}
 
 <style>
   .frame {
@@ -23,11 +32,4 @@
     border-top: thin solid;
     border-bottom: thin solid;
   }
-
-  /* .frame-control {
-     background: grey;
-     position: absolute;
-     right: 0.3em;
-     bottom: 0.3em;
-     } */
 </style>

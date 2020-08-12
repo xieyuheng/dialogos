@@ -1,13 +1,11 @@
-- fix docker file.
-- fix heroku file.
-- book as page.
-  - chapter as page.
-  - control flow -- pure linear
-    - `jump`, `call` and `branch` as special frames (contents)
+- control flow -- pure linear
+  - `jump`, `call` and `branch` as special frames (contents)
+  - module system
 - per frame schema.
 - make components preview-able.
 - storyteller -- to preview components.
-- use docker to deploy frontend.
+- fix docker file.
+- fix heroku file.
 # navigation
 - table of contents, jump to chapters.
 - handle last frame specially.
