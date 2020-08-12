@@ -1,7 +1,7 @@
 <script context="module">
   export async function preload({ host, path, params, query }) {
     const { book } = params
-    return { book, host, path }
+    return { book }
   }
 </script>
 

@@ -1,4 +1,7 @@
-- use the server side -- instead of appending a book server in url.
+- use the server side to serve book json from xml
+
+  - instead of appending a book server in url.
+- fix docker file.
 - book as page.
   - chapter as page.
   - control flow -- pure linear
