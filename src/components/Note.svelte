@@ -6,7 +6,7 @@
   $: result = li.match(p("note", v("content")), data)
 
   $: name = result && data.attributes.name
-  $: content = result && result.vars.content.value
+  $: content = result?.vars.content.value
 </script>
 
 {#if result}
