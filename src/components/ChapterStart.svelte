@@ -3,17 +3,15 @@
 
   export let data
 
-  $: result =
-    li.match(p("chapter-start", p("title", v("title"))), data)
+  $: result = li.match(p("chapter-start", p("title", v("title"))), data)
+  $: vars = result.vars
 
-  $: title = result?.vars.title.value
+  $: title = vars.title.value
 </script>
 
-{#if result}
-  <div class="chapter-start">
-    <h2 class="chapter-title">{title}</h2>
-  </div>
-{/if}
+<div class="chapter-start">
+  <h2 class="chapter-title">{title}</h2>
+</div>
 
 <style>
   .chapter-title {

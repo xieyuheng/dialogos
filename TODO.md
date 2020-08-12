@@ -1,6 +1,7 @@
 - control flow -- pure linear
   - `jump`, `call` and `branch` as special frames (contents)
   - module system
+- handle frame parsing error in a general way.
 - per frame schema.
 - make components preview-able.
 - storyteller -- to preview components.

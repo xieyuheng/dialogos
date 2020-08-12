@@ -4,17 +4,16 @@
   export let data
 
   $: result = li.match(p("card", [p("title", v("title")), v("content")]), data)
+  $: vars = result.vars
 
-  $: title = result?.vars.title.value
-  $: content = result?.vars.content.value
+  $: title = vars.title.value
+  $: content = vars.content.value
 </script>
 
-{#if result}
-  <div class="card">
-    <h3 class="card-title">{title}</h3>
-    <pre>{content}</pre>
-  </div>
-{/if}
+<div class="card">
+  <h3 class="card-title">{title}</h3>
+  <pre>{content}</pre>
+</div>
 
 <style>
   .card {

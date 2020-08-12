@@ -6,20 +6,19 @@
   $: result =
     li.match(p("comment", [p("title", v("title")), v("content")]), data) ||
     li.match(p("comment", [v("content")]), data)
+  $: vars = result.vars
 
-  $: title = result?.vars.title?.value
-  $: content = result?.vars.content.value
+  $: title = vars.title?.value
+  $: content = vars.content.value
 </script>
 
-{#if result}
-  <div class="comment">
-    {#if title}
-      <h3 class="comment-title">{title}</h3>
-      <br />
-    {/if}
-    <pre>{content}</pre>
-  </div>
-{/if}
+<div class="comment">
+  {#if title}
+    <h3 class="comment-title">{title}</h3>
+    <br />
+  {/if}
+  <pre>{content}</pre>
+</div>
 
 <style>
   .comment {

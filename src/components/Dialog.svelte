@@ -12,11 +12,13 @@
     ]),
     data
   )
+  $: vars = result.vars
+  $: tails = result.tails
 
-  $: teacher = result?.vars.teacher.value
-  $: student = result?.vars.student.value
-  $: teacher_notes = result?.tails.teacher_notes
-  $: student_notes = result?.tails.student_notes
+  $: teacher = vars.teacher.value
+  $: student = vars.student.value
+  $: teacher_notes = tails.teacher_notes
+  $: student_notes = tails.student_notes
 
   const markup = (str) => {
     const result = str.match(/^(.*?)\^\[(.*?)\](.*)/msu)
@@ -30,33 +32,31 @@
   }
 </script>
 
-{#if result}
-  <div class="dialog">
-    <div class="teacher">
-      <pre>
-        {@html markup(teacher).join('')}
-      </pre>
-      {#if teacher_notes.length > 0}
-        <hr />
-        {#each teacher_notes as note}
-          <Note data="{note}" />
-        {/each}
-      {/if}
-    </div>
-    <div class="index">{index + 1}</div>
-    <div class="student">
-      <pre>
-        {@html markup(student).join('')}
-      </pre>
-      {#if student_notes.length > 0}
-        <hr />
-        {#each student_notes as note}
-          <Note data="{note}" />
-        {/each}
-      {/if}
-    </div>
+<div class="dialog">
+  <div class="teacher">
+    <pre>
+      {@html markup(teacher).join('')}
+    </pre>
+    {#if teacher_notes.length > 0}
+      <hr />
+      {#each teacher_notes as note}
+        <Note data="{note}" />
+      {/each}
+    {/if}
   </div>
-{/if}
+  <div class="index">{index + 1}</div>
+  <div class="student">
+    <pre>
+      {@html markup(student).join('')}
+    </pre>
+    {#if student_notes.length > 0}
+      <hr />
+      {#each student_notes as note}
+        <Note data="{note}" />
+      {/each}
+    {/if}
+  </div>
+</div>
 
 <style>
   .dialog {

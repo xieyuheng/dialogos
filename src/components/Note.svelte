@@ -4,15 +4,14 @@
   export let data
 
   $: result = li.match(p("note", v("content")), data)
+  $: vars = result.vars
 
-  $: name = result && data.attributes.name
-  $: content = result?.vars.content.value
+  $: name = data.attributes.name
+  $: content = vars.content.value
 </script>
 
-{#if result}
-  <!-- prettier-ignore -->
-  <pre class="note"> <span class="note-name">{name}</span> {content}</pre>
-{/if}
+<!-- prettier-ignore -->
+<pre class="note"> <span class="note-name">{name}</span> {content}</pre>
 
 <style>
   .note {
