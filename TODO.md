@@ -1,9 +1,8 @@
-- use one server -- instead of appending a book server in url.
+- use the server side -- instead of appending a book server in url.
 - book as page.
   - chapter as page.
   - control flow -- pure linear
     - `jump`, `call` and `branch` as special frames (contents)
-      - outside the frames, keep the tree structure of the documents.
 - make components preview-able.
 - storyteller -- to preview components.
 - use docker to deploy frontend.
