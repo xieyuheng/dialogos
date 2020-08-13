@@ -4,10 +4,9 @@
   export let data
 
   $: result = li.match(p("card", [p("title", v("title")), v("content")]), data)
-  $: vars = result.vars
 
-  $: title = vars.title.value
-  $: content = vars.content.value
+  $: title = result.title.value
+  $: content = result.content.value
 </script>
 
 <div class="card">

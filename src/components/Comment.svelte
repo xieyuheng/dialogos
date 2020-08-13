@@ -6,10 +6,9 @@
   $: result =
     li.match(p("comment", [p("title", v("title")), v("content")]), data) ||
     li.match(p("comment", [v("content")]), data)
-  $: vars = result.vars
 
-  $: title = vars.title?.value
-  $: content = vars.content.value
+  $: title = result.title?.value
+  $: content = result.content.value
 </script>
 
 <div class="comment">

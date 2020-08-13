@@ -4,9 +4,8 @@
   export let data
 
   $: result = li.match(p("chapter-start", p("title", v("title"))), data)
-  $: vars = result.vars
 
-  $: title = vars.title.value
+  $: title = result.title.value
 </script>
 
 <div class="chapter-start">

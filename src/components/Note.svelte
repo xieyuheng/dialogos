@@ -4,10 +4,9 @@
   export let data
 
   $: result = li.match(p("note", v("content")), data)
-  $: vars = result.vars
 
   $: name = data.attributes.name
-  $: content = vars.content.value
+  $: content = result.content.value
 </script>
 
 <!-- prettier-ignore -->

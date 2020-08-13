@@ -1,4 +1,3 @@
-- no `vars` and `tails`, all in one.
 - one next button yields one frame.
 - scroll-snapping for frame: https://css-tricks.com/practical-css-scroll-snapping/
 - control flow -- pure linear

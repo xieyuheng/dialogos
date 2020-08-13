@@ -12,13 +12,11 @@
     ]),
     data
   )
-  $: vars = result.vars
-  $: tails = result.tails
 
-  $: teacher = vars.teacher.value
-  $: student = vars.student.value
-  $: teacher_notes = tails.teacher_notes
-  $: student_notes = tails.student_notes
+  $: teacher = result.teacher.value
+  $: student = result.student.value
+  $: teacher_notes = result.teacher_notes
+  $: student_notes = result.student_notes
 
   const markup = (str) => {
     const result = str.match(/^(.*?)\^\[(.*?)\](.*)/msu)
