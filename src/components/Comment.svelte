@@ -7,7 +7,7 @@
     li.match(p("comment", [p("title", v("title")), v("content")]), data) ||
     li.match(p("comment", [v("content")]), data)
 
-  $: title = result.title?.value
+  $: title = result.title && result.title.value
   $: content = result.content.value
 </script>
 
