@@ -15,6 +15,12 @@
 
   export let name
   export let frames
+
+  let current_index = 0
+
+  const next = () => {
+    current_index++
+  }
 </script>
 
 <svelte:head>
@@ -24,12 +30,14 @@
 <div class="book">
   <div class="frame-list">
     {#each frames as data, index}
-      <Frame {data} {index} />
+      {#if index <= current_index}
+        <Frame {data} {index} />
+      {/if}
     {/each}
   </div>
   <div class="user-input">
     <textarea class="text"></textarea>
-    <button class="next">NEXT</button>
+    <button class="next" on:click="{next}">NEXT</button>
   </div>
 </div>
 

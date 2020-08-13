@@ -1,5 +1,5 @@
-- one next button yields one frame.
-- scroll-snapping for frame: https://css-tricks.com/practical-css-scroll-snapping/
+- try a production build.
+- scroll-snapping for frame: https://css-tricks.com/practical-css-scroll-snapping
 - control flow -- pure linear
   - `jump`, `call` and `branch` as special frames (contents)
   - module system
