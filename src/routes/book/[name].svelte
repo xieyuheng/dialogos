@@ -31,7 +31,9 @@
   <div class="frame-list">
     {#each frames as data, index}
       {#if index <= current_index}
-        <Frame {data} {index} />
+        <div class="frame">
+          <Frame {data} {index} />
+        </div>
       {/if}
     {/each}
   </div>
@@ -44,15 +46,20 @@
 <style>
   .frame-list {
     position: fixed;
-    height: 93vh;
+    height: 93%;
     width: 100%;
     overflow-y: auto;
+    scroll-snap-type: y proximity;
+  }
+
+  .frame {
+    scroll-snap-align: end;
   }
 
   .user-input {
     position: fixed;
     bottom: 0;
-    height: 7vh;
+    height: 7%;
     width: 100%;
     border-top: thin solid;
     display: flex;
