@@ -11,11 +11,11 @@
   let container
 
   onMount(() => {
-    container.scrollIntoView()
+    container.scrollIntoView({ behavior: "smooth" })
   })
 </script>
 
-<div bind:this={container}>
+<div bind:this="{container}">
   {#if data.tag === 'dialog'}
     <div class="frame">
       <Dialog {data} {index} />

@@ -1,6 +1,6 @@
 {
   "name": "the-little-books",
-  "description": "TODO",
+  "description": "An online dialectic teaching system, inspired by Socrates, George Pólya and Dan Friedman's little books.",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",

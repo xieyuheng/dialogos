@@ -1,4 +1,3 @@
-- try a production build.
 - scroll-snapping for frame: https://css-tricks.com/practical-css-scroll-snapping
 - control flow -- pure linear
   - `jump`, `call` and `branch` as special frames (contents)
@@ -8,7 +7,6 @@
 - per frame schema.
 - make components preview-able.
 - storyteller -- to preview components.
-- fix docker file.
 - fix heroku file.
 # navigation
 - table of contents, jump to chapters.

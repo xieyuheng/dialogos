@@ -1,6 +1,6 @@
 # The Little Books
 
-Web app to create little books.
+An online dialectic teaching system, inspired by Socrates, George Pólya and Dan Friedman's little books.
 
 ## Community
 
