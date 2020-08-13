@@ -6,5 +6,5 @@
 
 <p>
   An online dialectic teaching system,
-  inspired by Socrates, George Pólya and Dan Friedman's little books.
+  inspired by Socrates, George Pólya and Dan Friedman.
 </p>
