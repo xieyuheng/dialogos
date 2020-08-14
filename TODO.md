@@ -1,3 +1,4 @@
+- handle `<input-node>`
 - add delay or transition to NEXT button.
 - ws and filewatcher.
 - per frame schema.
