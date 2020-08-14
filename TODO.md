@@ -1,10 +1,3 @@
-- forth-like VM.
-- control flow -- pure linear.
-  - `<jump>`
-  - `<call>`
-  - `<match> <case>`
-  - `<choice> <option>`
-- module system.
 - ws and filewatcher.
 - per frame schema.
 # error handling
