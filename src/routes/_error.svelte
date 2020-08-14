@@ -13,6 +13,8 @@
 
 <p>{error.message}</p>
 
+<hr/>
+
 {#if dev && error.stack}
   <pre>{error.stack}</pre>
 {/if}
