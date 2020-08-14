@@ -44,6 +44,7 @@
   const onok = async () => {
     if (ok_lock) return
     const t = setTimeout(() => {
+      // TODO log something.
       ok_lock = false
     }, 10000)
     ok_lock = true
