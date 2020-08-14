@@ -1,10 +1,8 @@
 <script context="module">
   export async function preload({ params }) {
     const { name } = params
-
     const res = await this.fetch(`data/${name}`)
     const nodes = await res.json()
-
     return { name, nodes }
   }
 </script>
