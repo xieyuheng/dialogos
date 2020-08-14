@@ -28,7 +28,13 @@
   const next = async () => {
     // TODO handle `Env.next` error.
     const node = await li.Env.next(env)
-    frames = [...frames, node]
+    if (node.kind === "Node.Element" && node.tag === "input-node") {
+      // TODO take input node from user.
+      li.Env.push_node(env, node)
+      console.log(env)
+    } else {
+      frames = [...frames, node]
+    }
   }
 
   onMount(() => {
