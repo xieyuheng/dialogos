@@ -26,13 +26,9 @@
   let frames = []
 
   const next = async () => {
-    try {
-      const node = await li.Env.next(env)
-      frames = [...frames, node]
-    } catch (error) {
-      // TODO handle `Env.next` error.
-      console.log(error)
-    }
+    // TODO handle `Env.next` error.
+    const node = await li.Env.next(env)
+    frames = [...frames, node]
   }
 
   onMount(() => {
