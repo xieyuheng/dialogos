@@ -5,7 +5,7 @@
   import ChapterStart from "./ChapterStart.svelte"
   import { onMount } from "svelte"
 
-  export let data
+  export let node
   export let index
 
   let container
@@ -16,21 +16,21 @@
 </script>
 
 <div bind:this="{container}">
-  {#if data.tag === 'dialog'}
+  {#if node.tag === 'dialog'}
     <div class="frame">
-      <Dialog {data} {index} />
+      <Dialog {node} {index} />
     </div>
-  {:else if data.tag === 'card'}
+  {:else if node.tag === 'card'}
     <div class="frame">
-      <Card {data} {index} />
+      <Card {node} {index} />
     </div>
-  {:else if data.tag === 'comment'}
+  {:else if node.tag === 'comment'}
     <div class="frame">
-      <Comment {data} {index} />
+      <Comment {node} {index} />
     </div>
-  {:else if data.tag === 'chapter-start'}
+  {:else if node.tag === 'chapter-start'}
     <div class="frame">
-      <ChapterStart {data} {index} />
+      <ChapterStart {node} {index} />
     </div>
   {/if}
 </div>

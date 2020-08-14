@@ -1,9 +1,9 @@
 <script>
   import li, { p, v } from "@the-little-books/little"
 
-  export let data
+  export let node
 
-  $: result = li.match(p("card", [p("title", v("title")), v("content")]), data)
+  $: result = li.match(p("card", [p("title", v("title")), v("content")]), node)
 
   $: title = result.title.value
   $: content = result.content.value

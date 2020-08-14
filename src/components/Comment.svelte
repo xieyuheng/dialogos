@@ -1,11 +1,11 @@
 <script>
   import li, { p, v } from "@the-little-books/little"
 
-  export let data
+  export let node
 
   $: result =
-    li.match(p("comment", [p("title", v("title")), v("content")]), data) ||
-    li.match(p("comment", [v("content")]), data)
+    li.match(p("comment", [p("title", v("title")), v("content")]), node) ||
+    li.match(p("comment", [v("content")]), node)
 
   $: title = result.title && result.title.value
   $: content = result.content.value

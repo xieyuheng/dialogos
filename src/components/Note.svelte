@@ -1,11 +1,11 @@
 <script>
   import li, { p, v } from "@the-little-books/little"
 
-  export let data
+  export let node
 
-  $: result = li.match(p("note", v("content")), data)
+  $: result = li.match(p("note", v("content")), node)
 
-  $: name = data.attributes.name
+  $: name = node.attributes.name
   $: content = result.content.value
 </script>
 

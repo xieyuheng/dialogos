@@ -3,9 +3,9 @@
     const { name } = params
 
     const res = await this.fetch(`data/${name}`)
-    const frames = await res.json()
+    const nodes = await res.json()
 
-    return { name, frames }
+    return { name, nodes }
   }
 </script>
 
@@ -14,7 +14,9 @@
   import Frame from "../../components/Frame.svelte"
 
   export let name
-  export let frames
+  export let nodes
+
+  const env = li.Env.init(name, nodes)
 
   let current_index = 0
 
@@ -29,10 +31,10 @@
 
 <div class="book">
   <div class="frame-list">
-    {#each frames as data, index}
+    {#each nodes as node, index}
       {#if index <= current_index}
         <div class="frame">
-          <Frame {data} {index} />
+          <Frame {node} {index} />
         </div>
       {/if}
     {/each}

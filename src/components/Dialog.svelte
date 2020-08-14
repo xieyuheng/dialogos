@@ -2,7 +2,7 @@
   import li, { p, v } from "@the-little-books/little"
   import Note from "./Note.svelte"
 
-  export let data
+  export let node
   export let index
 
   $: result = li.match(
@@ -10,7 +10,7 @@
       p("teacher", [v("teacher")], { tail: "teacher_notes" }),
       p("student", [v("student")], { tail: "student_notes" }),
     ]),
-    data
+    node
   )
 
   $: teacher = result.teacher.value
@@ -38,7 +38,7 @@
     {#if teacher_notes.length > 0}
       <hr />
       {#each teacher_notes as note}
-        <Note data="{note}" />
+        <Note node="{note}" />
       {/each}
     {/if}
   </div>
@@ -50,7 +50,7 @@
     {#if student_notes.length > 0}
       <hr />
       {#each student_notes as note}
-        <Note data="{note}" />
+        <Note node="{note}" />
       {/each}
     {/if}
   </div>
