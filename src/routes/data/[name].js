@@ -1,9 +1,10 @@
 import * as db from "../../db"
 
 export async function get(req, res, next) {
-  const { name } = req.params
+  const { params, query } = req
+  const module = query.module || "index"
 
-  const data = await db.get(name)
+  const data = await db.get(params.name, module)
 
   if (data !== null) {
     res.setHeader("Content-Type", "application/json")

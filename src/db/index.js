@@ -3,7 +3,7 @@ import process from "process"
 import path from "path"
 import fs from "fs"
 
-export async function get(name) {
+export async function get(name, module) {
   if (!process.env.BOOKS) {
     throw new Error(
       li.ut.aline(`
@@ -15,7 +15,7 @@ export async function get(name) {
         |`)
     )
   }
-  const file = path.resolve(process.env.BOOKS, name, "index.xml")
+  const file = path.resolve(process.env.BOOKS, name, `${module}.xml`)
   const text = await fs.promises.readFile(file, "utf-8")
   return li.Node.parse_nodes(text)
 }
