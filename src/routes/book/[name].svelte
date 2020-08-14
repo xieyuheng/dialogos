@@ -12,17 +12,29 @@
 <script>
   import li from "@the-little-books/little"
   import Frame from "../../components/Frame.svelte"
+  import { onMount } from "svelte"
 
   export let name
   export let nodes
 
-  const env = li.Env.init(name, nodes)
-
-  let current_index = 0
-
-  const next = () => {
-    current_index++
+  const loader = async (name, module) => {
+    const res = await fetch(`data/${name}?module=${module}`)
+    const nodes = await res.json()
+    return nodes
   }
+
+  const env = li.Env.init(name, nodes, loader)
+
+  let frames = []
+
+  const next = async () => {
+    const node = await li.Env.next(env)
+    frames = [...frames, node]
+  }
+
+  onMount(() => {
+    next()
+  })
 </script>
 
 <svelte:head>
@@ -31,12 +43,10 @@
 
 <div class="book">
   <div class="frame-list">
-    {#each nodes as node, index}
-      {#if index <= current_index}
-        <div class="frame">
-          <Frame {node} {index} />
-        </div>
-      {/if}
+    {#each frames as node, index}
+      <div class="frame">
+        <Frame {node} {index} />
+      </div>
     {/each}
   </div>
   <div class="user-input">
