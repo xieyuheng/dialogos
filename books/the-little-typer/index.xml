@@ -2,6 +2,8 @@
 <title>1. The More Things Change, the More They Stay the Same</title>
 </chapter-start>
 
+<call module="developer-s-note"></call>
+
 <dialog>
 <teacher>
 Welcome back!
@@ -533,3 +535,5 @@ TODO
 page:9
 frame:31
 </comment>
+
+<jump module="index"></jump>

@@ -5,6 +5,6 @@
 <h1>The Little Books</h1>
 
 <p>
-  An online dialectic teaching system,
-  inspired by Socrates, George Pólya and Dan Friedman.
+  An online dialectic teaching system, inspired by Socrates, George Pólya and
+  Dan Friedman.
 </p>
