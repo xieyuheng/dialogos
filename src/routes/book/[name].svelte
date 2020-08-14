@@ -41,20 +41,25 @@
 
   let ok
 
-
-
   const onok = () => {
     next()
-    const too_fast = () => {
-      console.log("You are clicking the ok button too fast! ⛷")
-      console.log("~~~ Hold on for fifth a second. ~~~")
-    }
-    ok.removeEventListener("click", onok)
-    ok.addEventListener("click", too_fast)
-    setTimeout(() => {
-      ok.removeEventListener("click", too_fast)
-      ok.addEventListener("click", onok)
-    }, 1000/5)
+    button_trun_off(ok, onok)
+    setTimeout(() => button_trun_on(ok, onok), 1000/5)
+  }
+
+  const button_trun_on = (button, onclick) => {
+    button.removeEventListener("click", clicking_too_fast)
+    button.addEventListener("click", onclick)
+  }
+
+  const button_trun_off = (button, onclick) => {
+    button.removeEventListener("click", onclick)
+    button.addEventListener("click", clicking_too_fast)
+  }
+
+  const clicking_too_fast = () => {
+    console.log("You are clicking the button too fast! ⛷")
+    console.log("~~~ Hold on for fifth a second. ~~~")
   }
 
   onMount(() => {
