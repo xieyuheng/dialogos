@@ -16,6 +16,7 @@
   export let name
   export let nodes
 
+  let frames = []
   let text = ""
 
   const loader = async (name, module) => {
@@ -25,8 +26,6 @@
   }
 
   const env = li.Env.init(name, nodes, loader)
-
-  let frames = []
 
   const next = async () => {
     // TODO handle `Env.next` error.
@@ -41,10 +40,12 @@
 
   let ok
 
+  const ok_icon = "⯆"
+
   const onok = () => {
     next()
     button_trun_off(ok, onok)
-    setTimeout(() => button_trun_on(ok, onok), 1000/5)
+    setTimeout(() => button_trun_on(ok, onok), 1000 / 5)
   }
 
   const button_trun_on = (button, onclick) => {
@@ -81,7 +82,7 @@
   </div>
   <div class="reader-input">
     <textarea class="text" bind:value="{text}"></textarea>
-    <button class="ok" bind:this="{ok}" on:click="{onok}">⯆</button>
+    <button class="ok" bind:this="{ok}" on:click="{onok}">{ok_icon}</button>
   </div>
 </div>
 
