@@ -11,9 +11,12 @@
   import li from "@the-little-books/little"
   import Frame from "../../components/Frame.svelte"
   import { onMount } from "svelte"
+  import { fade, fly } from "svelte/transition"
 
   export let name
   export let nodes
+
+  let text = ""
 
   const loader = async (name, module) => {
     const res = await fetch(`data/${name}?module=${module}`)
@@ -29,12 +32,29 @@
     // TODO handle `Env.next` error.
     const node = await li.Env.next(env)
     if (node.kind === "Node.Element" && node.tag === "input-node") {
-      // TODO take input node from user.
+      // TODO take input node from reader.
       li.Env.push_node(env, node)
-      console.log(env)
     } else {
       frames = [...frames, node]
     }
+  }
+
+  let ok
+
+
+
+  const onok = () => {
+    next()
+    const too_fast = () => {
+      console.log("You are clicking the ok button too fast! ⛷")
+      console.log("~~~ Hold on for fifth a second. ~~~")
+    }
+    ok.removeEventListener("click", onok)
+    ok.addEventListener("click", too_fast)
+    setTimeout(() => {
+      ok.removeEventListener("click", too_fast)
+      ok.addEventListener("click", onok)
+    }, 1000/5)
   }
 
   onMount(() => {
@@ -49,14 +69,14 @@
 <div class="book">
   <div class="frame-list">
     {#each frames as node, index}
-      <div class="frame">
+      <div class="frame" transition:fly|local>
         <Frame {node} {index} />
       </div>
     {/each}
   </div>
-  <div class="user-input">
-    <textarea class="text"></textarea>
-    <button class="next" on:click="{next}">NEXT</button>
+  <div class="reader-input">
+    <textarea class="text" bind:value="{text}"></textarea>
+    <button class="ok" bind:this="{ok}" on:click="{onok}">⯆</button>
   </div>
 </div>
 
@@ -73,7 +93,7 @@
     scroll-snap-align: end;
   }
 
-  .user-input {
+  .reader-input {
     position: fixed;
     bottom: 0;
     height: 7%;
@@ -84,10 +104,11 @@
     flex-wrap: nowrap;
   }
 
-  .user-input .text {
-    flex: 90%;
+  .reader-input .text {
+    flex: 95%;
   }
 
-  .user-input .next {
+  .reader-input .ok {
+    flex: 5%;
   }
 </style>

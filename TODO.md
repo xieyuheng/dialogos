@@ -1,5 +1,12 @@
-- handle `<input-node>`
-- add delay or transition to NEXT button.
+- let reader input comment in normal-mode.
+
+  - css for normal-mode reader comment.
+
+- handle `<input-node>` in input-mode.
+
+  - let reader type a node in plaintext and parse it to node.
+
+- css for input-mode <textarea>.
 - ws and filewatcher.
 - per frame schema.
 # error handling

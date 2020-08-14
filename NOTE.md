@@ -11,3 +11,7 @@
       而得到：xml -> json -> json -> view 的数据流
 - 这样我们就能有 semantic web，因为我们可以自定义 tag。
   并且 content 与 view 是 完全分离的。
+
+# design
+
+- unicode arrow reference https://en.wikipedia.org/wiki/Arrow_(symbol)
