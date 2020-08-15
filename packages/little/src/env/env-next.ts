@@ -25,10 +25,13 @@ export async function next(env: Env.Env): Promise<Node.Node> {
     })
     return await next(env)
   } else if (node.kind === "Node.Element" && node.tag === "match") {
-    for (const cs of node.contains) {
-      // TODO
+    for (const case_node of node.contents) {
+      if (node.kind === "Node.Element" && node.tag === "match") {
+        // TODO
+        // const pattern =
+      }
     }
-    throw new Error("TODO")
+    throw new Error("Mismatch.")
   } else {
     if (index + 1 < nodes.length) {
       // NOTE proper tail call
