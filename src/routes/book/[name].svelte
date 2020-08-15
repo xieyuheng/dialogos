@@ -19,6 +19,7 @@
 
   let frames = []
   let text = ""
+  let mode = "normal"
 
   const loader = async (name, module) => {
     const res = await fetch(`data/${name}?module=${module}`)
@@ -28,28 +29,58 @@
 
   const env = li.Env.init(name, nodes, loader)
 
-  const next = async () => {
-    // TODO handle `Env.next` error.
-    const node = await li.Env.next(env)
-    if (node.kind === "Node.Element" && node.tag === "input-node") {
-      // TODO take input node from reader.
-      li.Env.push_node(env, node)
-    } else {
-      frames = [...frames, node]
-    }
+  const stepers = {
+    normal: async () => {
+      // TODO handle `Env.next` error.
+      const node = await li.Env.next(env)
+      if (node.kind === "Node.Element") {
+        if (node.tag === "input-node") {
+          mode = "input"
+        } else {
+          frames = [...frames, node]
+        }
+      } else {
+        // NOTE plaintext comment in document.
+        console.log(node.value)
+        await step()
+      }
+    },
+    input: async () => {
+      if (text.replace(/\s/g, "").length !== 0) {
+        const nodes = li.Node.parse_nodes(text)
+        // NOTE only use the first node.
+        const [ node ] = nodes
+        env.node_stack.push(node)
+        text = ""
+        mode = "normal"
+        await step()
+      } else {
+        // TODO message something in the mini-buffer.
+        console.log("The input buffer is empty.")
+      }
+    },
   }
 
-  let ok; let ok_icon = "⯆"
+  const step = async () => {
+    const steper = stepers[mode]
+    await steper()
+  }
+
+  let ok
+
+  const ok_icons = {
+    normal: "⮟",
+    input: "⮜",
+  }
+
   const onok = ut.click_handler({
-    onclick: next,
-    ontimeout: () => {
-      console.log("The ok button fail to respond in time!")
+    onclick: async () => {
+      await step()
     },
-    timeout: 1000,
   })
 
-  onMount(() => {
-    next()
+  onMount(async () => {
+    await step()
   })
 </script>
 
@@ -67,7 +98,9 @@
   </div>
   <div class="reader-input">
     <textarea class="text" bind:value="{text}"></textarea>
-    <button class="ok" bind:this="{ok}" on:click="{onok}">{ok_icon}</button>
+    <button class="ok" bind:this="{ok}" on:click="{onok}">
+      {ok_icons[mode]}
+    </button>
   </div>
 </div>
 
@@ -101,5 +134,6 @@
 
   .reader-input .ok {
     flex: 5%;
+    min-width: 40px;
   }
 </style>

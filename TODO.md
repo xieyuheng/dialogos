@@ -1,11 +1,8 @@
+- be able to <match>.
 - let reader input comment in normal-mode.
-
-  - css for normal-mode reader comment.
-
-- handle `<input-node>` in input-mode.
-
-  - let reader type a node in plaintext and parse it to node.
-
+- css for normal-mode reader comment.
+- echo reader input of <input-node> in the frame list.
+- mini-buffer -- to provide realtime feedback to user.
 - css for input-mode <textarea>.
 - ws and filewatcher.
 - per frame schema.
