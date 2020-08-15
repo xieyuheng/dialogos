@@ -1,0 +1,13 @@
+# typescript
+lib
+
+# web
+dist
+
+# npm
+node_modules
+
+# emacs
+*~
+*#*
+.#*

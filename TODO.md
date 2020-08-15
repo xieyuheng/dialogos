@@ -6,6 +6,13 @@
 - css for input-mode <textarea>.
 - ws and filewatcher.
 - per frame schema.
+# little
+- `Pattern.from_node`
+- `<match> <case></case> ... </match>`
+  - if no case match, we might need to jump back.
+    we can handle this by low level syntax <jump>,
+- hand written xml lexer.
+  - build xml Node from token by a stack machine.
 # error handling
 - handle frame parsing error in a general way.
 # layout

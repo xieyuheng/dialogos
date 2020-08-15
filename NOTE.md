@@ -16,3 +16,10 @@
 
 - Unicode arrow reference: https://en.wikipedia.org/wiki/Arrow_(symbol)
 - Emoji reference: https://en.wikipedia.org/wiki/Emoji
+
+## Schema
+
+References:
+- https://en.wikipedia.org/wiki/RELAX_NG
+- https://relaxng.org/compact-tutorial.html
+- https://relaxng.org/compact.html
