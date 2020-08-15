@@ -10,6 +10,7 @@
 <script>
   import li from "@the-little-books/little"
   import Frame from "../../components/Frame.svelte"
+  import * as ut from "../../ut"
   import { onMount } from "svelte"
   import { fade, fly } from "svelte/transition"
 
@@ -38,20 +39,14 @@
     }
   }
 
-  let ok
-  let ok_lock = false
-  let ok_icon = "⯆"
-  const onok = async () => {
-    if (ok_lock) return
-    const t = setTimeout(() => {
-      // TODO log something.
-      ok_lock = false
-    }, 10000)
-    ok_lock = true
-    await next()
-    ok_lock = false
-    clearTimeout(t)
-  }
+  let ok; let ok_icon = "⯆"
+  const onok = ut.click_handler({
+    onclick: next,
+    ontimeout: () => {
+      console.log("The ok button fail to respond in time!")
+    },
+    timeout: 1000,
+  })
 
   onMount(() => {
     next()
