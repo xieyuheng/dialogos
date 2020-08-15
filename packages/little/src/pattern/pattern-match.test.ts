@@ -1,5 +1,5 @@
 import * as Pattern from "../pattern"
-import { p, v, regex } from "./pattern-api"
+import { p, v, lv, end, regex } from "./pattern-api"
 import * as Node from "../node"
 import { h, text } from "../node/node-api"
 import * as ut from "../ut"
@@ -18,7 +18,7 @@ ut.assert_equal(
 
 ut.assert_equal(
   Pattern.match(
-    p("frame", p("teacher", v("x"), { end: true })),
+    p("frame", p("teacher", [v("x"), end])),
     h("frame", {}, h("teacher", {}, [text("a"), text("b")]))
   ),
   null
@@ -34,7 +34,7 @@ ut.assert_equal(
 
 ut.assert_equal(
   Pattern.match(
-    p("frame", p("teacher", v("x"), { tail: "t" })),
+    p("frame", p("teacher", [v("x"), lv("t")])),
     h("frame", {}, h("teacher", {}, [text("a"), text("b"), text("c")]))
   ),
   { x: text("a"), t: [text("b"), text("c")] }

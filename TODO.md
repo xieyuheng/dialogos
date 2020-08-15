@@ -1,4 +1,13 @@
-- be able to <match>.
+- `Pattern.from_node`
+  - example: `
+<dialog>
+<teacher>$teacher ...$teacher_notes</teacher>
+<student>$student ...$student_notes</student>
+</dialog>
+`
+- `<match> <case></case> ... </match>`
+  - if no case match, we might need to jump back.
+    we can handle this by low level syntax <jump>,
 - let reader input comment in normal-mode.
 - css for normal-mode reader comment.
 - echo reader input of <input-node> in the frame list.
@@ -7,10 +16,6 @@
 - ws and filewatcher.
 - per frame schema.
 # little
-- `Pattern.from_node`
-- `<match> <case></case> ... </match>`
-  - if no case match, we might need to jump back.
-    we can handle this by low level syntax <jump>,
 - hand written xml lexer.
   - build xml Node from token by a stack machine.
 # error handling

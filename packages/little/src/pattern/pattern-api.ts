@@ -10,19 +10,26 @@ export function v(name: string): Pattern.Var {
   }
 }
 
+export const end: Pattern.End = {
+  kind: "Pattern.End",
+}
+
+export function lv(name: string): Pattern.ListVar {
+  return {
+    kind: "Pattern.ListVar",
+    name,
+  }
+}
+
+
 export function p(
   tag: string,
-  ch: Pattern.Pattern | Array<Pattern.Pattern>,
-  opts: {
-    tail?: string
-    end?: boolean
-  } = {}
+  ch: Pattern.Pattern | Array<Pattern.Pattern>
 ): Pattern.Element {
   return {
     kind: "Pattern.Element",
     tag,
     contents: Array.isArray(ch) ? ch : ch == null ? [] : [ch],
-    opts,
   }
 }
 

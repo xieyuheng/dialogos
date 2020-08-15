@@ -1,5 +1,5 @@
 <script>
-  import li, { p, v } from "@the-little-books/little"
+  import li, { p, v, lv } from "@the-little-books/little"
   import Note from "./Note.svelte"
 
   export let node
@@ -7,8 +7,8 @@
 
   $: result = li.match(
     p("dialog", [
-      p("teacher", [v("teacher")], { tail: "teacher_notes" }),
-      p("student", [v("student")], { tail: "student_notes" }),
+      p("teacher", [v("teacher"), lv("teacher_notes")]),
+      p("student", [v("student"), lv("student_notes")]),
     ]),
     node
   )
