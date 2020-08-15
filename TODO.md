@@ -1,10 +1,3 @@
-- `Pattern.from_node`
-  - example: `
-<dialog>
-<teacher>$teacher ...$teacher_notes</teacher>
-<student>$student ...$student_notes</student>
-</dialog>
-`
 - `<match> <case></case> ... </match>`
   - if no case match, we might need to jump back.
     we can handle this by low level syntax <jump>,
