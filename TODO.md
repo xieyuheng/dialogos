@@ -1,13 +1,14 @@
-- <reader-comment> let reader input comment in normal-mode.
+- esc to exit reader-comment-mode.
+- grey `next` button.
+- green `send` button -- like wechat.
 - be able to use big <textarea> sometimes.
 - use `result` to subst pattern variables in body.
 - local variable in `ReturnEntry`.
 - ws and filewatcher.
 - per frame schema.
 # style
-- css for normal-mode reader comment.
-- css for input-mode <textarea>.
-  - tomato for `input-mode`
+- css for ReaderComment frame and <textarea>
+- css for ReaderInput frame and <textarea>
 # report on im products
 # little
 - hand written xml lexer.

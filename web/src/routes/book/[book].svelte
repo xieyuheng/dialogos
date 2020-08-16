@@ -8,7 +8,7 @@
 </script>
 
 <script>
-  import li, { h } from "@the-little-books/little"
+  import li, { h, text } from "@the-little-books/little"
   import Frame from "../../components/Frame.svelte"
   import * as ut from "../../ut"
   import { onMount } from "svelte"
@@ -22,28 +22,41 @@
   // -- LOCAL STATE --
 
   let frames = []
-  let text = ""
-  let mode = "normal"
-  let mini_buffer = ""
+  let mode = "normal-mode"
+  let input_text = ""
+  let mini_message = ""
 
   // -- DOM ELEMENT --
 
   let ok
+
   let ok_icons = {
-    normal: "⮟",
-    input: "⮜",
+    "normal-mode": "⮛",
+    "input-mode": "✉",
+    "reader-comment-mode": "✉",
   }
 
-  const onok = ut.click_handler({
+  let ok_click = ut.click_handler({
     onclick: async () => {
       await step()
     },
   })
 
   let status
+
   let status_icons = {
-    normal: "✯",
-    input: "✍",
+    "normal-mode": "✯",
+    "input-mode": "❓",
+    "reader-comment-mode": "✍",
+  }
+
+  let input_buffer
+
+  let input_buffer_focus = () => {
+    if (mode === "normal-mode") {
+      mini_message = "Entering reader-comment-mode from normal-mode."
+      mode = "reader-comment-mode"
+    }
   }
 
   // -- LIFE CYCLE --
@@ -67,10 +80,12 @@
 
   const step = async () => {
     switch (mode) {
-      case "normal":
+      case "normal-mode":
         return await step_normal()
-      case "input":
+      case "input-mode":
         return await step_input()
+      case "reader-comment-mode":
+        return await step_reader_comment()
     }
   }
 
@@ -78,11 +93,11 @@
     const node = await li.Env.next(env)
     if (node.kind === "Node.Element") {
       if (node.tag === "input-node") {
-        mode = "input"
-        mini_buffer = "Entering input-mode."
+        mode = "input-mode"
+        mini_message = "Entering input-mode."
       } else {
         frames = [...frames, node]
-        mini_buffer = ""
+        mini_message = ""
       }
     } else {
       // NOTE Top level text nodes are viewed as writer comment.
@@ -92,18 +107,31 @@
   }
 
   const step_input = async () => {
-    if (text.replace(/\s/g, "").length !== 0) {
-      const nodes = li.Node.parse_nodes(text)
+    if (ut.string_is_blank(input_text)) {
+      mini_message = "The input buffer is empty. You should enter your answer."
+    } else {
+      const nodes = li.Node.parse_nodes(input_text)
       // NOTE We only use the first node.
       const [node] = nodes
       env.node_stack.push(node)
       frames = [...frames, h("reader-input", {}, node)]
-      text = ""
-      mode = "normal"
-      mini_buffer = "Back to normal-mode from input-mode."
+      input_text = ""
+      mode = "normal-mode"
+      mini_message = "Back to normal-mode from input-mode."
       await step()
+    }
+  }
+
+  const step_reader_comment = async () => {
+    if (ut.string_is_blank(input_text)) {
+      mini_message = "No input text, go back to normal-mode from reader-comment-mode."
+      mode = "normal-mode"
+      input_text = ""
     } else {
-      mini_buffer = "The input buffer is empty. You should enter your answer."
+      mini_message = "Write down reader comment, and go back to normal-mode from reader-comment-mode."
+      mode = "normal-mode"
+      frames = [...frames, h("reader-comment", {}, text(input_text))]
+      input_text = ""
     }
   }
 </script>
@@ -122,14 +150,18 @@
   </div>
   <div class="reader-input">
     <button class="status" bind:this="{status}">
-      <abbr title="{mode}-mode">{status_icons[mode]}</abbr>
+      <abbr title="{mode}">{status_icons[mode]}</abbr>
     </button>
-    <textarea class="text" bind:value="{text}"></textarea>
-    <button class="ok" bind:this="{ok}" on:click="{onok}">
+    <textarea
+      class="buffer"
+      bind:this="{input_buffer}"
+      bind:value="{input_text}"
+      on:focus="{input_buffer_focus}"></textarea>
+    <button class="ok" bind:this="{ok}" on:click="{ok_click}">
       {ok_icons[mode]}
     </button>
   </div>
-  <pre class="mini-buffer">{mini_buffer}</pre>
+  <pre class="mini-buffer">{mini_message}</pre>
 </div>
 
 <style>
@@ -163,7 +195,7 @@
     cursor: help;
   }
 
-  .reader-input .text {
+  .reader-input .buffer {
     flex: 90%;
   }
 

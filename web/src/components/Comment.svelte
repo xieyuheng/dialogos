@@ -23,6 +23,6 @@
   .comment {
     margin: 1em;
     padding: 1em;
-    border-left: thin dashed;
+    border-left: 2px dashed black;
   }
 </style>

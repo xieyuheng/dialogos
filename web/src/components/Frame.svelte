@@ -4,6 +4,7 @@
   import Comment from "./Comment.svelte"
   import ChapterStart from "./ChapterStart.svelte"
   import ReaderInput from "./ReaderInput.svelte"
+  import ReaderComment from "./ReaderComment.svelte"
   import { onMount } from "svelte"
 
   export let node
@@ -36,6 +37,10 @@
   {:else if node.tag === 'reader-input'}
     <div class="frame">
       <ReaderInput {node} />
+    </div>
+  {:else if node.tag === 'reader-comment'}
+    <div class="frame">
+      <ReaderComment {node} />
     </div>
   {/if}
 </div>

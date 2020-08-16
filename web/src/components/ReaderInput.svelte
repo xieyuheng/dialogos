@@ -16,7 +16,6 @@
   .reader-input {
     margin: 1em;
     padding: 1em;
-    border-left: thin dashed;
-    border-color: tomato;
+    border-left: 2px dashed tomato;
   }
 </style>
