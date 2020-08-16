@@ -1,6 +1,9 @@
-- also handle default <case>.
+- factor next's branches.
+- <jump> to `label`.
+- handle default <case>.
   - if no case match, we might need to jump back.
     we can handle this by low level syntax <jump>,
+- use `result` to subst pattern variables in body.
 - echo reader input of <input-node> in the frame list.
 - let reader input comment in normal-mode.
 - css for normal-mode reader comment.
@@ -11,6 +14,8 @@
 # little
 - hand written xml lexer.
   - build xml Node from token by a stack machine.
+# test
+- use cypress to test control flow.
 # error handling
 - handle frame parsing error in a general way.
 # layout

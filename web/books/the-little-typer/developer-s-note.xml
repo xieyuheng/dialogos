@@ -1,35 +1,40 @@
 <comment>
-I developed a WebApp to create little books.
+  I developed a WebApp to create little books.
 </comment>
 
-la la la,
-la la la.
+We can write comment in between frames.
 
 <comment>
-And this is my report on "The Little Typer".
+  And this is my report on "The Little Typer".
 </comment>
 
 <comment>
-Would you like to start?
+  Would you like to start?
 </comment>
 
-<input-node></input-node>
+<input-node label="start"></input-node>
 
 <match>
-<case>
-Yes
-<comment>
-Ok let us start.
-</comment>
-</case>
-<case>
-No
-<comment>
-Really?
-</comment>
-<comment>
-Let us try again.
-</comment>
-<jump module="developer-s-note"></jump>
-</case>
+  <case> Yes
+    <comment>
+      Ok let us start.
+    </comment>
+  </case>
+
+  <case> No
+    <comment>
+      Really?
+    </comment>
+    <comment>
+      Let us try again.
+    </comment>
+    <jump module="developer-s-note"></jump>
+  </case>
+
+  <default>
+    <comment>
+      Invalid answer, please try again.
+    </comment>
+    <jump label="start"></jump>
+  </default>
 </match>

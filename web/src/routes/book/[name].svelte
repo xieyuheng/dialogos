@@ -50,6 +50,8 @@
         const nodes = li.Node.parse_nodes(text)
         // NOTE only use the first node.
         const [ node ] = nodes
+        // TODO log
+        // console.log(node)
         env.node_stack.push(node)
         text = ""
         mode = "normal"

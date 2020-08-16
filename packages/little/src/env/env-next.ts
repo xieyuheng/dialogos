@@ -2,6 +2,16 @@ import * as Env from "../env"
 import * as Node from "../node"
 import * as Pattern from "../pattern"
 
+function put_back_entry(env: Env.Env, entry: Env.ReturnEntry): Env.Env {
+  const { nodes, index } = entry
+  // NOTE Handle proper tail call.
+  // - put back entry unless at the tail of its nodes.
+  if (index + 1 < nodes.length) {
+      env.return_stack.push({ nodes, index: index + 1 })
+    }
+  return env
+}
+
 export async function next(env: Env.Env): Promise<Node.Node> {
   const entry = env.return_stack.pop()
   if (entry === undefined) {
@@ -16,10 +26,7 @@ export async function next(env: Env.Env): Promise<Node.Node> {
     })
     return await next(env)
   } else if (node.kind === "Node.Element" && node.tag === "call") {
-    if (index + 1 < nodes.length) {
-      // NOTE proper tail call
-      env.return_stack.push({ nodes, index: index + 1 })
-    }
+    put_back_entry(env, entry)
     env.return_stack.push({
       nodes: await env.loader(env.name, node.attributes.module),
       index: 0,
@@ -38,10 +45,8 @@ export async function next(env: Env.Env): Promise<Node.Node> {
         const body = case_node.contents.slice(1)
         const result = Pattern.match(pattern, top_node)
         if (result !== null) {
-          // TODO use result to subst pattern variables in body.
-          if (index + 1 < nodes.length) {
-            env.return_stack.push({ nodes, index: index + 1 })
-          }
+          // TODO use `result` to subst pattern variables in body.
+          put_back_entry(env, entry)
           env.return_stack.push({
             nodes: body,
             index: 0,
@@ -53,10 +58,7 @@ export async function next(env: Env.Env): Promise<Node.Node> {
     }
     throw new Error("Mismatch.")
   } else {
-    if (index + 1 < nodes.length) {
-      // NOTE proper tail call
-      env.return_stack.push({ nodes, index: index + 1 })
-    }
+    put_back_entry(env, entry)
     return node
   }
 }

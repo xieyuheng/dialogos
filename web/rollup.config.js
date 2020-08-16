@@ -91,6 +91,7 @@ export default {
         dedupe: ["svelte"],
       }),
       commonjs(),
+      json(),
     ],
     external: Object.keys(pkg.dependencies).concat(
       require("module").builtinModules
