@@ -7,10 +7,7 @@ function put_back_entry(env: Env.Env, entry: Env.ReturnEntry): Env.Env {
   // NOTE Handle proper tail call.
   // - put back entry unless at the tail of its nodes.
   if (index + 1 < nodes.length) {
-    env.return_stack.push({
-      ...entry,
-      index: index + 1,
-    })
+    env.return_stack.push({ ...entry, index: index + 1 })
   }
   return env
 }
@@ -39,16 +36,23 @@ export async function next(env: Env.Env): Promise<Node.Node> {
   }
 }
 
+function find_label_index(nodes: Array<Node.Node>, label: string): number {
+  return nodes.findIndex(
+    (node) => node.kind === "Node.Element" && node.attributes.label === label
+  )
+}
+
 async function next_jump(
   env: Env.Env,
   entry: Env.ReturnEntry,
   node: Node.Element
 ): Promise<Node.Node> {
-  env.return_stack.push({
-    module: node.attributes.module,
-    nodes: await env.loader(env.book, node.attributes.module),
-    index: 0,
-  })
+  const module = node.attributes.module || entry.module
+  const nodes = await env.loader(env.book, module)
+  const index = node.attributes.label
+    ? find_label_index(nodes, node.attributes.label)
+    : 0
+  env.return_stack.push({ module, nodes, index })
   return await next(env)
 }
 
@@ -76,19 +80,19 @@ async function next_match(
     if (case_node.kind === "Node.Element") {
       if (case_node.tag === "case") {
         const pattern = Pattern.from_node(case_node.contents[0])
-        const body = case_node.contents.slice(1)
         const result = Pattern.match(pattern, top_node)
         if (result !== null) {
           // TODO use `result` to subst pattern variables in body.
+          const body = case_node.contents.slice(1)
           put_back_entry(env, entry)
-          env.return_stack.push({
-            ...entry,
-            nodes: body,
-            index: 0,
-          })
+          env.return_stack.push({ ...entry, nodes: body, index: 0 })
           return await next(env)
         }
-        // TODO also handle default <case>
+      } else if (case_node.tag === "default") {
+        const body = case_node.contents
+        put_back_entry(env, entry)
+        env.return_stack.push({ ...entry, nodes: body, index: 0 })
+        return await next(env)
       }
     }
   }

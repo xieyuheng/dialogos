@@ -1,7 +1,3 @@
-- <jump> to `label`.
-- handle default <case>.
-  - if no case match, we might need to jump back.
-    we can handle this by low level syntax <jump>,
 - use `result` to subst pattern variables in body.
 - echo reader input of <input-node> in the frame list.
 - let reader input comment in normal-mode.
