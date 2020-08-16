@@ -1,4 +1,3 @@
-- esc to exit reader-comment-mode.
 - grey `next` button.
 - green `send` button -- like wechat.
 - be able to use big <textarea> sometimes.
