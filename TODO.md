@@ -1,12 +1,12 @@
 - let reader input comment in normal-mode.
 - css for normal-mode reader comment.
-- mini-buffer -- to provide realtime feedback to user.
 - double button for user input.
   - left for `mode`.
     - tomato for `input-mode`
   - right for `ok` and others.
 - css for input-mode <textarea>.
   - tomato for `input-mode`
+- option for big <textarea>.
 - use `result` to subst pattern variables in body.
 - ws and filewatcher.
 - per frame schema.
@@ -36,6 +36,7 @@
 - reader login.
 - session to record reading progress.
 - let reader answer first, then show the answer.
-- let reader make comments, and export new commented books.
+# export
+- export new commented books.
 # deploy
 - fix heroku file.

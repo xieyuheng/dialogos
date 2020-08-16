@@ -20,6 +20,7 @@
   let frames = []
   let text = ""
   let mode = "normal"
+  let mini_buffer = ""
 
   const loader = async (book, module) => {
     const res = await fetch(`data/${book}?module=${module}`)
@@ -36,8 +37,10 @@
       if (node.kind === "Node.Element") {
         if (node.tag === "input-node") {
           mode = "input"
+          mini_buffer = "Entering input-mode."
         } else {
           frames = [...frames, node]
+          mini_buffer = ""
         }
       } else {
         // NOTE plaintext comment in document.
@@ -49,40 +52,40 @@
       if (text.replace(/\s/g, "").length !== 0) {
         const nodes = li.Node.parse_nodes(text)
         // NOTE only use the first node.
-        const [ node ] = nodes
+        const [node] = nodes
         env.node_stack.push(node)
         frames = [...frames, h("echo", {}, node)]
-        text = ""
-        mode = "normal"
-        await step()
-      } else {
-        // TODO message something in the mini-buffer.
-        console.log("The input buffer is empty.")
-      }
-    },
-  }
+                                       text = ""
+                                       mode = "normal"
+                                       mini_buffer = "Back to normal-mode from input-mode."
+                                       await step()
+                                       } else {
+                                         mini_buffer = "The input buffer is empty. You should enter your answer."
+                                       }
+      },
+    }
 
-  const step = async () => {
-    const steper = stepers[mode]
-    await steper()
-  }
+          const step = async () => {
+            const steper = stepers[mode]
+            await steper()
+          }
 
-  let ok
+          let ok
 
-  const ok_icons = {
-    normal: "⮟",
-    input: "⮜",
-  }
+          const ok_icons = {
+            normal: "⮟",
+            input: "⮜",
+          }
 
-  const onok = ut.click_handler({
-    onclick: async () => {
-      await step()
-    },
-  })
+          const onok = ut.click_handler({
+            onclick: async () => {
+              await step()
+            },
+          })
 
-  onMount(async () => {
-    await step()
-  })
+          onMount(async () => {
+            await step()
+          })
 </script>
 
 <svelte:head>
@@ -103,12 +106,13 @@
       {ok_icons[mode]}
     </button>
   </div>
+  <pre class="mini-buffer">{mini_buffer}</pre>
 </div>
 
 <style>
   .frame-list {
     position: fixed;
-    height: 93%;
+    height: 90%;
     width: 100%;
     overflow-y: auto;
     scroll-snap-type: y proximity;
@@ -120,7 +124,7 @@
 
   .reader-input {
     position: fixed;
-    bottom: 0;
+    bottom: 3%;
     height: 7%;
     width: 100%;
     border-top: thin solid;
@@ -136,5 +140,19 @@
   .reader-input .ok {
     flex: 5%;
     min-width: 40px;
+  }
+
+  .mini-buffer {
+    position: fixed;
+    bottom: 0;
+    height: 3%;
+    font-size: 0.7em;
+    padding-left: 3px;
+    padding-right: 3px;
+    width: 100%;
+    border-top: thin solid;
+    border-color: black;
+    background: #eee;
+    color: #666;
   }
 </style>
