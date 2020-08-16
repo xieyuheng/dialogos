@@ -14,12 +14,14 @@
 
 # design
 
-- Unicode arrow reference: https://en.wikipedia.org/wiki/Arrow_(symbol)
-- Emoji reference: https://en.wikipedia.org/wiki/Emoji
+Unicode reference:
+- https://en.wikipedia.org/wiki/Arrow_(symbol)
+- https://en.wikipedia.org/wiki/Emoji
+- https://en.wikipedia.org/wiki/Dingbat
 
 ## Schema
 
-References:
+XML RELAX NG schema references:
 - https://en.wikipedia.org/wiki/RELAX_NG
 - https://relaxng.org/compact-tutorial.html
 - https://relaxng.org/compact.html
