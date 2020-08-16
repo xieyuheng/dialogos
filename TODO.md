@@ -3,8 +3,10 @@
 - mini-buffer -- to provide realtime feedback to user.
 - double button for user input.
   - left for `mode`.
+    - tomato for `input-mode`
   - right for `ok` and others.
 - css for input-mode <textarea>.
+  - tomato for `input-mode`
 - use `result` to subst pattern variables in body.
 - ws and filewatcher.
 - per frame schema.
