@@ -3,6 +3,7 @@
   import Card from "./Card.svelte"
   import Comment from "./Comment.svelte"
   import ChapterStart from "./ChapterStart.svelte"
+  import Echo from "./Echo.svelte"
   import { onMount } from "svelte"
 
   export let node
@@ -22,15 +23,19 @@
     </div>
   {:else if node.tag === 'card'}
     <div class="frame">
-      <Card {node} {index} />
+      <Card {node} />
     </div>
   {:else if node.tag === 'comment'}
     <div class="frame">
-      <Comment {node} {index} />
+      <Comment {node} />
     </div>
   {:else if node.tag === 'chapter-start'}
     <div class="frame">
-      <ChapterStart {node} {index} />
+      <ChapterStart {node} />
+    </div>
+  {:else if node.tag === 'echo'}
+    <div class="frame">
+      <Echo {node} />
     </div>
   {/if}
 </div>

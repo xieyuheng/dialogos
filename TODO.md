@@ -1,11 +1,14 @@
-- use `result` to subst pattern variables in body.
-- echo reader input of <input-node> in the frame list.
 - let reader input comment in normal-mode.
 - css for normal-mode reader comment.
 - mini-buffer -- to provide realtime feedback to user.
+- double button for user input.
+  - left for `mode`.
+  - right for `ok` and others.
 - css for input-mode <textarea>.
+- use `result` to subst pattern variables in body.
 - ws and filewatcher.
 - per frame schema.
+# report on im products
 # little
 - hand written xml lexer.
   - build xml Node from token by a stack machine.

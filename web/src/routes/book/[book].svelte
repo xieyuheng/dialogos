@@ -8,7 +8,7 @@
 </script>
 
 <script>
-  import li from "@the-little-books/little"
+  import li, { h } from "@the-little-books/little"
   import Frame from "../../components/Frame.svelte"
   import * as ut from "../../ut"
   import { onMount } from "svelte"
@@ -50,9 +50,8 @@
         const nodes = li.Node.parse_nodes(text)
         // NOTE only use the first node.
         const [ node ] = nodes
-        // TODO log
-        // console.log(node)
         env.node_stack.push(node)
+        frames = [...frames, h("echo", {}, node)]
         text = ""
         mode = "normal"
         await step()
