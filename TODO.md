@@ -1,15 +1,15 @@
-- let reader input comment in normal-mode.
-- css for normal-mode reader comment.
 - double button for user input.
   - left for `mode`.
-    - tomato for `input-mode`
   - right for `ok` and others.
-- css for input-mode <textarea>.
-  - tomato for `input-mode`
+- let reader input comment in normal-mode.
 - option for big <textarea>.
 - use `result` to subst pattern variables in body.
 - ws and filewatcher.
 - per frame schema.
+# style
+- css for normal-mode reader comment.
+- css for input-mode <textarea>.
+  - tomato for `input-mode`
 # report on im products
 # little
 - hand written xml lexer.
