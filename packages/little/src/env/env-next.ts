@@ -26,12 +26,27 @@ export async function next(env: Env.Env): Promise<Node.Node> {
     })
     return await next(env)
   } else if (node.kind === "Node.Element" && node.tag === "match") {
+    const top_node = env.node_stack.pop()
+    // NOTE better log.
+    // console.log("top_node:", top_node)
+    if (top_node === undefined) {
+      throw new Error("Empty env.node_stack.")
+    }
     for (const case_node of node.contents) {
       if (case_node.kind === "Node.Element" && case_node.tag === "case") {
         const pattern = Pattern.from_node(case_node.contents[0])
         const body = case_node.contents.slice(1)
-        const result = Pattern.match(pattern, node)
-        if (result) {
+        const result = Pattern.match(pattern, top_node)
+        if (result !== null) {
+          // TODO use result to subst pattern variables in body.
+          if (index + 1 < nodes.length) {
+            env.return_stack.push({ nodes, index: index + 1 })
+          }
+          env.return_stack.push({
+            nodes: body,
+            index: 0,
+          })
+          return await next(env)
         }
         // TODO also handle default <case>
       }

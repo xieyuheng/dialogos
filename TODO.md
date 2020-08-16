@@ -1,9 +1,9 @@
-- `<match> <case></case> ... </match>`
+- also handle default <case>.
   - if no case match, we might need to jump back.
     we can handle this by low level syntax <jump>,
+- echo reader input of <input-node> in the frame list.
 - let reader input comment in normal-mode.
 - css for normal-mode reader comment.
-- echo reader input of <input-node> in the frame list.
 - mini-buffer -- to provide realtime feedback to user.
 - css for input-mode <textarea>.
 - ws and filewatcher.

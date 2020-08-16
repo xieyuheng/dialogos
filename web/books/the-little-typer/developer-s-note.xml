@@ -9,4 +9,27 @@ la la la.
 And this is my report on "The Little Typer".
 </comment>
 
+<comment>
+Would you like to start?
+</comment>
+
 <input-node></input-node>
+
+<match>
+<case>
+Yes
+<comment>
+Ok let us start.
+</comment>
+</case>
+<case>
+No
+<comment>
+Really?
+</comment>
+<comment>
+Let us try again.
+</comment>
+<jump module="developer-s-note"></jump>
+</case>
+</match>
