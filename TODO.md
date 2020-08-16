@@ -1,4 +1,3 @@
-- factor next's branches.
 - <jump> to `label`.
 - handle default <case>.
   - if no case match, we might need to jump back.

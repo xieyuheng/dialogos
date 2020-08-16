@@ -7,8 +7,8 @@ function put_back_entry(env: Env.Env, entry: Env.ReturnEntry): Env.Env {
   // NOTE Handle proper tail call.
   // - put back entry unless at the tail of its nodes.
   if (index + 1 < nodes.length) {
-      env.return_stack.push({ nodes, index: index + 1 })
-    }
+    env.return_stack.push({ nodes, index: index + 1 })
+  }
   return env
 }
 
@@ -19,28 +19,58 @@ export async function next(env: Env.Env): Promise<Node.Node> {
   }
   const { nodes, index } = entry
   const node = nodes[index]
-  if (node.kind === "Node.Element" && node.tag === "jump") {
-    env.return_stack.push({
-      nodes: await env.loader(env.name, node.attributes.module),
-      index: 0,
-    })
-    return await next(env)
-  } else if (node.kind === "Node.Element" && node.tag === "call") {
-    put_back_entry(env, entry)
-    env.return_stack.push({
-      nodes: await env.loader(env.name, node.attributes.module),
-      index: 0,
-    })
-    return await next(env)
-  } else if (node.kind === "Node.Element" && node.tag === "match") {
-    const top_node = env.node_stack.pop()
-    // NOTE better log.
-    // console.log("top_node:", top_node)
-    if (top_node === undefined) {
-      throw new Error("Empty env.node_stack.")
+  if (node.kind === "Node.Element") {
+    if (node.tag === "jump") {
+      return await next_jump(env, entry, node)
+    } else if (node.tag === "call") {
+      return await next_call(env, entry, node)
+    } else if (node.tag === "match") {
+      return await next_match(env, entry, node)
+    } else {
+      put_back_entry(env, entry)
+      return node
     }
-    for (const case_node of node.contents) {
-      if (case_node.kind === "Node.Element" && case_node.tag === "case") {
+  } else {
+    put_back_entry(env, entry)
+    return node
+  }
+}
+
+async function next_jump(
+  env: Env.Env,
+  entry: Env.ReturnEntry,
+  node: Node.Element
+): Promise<Node.Node> {
+  env.return_stack.push({
+    nodes: await env.loader(env.name, node.attributes.module),
+    index: 0,
+  })
+  return await next(env)
+}
+
+async function next_call(
+  env: Env.Env,
+  entry: Env.ReturnEntry,
+  node: Node.Element
+): Promise<Node.Node> {
+  put_back_entry(env, entry)
+  return await next_jump(env, entry, node)
+}
+
+async function next_match(
+  env: Env.Env,
+  entry: Env.ReturnEntry,
+  node: Node.Element
+): Promise<Node.Node> {
+  const top_node = env.node_stack.pop()
+  // NOTE better log.
+  // console.log("top_node:", top_node)
+  if (top_node === undefined) {
+    throw new Error("Empty env.node_stack.")
+  }
+  for (const case_node of node.contents) {
+    if (case_node.kind === "Node.Element") {
+      if (case_node.tag === "case") {
         const pattern = Pattern.from_node(case_node.contents[0])
         const body = case_node.contents.slice(1)
         const result = Pattern.match(pattern, top_node)
@@ -56,9 +86,6 @@ export async function next(env: Env.Env): Promise<Node.Node> {
         // TODO also handle default <case>
       }
     }
-    throw new Error("Mismatch.")
-  } else {
-    put_back_entry(env, entry)
-    return node
   }
+  throw new Error("Mismatch.")
 }
