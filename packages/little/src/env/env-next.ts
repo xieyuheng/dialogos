@@ -1,5 +1,6 @@
 import * as Env from "../env"
 import * as Node from "../node"
+import * as Pattern from "../pattern"
 
 export async function next(env: Env.Env): Promise<Node.Node> {
   const entry = env.return_stack.pop()
@@ -26,9 +27,13 @@ export async function next(env: Env.Env): Promise<Node.Node> {
     return await next(env)
   } else if (node.kind === "Node.Element" && node.tag === "match") {
     for (const case_node of node.contents) {
-      if (node.kind === "Node.Element" && node.tag === "match") {
-        // TODO
-        // const pattern =
+      if (case_node.kind === "Node.Element" && case_node.tag === "case") {
+        const pattern = Pattern.from_node(case_node.contents[0])
+        const body = case_node.contents.slice(1)
+        const result = Pattern.match(pattern, node)
+        if (result) {
+        }
+        // TODO also handle default <case>
       }
     }
     throw new Error("Mismatch.")
