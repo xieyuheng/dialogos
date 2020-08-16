@@ -29,8 +29,7 @@
   // -- DOM ELEMENT --
 
   let ok
-
-  const ok_icons = {
+  let ok_icons = {
     normal: "⮟",
     input: "⮜",
   }
@@ -40,6 +39,12 @@
       await step()
     },
   })
+
+  let status
+  let status_icons = {
+    normal: "✯",
+    input: "✍",
+  }
 
   // -- LIFE CYCLE --
 
@@ -90,7 +95,7 @@
   const step_input = async () => {
     if (text.replace(/\s/g, "").length !== 0) {
       const nodes = li.Node.parse_nodes(text)
-      // NOTE only use the first node.
+      // NOTE We only use the first node.
       const [node] = nodes
       env.node_stack.push(node)
       frames = [...frames, h("echo", {}, node)]
@@ -117,6 +122,9 @@
     {/each}
   </div>
   <div class="reader-input">
+    <button class="status" bind:this="{status}">
+      <abbr title="{mode}-mode">{status_icons[mode]}</abbr>
+    </button>
     <textarea class="text" bind:value="{text}"></textarea>
     <button class="ok" bind:this="{ok}" on:click="{onok}">
       {ok_icons[mode]}
@@ -149,13 +157,22 @@
     flex-wrap: nowrap;
   }
 
+  .reader-input .status {
+    flex: 5%;
+    min-width: 30px;
+    font-size: 1.5em;
+    cursor: help;
+  }
+
   .reader-input .text {
-    flex: 95%;
+    flex: 90%;
   }
 
   .reader-input .ok {
     flex: 5%;
-    min-width: 40px;
+    min-width: 30px;
+    font-size: 1.5em;
+    cursor: pointer;
   }
 
   .mini-buffer {
@@ -170,5 +187,9 @@
     border-color: black;
     background: #eee;
     color: #666;
+  }
+
+  abbr[title] {
+    text-decoration: none !important;
   }
 </style>

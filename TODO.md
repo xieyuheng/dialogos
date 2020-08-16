@@ -1,9 +1,9 @@
-- double button for user input.
-  - left for `mode`.
-  - right for `ok` and others.
+- right `export` button.
+- left `status` button -- click for menu.
 - let reader input comment in normal-mode.
-- option for big <textarea>.
+- be able to use big <textarea> sometimes.
 - use `result` to subst pattern variables in body.
+- local variable in `ReturnEntry`.
 - ws and filewatcher.
 - per frame schema.
 # style
