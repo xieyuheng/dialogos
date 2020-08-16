@@ -1,9 +1,9 @@
 <script context="module">
   export async function preload({ params }) {
-    const { name } = params
-    const res = await this.fetch(`data/${name}`)
+    const { book } = params
+    const res = await this.fetch(`data/${book}`)
     const nodes = await res.json()
-    return { name, nodes }
+    return { book, nodes }
   }
 </script>
 
@@ -14,20 +14,20 @@
   import { onMount } from "svelte"
   import { fade, fly } from "svelte/transition"
 
-  export let name
+  export let book
   export let nodes
 
   let frames = []
   let text = ""
   let mode = "normal"
 
-  const loader = async (name, module) => {
-    const res = await fetch(`data/${name}?module=${module}`)
+  const loader = async (book, module) => {
+    const res = await fetch(`data/${book}?module=${module}`)
     const nodes = await res.json()
     return nodes
   }
 
-  const env = li.Env.init(name, nodes, loader)
+  const env = li.Env.init(book, "index", nodes, loader)
 
   const stepers = {
     normal: async () => {
@@ -87,7 +87,7 @@
 </script>
 
 <svelte:head>
-  <title>Book: {name}</title>
+  <title>Book: {book}</title>
 </svelte:head>
 
 <div class="book">

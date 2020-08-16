@@ -7,7 +7,10 @@ function put_back_entry(env: Env.Env, entry: Env.ReturnEntry): Env.Env {
   // NOTE Handle proper tail call.
   // - put back entry unless at the tail of its nodes.
   if (index + 1 < nodes.length) {
-    env.return_stack.push({ nodes, index: index + 1 })
+    env.return_stack.push({
+      ...entry,
+      index: index + 1,
+    })
   }
   return env
 }
@@ -42,7 +45,8 @@ async function next_jump(
   node: Node.Element
 ): Promise<Node.Node> {
   env.return_stack.push({
-    nodes: await env.loader(env.name, node.attributes.module),
+    module: node.attributes.module,
+    nodes: await env.loader(env.book, node.attributes.module),
     index: 0,
   })
   return await next(env)
@@ -78,6 +82,7 @@ async function next_match(
           // TODO use `result` to subst pattern variables in body.
           put_back_entry(env, entry)
           env.return_stack.push({
+            ...entry,
             nodes: body,
             index: 0,
           })
