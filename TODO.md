@@ -1,6 +1,4 @@
-- right `export` button.
-- left `status` button -- click for menu.
-- let reader input comment in normal-mode.
+- <reader-comment> let reader input comment in normal-mode.
 - be able to use big <textarea> sometimes.
 - use `result` to subst pattern variables in body.
 - local variable in `ReturnEntry`.
@@ -18,6 +16,7 @@
 - use cypress to test control flow.
 # error handling
 - handle frame parsing error in a general way.
+- [maybe] handle `Env.next` error.
 # layout
 - `Nav` for navigation -- table of contents, jump to chapters.
 # content
@@ -36,7 +35,10 @@
 - reader login.
 - session to record reading progress.
 - let reader answer first, then show the answer.
+# menu
+- left `status` button -- click for menu.
 # export
+- right `export` button.
 - export new commented books.
 # deploy
 - fix heroku file.

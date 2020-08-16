@@ -75,7 +75,6 @@
   }
 
   const step_normal = async () => {
-    // TODO handle `Env.next` error.
     const node = await li.Env.next(env)
     if (node.kind === "Node.Element") {
       if (node.tag === "input-node") {
@@ -86,8 +85,8 @@
         mini_buffer = ""
       }
     } else {
-      // NOTE plaintext comment in document.
-      console.log(node.value)
+      // NOTE Top level text nodes are viewed as writer comment.
+      console.log("Writer comment:", node.value)
       await step()
     }
   }
@@ -98,7 +97,7 @@
       // NOTE We only use the first node.
       const [node] = nodes
       env.node_stack.push(node)
-      frames = [...frames, h("echo", {}, node)]
+      frames = [...frames, h("reader-input", {}, node)]
       text = ""
       mode = "normal"
       mini_buffer = "Back to normal-mode from input-mode."
@@ -171,7 +170,7 @@
   .reader-input .ok {
     flex: 5%;
     min-width: 30px;
-    font-size: 1.5em;
+    font-size: 1.3em;
     cursor: pointer;
   }
 

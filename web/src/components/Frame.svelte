@@ -3,7 +3,7 @@
   import Card from "./Card.svelte"
   import Comment from "./Comment.svelte"
   import ChapterStart from "./ChapterStart.svelte"
-  import Echo from "./Echo.svelte"
+  import ReaderInput from "./ReaderInput.svelte"
   import { onMount } from "svelte"
 
   export let node
@@ -33,9 +33,9 @@
     <div class="frame">
       <ChapterStart {node} />
     </div>
-  {:else if node.tag === 'echo'}
+  {:else if node.tag === 'reader-input'}
     <div class="frame">
-      <Echo {node} />
+      <ReaderInput {node} />
     </div>
   {/if}
 </div>

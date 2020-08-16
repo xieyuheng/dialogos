@@ -3,17 +3,17 @@
 
   export let node
 
-  $: result = li.match(p("echo"), node)
+  $: result = li.match(p("reader-input"), node)
 
   $: echo = node.contents.map(li.Node.repr).join("\n")
 </script>
 
-<div class="echo">
+<div class="reader-input">
   <pre>{echo}</pre>
 </div>
 
 <style>
-  .echo {
+  .reader-input {
     margin: 1em;
     padding: 1em;
     border-left: thin dashed;
