@@ -68,7 +68,7 @@
     input_buffer.addEventListener("keydown", (event) => {
       if (mode === "reader-comment-mode") {
         if (event.key === "Escape") {
-          mini_message = "Exiting reader-comment-mode and clear input (because Escape is pressed)."
+          mini_message = "Exiting reader-comment-mode and clear input (because Esc is pressed)."
           mode = "normal-mode"
           input_text = ""
           input_buffer.blur()
