@@ -12,7 +12,6 @@
   import Frame from "../../components/Frame.svelte"
   import * as ut from "../../ut"
   import { onMount } from "svelte"
-  import { fade, fly } from "svelte/transition"
 
   // -- PROP --
 
@@ -159,7 +158,7 @@
 <div class="book">
   <div class="frame-list">
     {#each frames as node, index}
-      <div class="frame" transition:fly|local>
+      <div class="frame">
         <Frame {node} {index} />
       </div>
     {/each}
