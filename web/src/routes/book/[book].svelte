@@ -105,7 +105,8 @@
   const step_dialog = async () => {
     const node = await li.Env.next(env)
     if (node.kind === "Node.Element") {
-      if (node.tag === "input-node") {
+      if (node.tag === "get-reader-input") {
+        frames = [...frames, ...node.contents]
         mode = "reader-input-mode"
         mini_message = "Entering reader-input-mode."
       } else {

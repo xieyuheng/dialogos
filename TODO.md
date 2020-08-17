@@ -1,4 +1,4 @@
-- 
+- screen-mode
 - be able to use big <textarea> sometimes.
   - we need a **simple** solution.
 - use `result` to subst pattern variables in body.
@@ -6,6 +6,7 @@
 - ws and filewatcher.
 - per frame schema.
 # design
+- css for Comment frame
 - css for ReaderComment frame
 - css for ReaderInput frame
 # report on im products
