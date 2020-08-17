@@ -1,15 +1,13 @@
 - screen-mode
-- be able to use big <textarea> sometimes.
-  - we need a **simple** solution.
 - use `result` to subst pattern variables in body.
 - local variable in `ReturnEntry`.
 - ws and filewatcher.
 - per frame schema.
 # design
-- css for Comment frame
-- css for ReaderComment frame
-- css for ReaderInput frame
-# report on im products
+- css for Comment, ReaderComment, ReaderInput
+- be able to use big <textarea> sometimes.
+  - we need a **simple** solution.
+- report on im products
 # little
 - hand written xml lexer.
   - build xml Node from token by a stack machine.
