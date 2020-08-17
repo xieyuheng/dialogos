@@ -1,1 +1,1 @@
-web: cd web; BOOKS=books npm run dev
+web: cd web; npm install; BOOKS=books npm run dev
