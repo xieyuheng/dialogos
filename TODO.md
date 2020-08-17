@@ -1,4 +1,5 @@
-- screen-mode
+- use icon instead of unicode.
+- screen-mode.
 - use `result` to subst pattern variables in body.
 - local variable in `ReturnEntry`.
 - ws and filewatcher.

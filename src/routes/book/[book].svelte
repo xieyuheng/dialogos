@@ -30,7 +30,7 @@
   let ok
 
   let ok_icons = {
-    "dialog-mode": "⯆",
+    "dialog-mode": "⮛",
     "reader-input-mode": "✉",
     "reader-comment-mode": "✍",
   }
