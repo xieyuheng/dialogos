@@ -5,6 +5,8 @@
 - per frame schema.
 # design
 - css for Comment, ReaderComment, ReaderInput
+- ReaderComment datetime
+- ReaderInput datetime
 - be able to use big <textarea> sometimes.
   - we need a **simple** solution.
 - report on im products
