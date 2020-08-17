@@ -156,9 +156,9 @@
 
 <div class="book">
   <div class="frame-list">
-    {#each frames as node}
+    {#each frames as node, index}
       <div class="frame">
-        <Frame {node} />
+        <Frame {node} {index}/>
       </div>
     {/each}
   </div>

@@ -3,6 +3,7 @@
   import Note from "./Note.svelte"
 
   export let node
+  export let index
 
   $: result = li.match(
     p("dialog", [
@@ -41,6 +42,7 @@
       {/each}
     {/if}
   </div>
+  <div class="index">{index + 1}</div>
   <div class="student">
     <pre>
       {@html markup(student).join('')}
@@ -61,13 +63,15 @@
     flex-wrap: nowrap;
   }
 
-  .dialog .teacher {
+  .dialog .teacher,
+  .dialog .student {
     flex: 50%;
     padding: 1em;
   }
 
-  .dialog .student {
-    flex: 50%;
+  .dialog .index {
+    font-size: 8px;
+    flex: 4%;
     padding: 1em;
   }
 
@@ -76,7 +80,7 @@
     margin-bottom: 4px;
   }
 
-  @media (max-width: 500px){
+  @media (max-width: 500px) {
     .dialog {
       flex-direction: column;
     }
@@ -87,6 +91,12 @@
 
     .dialog .student {
       padding-left: 4em;
+      padding-top: 0;
+      margin-top: -0.5em;
+    }
+
+    .dialog .index {
+      padding-bottom: 0em;
     }
   }
 </style>
