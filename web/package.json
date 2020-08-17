@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "BOOKS=books sapper dev",
-    "build": "sapper build --legacy",
+    "build": "npx sapper build --legacy",
     "export": "BOOKS=books sapper export --legacy",
     "start": "BOOKS=books node __sapper__/build",
     "format": "prettier src --write"

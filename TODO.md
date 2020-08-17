@@ -4,12 +4,12 @@
 - ws and filewatcher.
 - per frame schema.
 # design
-- css for Comment, ReaderComment, ReaderInput
-- ReaderComment datetime
-- ReaderInput datetime
+- css for Comment, ReaderComment, ReaderInput.
+- ReaderComment datetime.
+- ReaderInput datetime.
 - be able to use big <textarea> sometimes.
   - we need a **simple** solution.
-- report on im products
+- report on im products.
 # little
 - hand written xml lexer.
   - build xml Node from token by a stack machine.
