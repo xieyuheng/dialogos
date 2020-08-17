@@ -1,4 +1,6 @@
 - use icon instead of unicode.
+- first teacher, then student. -- 用中文。
+- code block -- cicada/lang2. -- 用中文，
 - screen-mode.
 - use `result` to subst pattern variables in body.
 - local variable in `ReturnEntry`.
