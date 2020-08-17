@@ -1,3 +1,9 @@
+# typescript
+lib
+
+# web
+dist
+
 # npm
 node_modules
 
@@ -5,3 +11,20 @@ node_modules
 *~
 *#*
 .#*
+
+# sapper
+
+/src/node_modules/@sapper/
+/__sapper__/
+
+# yarn
+
+yarn-error.log
+
+# cypress
+
+/cypress/screenshots/
+
+# mics
+
+.DS_Store
