@@ -1,4 +1,6 @@
+- 
 - be able to use big <textarea> sometimes.
+  - we need a **simple** solution.
 - use `result` to subst pattern variables in body.
 - local variable in `ReturnEntry`.
 - ws and filewatcher.

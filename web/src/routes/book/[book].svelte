@@ -22,7 +22,7 @@
   // -- LOCAL STATE --
 
   let frames = []
-  let mode = "normal-mode"
+  let mode = "dialog-mode"
   let input_text = ""
   let mini_message = ""
 
@@ -31,7 +31,7 @@
   let ok
 
   let ok_icons = {
-    "normal-mode": "⮛",
+    "dialog-mode": "⮛",
     "reader-input-mode": "✉",
     "reader-comment-mode": "✍",
   }
@@ -45,7 +45,7 @@
   let status
 
   let status_icons = {
-    "normal-mode": "💬",
+    "dialog-mode": "💬",
     "reader-input-mode": "❔",
     "reader-comment-mode": "📃",
   }
@@ -53,8 +53,8 @@
   let input_buffer
 
   let input_buffer_focus = () => {
-    if (mode === "normal-mode") {
-      mini_message = "Entering reader-comment-mode from normal-mode."
+    if (mode === "dialog-mode") {
+      mini_message = "Entering reader-comment-mode from dialog-mode."
       mode = "reader-comment-mode"
     }
   }
@@ -70,7 +70,7 @@
         if (event.key === "Escape") {
           mini_message =
             "Exiting reader-comment-mode and clear input (because Esc is pressed)."
-          mode = "normal-mode"
+          mode = "dialog-mode"
           input_text = ""
           input_buffer.blur()
         }
@@ -93,8 +93,8 @@
 
   const step = async () => {
     switch (mode) {
-      case "normal-mode":
-        return await step_normal()
+      case "dialog-mode":
+        return await step_dialog()
       case "reader-input-mode":
         return await step_input()
       case "reader-comment-mode":
@@ -102,7 +102,7 @@
     }
   }
 
-  const step_normal = async () => {
+  const step_dialog = async () => {
     const node = await li.Env.next(env)
     if (node.kind === "Node.Element") {
       if (node.tag === "input-node") {
@@ -129,8 +129,8 @@
       env.node_stack.push(node)
       frames = [...frames, h("reader-input", {}, node)]
       input_text = ""
-      mode = "normal-mode"
-      mini_message = "Back to normal-mode from reader-input-mode."
+      mode = "dialog-mode"
+      mini_message = "Back to dialog-mode from reader-input-mode."
       await step()
     }
   }
@@ -138,13 +138,13 @@
   const step_reader_comment = async () => {
     if (ut.string_is_blank(input_text)) {
       mini_message =
-        "No input text, go back to normal-mode from reader-comment-mode."
-      mode = "normal-mode"
+        "No input text, go back to dialog-mode from reader-comment-mode."
+      mode = "dialog-mode"
       input_text = ""
     } else {
       mini_message =
-        "Write down reader comment, and go back to normal-mode from reader-comment-mode."
-      mode = "normal-mode"
+        "Write down reader comment, and go back to dialog-mode from reader-comment-mode."
+      mode = "dialog-mode"
       frames = [...frames, h("reader-comment", {}, text(input_text))]
       input_text = ""
     }
@@ -215,7 +215,7 @@
     border-color: white;
   }
 
-  .reader-input .status[mode="normal-mode"] {
+  .reader-input .status[mode="dialog-mode"] {
   }
 
   .reader-input .status[mode="reader-input-mode"] {
@@ -240,7 +240,7 @@
     border-color: white;
   }
 
-  .reader-input .ok[mode="normal-mode"] {
+  .reader-input .ok[mode="dialog-mode"] {
   }
 
   .reader-input .ok[mode="reader-input-mode"] {
