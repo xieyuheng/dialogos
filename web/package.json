@@ -3,9 +3,9 @@
   "description": "An online dialectic teaching system, inspired by Socrates, George Pólya and Dan Friedman.",
   "version": "0.0.1",
   "scripts": {
-    "dev": "sapper dev",
+    "dev": "BOOKS=books sapper dev",
     "build": "sapper build --legacy",
-    "export": "sapper export --legacy",
+    "export": "BOOKS=books sapper export --legacy",
     "start": "BOOKS=books node __sapper__/build",
     "format": "prettier src --write"
   },
