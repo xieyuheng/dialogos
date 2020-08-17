@@ -232,7 +232,7 @@
 
   .reader-input .ok {
     flex: 5%;
-    min-width: 30px;
+    min-width: 40px;
     font-size: 1.3em;
     cursor: pointer;
 
