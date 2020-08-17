@@ -82,7 +82,6 @@
   const env = li.Env.init({
     book,
     nodes,
-    module: "index",
     loader: async (book, module) => {
       const res = await fetch(`data/${book}?module=${module}`)
       const nodes = await res.json()
@@ -157,9 +156,9 @@
 
 <div class="book">
   <div class="frame-list">
-    {#each frames as node, index}
+    {#each frames as node}
       <div class="frame">
-        <Frame {node} {index} />
+        <Frame {node} />
       </div>
     {/each}
   </div>

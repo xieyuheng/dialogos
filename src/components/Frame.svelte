@@ -8,7 +8,6 @@
   import { onMount } from "svelte"
 
   export let node
-  export let index
 
   let container
 
@@ -20,7 +19,7 @@
 <div bind:this="{container}">
   {#if node.tag === 'dialog'}
     <div class="frame">
-      <Dialog {node} {index} />
+      <Dialog {node} />
     </div>
   {:else if node.tag === 'card'}
     <div class="frame">
