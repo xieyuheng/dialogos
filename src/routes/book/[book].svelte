@@ -165,7 +165,7 @@
     {/each}
   </div>
   <div class="reader-input">
-    <button class="status" {mode} bind:this="{status}">
+    <button class="status" bind:this="{status}">
       <abbr title="{mode}">{status_icons[mode]}</abbr>
     </button>
     <textarea
@@ -174,7 +174,7 @@
       bind:this="{input_buffer}"
       bind:value="{input_text}"
       on:focus="{input_buffer_focus}"></textarea>
-    <button class="ok" {mode} bind:this="{ok}" on:click="{ok_click}">
+    <button class="ok" bind:this="{ok}" on:click="{ok_click}">
       {ok_icons[mode]}
     </button>
   </div>
@@ -182,10 +182,14 @@
 </div>
 
 <style>
+  .book {
+    display: grid;
+    grid-template-rows: 90fr 7fr 3fr;
+    height: 100vh;
+    width: 100vw;
+  }
+
   .frame-list {
-    position: fixed;
-    height: 90%;
-    width: 100%;
     overflow-y: auto;
     scroll-snap-type: y proximity;
   }
@@ -195,44 +199,17 @@
   }
 
   .reader-input {
-    position: fixed;
-    bottom: 3%;
-    height: 7%;
-    width: 100%;
     border-top: thin solid;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }
-
-  .reader-input .status {
-    flex: 5%;
-    min-width: 30px;
-    font-size: 1.5em;
-    cursor: help;
-
-    color: black;
-    background: white;
-    border-color: white;
-  }
-
-  .reader-input .status[mode="dialog-mode"] {
-  }
-
-  .reader-input .status[mode="reader-input-mode"] {
-  }
-
-  .reader-input .status[mode="reader-comment-mode"] {
+    display: grid;
+    grid-template-columns: 45px auto 45px;
   }
 
   .reader-input .buffer {
     resize: none;
-    flex: 90%;
   }
 
+  .reader-input .status,
   .reader-input .ok {
-    flex: 5%;
-    min-width: 40px;
     font-size: 1.3em;
     cursor: pointer;
 
@@ -241,23 +218,10 @@
     border-color: white;
   }
 
-  .reader-input .ok[mode="dialog-mode"] {
-  }
-
-  .reader-input .ok[mode="reader-input-mode"] {
-  }
-
-  .reader-input .ok[mode="reader-comment-mode"] {
-  }
-
   .mini-buffer {
-    position: fixed;
-    bottom: 0;
-    height: 3%;
     font-size: 0.7em;
     padding-left: 3px;
     padding-right: 3px;
-    width: 100%;
     border-top: thin solid;
     border-color: black;
     background: #eee;
