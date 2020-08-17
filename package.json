@@ -1,6 +1,10 @@
 {
   "name": "root",
   "private": true,
+  "scripts": {
+    "heroku-prebuild": "cd web && npm install && npm run build",
+    "start": "cd web && npm start"
+  },
   "devDependencies": {
     "lerna": "^3.22.1"
   }
