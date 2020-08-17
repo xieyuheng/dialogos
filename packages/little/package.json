@@ -1,6 +1,6 @@
 {
   "name": "@the-little-books/little",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
