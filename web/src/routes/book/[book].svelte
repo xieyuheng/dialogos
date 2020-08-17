@@ -32,8 +32,8 @@
 
   let ok_icons = {
     "normal-mode": "⮛",
-    "input-mode": "✉",
-    "reader-comment-mode": "✉",
+    "reader-input-mode": "✉",
+    "reader-comment-mode": "✍",
   }
 
   let ok_click = ut.click_handler({
@@ -45,9 +45,9 @@
   let status
 
   let status_icons = {
-    "normal-mode": "✯",
-    "input-mode": "❓",
-    "reader-comment-mode": "✍",
+    "normal-mode": "💬",
+    "reader-input-mode": "❔",
+    "reader-comment-mode": "📃",
   }
 
   let input_buffer
@@ -68,7 +68,8 @@
     input_buffer.addEventListener("keydown", (event) => {
       if (mode === "reader-comment-mode") {
         if (event.key === "Escape") {
-          mini_message = "Exiting reader-comment-mode and clear input (because Esc is pressed)."
+          mini_message =
+            "Exiting reader-comment-mode and clear input (because Esc is pressed)."
           mode = "normal-mode"
           input_text = ""
           input_buffer.blur()
@@ -94,7 +95,7 @@
     switch (mode) {
       case "normal-mode":
         return await step_normal()
-      case "input-mode":
+      case "reader-input-mode":
         return await step_input()
       case "reader-comment-mode":
         return await step_reader_comment()
@@ -105,8 +106,8 @@
     const node = await li.Env.next(env)
     if (node.kind === "Node.Element") {
       if (node.tag === "input-node") {
-        mode = "input-mode"
-        mini_message = "Entering input-mode."
+        mode = "reader-input-mode"
+        mini_message = "Entering reader-input-mode."
       } else {
         frames = [...frames, node]
         mini_message = ""
@@ -129,18 +130,20 @@
       frames = [...frames, h("reader-input", {}, node)]
       input_text = ""
       mode = "normal-mode"
-      mini_message = "Back to normal-mode from input-mode."
+      mini_message = "Back to normal-mode from reader-input-mode."
       await step()
     }
   }
 
   const step_reader_comment = async () => {
     if (ut.string_is_blank(input_text)) {
-      mini_message = "No input text, go back to normal-mode from reader-comment-mode."
+      mini_message =
+        "No input text, go back to normal-mode from reader-comment-mode."
       mode = "normal-mode"
       input_text = ""
     } else {
-      mini_message = "Write down reader comment, and go back to normal-mode from reader-comment-mode."
+      mini_message =
+        "Write down reader comment, and go back to normal-mode from reader-comment-mode."
       mode = "normal-mode"
       frames = [...frames, h("reader-comment", {}, text(input_text))]
       input_text = ""
@@ -161,15 +164,16 @@
     {/each}
   </div>
   <div class="reader-input">
-    <button class="status" bind:this="{status}">
+    <button class="status" {mode} bind:this="{status}">
       <abbr title="{mode}">{status_icons[mode]}</abbr>
     </button>
     <textarea
       class="buffer"
+      spellcheck="false"
       bind:this="{input_buffer}"
       bind:value="{input_text}"
       on:focus="{input_buffer_focus}"></textarea>
-    <button class="ok" bind:this="{ok}" on:click="{ok_click}">
+    <button class="ok" {mode} bind:this="{ok}" on:click="{ok_click}">
       {ok_icons[mode]}
     </button>
   </div>
@@ -205,9 +209,23 @@
     min-width: 30px;
     font-size: 1.5em;
     cursor: help;
+
+    color: black;
+    background: white;
+    border-color: white;
+  }
+
+  .reader-input .status[mode="normal-mode"] {
+  }
+
+  .reader-input .status[mode="reader-input-mode"] {
+  }
+
+  .reader-input .status[mode="reader-comment-mode"] {
   }
 
   .reader-input .buffer {
+    resize: none;
     flex: 90%;
   }
 
@@ -216,6 +234,19 @@
     min-width: 30px;
     font-size: 1.3em;
     cursor: pointer;
+
+    color: black;
+    background: white;
+    border-color: white;
+  }
+
+  .reader-input .ok[mode="normal-mode"] {
+  }
+
+  .reader-input .ok[mode="reader-input-mode"] {
+  }
+
+  .reader-input .ok[mode="reader-comment-mode"] {
   }
 
   .mini-buffer {

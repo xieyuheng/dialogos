@@ -1,4 +1,21 @@
-# xml & 组建池 & semantic web
+## Design
+
+Unicode reference:
+- https://en.wikipedia.org/wiki/Arrow_(symbol)
+- https://en.wikipedia.org/wiki/Emoji
+- https://en.wikipedia.org/wiki/Dingbat
+
+Color:
+- https://www.rapidtables.com/web/css/css-color.html
+
+## Schema
+
+XML RELAX NG schema references:
+- https://en.wikipedia.org/wiki/RELAX_NG
+- https://relaxng.org/compact-tutorial.html
+- https://relaxng.org/compact.html
+
+## XML & components & semantic web
 
 - 为了提高生产效率，我们需要的是一个以 xml 为 input 的组建池。
 - part: xml -> view
@@ -11,17 +28,3 @@
       而得到：xml -> json -> json -> view 的数据流
 - 这样我们就能有 semantic web，因为我们可以自定义 tag。
   并且 content 与 view 是 完全分离的。
-
-# design
-
-Unicode reference:
-- https://en.wikipedia.org/wiki/Arrow_(symbol)
-- https://en.wikipedia.org/wiki/Emoji
-- https://en.wikipedia.org/wiki/Dingbat
-
-## Schema
-
-XML RELAX NG schema references:
-- https://en.wikipedia.org/wiki/RELAX_NG
-- https://relaxng.org/compact-tutorial.html
-- https://relaxng.org/compact.html

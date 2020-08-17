@@ -1,13 +1,11 @@
-- grey `next` button.
-- green `send` button -- like wechat.
 - be able to use big <textarea> sometimes.
 - use `result` to subst pattern variables in body.
 - local variable in `ReturnEntry`.
 - ws and filewatcher.
 - per frame schema.
-# style
-- css for ReaderComment frame and <textarea>
-- css for ReaderInput frame and <textarea>
+# design
+- css for ReaderComment frame
+- css for ReaderInput frame
 # report on im products
 # little
 - hand written xml lexer.
