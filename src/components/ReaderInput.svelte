@@ -1,9 +1,13 @@
-<script>
+<script context="module">
   import li, { p, v } from "@the-little-books/little"
 
+  export const matcher = li.matcher(p("reader-input"))
+</script>
+
+<script>
   export let node
 
-  $: result = li.match(p("reader-input"), node)
+  $: result = matcher(node)
 
   $: echo = node.contents.map(li.Node.repr).join("\n")
 </script>

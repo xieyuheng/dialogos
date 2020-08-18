@@ -1,46 +1,46 @@
 <script>
-  import Dialog from "./Dialog.svelte"
-  import Card from "./Card.svelte"
-  import Comment from "./Comment.svelte"
-  import ChapterStart from "./ChapterStart.svelte"
-  import ReaderInput from "./ReaderInput.svelte"
-  import ReaderComment from "./ReaderComment.svelte"
+  import * as Dialog from "./Dialog.svelte"
+  import * as Card from "./Card.svelte"
+  import * as Comment from "./Comment.svelte"
+  import * as ChapterStart from "./ChapterStart.svelte"
+  import * as ReaderInput from "./ReaderInput.svelte"
+  import * as ReaderComment from "./ReaderComment.svelte"
   import { onMount } from "svelte"
+
+  // -- PROP --
 
   export let node
   export let index
 
+  // -- DOM ELEMENT --
+
   let container
 
-  onMount(() => {
+  // -- BUSINESS --
+
+  const frames = [
+    Dialog,
+    Card,
+    Comment,
+    ChapterStart,
+    ReaderInput,
+    ReaderComment,
+  ]
+
+  const found = frames.find((frame) => frame.matcher && frame.matcher(node))
+  const Frame = found && found.default
+
+  // -- LIFE CYCLE --
+
+  onMount(async () => {
     container.scrollIntoView({ behavior: "smooth" })
   })
 </script>
 
 <div bind:this="{container}">
-  {#if node.tag === 'dialog'}
+  {#if found}
     <div class="frame">
-      <Dialog {node} {index} />
-    </div>
-  {:else if node.tag === 'card'}
-    <div class="frame">
-      <Card {node} />
-    </div>
-  {:else if node.tag === 'comment'}
-    <div class="frame">
-      <Comment {node} />
-    </div>
-  {:else if node.tag === 'chapter-start'}
-    <div class="frame">
-      <ChapterStart {node} />
-    </div>
-  {:else if node.tag === 'reader-input'}
-    <div class="frame">
-      <ReaderInput {node} />
-    </div>
-  {:else if node.tag === 'reader-comment'}
-    <div class="frame">
-      <ReaderComment {node} />
+      <Frame {node} {index} />
     </div>
   {/if}
 </div>

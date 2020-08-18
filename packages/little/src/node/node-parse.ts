@@ -2,7 +2,8 @@ import * as Node from "../node"
 import { h, text } from "./node-api"
 import * as Err from "../err"
 import * as ut from "../ut"
-const parse5 = require("parse5")
+const { DOMParser } = require("xmldom")
+const parser = new DOMParser()
 
 export function parse_nodes(
   text: string,
@@ -10,10 +11,9 @@ export function parse_nodes(
     trim: true,
     no_blank_text_node: true,
   }
-): Array<Node.Element> {
-  return parse5
-    .parseFragment(text)
-    .childNodes.flatMap((node: any) => nodes_from_node(node, opts))
+): Array<Node.Node> {
+  const nodes = Array.from(parser.parseFromString(text, "text/xml").childNodes)
+  return nodes.flatMap((node: any) => nodes_from_node(node, opts))
 }
 
 function nodes_from_node(node: any, opts: Node.ParseOpts): Array<Node.Node> {
@@ -29,23 +29,25 @@ function nodes_from_node(node: any, opts: Node.ParseOpts): Array<Node.Node> {
 function from_node(node: any, opts: Node.ParseOpts): Node.Element {
   const attributes: { [key: string]: string } = {}
 
-  if (node.attrs) {
-    for (const { name, value } of node.attrs) {
+  if (node.attributes) {
+    for (const { name, value } of Array.from(node.attributes) as Array<any>) {
       attributes[name] = value
     }
   }
 
   let contents = node.childNodes
-    ? node.childNodes.flatMap((node: any) => nodes_from_node(node, opts))
+    ? Array.from(node.childNodes).flatMap((node: any) =>
+        nodes_from_node(node, opts)
+      )
     : []
 
   return h(node.tagName, attributes, contents)
 }
 
 function nodes_from_text(node: any, opts: Node.ParseOpts): Array<Node.Text> {
-  if (ut.blank_p(node.value) && opts.no_blank_text_node) {
+  if (ut.blank_p(node.data) && opts.no_blank_text_node) {
     return []
   } else {
-    return opts.trim ? [text(node.value.trim())] : [text(node.value)]
+    return opts.trim ? [text(node.data.trim())] : [text(node.data)]
   }
 }

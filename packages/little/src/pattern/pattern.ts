@@ -14,9 +14,11 @@ export interface End {
   kind: "Pattern.End"
 }
 
+export type Tag = string | Array<string> | RegExp | Array<RegExp>
+
 export interface Element {
   kind: "Pattern.Element"
-  tag: string
+  tag: Tag
   contents: Array<Pattern>
 }
 

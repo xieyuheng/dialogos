@@ -1,9 +1,15 @@
-<script>
+<script context="module">
   import li, { p, v } from "@the-little-books/little"
 
+  export const matcher = li.matcher(
+    p("card", [p("title", v("title")), v("content")])
+  )
+</script>
+
+<script>
   export let node
 
-  $: result = li.match(p("card", [p("title", v("title")), v("content")]), node)
+  $: result = matcher(node)
 
   $: title = result.title.value
   $: content = result.content.value

@@ -1,17 +1,24 @@
-<script>
+<script context="module">
   import li, { p, v, lv } from "@the-little-books/little"
+
+  export const matcher = li.matcher(
+    p(
+      ["dialog", "问答"],
+      [
+        p(["teacher", "师"], [v("teacher"), lv("teacher_notes")]),
+        p(["student", "生"], [v("student"), lv("student_notes")]),
+      ]
+    )
+  )
+</script>
+
+<script>
   import Note from "./Note.svelte"
 
   export let node
   export let index
 
-  $: result = li.match(
-    p("dialog", [
-      p("teacher", [v("teacher"), lv("teacher_notes")]),
-      p("student", [v("student"), lv("student_notes")]),
-    ]),
-    node
-  )
+  $: result = matcher(node)
 
   $: teacher = result.teacher.value
   $: student = result.student.value

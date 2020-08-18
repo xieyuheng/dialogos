@@ -18,6 +18,18 @@ export function match(
   }
 }
 
+function match_tag(pattern_tag: Pattern.Tag, tag: string): boolean {
+  if (typeof pattern_tag === "string") {
+    return pattern_tag === tag
+  } else if (pattern_tag instanceof RegExp) {
+    return pattern_tag.test(tag)
+  } else if (pattern_tag instanceof Array) {
+    return pattern_tag.some((p_tag: Pattern.Tag) => match_tag(p_tag, tag))
+  } else {
+    throw new Error(`unknown pattern_tag: ${pattern_tag} for tag: ${tag}.`)
+  }
+}
+
 // NOTE No side effect on the argument `result`.
 // - `result` is used as env for name lookup.
 export function match_nodes(
@@ -59,7 +71,7 @@ export function match_nodes(
     }
     const [node] = nodes
     if (node.kind === "Node.Element") {
-      if (pattern.tag !== node.tag) {
+      if (!match_tag(pattern.tag, node.tag)) {
         return null
       } else {
         let new_result: null | MatchResult = { ...result }
@@ -70,7 +82,7 @@ export function match_nodes(
           if (matched === null) {
             return null
           }
-          const [ next_remain_nodes, next_new_result ] = matched
+          const [next_remain_nodes, next_new_result] = matched
           new_result = next_new_result
           remain_nodes = next_remain_nodes
         }
