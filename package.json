@@ -10,7 +10,7 @@
     "format": "prettier src --write"
   },
   "dependencies": {
-    "@the-little-books/little": "^0.2.6",
+    "@the-little-books/little": "^0.2.8",
     "bluebird": "^3.7.2",
     "compression": "^1.7.4",
     "express": "^4.17.1",

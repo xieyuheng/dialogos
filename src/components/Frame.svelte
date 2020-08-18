@@ -6,6 +6,7 @@
   import * as ReaderInput from "./ReaderInput.svelte"
   import * as ReaderComment from "./ReaderComment.svelte"
   import { onMount } from "svelte"
+  import li from "@the-little-books/little"
 
   // -- PROP --
 
@@ -32,7 +33,7 @@
 
   // -- LIFE CYCLE --
 
-  onMount(async () => {
+  onMount(() => {
     container.scrollIntoView({ behavior: "smooth" })
   })
 </script>
@@ -42,6 +43,10 @@
     <div class="frame">
       <Frame {node} {index} />
     </div>
+  {:else}
+    <pre>
+      Unknown node: {li.Node.repr(node)}
+    </pre>
   {/if}
 </div>
 
