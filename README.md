@@ -1,4 +1,4 @@
-# Δίαλόγος
+# διάλόγος
 
 An online dialectic teaching system, inspired by Socrates, George Pólya and Dan Friedman.
 

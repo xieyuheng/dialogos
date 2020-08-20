@@ -1,8 +1,8 @@
 <svelte:head>
-  <title>Δίαλόγος</title>
+  <title>διάλόγος</title>
 </svelte:head>
 
-<h1>Δίαλόγος</h1>
+<h1>διάλόγος</h1>
 
 <p>
   An online dialectic teaching system, inspired by Socrates, George Pólya and
