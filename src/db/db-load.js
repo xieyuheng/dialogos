@@ -1,4 +1,4 @@
-import li from "@the-little-books/little"
+import li from "@dialogos/little"
 import process from "process"
 import path from "path"
 import fs from "fs"

@@ -8,7 +8,7 @@
 </script>
 
 <script>
-  import li, { h, text } from "@the-little-books/little"
+  import li, { h, text } from "@dialogos/little"
   import Frame from "../../components/Frame.svelte"
   import * as ut from "../../ut"
   import { onMount } from "svelte"

@@ -1,5 +1,5 @@
 <script context="module">
-  import li, { p, v } from "@the-little-books/little"
+  import li, { p, v } from "@dialogos/little"
 
   export const matcher = (node) =>
     li.match(p("comment", [p("title", v("title")), v("content")]), node) ||

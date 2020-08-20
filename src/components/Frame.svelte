@@ -6,7 +6,7 @@
   import * as ReaderInput from "./ReaderInput.svelte"
   import * as ReaderComment from "./ReaderComment.svelte"
   import { onMount } from "svelte"
-  import li from "@the-little-books/little"
+  import li from "@dialogos/little"
 
   // -- PROP --
 

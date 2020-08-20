@@ -1,5 +1,5 @@
 {
-  "name": "the-little-books",
+  "name": "dialogos",
   "description": "An online dialectic teaching system, inspired by Socrates, George Pólya and Dan Friedman.",
   "version": "0.0.1",
   "scripts": {
@@ -10,7 +10,7 @@
     "format": "prettier src --write"
   },
   "dependencies": {
-    "@the-little-books/little": "^0.2.8",
+    "@dialogos/little": "^0.2.8",
     "bluebird": "^3.7.2",
     "compression": "^1.7.4",
     "express": "^4.17.1",

@@ -1,5 +1,5 @@
 <script context="module">
-  import li, { p, v, lv } from "@the-little-books/little"
+  import li, { p, v, lv } from "@dialogos/little"
 
   export const matcher = li.matcher(
     p(

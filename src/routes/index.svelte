@@ -1,8 +1,8 @@
 <svelte:head>
-  <title>The Little Books</title>
+  <title>Dialogos</title>
 </svelte:head>
 
-<h1>The Little Books</h1>
+<h1>Dialogos</h1>
 
 <p>
   An online dialectic teaching system, inspired by Socrates, George Pólya and
