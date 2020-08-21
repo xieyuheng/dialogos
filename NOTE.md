@@ -8,6 +8,9 @@ Unicode reference:
 Color:
 - https://www.rapidtables.com/web/css/css-color.html
 
+Icons:
+- https://icons8.com/icons/dusk
+
 ## Schema
 
 XML RELAX NG schema references:

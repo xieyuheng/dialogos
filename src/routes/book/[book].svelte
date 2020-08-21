@@ -194,7 +194,9 @@
       {/if}
     </button>
   </div>
-  <pre class="mini-buffer">{mini_message}</pre>
+  <pre class="mini-buffer">
+    {#if mini_message} ➽ {mini_message}{/if}
+  </pre>
 </div>
 
 <style>
@@ -236,8 +238,8 @@
 
   .mini-buffer {
     font-size: 0.7em;
-    padding-left: 3px;
-    padding-right: 3px;
+    padding-left: 1.7em;
+    padding-right: 1.7em;
     border-top: thin solid;
     border-color: black;
     background: #eee;
