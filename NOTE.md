@@ -11,6 +11,9 @@ Color:
 Icons:
 - https://icons8.com/icons/dusk
 
+PWA:
+- https://developer.mozilla.org/en-US/docs/Web/Manifest
+
 ## Schema
 
 XML RELAX NG schema references:
