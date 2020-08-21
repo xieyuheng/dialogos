@@ -1,6 +1,6 @@
+- emacs-like hooks for frame.
 - use chinese tags.
 - first teacher, then student. -- 用中文。
-- emacs-like hooks for frame.
 - code block -- cicada/lang2. -- 用中文，
 - screen-mode.
 - use `result` to subst pattern variables in body.
