@@ -6,6 +6,7 @@ function t {
 }
 
 function test-schema {
+    echo ""
     # for book in $(find books | grep "\.xml$")
     # do
     #     echo ""
