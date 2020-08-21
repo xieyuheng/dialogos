@@ -238,8 +238,8 @@
 
   .mini-buffer {
     font-size: 0.7em;
-    padding-left: 1.7em;
-    padding-right: 1.7em;
+    padding-left: 2.7em;
+    padding-right: 2.7em;
     border-top: thin solid;
     border-color: black;
     background: #eee;
