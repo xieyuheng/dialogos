@@ -29,12 +29,6 @@
 
   let ok
 
-  let ok_icons = {
-    "dialog-mode": "⮛",
-    "reader-input-mode": "✉",
-    "reader-comment-mode": "✍",
-  }
-
   let ok_click = ut.click_handler({
     onclick: async () => {
       await step()
@@ -42,12 +36,6 @@
   })
 
   let status
-
-  let status_icons = {
-    "dialog-mode": "💬",
-    "reader-input-mode": "❔",
-    "reader-comment-mode": "📃",
-  }
 
   let input_buffer
 
@@ -158,13 +146,29 @@
   <div class="frame-list">
     {#each frames as node, index}
       <div class="frame">
-        <Frame {node} {index}/>
+        <Frame {node} {index} />
       </div>
     {/each}
   </div>
   <div class="reader-input">
     <button class="status" bind:this="{status}">
-      <abbr title="{mode}">{status_icons[mode]}</abbr>
+      <abbr title="{mode}">
+        {#if mode === 'dialog-mode'}
+          <img src="cute-dialog-64px.png" alt="dialog" width="40" height="40" />
+        {:else if mode === 'reader-input-mode'}
+          <img
+            src="cute-ask-question-64px.png"
+            alt="input"
+            width="40"
+            height="40" />
+        {:else if mode === 'reader-comment-mode'}
+          <img
+            src="cute-edit-file-64px.png"
+            alt="comment"
+            width="40"
+            height="40" />
+        {/if}
+      </abbr>
     </button>
     <textarea
       class="buffer"
@@ -173,7 +177,21 @@
       bind:value="{input_text}"
       on:focus="{input_buffer_focus}"></textarea>
     <button class="ok" bind:this="{ok}" on:click="{ok_click}">
-      {ok_icons[mode]}
+      {#if mode === 'dialog-mode'}
+        <img
+          src="cute-circled-chevron-down-64px.png"
+          alt="next"
+          width="40"
+          height="40" />
+      {:else if mode === 'reader-input-mode'}
+        <img
+          src="cute-paper-plane-64px.png"
+          alt="send"
+          width="40"
+          height="40" />
+      {:else if mode === 'reader-comment-mode'}
+        <img src="cute-ok-64px.png" alt="edit" width="40" height="40" />
+      {/if}
     </button>
   </div>
   <pre class="mini-buffer">{mini_message}</pre>

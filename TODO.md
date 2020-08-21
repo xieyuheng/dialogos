@@ -1,5 +1,4 @@
 - use chinese tags.
-- use icon instead of unicode.
 - first teacher, then student. -- 用中文。
 - emacs-like hooks for frame.
 - code block -- cicada/lang2. -- 用中文，
