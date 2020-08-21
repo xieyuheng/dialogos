@@ -45,5 +45,12 @@
 # export
 - right `export` button.
 - export new commented books.
+- 提供机制使得 reader 可以在学习过程中主动记笔记，
+  我们可以收集这些笔记，用认知心理学的方法，来研究 reader 的认知过程。
+- reader 可以选择分享自己的笔记给后来学习的人。
+  让后来学习的人在学习的过程中看到自己的笔记。
+  - 类似黑暗之魂。
+  - 一个运营周期内的同学，也许可以互相分享笔记。
+  - 助教可以以笔记的方式留下学习寄语。
 # deploy
 - fix heroku file.
