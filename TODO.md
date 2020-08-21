@@ -1,7 +1,7 @@
 - use chinese tags.
-- emacs-like hooks for frame.
 - use icon instead of unicode.
 - first teacher, then student. -- 用中文。
+- emacs-like hooks for frame.
 - code block -- cicada/lang2. -- 用中文，
 - screen-mode.
 - use `result` to subst pattern variables in body.
