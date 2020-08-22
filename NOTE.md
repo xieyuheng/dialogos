@@ -13,8 +13,11 @@ Icons:
 
 ## PWA
 
-Manifest
+- https://web.dev/progressive-web-apps
+
+Manifest:
 - https://developer.mozilla.org/en-US/docs/Web/Manifest
+- https://web.dev/add-manifest
 
 ## XML & components & semantic web
 
