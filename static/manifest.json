@@ -1,8 +1,6 @@
 {
   "name": "Dialogos",
-  "short_name": "Dia",
   "description": "διάλογος -- An online dialectic teaching system, inspired by Socrates, George Pólya and Dan Friedman.",
-  "background_color": "#85cbf8",
   "theme_color": "#85cbf8",
   "display": "fullscreen",
   "start_url": "/",

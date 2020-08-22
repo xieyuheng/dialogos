@@ -44,13 +44,12 @@
       <FrameComponent {data} {index} />
     </div>
   {:else}
-    <pre>Unknown data: {JSON.stringify(data, null, 4)}</pre>
+    <pre>Unknown content: {JSON.stringify(content, null, 4)}</pre>
   {/if}
 </div>
 
 <style>
   .frame {
-    position: relative;
     border-top: thin solid;
     border-bottom: thin solid;
   }
