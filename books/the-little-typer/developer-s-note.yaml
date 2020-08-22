@@ -16,7 +16,7 @@
       - comment: Really?
       - comment: Let us try again.
       - jump:
-          module: developer_s_note
+          module: developer-s-note
     - default_contents:
       - comment: Invalid answer, please try again.
       - jump:

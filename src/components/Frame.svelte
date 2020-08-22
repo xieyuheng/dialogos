@@ -44,7 +44,9 @@
       <FrameComponent {data} {index} />
     </div>
   {:else}
-    <pre>Unknown content: {JSON.stringify(content, null, 4)}</pre>
+    <div class="frame">
+      <pre>Unknown content: {JSON.stringify(content, null, 4)}</pre>
+    </div>
   {/if}
 </div>
 
