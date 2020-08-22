@@ -1,4 +1,3 @@
-- fix sapper's `service-worker.js`
 - logo in manifest.json.
 - compile our json inline schema to json schema.
 - emacs-like hooks for frame.

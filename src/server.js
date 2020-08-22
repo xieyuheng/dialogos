@@ -10,7 +10,7 @@ async function server() {
   const fastify = Fastify()
   await fastify.register(require("fastify-express"))
   fastify.use(compression({ threshold: 0 }))
-  fastify.register(require("fastify-static"), { root: path.resolve("static") })
+  fastify.use(require("sirv")("static"))
   fastify.use(sapper.middleware())
   return fastify
 }

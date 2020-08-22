@@ -19,9 +19,9 @@
     "compression": "^1.7.4",
     "fastify": "^3.2.1",
     "fastify-express": "^0.1.0",
-    "fastify-static": "^3.2.0",
     "js-yaml": "^3.14.0",
-    "prettyjson": "^1.2.1"
+    "prettyjson": "^1.2.1",
+    "sirv": "^1.0.6"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
