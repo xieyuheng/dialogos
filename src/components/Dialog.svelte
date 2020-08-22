@@ -13,9 +13,17 @@
   $: teacher = result.teacher
   $: student = result.student
   $: teacher_notes =
-    result.teacher_notes && Array.from(Object.entries(result.teacher_notes))
+    result.teacher_notes &&
+    Array.from(Object.entries(result.teacher_notes)).map(([name, content]) => ({
+      name,
+      content,
+    }))
   $: student_notes =
-    result.student_notes && Array.from(Object.entries(result.student_notes))
+    result.student_notes &&
+    Array.from(Object.entries(result.student_notes)).map(([name, content]) => ({
+      name,
+      content,
+    }))
 
   const markup = (str) => {
     const result = str.match(/^(.*?)\^\[(.*?)\](.*)/msu)
@@ -37,7 +45,7 @@
     {#if teacher_notes && teacher_notes.length > 0}
       <hr />
       {#each teacher_notes as note}
-        <Note data="{note}" />
+        <Note {...note} />
       {/each}
     {/if}
   </div>
@@ -49,7 +57,7 @@
     {#if student_notes && student_notes.length > 0}
       <hr />
       {#each student_notes as note}
-        <Note data="{note}" />
+        <Note {...note} />
       {/each}
     {/if}
   </div>

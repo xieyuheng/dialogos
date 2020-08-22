@@ -1,4 +1,3 @@
-- better `Note.svelte`.
 - better `Frame` interface.
 - migrate contents from xml to yaml.
 - fix sapper `service-worker.js`

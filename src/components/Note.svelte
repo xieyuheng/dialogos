@@ -1,8 +1,6 @@
 <script>
-  export let data
-
-  $: name = data[0]
-  $: content = data[1]
+  export let name
+  export let content
 </script>
 
 <!-- prettier-ignore -->
