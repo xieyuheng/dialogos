@@ -3,7 +3,7 @@
 </script>
 
 <script>
-  import Note from "./Note.svelte"
+  import Note from "./Dialog/Note.svelte"
 
   export let data
   export let index
