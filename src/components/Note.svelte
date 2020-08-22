@@ -1,8 +1,8 @@
 <script>
-  export let node
+  export let data
 
-  $: name = node[0]
-  $: content = node[1]
+  $: name = data[0]
+  $: content = data[1]
 </script>
 
 <!-- prettier-ignore -->

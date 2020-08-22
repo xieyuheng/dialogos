@@ -1,5 +1,5 @@
-import yaml from "js-yaml"
 import vm from "@dialogos/vm"
+import yaml from "js-yaml"
 import process from "process"
 import path from "path"
 import fs from "fs"

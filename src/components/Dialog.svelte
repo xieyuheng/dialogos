@@ -1,14 +1,14 @@
 <script context="module">
-  export const matcher = (node) => node["dialog"]
+  export const matcher = (data) => data["dialog"]
 </script>
 
 <script>
   import Note from "./Note.svelte"
 
-  export let node
+  export let data
   export let index
 
-  $: result = matcher(node)
+  $: result = matcher(data)
 
   $: teacher = result.teacher
   $: student = result.student
@@ -37,7 +37,7 @@
     {#if teacher_notes && teacher_notes.length > 0}
       <hr />
       {#each teacher_notes as note}
-        <Note node="{note}" />
+        <Note data="{note}" />
       {/each}
     {/if}
   </div>
@@ -49,7 +49,7 @@
     {#if student_notes && student_notes.length > 0}
       <hr />
       {#each student_notes as note}
-        <Note node="{note}" />
+        <Note data="{note}" />
       {/each}
     {/if}
   </div>

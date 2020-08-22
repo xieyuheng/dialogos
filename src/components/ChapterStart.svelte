@@ -1,11 +1,11 @@
 <script context="module">
-  export const matcher = (node) => node["chapter_start"]
+  export const matcher = (data) => data["chapter_start"]
 </script>
 
 <script>
-  export let node
+  export let data
 
-  $: result = matcher(node)
+  $: result = matcher(data)
 
   $: title = result.title
 </script>

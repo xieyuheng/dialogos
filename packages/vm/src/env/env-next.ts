@@ -17,31 +17,31 @@ export async function next(env: Env.Env): Promise<any> {
     throw new Error("The return_stack is empty.")
   }
   const { stmts, index } = entry
-  const node = stmts[index]
-  if (node["jump"]) {
-    return await execute_jump(env, entry, node["jump"])
-  } else if (node["call"]) {
-    return await execute_call(env, entry, node["call"])
-  } else if (node["match"]) {
-    return await execute_match(env, entry, node["match"])
+  const stmt = stmts[index]
+  if (stmt["jump"]) {
+    return await execute_jump(env, entry, stmt["jump"])
+  } else if (stmt["call"]) {
+    return await execute_call(env, entry, stmt["call"])
+  } else if (stmt["match"]) {
+    return await execute_match(env, entry, stmt["match"])
   } else {
     put_back_entry(env, entry)
-    return node
+    return stmt
   }
 }
 
 function find_label_index(stmts: Array<any>, label: string): number {
-  return stmts.findIndex((node) => node && node.label === label)
+  return stmts.findIndex((stmt) => stmt && stmt.label === label)
 }
 
 async function execute_jump(
   env: Env.Env,
   entry: Env.ReturnEntry,
-  node: any
+  location: any
 ): Promise<any> {
-  const module = node.module || entry.module
+  const module = location.module || entry.module
   const stmts = await env.loader(env.book, module)
-  const index = node.label ? find_label_index(stmts, node.label) : 0
+  const index = location.label ? find_label_index(stmts, location.label) : 0
   env.return_stack.push({ module, stmts, index })
   return await next(env)
 }
@@ -49,26 +49,26 @@ async function execute_jump(
 async function execute_call(
   env: Env.Env,
   entry: Env.ReturnEntry,
-  node: any
+  location: any
 ): Promise<any> {
   put_back_entry(env, entry)
-  return await execute_jump(env, entry, node)
+  return await execute_jump(env, entry, location)
 }
 
 async function execute_match(
   env: Env.Env,
   entry: Env.ReturnEntry,
-  clauses: Array<any>,
+  clauses: Array<any>
 ): Promise<any> {
-  const top_node = env.data_stack.pop()
-  if (top_node === undefined) {
+  const data = env.data_stack.pop()
+  if (data === undefined) {
     throw new Error("Empty env.data_stack.")
   }
   for (const clause of clauses) {
     if (clause.pattern) {
       // TODO use `match` instead of `ut.equal`,
       // - use matched variables to subst pattern variables in contents.
-      if (ut.equal(clause.pattern, top_node)) {
+      if (ut.equal(clause.pattern, data)) {
         const contents = clause.contents
         put_back_entry(env, entry)
         env.return_stack.push({ ...entry, stmts: contents, index: 0 })
@@ -81,5 +81,6 @@ async function execute_match(
       return await next(env)
     }
   }
+  // TODO better error report on Mismatch.
   throw new Error("Mismatch.")
 }

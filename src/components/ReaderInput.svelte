@@ -1,11 +1,11 @@
 <script context="module">
-  export const matcher = (node) => node["reader-input"]
+  export const matcher = (data) => data["reader-input"]
 </script>
 
 <script>
-  export let node
+  export let data
 
-  $: result = matcher(node)
+  $: result = matcher(data)
 
   $: echo = JSON.stringify(result, null, 2)
 </script>

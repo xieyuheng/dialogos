@@ -9,7 +9,7 @@
 
   // -- PROP --
 
-  export let node
+  export let data
   export let index
 
   // -- DOM ELEMENT --
@@ -27,7 +27,7 @@
     ReaderComment,
   ]
 
-  const found = frames.find((frame) => frame.matcher && frame.matcher(node))
+  const found = frames.find((frame) => frame.matcher && frame.matcher(data))
   const Frame = found && found.default
 
   // -- LIFE CYCLE --
@@ -40,10 +40,10 @@
 <div bind:this="{container}">
   {#if found}
     <div class="frame">
-      <Frame {node} {index} />
+      <Frame {data} {index} />
     </div>
   {:else}
-    <pre>Unknown node: {JSON.stringify(node, null, 4)}</pre>
+    <pre>Unknown data: {JSON.stringify(data, null, 4)}</pre>
   {/if}
 </div>
 

@@ -1,11 +1,11 @@
 <script context="module">
-  export const matcher = (node) => node["comment"]
+  export const matcher = (data) => data["comment"]
 </script>
 
 <script>
-  export let node
+  export let data
 
-  $: result = matcher(node)
+  $: result = matcher(data)
 
   $: title = undefined
   $: content = result

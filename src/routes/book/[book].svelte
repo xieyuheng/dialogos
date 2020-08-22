@@ -90,20 +90,14 @@
   }
 
   const step_dialog = async () => {
-    const node = await vm.Env.next(env)
-    if (typeof node === "string") {
-      // NOTE Top level text stmts are viewed as writer comment.
-      console.log("Writer comment:", node)
-      await step()
+    const stmt = await vm.Env.next(env)
+    if (stmt["get_reader_input"]) {
+      frames = [...frames, ...stmt["get_reader_input"]]
+      mode = "reader-input-mode"
+      mini_message = "Entering reader-input-mode."
     } else {
-      if (node["get_reader_input"]) {
-        frames = [...frames, ...node["get_reader_input"]]
-        mode = "reader-input-mode"
-        mini_message = "Entering reader-input-mode."
-      } else {
-        frames = [...frames, node]
-        mini_message = ""
-      }
+      frames = [...frames, stmt]
+      mini_message = ""
     }
   }
 
@@ -111,9 +105,9 @@
     if (ut.string_is_blank(input_text)) {
       mini_message = "The input buffer is empty. You should enter your answer."
     } else {
-      const node = yaml.safeLoad(input_text)
-      env.data_stack.push(node)
-      frames = [...frames, { "reader-input": node }]
+      const data = yaml.safeLoad(input_text)
+      env.data_stack.push(data)
+      frames = [...frames, { "reader-input": data }]
       input_text = ""
       mode = "dialog-mode"
       mini_message = "Back to dialog-mode from reader-input-mode."
@@ -143,9 +137,9 @@
 
 <div class="book">
   <div class="frame-list">
-    {#each frames as node, index}
+    {#each frames as data, index}
       <div class="frame">
-        <Frame {node} {index} />
+        <Frame {data} {index} />
       </div>
     {/each}
   </div>
