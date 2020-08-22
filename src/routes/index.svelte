@@ -1,13 +1,13 @@
 <svelte:head>
-  <title>διάλογος</title>
+  <title>ΔΙΆΛΟΓΟΣ</title>
 </svelte:head>
 
-<h1>διάλογος</h1>
+<h1>ΔΙΆΛΟΓΟΣ</h1>
 
 <p>
   An online dialectic teaching system,
   <br />
-  inspired by Socrates, George Pólya and Dan Friedman.
+  inspired by Socrates, Plato, George Pólya and Dan Friedman.
 </p>
 
 <img
