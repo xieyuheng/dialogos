@@ -1,4 +1,5 @@
-- use yaml instead of xml.
+- `stmts` in `ReturnEntry`, `data_stack` instead of `node_stack`.
+- use yaml instead of xml -- use leading field name as kind.
 - logo in manifest.json.
 - compile our json inline schema to json schema.
 - emacs-like hooks for frame.
@@ -17,9 +18,6 @@
 - be able to use big <textarea> sometimes.
   - we need a **simple** solution.
 - report on im products.
-# little
-- hand written xml lexer.
-  - build xml Node from token by a stack machine.
 # test
 - use cypress to test control flow.
 # error handling

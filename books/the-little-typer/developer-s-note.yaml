@@ -1,0 +1,25 @@
+- comment: I developed a WebApp to create little books.
+
+- We can write comment in between frames.
+
+- comment: |
+    And this is my report on "The Little Typer".
+
+- label: start
+  get-reader-input:
+    comment: Would you like to start?
+
+- match:
+    - pattern: Yes
+      contents:
+      - comment: Ok let us start.
+    - pattern: No
+      contents:
+      - comment: Really?
+      - comment: Let us try again.
+      - jump:
+          module: developer-s-note
+    - default-contents:
+      - comment: Invalid answer, please try again.
+      - jump:
+          label: start

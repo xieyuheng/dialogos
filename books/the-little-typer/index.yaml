@@ -1,0 +1,35 @@
+- chapter-start:
+    title: 1. The More Things Change, the More They Stay the Same
+
+- call:
+    module: developer-s-note
+
+- 师: 问
+
+- 问答:
+    师: 问
+    生: 答
+
+- dialog:
+    teacher: Welcome back!
+    student: It's good to be here!
+
+- dialog:
+    teacher: |
+      Let's dust off and update some of our old toys
+      for a new language called Pie.
+
+      Is it obvious that this is an Atom?
+        'atom
+    student: |
+      Not at all. What does Atom mean?
+
+- dialog:
+    teacher: |
+      To be an Atom is to be an atom.^[+]
+    teacher_notes:
+      +: |
+        In Lisp, atoms are symbols, numbers, and many other things.
+        Here, atoms are only symbols.
+    student: |
+      Then 'atom is an Atom because 'atom is an atom.
