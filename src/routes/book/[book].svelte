@@ -21,7 +21,7 @@
 
   // -- LOCAL STATE --
 
-  let frames = []
+  let contents = []
   let mode = "dialog_mode"
   let input_text = ""
   let mini_message = ""
@@ -92,11 +92,11 @@
   const step_dialog = async () => {
     const stmt = await vm.Env.next(env)
     if (stmt["get_reader_input"]) {
-      frames = [...frames, ...stmt["get_reader_input"]]
+      contents = [...contents, ...stmt["get_reader_input"]]
       mode = "reader_input_mode"
       mini_message = "Entering reader_input_mode."
     } else {
-      frames = [...frames, stmt]
+      contents = [...contents, stmt]
       mini_message = ""
     }
   }
@@ -107,7 +107,7 @@
     } else {
       const data = yaml.safeLoad(input_text)
       env.data_stack.push(data)
-      frames = [...frames, { reader_input: data }]
+      contents = [...contents, { reader_input: data }]
       input_text = ""
       mode = "dialog_mode"
       mini_message = "Back to dialog_mode from reader_input_mode."
@@ -125,7 +125,7 @@
       mini_message =
         "Write down reader comment, and go back to dialog_mode from reader_comment_mode."
       mode = "dialog_mode"
-      frames = [...frames, { reader_comment: input_text }]
+      contents = [...contents, { reader_comment: input_text }]
       input_text = ""
     }
   }
@@ -137,9 +137,9 @@
 
 <div class="book">
   <div class="frame-list">
-    {#each frames as data, index}
+    {#each contents as content, index}
       <div class="frame">
-        <Frame {data} {index} />
+        <Frame {content} {index} />
       </div>
     {/each}
   </div>

@@ -1,15 +1,15 @@
 <script>
-  import * as Dialog from "./Dialog.svelte"
-  import * as Card from "./Card.svelte"
-  import * as Comment from "./Comment.svelte"
-  import * as ChapterStart from "./ChapterStart.svelte"
-  import * as ReaderInput from "./ReaderInput.svelte"
-  import * as ReaderComment from "./ReaderComment.svelte"
+  import * as Dialog from "./frames/Dialog.svelte"
+  import * as Card from "./frames/Card.svelte"
+  import * as Comment from "./frames/Comment.svelte"
+  import * as ChapterStart from "./frames/ChapterStart.svelte"
+  import * as ReaderInput from "./frames/ReaderInput.svelte"
+  import * as ReaderComment from "./frames/ReaderComment.svelte"
   import { onMount } from "svelte"
 
   // -- PROP --
 
-  export let data
+  export let content
   export let index
 
   // -- DOM ELEMENT --
@@ -27,8 +27,9 @@
     ReaderComment,
   ]
 
-  const found = frames.find((frame) => data.hasOwnProperty(frame.tag))
-  const Frame = found && found.default
+  const frame = frames.find((frame) => content.hasOwnProperty(frame.tag))
+  const FrameComponent = frame && frame.default
+  const data = frame && content[frame.tag]
 
   // -- LIFE CYCLE --
 
@@ -38,9 +39,9 @@
 </script>
 
 <div bind:this="{container}">
-  {#if found}
+  {#if frame}
     <div class="frame">
-      <Frame data="{data[found.tag]}" {index} />
+      <FrameComponent {data} {index} />
     </div>
   {:else}
     <pre>Unknown data: {JSON.stringify(data, null, 4)}</pre>
