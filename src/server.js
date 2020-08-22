@@ -1,16 +1,23 @@
-import express from "express"
-import compression from "compression"
+import Fastify from "fastify"
 import * as sapper from "@sapper/server"
+import compression from "compression"
+import path from "path"
 
 const { PORT, NODE_ENV } = process.env
 const dev = NODE_ENV === "development"
 
-const app = express()
+async function server() {
+  const fastify = Fastify()
+  await fastify.register(require("fastify-express"))
+  fastify.use(compression({ threshold: 0 }))
+  fastify.register(require("fastify-static"), { root: path.resolve("static") })
+  fastify.use(sapper.middleware())
+  return fastify
+}
 
-app.use(compression({ threshold: 0 }))
-app.use(express.static("static"))
-app.use(sapper.middleware())
-
-app.listen(PORT, (err) => {
-  if (err) console.error("error", err)
-})
+server()
+  .then((fastify) => fastify.listen(PORT))
+  .catch((error) => {
+    console.error(error)
+    process.exit(1)
+  })
