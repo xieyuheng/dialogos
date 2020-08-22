@@ -123,376 +123,371 @@
 
     To introduce a new concept, first give many engaging examples.
 
-# <dialog>
-# <teacher>
-# Sentences such as
-#   'ratatouille is an Atom
-# and
-#   'cœurs-d-artichauts is an Atom
-# are called judgments.^[+]
-# <note name="+">
-# Thanks, Per Martin-Löf (1942-).
-# </note>
-# </teacher>
-# <student>
-# What is the point of a judgment?
-# </student>
-# </dialog>
+- dialog:
+    teacher: |
+      Sentences such as
+        'ratatouille is an Atom
+      and
+        'cœurs-d-artichauts is an Atom
+      are called judgments.^[+]
+    teacher_notes:
+      +: Thanks, Per Martin-Löf (1942-).
+    student:
+      What is the point of a judgment?
 
 - comment: |
     The concept of judgment occurs here.
     Laws are about the first form of judgment,
     but the concept of judgment is more formal than Laws.
 
-# <comment>
-# The Didactics of familiar concept
+- comment: |
+    The Didactics of familiar concept
 
-# More formal concept should be introduced
-# after the introduction of the equivalent more familiar concept.
-# (Explain judgment as Laws in English is more familiar
-# than direct introduction of formal judgment.)
+    More formal concept should be introduced
+    after the introduction of the equivalent more familiar concept.
+    (Explain judgment as Laws in English is more familiar
+    than direct introduction of formal judgment.)
 
-# "The Law of Tick Marks" is an instance of the first form of judgment.
-# (Introduce instance first, then introduce class.)
-# </comment>
+    "The Law of Tick Marks" is an instance of the first form of judgment.
+    (Introduce instance first, then introduce class.)
 
-# <dialog>
-# <teacher>
-# A judgment is an attitude that a person takes towards expressions.
-# When we come to know something, we are making a judgment.
+- dialog:
+    teacher: |
+      A judgment is an attitude that a person takes towards expressions.
+      When we come to know something, we are making a judgment.
 
-# What can be judged about Atom and 'courgette?
-# </teacher>
-# <student>
-# 'courgette is an Atom.
-# </student>
-# </dialog>
+      What can be judged about Atom and 'courgette?
 
-# <dialog>
-# <teacher>
-# A form of judgment is an observation with blank spaces in it, such as
-#   ___ is a ___.
-# </teacher>
-# <student>
-# Are there other forms of judgment?
-# </student>
-# </dialog>
+    student: |
+      'courgette is an Atom.
 
-# <dialog>
-# <teacher>
-# Another form of "judgment" is "judgement."
-# </teacher>
-# <student>
-# Very funny.
-# </student>
-# </dialog>
 
-# <comment>
-# Another form of "judgment" is "the same" judgement.
 
-# This is funny because of the joy of debugging ambiguity.
-# </comment>
+- dialog:
+    teacher: |
+      A form of judgment is an observation with blank spaces in it, such as
+        ___ is a ___.
 
-# <dialog>
-# <teacher>
-# Is
-#   'ratatouille
-# the same
-#   Atom
-# as
-#   'ratatouille?
-# </teacher>
-# <student>
-# Yes.
+    student: |
+      Are there other forms of judgment?
 
-# They are the same Atom because both have the same letters after the tick mark.
-# </student>
-# </dialog>
 
-# <dialog>
-# <teacher>
-# Is
-#   'ratatouille
-# the same
-#   Atom
-# as
-#   'baguette?
-# </teacher>
-# <student>
-# No.
 
-# They have different letters after the tick mark.
-# </student>
-# </dialog>
+- dialog:
+    teacher: |
+      Another form of "judgment" is "judgement."
 
-# <comment>
-# When teaching, use sentences with consistent pattern.
-# Repeat the pattern, student will find it out.
-# </comment>
+    student: |
+      Very funny.
 
-# <comment>
-# The aim of the above frames is to explain the following commandment.
-# </comment>
 
-# <card kind="commandment">
-# <title>The Commandment of Tick Marks</title>
-# Two expressions are the same Atom if their values are tick marks
-# followed by identical letters and hyphens.
-# </card>
 
-# <dialog>
-# <teacher>
-# The second form of judgment is that
-#   ____ is the same ____ as ____.
-# </teacher>
-# <student>
-# So
-#   'citron is the same Atom as 'citron
-# is a judgment.
-# </student>
-# </dialog>
+- comment: |
+    Another form of "judgment" is "the same" judgement.
 
-# <comment>
-# From the question (Is 'citron the same Atom as 'citron),
-# to the question (Is ('citron is the same Atom as 'citron) a judgment)
-# the abstraction goes one level higher.
+    This is funny because of the joy of debugging ambiguity.
 
-# One level of quotation occurred,
-# and this kind of quotation is represented in the frame by indentation.
-# </comment>
 
-# <dialog>
-# <teacher>
-# It is a judgment,
-# and we have reason to believe it.
+- dialog:
+    teacher: |
+      Is
+        'ratatouille
+      the same
+        Atom
+      as
+        'ratatouille?
 
-# Is
-#   'pomme is the same Atom as 'orange
-# a judgment?
-# </teacher>
-# <student>
-# It is a judgment,
-# but we have no reason to believe it.
-# After all, one should not compare apples and oranges.
-# </student>
-# </dialog>
+    student: |
+      Yes.
 
-# <dialog>
-# <teacher>
-# Is it obvious that
-#   (cons 'ratatouille 'baguette)^[+]
-# is a
-#   (Pair Atom Atom)?
-# <note name="+">
-# When ready, see page 62 for "typing" instructions.
-# </note>
-# </teacher>
-# <student>
-# No, it isn't.
+      They are the same Atom because both have the same letters after the tick mark.
 
-# What does it mean to be a
-#   (Pair Atom Atom)?
-# </student>
-# </dialog>
 
-# <comment>
-# What not obvious should be further explained.
 
-# We want to ask the question "Is (cons 'ratatouille 'baguette) a (Pair Atom Atom)?",
-# but we have not explained the meaning of Pair,
-# thus we ask "Is it obvious that ...",
-# and give reason to explain the meaning of Pair.
-# </comment>
+- dialog:
+    teacher: |
+      Is
+        'ratatouille
+      the same
+        Atom
+      as
+        'baguette?
 
-# <dialog>
-# <teacher>
-# To be a
-#   (Pair Atom Atom)
-# is to be a pair whose car is an Atom, like 'ratatouille,
-# and whose cdr is also an Atom, like 'baguette.
-# </teacher>
-# <student>
-# The names cons, car, and cdr seem familiar.
-# What do they mean again?
-# And what do they have to do with pairs?
-# </student>
-# </dialog>
+    student: |
+      No.
 
-# <dialog>
-# <teacher>
-# A pair begins with cons^[+]
-# and ends with two more parts,
-# call its car and its cdr.
-# <note name="+">
-# In Lisp, cons is used to make lists longer.
-# Here, cons only constructs pairs.
-# </note>
-# </teacher>
-# <student>
-# Okay. That means that
-#   (cons 'ratatouille 'baguette)
-# is a
-#   (Pair Atom Atom)
-# because (cons 'ratatouille 'baguette)
-# is a pair whose car is an Atom,
-# and whose cdr is also an Atom.
+      They have different letters after the tick mark.
 
-# Is cons a Pair, then?
-# </student>
-# </dialog>
 
-# <comment>
-# The question in the above answer might be feedback from a student.
-# Feedback is always important in any system.
-# </comment>
 
-# <dialog>
-# <teacher>
-# Neither cons nor Pair alone is even an expression.
-# Both require two arguments.^[+]
+- comment: |
+    When teaching, use sentences with consistent pattern.
+    Repeat the pattern, student will find it out.
 
-# Is
-#   (cons 'ratatouille 'baguette)
-# the same
-#   (Pair Atom Atom)
-# as
-#   (cons 'ratatouille 'baguette)?
-# <note name="+">
-# In Lisp, cons is a procedure and has meaning on its own,
-# but forms such as cond or lambda are meaningless if they appear alone.
-# </note>
-# </teacher>
-# <student>
-# What does it mean for two expressions to be the same
-#   (Pair Atom Atom)?
-# </student>
-# </dialog>
 
-# <dialog>
-# <teacher>
-# It means that both cars are the same Atom
-# and that both cdrs are the same Atom.
-# </teacher>
-# <student>
-# Then
-#   (cons 'ratatouille 'baguette)
-# is indeed the same
-#   (Pair Atom Atom)
-# as
-#   (cons 'ratatouille 'baguette).
-# </student>
-# </dialog>
+- comment: |
+    The aim of the above frames is to explain the following commandment.
 
-# <dialog>
-# <teacher>
-# Is
-#   (cons 'ratatouille 'baguette)
-# the same
-#   (Pair Atom Atom)
-# as
-#   (cons 'baguette 'baguette)?
-# </teacher>
-# <student>
-# The car of
-#   (cons 'ratatouille 'baguette)
-# is 'ratatouille, while the car of
-#   (cons 'baguette 'baguette)
-# is 'baguette.
 
-# So we have no reason to believe that
-# they are the same (Pair Atom Atom).
-# </student>
-# </dialog>
+- card:
+    title: The Commandment of Tick Marks
+    content: |
+      Two expressions are the same Atom if their values are tick marks
+      followed by identical letters and hyphens.
 
-# <dialog>
-# <teacher>
-# How can
-#   (cdr
-#     (cons 'ratatouille 'baguette))
-# be described?
-# </teacher>
-# <student>
-# It is an
-#   Atom.
-# </student>
-# </dialog>
 
-# <dialog>
-# <teacher>
-# Expressions that describe other expressions,
-# such as Atom, are called types.
+- dialog:
+    teacher: |
+      The second form of judgment is that
+        ____ is the same ____ as ____.
 
-# Is (Pair Atom Atom)^[+] a type?
-# <note name="+">
-# When a name, such as Pair or Atom, refers to a type,
-# it starts with an upper-case letter.
-# </note>
-# </teacher>
-# <student>
-# Yes, because it describes pairs where the car and cdr are both Atoms.
-# </student>
-# </dialog>
+    student: |
+      So
+        'citron is the same Atom as 'citron
+      is a judgment.
 
-# <comment>
-# Expressions that describe other expressions are called types.
 
-# This definition of type is very simple,
-# with a leading question, it is even more natural.
-# </comment>
 
-# <dialog>
-# <teacher>
-# The third form of judgment is
-#   ___ is a type.
-# </teacher>
-# <student>
-# This means that both
-#   Atom is a type
-# and
-#   (Pair Atom Atom) is a type
-# are judgments.
-# </student>
-# </dialog>
+- comment: |
+    From the question (Is 'citron the same Atom as 'citron),
+    to the question (Is ('citron is the same Atom as 'citron) a judgment)
+    the abstraction goes one level higher.
 
-# <card kind="law">
-# <title>The Law of Atom</title>
-# Atom is a type.
-# </card>
+    One level of quotation occurred,
+    and this kind of quotation is represented in the frame by indentation.
 
-# <dialog>
-# <teacher>
-# Is
-#   'courgette is a type
-# a judgment?
-# </teacher>
-# <student>
-# It is a judgment,
-# but we have no reason to believe it
-# because 'courgette doesn't describe other expressions.
-# </student>
-# </dialog>
 
-# <dialog>
-# <teacher>
-# Are Atom and Atom the same type?
-# </teacher>
-# <student>
-# Presumably.
-# They certainly look like they should be.
-# </student>
-# </dialog>
+- dialog:
+    teacher: |
+      It is a judgment,
+      and we have reason to believe it.
 
-# <dialog>
-# <teacher>
-# The fourth and final form of judgment is
-#   ___ and ___ are the same type.
-# </teacher>
-# <student>
-# Ah, so
-#   Atom and Atom are the same type
-# is a judgment, and we have reason to believe it.
-# </student>
-# </dialog>
+      Is
+        'pomme is the same Atom as 'orange
+      a judgment?
+
+    student: |
+      It is a judgment,
+      but we have no reason to believe it.
+      After all, one should not compare apples and oranges.
+
+
+
+- dialog:
+    teacher: |
+      Is it obvious that
+        (cons 'ratatouille 'baguette)^[+]
+      is a
+        (Pair Atom Atom)?
+    teacher_notes:
+      +: When ready, see page 62 for "typing" instructions.
+
+    student: |
+      No, it isn't.
+
+      What does it mean to be a
+        (Pair Atom Atom)?
+
+
+
+- comment: |
+    What not obvious should be further explained.
+
+    We want to ask the question "Is (cons 'ratatouille 'baguette) a (Pair Atom Atom)?",
+    but we have not explained the meaning of Pair,
+    thus we ask "Is it obvious that ...",
+    and give reason to explain the meaning of Pair.
+
+
+- dialog:
+    teacher: |
+      To be a
+        (Pair Atom Atom)
+      is to be a pair whose car is an Atom, like 'ratatouille,
+      and whose cdr is also an Atom, like 'baguette.
+
+    student: |
+      The names cons, car, and cdr seem familiar.
+      What do they mean again?
+      And what do they have to do with pairs?
+
+
+
+- dialog:
+    teacher: |
+      A pair begins with cons^[+]
+      and ends with two more parts,
+      call its car and its cdr.
+    teacher_notes:
+      +: |
+        In Lisp, cons is used to make lists longer.
+        Here, cons only constructs pairs.
+
+
+    student: |
+      Okay. That means that
+        (cons 'ratatouille 'baguette)
+      is a
+        (Pair Atom Atom)
+      because (cons 'ratatouille 'baguette)
+      is a pair whose car is an Atom,
+      and whose cdr is also an Atom.
+
+      Is cons a Pair, then?
+
+
+
+- comment: |
+    The question in the above answer might be feedback from a student.
+    Feedback is always important in any system.
+
+
+- dialog:
+    teacher: |
+      Neither cons nor Pair alone is even an expression.
+      Both require two arguments.^[+]
+
+      Is
+        (cons 'ratatouille 'baguette)
+      the same
+        (Pair Atom Atom)
+      as
+        (cons 'ratatouille 'baguette)?
+    teacher_notes:
+      +: |
+        In Lisp, cons is a procedure and has meaning on its own,
+        but forms such as cond or lambda are meaningless if they appear alone.
+
+
+    student: |
+      What does it mean for two expressions to be the same
+        (Pair Atom Atom)?
+
+
+
+- dialog:
+    teacher: |
+      It means that both cars are the same Atom
+      and that both cdrs are the same Atom.
+
+    student: |
+      Then
+        (cons 'ratatouille 'baguette)
+      is indeed the same
+        (Pair Atom Atom)
+      as
+        (cons 'ratatouille 'baguette).
+
+
+
+- dialog:
+    teacher: |
+      Is
+        (cons 'ratatouille 'baguette)
+      the same
+        (Pair Atom Atom)
+      as
+        (cons 'baguette 'baguette)?
+
+    student: |
+      The car of
+        (cons 'ratatouille 'baguette)
+      is 'ratatouille, while the car of
+        (cons 'baguette 'baguette)
+      is 'baguette.
+
+      So we have no reason to believe that
+      they are the same (Pair Atom Atom).
+
+
+
+- dialog:
+    teacher: |
+      How can
+        (cdr
+          (cons 'ratatouille 'baguette))
+      be described?
+
+    student: |
+      It is an
+        Atom.
+
+
+
+- dialog:
+    teacher: |
+      Expressions that describe other expressions,
+      such as Atom, are called types.
+
+      Is (Pair Atom Atom)^[+] a type?
+    teacher_notes:
+      +: |
+        When a name, such as Pair or Atom, refers to a type,
+        it starts with an upper-case letter.
+
+    student: |
+      Yes, because it describes pairs where the car and cdr are both Atoms.
+
+
+
+- comment: |
+    Expressions that describe other expressions are called types.
+
+    This definition of type is very simple,
+    with a leading question, it is even more natural.
+
+
+- dialog:
+    teacher: |
+      The third form of judgment is
+        ___ is a type.
+
+    student: |
+      This means that both
+        Atom is a type
+      and
+        (Pair Atom Atom) is a type
+      are judgments.
+
+
+
+- card:
+    title: The Law of Atom
+    content: Atom is a type.
+
+- dialog:
+    teacher: |
+      Is
+        'courgette is a type
+      a judgment?
+
+    student: |
+      It is a judgment,
+      but we have no reason to believe it
+      because 'courgette doesn't describe other expressions.
+
+
+
+- dialog:
+    teacher: |
+      Are Atom and Atom the same type?
+
+    student: |
+      Presumably.
+      They certainly look like they should be.
+
+
+
+- dialog:
+    teacher: |
+      The fourth and final form of judgment is
+        ___ and ___ are the same type.
+
+    student: |
+      Ah, so
+        Atom and Atom are the same type
+      is a judgment, and we have reason to believe it.
+
 
 - card:
     title: The Four Forms of Judgment
