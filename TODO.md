@@ -1,4 +1,5 @@
 - logo in manifest.json.
+- prettier.config.js
 - compile our json inline schema to json schema.
 - emacs-like hooks for frame.
 - use chinese tags.
