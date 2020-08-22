@@ -1,15 +1,5 @@
 <script context="module">
-  import li, { p, v, lv } from "@dialogos/little"
-
-  export const matcher = li.matcher(
-    p(
-      ["dialog", "问答"],
-      [
-        p(["teacher", "师"], [v("teacher"), lv("teacher_notes")]),
-        p(["student", "生"], [v("student"), lv("student_notes")]),
-      ]
-    )
-  )
+  export const matcher = (node) => node["dialog"]
 </script>
 
 <script>
@@ -20,10 +10,12 @@
 
   $: result = matcher(node)
 
-  $: teacher = result.teacher.value
-  $: student = result.student.value
-  $: teacher_notes = result.teacher_notes
-  $: student_notes = result.student_notes
+  $: teacher = result.teacher
+  $: student = result.student
+  $: teacher_notes =
+    result.teacher_notes && Array.from(Object.entries(result.teacher_notes))
+  $: student_notes =
+    result.student_notes && Array.from(Object.entries(result.student_notes))
 
   const markup = (str) => {
     const result = str.match(/^(.*?)\^\[(.*?)\](.*)/msu)
@@ -42,7 +34,7 @@
     <pre>
       {@html markup(teacher).join('')}
     </pre>
-    {#if teacher_notes.length > 0}
+    {#if teacher_notes && teacher_notes.length > 0}
       <hr />
       {#each teacher_notes as note}
         <Note node="{note}" />
@@ -54,7 +46,7 @@
     <pre>
       {@html markup(student).join('')}
     </pre>
-    {#if student_notes.length > 0}
+    {#if student_notes && student_notes.length > 0}
       <hr />
       {#each student_notes as note}
         <Note node="{note}" />

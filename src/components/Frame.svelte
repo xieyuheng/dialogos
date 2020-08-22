@@ -6,7 +6,6 @@
   import * as ReaderInput from "./ReaderInput.svelte"
   import * as ReaderComment from "./ReaderComment.svelte"
   import { onMount } from "svelte"
-  import li from "@dialogos/little"
 
   // -- PROP --
 
@@ -21,7 +20,7 @@
 
   const frames = [
     Dialog,
-    Card,
+    // Card,
     Comment,
     ChapterStart,
     ReaderInput,
@@ -44,9 +43,7 @@
       <Frame {node} {index} />
     </div>
   {:else}
-    <pre>
-      Unknown node: {li.Node.repr(node)}
-    </pre>
+    <pre>Unknown node: {JSON.stringify(node, null, 4)}</pre>
   {/if}
 </div>
 

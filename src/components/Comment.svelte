@@ -1,9 +1,5 @@
 <script context="module">
-  import li, { p, v } from "@dialogos/little"
-
-  export const matcher = (node) =>
-    li.match(p("comment", [p("title", v("title")), v("content")]), node) ||
-    li.match(p("comment", [v("content")]), node)
+  export const matcher = (node) => node["comment"]
 </script>
 
 <script>
@@ -11,8 +7,8 @@
 
   $: result = matcher(node)
 
-  $: title = result.title && result.title.value
-  $: content = result.content.value
+  $: title = undefined
+  $: content = result
 </script>
 
 <div class="comment">

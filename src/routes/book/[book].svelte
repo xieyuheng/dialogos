@@ -8,7 +8,8 @@
 </script>
 
 <script>
-  import li, { h, text } from "@dialogos/little"
+  import vm from "@dialogos/vm"
+  import yaml from "js-yaml"
   import Frame from "../../components/Frame.svelte"
   import * as ut from "../../ut"
   import { onMount } from "svelte"
@@ -67,7 +68,7 @@
 
   // -- BUSINESS --
 
-  const env = li.Env.init({
+  const env = vm.Env.init({
     book,
     nodes,
     loader: async (book, module) => {
@@ -89,20 +90,20 @@
   }
 
   const step_dialog = async () => {
-    const node = await li.Env.next(env)
-    if (node.kind === "Node.Element") {
-      if (node.tag === "get-reader-input") {
-        frames = [...frames, ...node.contents]
+    const node = await vm.Env.next(env)
+    if (typeof node === "string") {
+      // NOTE Top level text nodes are viewed as writer comment.
+      console.log("Writer comment:", node)
+      await step()
+    } else {
+      if (node["get_reader_input"]) {
+        frames = [...frames, ...node["get_reader_input"]]
         mode = "reader-input-mode"
         mini_message = "Entering reader-input-mode."
       } else {
         frames = [...frames, node]
         mini_message = ""
       }
-    } else {
-      // NOTE Top level text nodes are viewed as writer comment.
-      console.log("Writer comment:", node.value)
-      await step()
     }
   }
 
@@ -110,11 +111,9 @@
     if (ut.string_is_blank(input_text)) {
       mini_message = "The input buffer is empty. You should enter your answer."
     } else {
-      const nodes = li.Node.parse_nodes(input_text)
-      // NOTE We only use the first node.
-      const [node] = nodes
+      const node = yaml.safeLoad(input_text)
       env.node_stack.push(node)
-      frames = [...frames, h("reader-input", {}, node)]
+      frames = [...frames, { "reader-input": node }]
       input_text = ""
       mode = "dialog-mode"
       mini_message = "Back to dialog-mode from reader-input-mode."
@@ -132,7 +131,7 @@
       mini_message =
         "Write down reader comment, and go back to dialog-mode from reader-comment-mode."
       mode = "dialog-mode"
-      frames = [...frames, h("reader-comment", {}, text(input_text))]
+      frames = [...frames, { "reader-comment": input_text }]
       input_text = ""
     }
   }
@@ -195,7 +194,7 @@
     </button>
   </div>
   <pre class="mini-buffer">
-    {#if mini_message} ➽ {mini_message}{/if}
+    {#if mini_message}➽ {mini_message}{/if}
   </pre>
 </div>
 

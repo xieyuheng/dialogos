@@ -1,7 +1,5 @@
 <script context="module">
-  import li, { p, v } from "@dialogos/little"
-
-  export const matcher = li.matcher(p("reader-comment", v("content")))
+  export const matcher = (node) => node["reader-comment"]
 </script>
 
 <script>
@@ -9,7 +7,7 @@
 
   $: result = matcher(node)
 
-  $: content = result.content.value
+  $: content = result
 </script>
 
 <div class="reader-comment">

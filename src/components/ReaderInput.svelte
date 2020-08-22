@@ -1,7 +1,5 @@
 <script context="module">
-  import li, { p, v } from "@dialogos/little"
-
-  export const matcher = li.matcher(p("reader-input"))
+  export const matcher = (node) => node["reader-input"]
 </script>
 
 <script>
@@ -9,7 +7,7 @@
 
   $: result = matcher(node)
 
-  $: echo = node.contents.map(li.Node.repr).join("\n")
+  $: echo = JSON.stringify(result, null, 2)
 </script>
 
 <div class="reader-input">

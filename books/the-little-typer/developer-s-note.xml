@@ -8,11 +8,11 @@ We can write comment in between frames.
   And this is my report on "The Little Typer".
 </comment>
 
-<get-reader-input label="start">
+<get_reader_input label="start">
   <comment>
     Would you like to start?
   </comment>
-</get-reader-input>
+</get_reader_input>
 
 <match>
   <case> Yes

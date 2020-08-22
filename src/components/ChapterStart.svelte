@@ -1,7 +1,5 @@
 <script context="module">
-  import li, { p, v } from "@dialogos/little"
-
-  export const matcher = li.matcher(p("chapter-start", p("title", v("title"))))
+  export const matcher = (node) => node["chapter_start"]
 </script>
 
 <script>
@@ -9,10 +7,10 @@
 
   $: result = matcher(node)
 
-  $: title = result.title.value
+  $: title = result.title
 </script>
 
-<div class="chapter-start">
+<div class="chapter_start">
   <h2 class="chapter-title">{title}</h2>
 </div>
 

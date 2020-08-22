@@ -1,16 +1,8 @@
-<script context="module">
-  import li, { p, v } from "@dialogos/little"
-
-  export const matcher = li.matcher(p("note", v("content")))
-</script>
-
 <script>
   export let node
 
-  $: result = matcher(node)
-
-  $: name = node.attributes.name
-  $: content = result.content.value
+  $: name = node[0]
+  $: content = node[1]
 </script>
 
 <!-- prettier-ignore -->

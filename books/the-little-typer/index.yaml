@@ -1,14 +1,14 @@
-- chapter-start:
+- chapter_start:
     title: 1. The More Things Change, the More They Stay the Same
 
 - call:
     module: developer-s-note
 
-- 师: 问
+# - 师: 问
 
-- 问答:
-    师: 问
-    生: 答
+# - 问答:
+#     师: 问
+#     生: 答
 
 - dialog:
     teacher: Welcome back!
@@ -33,3 +33,6 @@
         Here, atoms are only symbols.
     student: |
       Then 'atom is an Atom because 'atom is an atom.
+
+- jump:
+    module: index

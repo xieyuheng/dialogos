@@ -1,5 +1,6 @@
+- migrate contents from xml to yaml.
 - `stmts` in `ReturnEntry`, `data_stack` instead of `node_stack`.
-- use yaml instead of xml -- use leading field name as kind.
+- better `Note.svelte`.
 - logo in manifest.json.
 - compile our json inline schema to json schema.
 - emacs-like hooks for frame.

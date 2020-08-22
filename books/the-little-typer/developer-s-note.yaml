@@ -1,13 +1,11 @@
 - comment: I developed a WebApp to create little books.
 
-- We can write comment in between frames.
-
 - comment: |
     And this is my report on "The Little Typer".
 
 - label: start
-  get-reader-input:
-    comment: Would you like to start?
+  get_reader_input:
+    - comment: Would you like to start?
 
 - match:
     - pattern: Yes
