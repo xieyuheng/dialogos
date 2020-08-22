@@ -8,10 +8,8 @@
 - first teacher, then student. -- 用中文。
 - code block -- cicada/lang2. -- 用中文，
 - screen-mode.
-- use `result` to subst pattern variables in body.
 - local variable in `ReturnEntry`.
 - ws and filewatcher.
-- per frame schema.
 # design
 - css for Comment, ReaderComment, ReaderInput.
 - ReaderComment datetime.
