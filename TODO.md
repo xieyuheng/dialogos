@@ -1,3 +1,5 @@
+- use yaml instead of xml.
+- compile our json inline schema to json schema.
 - emacs-like hooks for frame.
 - use chinese tags.
 - first teacher, then student. -- 用中文。
