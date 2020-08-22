@@ -1,6 +1,6 @@
 - improve `Frame` interface.
-- title in `Comment`.
 - migrate contents from xml to yaml.
+  - no title in `Comment`.
 - fix sapper `service-worker.js`
 - logo in manifest.json.
 - compile our json inline schema to json schema.

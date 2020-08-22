@@ -40,7 +40,7 @@
 <div bind:this="{container}">
   {#if found}
     <div class="frame">
-      <Frame data={data[found.tag]} {index} />
+      <Frame data="{data[found.tag]}" {index} />
     </div>
   {:else}
     <pre>Unknown data: {JSON.stringify(data, null, 4)}</pre>
