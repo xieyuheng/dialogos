@@ -112,7 +112,7 @@
       mini_message = "The input buffer is empty. You should enter your answer."
     } else {
       const node = yaml.safeLoad(input_text)
-      env.node_stack.push(node)
+      env.data_stack.push(node)
       frames = [...frames, { "reader-input": node }]
       input_text = ""
       mode = "dialog-mode"

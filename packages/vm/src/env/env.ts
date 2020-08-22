@@ -2,7 +2,7 @@ export type Loader = (book: string, module: string) => Promise<Array<any>>
 
 export interface Env {
   book: string
-  node_stack: Array<any>
+  data_stack: Array<any>
   return_stack: Array<ReturnEntry>
   loader: Loader
 }

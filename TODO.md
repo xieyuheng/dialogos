@@ -1,6 +1,8 @@
-- migrate contents from xml to yaml.
-- `stmts` in `ReturnEntry`, `data_stack` instead of `node_stack`.
+- `stmts` instead `nodes`.
 - better `Note.svelte`.
+- better `Frame` interface.
+- migrate contents from xml to yaml.
+- fix sapper `service-worker.js`
 - logo in manifest.json.
 - compile our json inline schema to json schema.
 - emacs-like hooks for frame.

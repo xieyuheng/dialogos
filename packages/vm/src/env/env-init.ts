@@ -9,7 +9,7 @@ export function init(the: {
   return {
     book: the.book,
     loader: the.loader,
-    node_stack: [],
+    data_stack: [],
     return_stack: [
       {
         module: the.module || "index",

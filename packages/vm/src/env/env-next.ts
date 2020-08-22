@@ -60,9 +60,9 @@ async function execute_match(
   entry: Env.ReturnEntry,
   clauses: Array<any>,
 ): Promise<any> {
-  const top_node = env.node_stack.pop()
+  const top_node = env.data_stack.pop()
   if (top_node === undefined) {
-    throw new Error("Empty env.node_stack.")
+    throw new Error("Empty env.data_stack.")
   }
   for (const clause of clauses) {
     if (clause.pattern) {
