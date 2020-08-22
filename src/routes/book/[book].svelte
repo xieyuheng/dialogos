@@ -22,7 +22,7 @@
   // -- LOCAL STATE --
 
   let frames = []
-  let mode = "dialog-mode"
+  let mode = "dialog_mode"
   let input_text = ""
   let mini_message = ""
 
@@ -41,9 +41,9 @@
   let input_buffer
 
   let input_buffer_focus = () => {
-    if (mode === "dialog-mode") {
-      mini_message = "Entering reader-comment-mode from dialog-mode."
-      mode = "reader-comment-mode"
+    if (mode === "dialog_mode") {
+      mini_message = "Entering reader_comment_mode from dialog_mode."
+      mode = "reader_comment_mode"
     }
   }
 
@@ -54,11 +54,11 @@
     await step()
 
     input_buffer.addEventListener("keydown", (event) => {
-      if (mode === "reader-comment-mode") {
+      if (mode === "reader_comment_mode") {
         if (event.key === "Escape") {
           mini_message =
-            "Exiting reader-comment-mode and clear input (because Esc is pressed)."
-          mode = "dialog-mode"
+            "Exiting reader_comment_mode and clear input (because Esc is pressed)."
+          mode = "dialog_mode"
           input_text = ""
           input_buffer.blur()
         }
@@ -80,11 +80,11 @@
 
   const step = async () => {
     switch (mode) {
-      case "dialog-mode":
+      case "dialog_mode":
         return await step_dialog()
-      case "reader-input-mode":
+      case "reader_input_mode":
         return await step_input()
-      case "reader-comment-mode":
+      case "reader_comment_mode":
         return await step_reader_comment()
     }
   }
@@ -93,8 +93,8 @@
     const stmt = await vm.Env.next(env)
     if (stmt["get_reader_input"]) {
       frames = [...frames, ...stmt["get_reader_input"]]
-      mode = "reader-input-mode"
-      mini_message = "Entering reader-input-mode."
+      mode = "reader_input_mode"
+      mini_message = "Entering reader_input_mode."
     } else {
       frames = [...frames, stmt]
       mini_message = ""
@@ -109,8 +109,8 @@
       env.data_stack.push(data)
       frames = [...frames, { reader_input: data }]
       input_text = ""
-      mode = "dialog-mode"
-      mini_message = "Back to dialog-mode from reader-input-mode."
+      mode = "dialog_mode"
+      mini_message = "Back to dialog_mode from reader_input_mode."
       await step()
     }
   }
@@ -118,13 +118,13 @@
   const step_reader_comment = async () => {
     if (ut.string_is_blank(input_text)) {
       mini_message =
-        "No input text, go back to dialog-mode from reader-comment-mode."
-      mode = "dialog-mode"
+        "No input text, go back to dialog_mode from reader_comment_mode."
+      mode = "dialog_mode"
       input_text = ""
     } else {
       mini_message =
-        "Write down reader comment, and go back to dialog-mode from reader-comment-mode."
-      mode = "dialog-mode"
+        "Write down reader comment, and go back to dialog_mode from reader_comment_mode."
+      mode = "dialog_mode"
       frames = [...frames, { reader_comment: input_text }]
       input_text = ""
     }
@@ -146,15 +146,15 @@
   <div class="reader-input">
     <button class="status" bind:this="{status}">
       <abbr title="{mode}">
-        {#if mode === 'dialog-mode'}
+        {#if mode === 'dialog_mode'}
           <img src="cute-dialog-64px.png" alt="dialog" width="40" height="40" />
-        {:else if mode === 'reader-input-mode'}
+        {:else if mode === 'reader_input_mode'}
           <img
             src="cute-ask-question-64px.png"
             alt="input"
             width="40"
             height="40" />
-        {:else if mode === 'reader-comment-mode'}
+        {:else if mode === 'reader_comment_mode'}
           <img
             src="cute-edit-file-64px.png"
             alt="comment"
@@ -170,19 +170,19 @@
       bind:value="{input_text}"
       on:focus="{input_buffer_focus}"></textarea>
     <button class="ok" bind:this="{ok}" on:click="{ok_click}">
-      {#if mode === 'dialog-mode'}
+      {#if mode === 'dialog_mode'}
         <img
           src="cute-circled-chevron-down-64px.png"
           alt="next"
           width="40"
           height="40" />
-      {:else if mode === 'reader-input-mode'}
+      {:else if mode === 'reader_input_mode'}
         <img
           src="cute-paper-plane-64px.png"
           alt="send"
           width="40"
           height="40" />
-      {:else if mode === 'reader-comment-mode'}
+      {:else if mode === 'reader_comment_mode'}
         <img src="cute-ok-64px.png" alt="edit" width="40" height="40" />
       {/if}
     </button>

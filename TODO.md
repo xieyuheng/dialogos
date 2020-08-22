@@ -1,4 +1,5 @@
 - improve `Frame` interface.
+- title in `Comment`.
 - migrate contents from xml to yaml.
 - fix sapper `service-worker.js`
 - logo in manifest.json.

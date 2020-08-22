@@ -16,8 +16,8 @@
       - comment: Really?
       - comment: Let us try again.
       - jump:
-          module: developer-s-note
-    - default-contents:
+          module: developer_s_note
+    - default_contents:
       - comment: Invalid answer, please try again.
       - jump:
           label: start

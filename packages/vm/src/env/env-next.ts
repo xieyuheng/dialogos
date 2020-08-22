@@ -74,8 +74,8 @@ async function execute_match(
         env.return_stack.push({ ...entry, stmts: contents, index: 0 })
         return await next(env)
       }
-    } else if (clause["default-contents"]) {
-      const contents = clause["default-contents"]
+    } else if (clause["default_contents"]) {
+      const contents = clause["default_contents"]
       put_back_entry(env, entry)
       env.return_stack.push({ ...entry, stmts: contents, index: 0 })
       return await next(env)
