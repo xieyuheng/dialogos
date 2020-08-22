@@ -11,15 +11,10 @@ Color:
 Icons:
 - https://icons8.com/icons/dusk
 
-PWA:
+## PWA
+
+Manifest
 - https://developer.mozilla.org/en-US/docs/Web/Manifest
-
-## Schema
-
-XML RELAX NG schema references:
-- https://en.wikipedia.org/wiki/RELAX_NG
-- https://relaxng.org/compact-tutorial.html
-- https://relaxng.org/compact.html
 
 ## XML & components & semantic web
 
