@@ -1,4 +1,3 @@
-- `stmts` instead `nodes`.
 - better `Note.svelte`.
 - better `Frame` interface.
 - migrate contents from xml to yaml.

@@ -9,6 +9,6 @@ export interface Env {
 
 export interface ReturnEntry {
   module: string
-  nodes: Array<any>
+  stmts: Array<any>
   index: number
 }

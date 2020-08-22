@@ -8,7 +8,7 @@ export async function load(book, module) {
   if (!process.env.BOOKS) {
     throw new Error(
       vm.ut.aline(`
-        |To load nodes, I need the $BOOKS env var,
+        |To load stmts, I need the $BOOKS env var,
         |since it is not provided, I can not load.
         |- book: "${book}"
         |- module: "${module}"

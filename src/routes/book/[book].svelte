@@ -2,8 +2,8 @@
   export async function preload({ params }) {
     const { book } = params
     const res = await this.fetch(`data/${book}`)
-    const nodes = await res.json()
-    return { book, nodes }
+    const stmts = await res.json()
+    return { book, stmts }
   }
 </script>
 
@@ -17,7 +17,7 @@
   // -- PROP --
 
   export let book
-  export let nodes
+  export let stmts
 
   // -- LOCAL STATE --
 
@@ -70,11 +70,11 @@
 
   const env = vm.Env.init({
     book,
-    nodes,
+    stmts,
     loader: async (book, module) => {
       const res = await fetch(`data/${book}?module=${module}`)
-      const nodes = await res.json()
-      return nodes
+      const stmts = await res.json()
+      return stmts
     },
   })
 
@@ -92,7 +92,7 @@
   const step_dialog = async () => {
     const node = await vm.Env.next(env)
     if (typeof node === "string") {
-      // NOTE Top level text nodes are viewed as writer comment.
+      // NOTE Top level text stmts are viewed as writer comment.
       console.log("Writer comment:", node)
       await step()
     } else {

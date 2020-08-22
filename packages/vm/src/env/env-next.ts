@@ -2,10 +2,10 @@ import * as Env from "../env"
 import * as ut from "../ut"
 
 function put_back_entry(env: Env.Env, entry: Env.ReturnEntry): Env.Env {
-  const { nodes, index } = entry
+  const { stmts, index } = entry
   // NOTE Handle proper tail call.
-  // - put back entry unless at the tail of its nodes.
-  if (index + 1 < nodes.length) {
+  // - put back entry unless at the tail of its stmts.
+  if (index + 1 < stmts.length) {
     env.return_stack.push({ ...entry, index: index + 1 })
   }
   return env
@@ -16,8 +16,8 @@ export async function next(env: Env.Env): Promise<any> {
   if (entry === undefined) {
     throw new Error("The return_stack is empty.")
   }
-  const { nodes, index } = entry
-  const node = nodes[index]
+  const { stmts, index } = entry
+  const node = stmts[index]
   if (node["jump"]) {
     return await execute_jump(env, entry, node["jump"])
   } else if (node["call"]) {
@@ -30,8 +30,8 @@ export async function next(env: Env.Env): Promise<any> {
   }
 }
 
-function find_label_index(nodes: Array<any>, label: string): number {
-  return nodes.findIndex((node) => node && node.label === label)
+function find_label_index(stmts: Array<any>, label: string): number {
+  return stmts.findIndex((node) => node && node.label === label)
 }
 
 async function execute_jump(
@@ -40,9 +40,9 @@ async function execute_jump(
   node: any
 ): Promise<any> {
   const module = node.module || entry.module
-  const nodes = await env.loader(env.book, module)
-  const index = node.label ? find_label_index(nodes, node.label) : 0
-  env.return_stack.push({ module, nodes, index })
+  const stmts = await env.loader(env.book, module)
+  const index = node.label ? find_label_index(stmts, node.label) : 0
+  env.return_stack.push({ module, stmts, index })
   return await next(env)
 }
 
@@ -71,13 +71,13 @@ async function execute_match(
       if (ut.equal(clause.pattern, top_node)) {
         const contents = clause.contents
         put_back_entry(env, entry)
-        env.return_stack.push({ ...entry, nodes: contents, index: 0 })
+        env.return_stack.push({ ...entry, stmts: contents, index: 0 })
         return await next(env)
       }
     } else if (clause["default-contents"]) {
       const contents = clause["default-contents"]
       put_back_entry(env, entry)
-      env.return_stack.push({ ...entry, nodes: contents, index: 0 })
+      env.return_stack.push({ ...entry, stmts: contents, index: 0 })
       return await next(env)
     }
   }
