@@ -1,17 +1,13 @@
 <script context="module">
-  export const matcher = (data) => data["reader-comment"]
+  export const tag = "reader_comment"
 </script>
 
 <script>
   export let data
-
-  $: result = matcher(data)
-
-  $: content = result
 </script>
 
 <div class="reader-comment">
-  <pre>{content}</pre>
+  <pre>{data}</pre>
 </div>
 
 <style>

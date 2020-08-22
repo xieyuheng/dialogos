@@ -20,14 +20,14 @@
 
   const frames = [
     Dialog,
-    // Card,
+    Card,
     Comment,
     ChapterStart,
     ReaderInput,
     ReaderComment,
   ]
 
-  const found = frames.find((frame) => frame.matcher && frame.matcher(data))
+  const found = frames.find((frame) => data.hasOwnProperty(frame.tag))
   const Frame = found && found.default
 
   // -- LIFE CYCLE --
@@ -40,7 +40,7 @@
 <div bind:this="{container}">
   {#if found}
     <div class="frame">
-      <Frame {data} {index} />
+      <Frame data={data[found.tag]} {index} />
     </div>
   {:else}
     <pre>Unknown data: {JSON.stringify(data, null, 4)}</pre>

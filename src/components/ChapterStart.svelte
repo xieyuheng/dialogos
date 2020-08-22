@@ -1,13 +1,11 @@
 <script context="module">
-  export const matcher = (data) => data["chapter_start"]
+  export const tag = "chapter_start"
 </script>
 
 <script>
   export let data
 
-  $: result = matcher(data)
-
-  $: title = result.title
+  const { title } = data
 </script>
 
 <div class="chapter_start">

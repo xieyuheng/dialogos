@@ -107,7 +107,7 @@
     } else {
       const data = yaml.safeLoad(input_text)
       env.data_stack.push(data)
-      frames = [...frames, { "reader-input": data }]
+      frames = [...frames, { reader_input: data }]
       input_text = ""
       mode = "dialog-mode"
       mini_message = "Back to dialog-mode from reader-input-mode."
@@ -125,7 +125,7 @@
       mini_message =
         "Write down reader comment, and go back to dialog-mode from reader-comment-mode."
       mode = "dialog-mode"
-      frames = [...frames, { "reader-comment": input_text }]
+      frames = [...frames, { reader_comment: input_text }]
       input_text = ""
     }
   }

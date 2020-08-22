@@ -1,22 +1,13 @@
 <script context="module">
-  export const matcher = (data) => data["comment"]
+  export const tag = "comment"
 </script>
 
 <script>
   export let data
-
-  $: result = matcher(data)
-
-  $: title = undefined
-  $: content = result
 </script>
 
 <div class="comment">
-  {#if title}
-    <h3 class="comment-title">{title}</h3>
-    <br />
-  {/if}
-  <pre>{content}</pre>
+  <pre>{data}</pre>
 </div>
 
 <style>

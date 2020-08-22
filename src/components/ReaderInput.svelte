@@ -1,13 +1,11 @@
 <script context="module">
-  export const matcher = (data) => data["reader-input"]
+  export const tag = "reader_input"
 </script>
 
 <script>
   export let data
 
-  $: result = matcher(data)
-
-  $: echo = JSON.stringify(result, null, 2)
+  $: echo = JSON.stringify(data, null, 2)
 </script>
 
 <div class="reader-input">

@@ -1,5 +1,5 @@
 <script context="module">
-  export const matcher = (data) => data["dialog"]
+  export const tag = "dialog"
 </script>
 
 <script>
@@ -8,22 +8,26 @@
   export let data
   export let index
 
-  $: result = matcher(data)
+  const { teacher, student, teacher_notes, student_notes } = data
 
-  $: teacher = result.teacher
-  $: student = result.student
-  $: teacher_notes =
-    result.teacher_notes &&
-    Array.from(Object.entries(result.teacher_notes)).map(([name, content]) => ({
-      name,
-      content,
-    }))
-  $: student_notes =
-    result.student_notes &&
-    Array.from(Object.entries(result.student_notes)).map(([name, content]) => ({
-      name,
-      content,
-    }))
+  const get_notes = (obj) => {
+    if (obj) {
+      const notes = Array.from(Object.entries(obj)).map(([name, content]) => ({
+        name,
+        content,
+      }))
+      if (notes.length === 0) {
+        return null
+      } else {
+        return notes
+      }
+    } else {
+      return null
+    }
+  }
+
+  const teacher_note_array = get_notes(teacher_notes)
+  const student_note_array = get_notes(student_notes)
 
   const markup = (str) => {
     const result = str.match(/^(.*?)\^\[(.*?)\](.*)/msu)
@@ -42,9 +46,9 @@
     <pre>
       {@html markup(teacher).join('')}
     </pre>
-    {#if teacher_notes && teacher_notes.length > 0}
+    {#if teacher_note_array}
       <hr />
-      {#each teacher_notes as note}
+      {#each teacher_note_array as note}
         <Note {...note} />
       {/each}
     {/if}
@@ -54,9 +58,9 @@
     <pre>
       {@html markup(student).join('')}
     </pre>
-    {#if student_notes && student_notes.length > 0}
+    {#if student_note_array}
       <hr />
-      {#each student_notes as note}
+      {#each student_note_array as note}
         <Note {...note} />
       {/each}
     {/if}

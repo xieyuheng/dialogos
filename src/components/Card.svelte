@@ -1,14 +1,11 @@
 <script context="module">
-  export const matcher = (data) => data["card"]
+  export const tag = "card"
 </script>
 
 <script>
   export let data
 
-  $: result = matcher(data)
-
-  $: title = result.title
-  $: content = result.content
+  const { title, content } = data
 </script>
 
 <div class="card">
