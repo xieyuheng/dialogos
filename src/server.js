@@ -1,5 +1,6 @@
 import Fastify from "fastify"
 import * as sapper from "@sapper/server"
+import sirv from "sirv"
 import compression from "compression"
 import path from "path"
 
@@ -10,7 +11,7 @@ async function server() {
   const fastify = Fastify()
   await fastify.register(require("fastify-express"))
   fastify.use(compression({ threshold: 0 }))
-  fastify.use(require("sirv")("static"))
+  fastify.use(sirv("static"))
   fastify.use(sapper.middleware())
   return fastify
 }
