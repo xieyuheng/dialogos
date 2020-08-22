@@ -2,6 +2,7 @@
   "name": "dialogos",
   "description": "An online dialectic teaching system, inspired by Socrates, George Pólya and Dan Friedman.",
   "version": "0.0.1",
+  "license": "GPL-3.0-or-later",
   "engines": {
     "node": "14.x",
     "npm": "6.x"
@@ -15,9 +16,9 @@
   },
   "dependencies": {
     "@dialogos/little": "^0.2.8",
-    "bluebird": "^3.7.2",
     "compression": "^1.7.4",
     "express": "^4.17.1",
+    "fastify": "^3.2.1",
     "prettyjson": "^1.2.1"
   },
   "devDependencies": {
