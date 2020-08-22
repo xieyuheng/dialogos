@@ -14,11 +14,10 @@
 <img src="cute-ask-question-64px.png" alt="cute-ask-question" width="64" height="64" />
 <img src="cute-ok-64px.png" alt="cute-ok" width="64" height="64" />
 
-<p>
+
+<ul>
   List of dialogs:
-  <ul>
-    <li>
-      <a href="book/the-little-typer">The Little Typer</a>
-    </li>
-  </ul>
-</p>
+  <li>
+    <a href="book/the-little-typer">The Little Typer</a>
+  </li>
+</ul>
