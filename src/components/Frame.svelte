@@ -5,6 +5,7 @@
   import * as ChapterStart from "./frames/ChapterStart.svelte"
   import * as ReaderInput from "./frames/ReaderInput.svelte"
   import * as ReaderComment from "./frames/ReaderComment.svelte"
+  import * as Loading from "./frames/Loading.svelte"
   import { onMount } from "svelte"
 
   // -- PROP --
@@ -25,11 +26,11 @@
     ChapterStart,
     ReaderInput,
     ReaderComment,
+    Loading,
   ]
 
-  const frame = frames.find((frame) => content.hasOwnProperty(frame.tag))
-  const FrameComponent = frame && frame.default
-  const data = frame && content[frame.tag]
+  $: frame = frames.find((frame) => content.hasOwnProperty(frame.tag))
+  $: data = frame && content[frame.tag]
 
   // -- LIFE CYCLE --
 
@@ -41,7 +42,7 @@
 <div bind:this="{container}">
   {#if frame}
     <div class="frame">
-      <FrameComponent {data} {index} />
+      <svelte:component this="{frame.default}" {data} {index} />
     </div>
   {:else}
     <div class="frame">

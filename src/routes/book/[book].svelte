@@ -90,12 +90,15 @@
   }
 
   const step_dialog = async () => {
+    contents = [...contents, { loading: "Loading next statement." }]
     const stmt = await vm.Env.next(env)
     if (stmt["get_reader_input"]) {
+      contents.pop()
       contents = [...contents, ...stmt["get_reader_input"]]
       mode = "reader_input_mode"
       mini_message = "Entering reader_input_mode."
     } else {
+      contents.pop()
       contents = [...contents, stmt]
       mini_message = ""
     }
@@ -137,7 +140,7 @@
 
 <div class="book">
   <div class="frame-list">
-    {#each contents as content, index}
+    {#each contents as content, index (index)}
       <div class="frame">
         <Frame {content} {index} />
       </div>
@@ -231,6 +234,8 @@
 
   .mini-buffer {
     font-size: 0.7em;
+    /* NOTE We use the following paddings
+       to avoid the round corners on some phone. */
     padding-left: 2.7em;
     padding-right: 2.7em;
     border-top: thin solid;

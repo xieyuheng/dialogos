@@ -1,5 +1,6 @@
-- compile our json inline schema to json schema.
 - emacs-like hooks for frame.
+  - maybe use store.
+- compile our json inline schema to json schema.
 - use chinese tags.
 - first teacher, then student. -- 用中文。
 - code block -- cicada/lang2. -- 用中文，
@@ -8,6 +9,7 @@
 - ws and filewatcher.
 # design
 - css for Comment, ReaderComment, ReaderInput.
+- css for loading.
 - ReaderComment datetime.
 - ReaderInput datetime.
 - be able to use big <textarea> sometimes.

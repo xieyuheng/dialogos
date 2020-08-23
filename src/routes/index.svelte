@@ -11,9 +11,12 @@
 </p>
 
 <img src="cute-dialog-64px.png" alt="cute-dialog" width="64" height="64" />
-<img src="cute-ask-question-64px.png" alt="cute-ask-question" width="64" height="64" />
+<img
+  src="cute-ask-question-64px.png"
+  alt="cute-ask-question"
+  width="64"
+  height="64" />
 <img src="cute-ok-64px.png" alt="cute-ok" width="64" height="64" />
-
 
 <ul>
   List of dialogs:
