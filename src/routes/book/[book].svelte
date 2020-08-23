@@ -235,8 +235,8 @@
     padding-right: 2.7em;
     border-top: thin solid;
     border-color: black;
-    background: #eee;
-    color: #666;
+    background: #f9dbd2;
+    color: #666666;
   }
 
   abbr[title] {
