@@ -13,14 +13,16 @@ process.on("unhandledRejection", (error) => {
 const { PORT, NODE_ENV } = process.env
 const dev = NODE_ENV === "development"
 
-async function main() {
-  const app = fastify({
-    logger: {
-      prettyPrint: {
-        colorize: true,
-      },
+const app_config = {
+  logger: {
+    prettyPrint: {
+      colorize: true,
     },
-  })
+  },
+}
+
+async function main() {
+  const app = fastify(app_config)
   await app.register(require("fastify-express"))
   app.use(compression({ threshold: 0 }))
   app.use(sirv("static"))
