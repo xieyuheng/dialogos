@@ -1,5 +1,3 @@
-- `reader-comment-mode` in `fundamental-mode`
-
 - `$mode_stack`
 
   - `fundamental-mode` should not be special to `reader-comment-mode`.

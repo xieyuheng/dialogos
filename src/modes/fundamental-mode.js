@@ -1,5 +1,5 @@
 import { contents, mini_message, input_text, mode } from "../stores"
-import { reader_input_mode } from "../modes"
+import { reader_comment_mode } from "../modes"
 import { get } from "svelte/store"
 import * as ut from "../ut"
 import vm from "@dialogos/vm"
@@ -22,4 +22,13 @@ export const ok_icon = {
 export const status_icon = {
   src: "cute-dialog-64px.png",
   alt: "dialog",
+}
+
+export const input_buffer_focus = () => {
+  if (get(mode).name === name) {
+    mini_message.set(
+      `Entering ${reader_comment_mode.name} from ${get(mode).name}.`
+    )
+    mode.set(reader_comment_mode)
+  }
 }

@@ -5,11 +5,6 @@ import compression from "compression"
 import process from "process"
 import path from "path"
 
-process.on("unhandledRejection", (error) => {
-  console.error(error)
-  process.exit(1)
-})
-
 const { PORT, NODE_ENV } = process.env
 const dev = NODE_ENV === "development"
 
@@ -29,5 +24,10 @@ async function main() {
   app.use(sapper.middleware())
   await app.listen(PORT, "0.0.0.0")
 }
+
+process.on("unhandledRejection", (error) => {
+  console.error(error)
+  process.exit(1)
+})
 
 main()

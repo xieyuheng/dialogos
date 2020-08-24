@@ -21,14 +21,9 @@
   // -- GLOBAL STATE --
 
   import { contents, mini_message, input_text, mode } from "../../stores"
-
-  import {
-    fundamental_mode,
-    reader_input_mode,
-    reader_comment_mode,
-  } from "../../modes"
-
+  import { fundamental_mode } from "../../modes"
   $mode = fundamental_mode
+  $contents = []
 
   // -- DOM ELEMENT --
 
@@ -44,13 +39,6 @@
 
   let input_buffer
 
-  let input_buffer_focus = () => {
-    if ($mode === fundamental_mode) {
-      $mini_message = `Entering ${reader_comment_mode.name} from ${$mode.name}.`
-      $mode = reader_comment_mode
-    }
-  }
-
   // -- LIFE CYCLE --
 
   onMount(async () => {
@@ -58,8 +46,6 @@
   })
 
   // -- BUSINESS --
-
-  $contents = []
 
   const env = vm.Env.init({
     book,
@@ -103,7 +89,7 @@
       spellcheck="false"
       bind:this="{input_buffer}"
       bind:value="{$input_text}"
-      on:focus="{input_buffer_focus}"></textarea>
+      on:focus="{$mode.input_buffer_focus}"></textarea>
     <button class="ok" bind:this="{ok}" on:click="{ok_click}">
       <img
         src="{$mode.ok_icon.src}"
