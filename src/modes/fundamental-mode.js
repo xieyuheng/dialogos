@@ -1,8 +1,8 @@
-import { contents, mini_message, input_text, mode } from "../stores"
-import { reader_comment_mode } from "../modes"
 import { get } from "svelte/store"
 import * as ut from "../ut"
 import vm from "@dialogos/vm"
+import { reader_comment_mode } from "../modes"
+import { contents, mini_message, input_text, mode, mode_stack } from "../stores"
 
 export const name = "fundamental-mode"
 
@@ -25,10 +25,9 @@ export const status_icon = {
 }
 
 export const input_buffer_focus = () => {
-  if (get(mode).name === name) {
-    mini_message.set(
-      `Entering ${reader_comment_mode.name} from ${get(mode).name}.`
-    )
-    mode.set(reader_comment_mode)
-  }
+  get(mode_stack).push(get(mode))
+  mini_message.set(
+    `Entering ${reader_comment_mode.name} from ${get(mode).name}.`
+  )
+  mode.set(reader_comment_mode)
 }

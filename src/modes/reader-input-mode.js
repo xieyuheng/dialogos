@@ -1,8 +1,8 @@
-import { contents, mini_message, input_text, mode } from "../stores"
-import { fundamental_mode } from "../modes"
 import { get } from "svelte/store"
 import * as ut from "../ut"
 import yaml from "js-yaml"
+import { fundamental_mode } from "../modes"
+import { contents, mini_message, input_text, mode } from "../stores"
 
 export const name = "reader-input-mode"
 

@@ -134,7 +134,6 @@
   .reader-input .ok {
     font-size: 1.3em;
     cursor: pointer;
-
     color: black;
     background: white;
     border-color: white;

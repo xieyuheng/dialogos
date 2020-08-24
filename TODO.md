@@ -1,7 +1,3 @@
-- `$mode_stack`
-
-  - `fundamental-mode` should not be special to `reader-comment-mode`.
-
 - use grid to fix media hack.
 
 - ignore yes or no input case.
