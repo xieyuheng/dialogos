@@ -1,8 +1,30 @@
+- `reader-comment-mode` in `fundamental-mode`
+
+- `$mode_stack`
+
+  - `fundamental-mode` should not be special to `reader-comment-mode`.
+
+- use grid to fix media hack.
+
+- ignore yes or no input case.
+  - also allow true- false- like value:
+    - 1 -- 0
+    - true -- false
+    - yes -- no
+    - ok -- sorry
+    - #t -- #f
+    - t -- nil，f
+    - 是 -- 否
+    - 好 -- 不好，不
+
 - `dialog-mode` for `Dialog`.
-- first teacher, then student. -- 用中文。
+
+  - extends `fundamental-mode`
+
+  - first teacher, then student. -- 用中文。
+
 - restore reader progress.
 - db cache compiled content.
-- use grid to fix media hack.
 - compile our json inline schema to json schema.
 - use chinese tags.
 - code block -- cicada/lang2. -- 用中文，
