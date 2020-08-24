@@ -16,7 +16,7 @@ export async function ok({ env }) {
   if (prompt_contents) {
     contents.set([...get(contents), ...prompt_contents])
     mode.set(reader_input_mode)
-    mini_message.set("Entering reader_input_mode.")
+    mini_message.set(`Entering ${reader_input_mode.name}.`)
     return
   }
 

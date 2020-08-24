@@ -1,3 +1,4 @@
+- frame set mode.
 - `GetReaderInput` instead `GET_READER_INPUT`
 - `reader-input-mode` for `GetReaderInput`.
 - `dialog-mode` for `Dialog`.
