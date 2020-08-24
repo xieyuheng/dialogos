@@ -7,7 +7,8 @@
 </script>
 
 <div class="loading">
-  <pre>{data}</pre>
+  <img src="cute-loader-pink-64px.png" alt="cute-loader" />
+  <p>{data}</p>
 </div>
 
 <style>
@@ -15,6 +16,6 @@
     margin: 1em;
     padding: 1em;
     text-align: center;
-    color: #f9dbd2;
+    color: #8d6c9f;
   }
 </style>

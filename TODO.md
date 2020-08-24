@@ -1,4 +1,4 @@
-- fix scroll to view -- on phone.
+- use grid to fix media hack.
 - emacs-like hooks for frame.
   - maybe use store.
 - compile our json inline schema to json schema.

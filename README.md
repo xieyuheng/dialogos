@@ -1,4 +1,4 @@
-# ΔΙΆΛΟΓΟΣ
+# ΔΙΑΛΟΓΟΣ
 
 An online dialectic teaching system, inspired by Socrates, Plato, George Pólya and Dan Friedman.
 

@@ -1,9 +1,9 @@
 <svelte:head>
-  <title>ΔΙΆΛΟΓΟΣ</title>
+  <title>ΔΙΑΛΟΓΟΣ</title>
 </svelte:head>
 
 <main>
-  <h1>ΔΙΆΛΟΓΟΣ</h1>
+  <h1>ΔΙΑΛΟΓΟΣ</h1>
   <p>
     An online dialectic teaching system,
     <br />
