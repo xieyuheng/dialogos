@@ -24,3 +24,10 @@
     <a href="book/the-little-typer">The Little Typer</a>
   </li>
 </ul>
+
+<style>
+  :root {
+    background: #f9dbd2;
+    color: #333333;
+  }
+</style>

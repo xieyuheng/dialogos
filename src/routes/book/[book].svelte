@@ -209,11 +209,11 @@
 
   .frame-list {
     overflow-y: auto;
-    /* scroll-snap-type: y proximity; */
+    scroll-snap-type: y proximity;
   }
 
   .frame {
-    /* scroll-snap-align: end; */
+    scroll-snap-align: end;
   }
 
   .reader-input {
