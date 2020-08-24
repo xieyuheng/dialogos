@@ -76,20 +76,17 @@
   }
 
   .dialog {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: 12fr 1fr 12fr;
   }
 
   .dialog .teacher,
   .dialog .student {
-    flex: 50%;
     padding: 1em;
   }
 
   .dialog .index {
     font-size: 8px;
-    flex: 4%;
     padding: 1em;
   }
 
@@ -100,20 +97,31 @@
 
   @media (max-width: 500px) {
     .dialog {
-      flex-direction: column;
+      display: grid;
+      grid-template-rows: auto auto;
+      grid-template-columns: 1fr 12fr;
     }
 
     .dialog .teacher {
-      border-bottom: thin dashed;
+      grid-row-start: 1;
+      grid-row-end: 2;
+      grid-column-start: 1;
+      grid-column-end: 3;
+      border-bottom: thin solid #8d6c9f;
     }
 
     .dialog .student {
-      padding-left: 4em;
-      padding-top: 0;
-      margin-top: -0.5em;
+      grid-row-start: 2;
+      grid-row-end: 3;
+      grid-column-start: 2;
+      grid-column-end: 3;
     }
 
     .dialog .index {
+      grid-row-start: 2;
+      grid-row-end: 3;
+      grid-column-start: 1;
+      grid-column-end: 2;
       padding-bottom: 0em;
     }
   }

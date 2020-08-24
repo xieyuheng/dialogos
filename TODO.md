@@ -1,5 +1,6 @@
-- use grid to fix media hack.
-
+- `dialog-mode` for `Dialog`.
+  - extends `fundamental-mode`
+  - first teacher, then student. -- 用中文。
 - ignore yes or no input case.
   - also allow true- false- like value:
     - 1 -- 0
@@ -10,13 +11,6 @@
     - t -- nil，f
     - 是 -- 否
     - 好 -- 不好，不
-
-- `dialog-mode` for `Dialog`.
-
-  - extends `fundamental-mode`
-
-  - first teacher, then student. -- 用中文。
-
 - restore reader progress.
 - db cache compiled content.
 - compile our json inline schema to json schema.

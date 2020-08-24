@@ -22,6 +22,7 @@
 
   import { contents, mini_message, input_text, mode } from "../../stores"
   import { fundamental_mode } from "../../modes"
+
   $mode = fundamental_mode
   $contents = []
 
