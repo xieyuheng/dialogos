@@ -24,12 +24,12 @@
   import {
     contents,
     mini_message,
+    input_text,
   } from "../../stores"
 
   // -- LOCAL STATE --
 
   let mode = "dialog_mode"
-  let input_text = ""
 
   // -- DOM ELEMENT --
 
@@ -64,7 +64,7 @@
           $mini_message =
             "Exiting reader_comment_mode and clear input (because Esc is pressed)."
           mode = "dialog_mode"
-          input_text = ""
+          $input_text = ""
           input_buffer.blur()
         }
       }
@@ -113,13 +113,13 @@
   }
 
   const step_input = async () => {
-    if (ut.string_is_blank(input_text)) {
+    if (ut.string_is_blank($input_text)) {
       $mini_message = "The input buffer is empty. You should enter your answer."
     } else {
-      const data = yaml.safeLoad(input_text)
+      const data = yaml.safeLoad($input_text)
       env.data_stack.push(data)
       $contents = [...$contents, { ReaderInput: data }]
-      input_text = ""
+      $input_text = ""
       mode = "dialog_mode"
       $mini_message = "Back to dialog_mode from reader_input_mode."
       await step()
@@ -127,17 +127,17 @@
   }
 
   const step_reader_comment = async () => {
-    if (ut.string_is_blank(input_text)) {
+    if (ut.string_is_blank($input_text)) {
       $mini_message =
         "No input text, go back to dialog_mode from reader_comment_mode."
       mode = "dialog_mode"
-      input_text = ""
+      $input_text = ""
     } else {
       $mini_message =
         "Write down reader comment, and go back to dialog_mode from reader_comment_mode."
       mode = "dialog_mode"
-      $contents = [...$contents, { ReaderComment: input_text }]
-      input_text = ""
+      $contents = [...$contents, { ReaderComment: $input_text }]
+      $input_text = ""
     }
   }
 </script>
@@ -178,7 +178,7 @@
       class="buffer"
       spellcheck="false"
       bind:this="{input_buffer}"
-      bind:value="{input_text}"
+      bind:value="{$input_text}"
       on:focus="{input_buffer_focus}"></textarea>
     <button class="ok" bind:this="{ok}" on:click="{ok_click}">
       {#if mode === 'dialog_mode'}
