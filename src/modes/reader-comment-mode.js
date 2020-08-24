@@ -4,7 +4,7 @@ import * as ut from "../ut"
 
 export const name = "reader-comment-mode"
 
-export function next() {
+export function onnext() {
   if (ut.string_is_blank(get(input_text))) {
     mini_message.set(`No input text, exit ${name}.`)
     mode_name.set("dialog_mode")

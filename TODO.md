@@ -1,6 +1,5 @@
 - emacs-like hooks for frame.
   - move books' local states to global stores.
-    - `reader-input-mode`
     - `dialog-mode`
   - use store in frames.
 - db cache compiled content.

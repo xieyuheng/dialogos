@@ -22,7 +22,7 @@
   // -- GLOBAL STATE --
 
   import { contents, mini_message, input_text, mode_name } from "../../stores"
-  import * as reader_comment_mode from "../../modes/reader-comment-mode"
+  import { reader_input_mode, reader_comment_mode } from "../../modes"
 
   $mode_name = "dialog_mode"
 
@@ -68,11 +68,11 @@
   const next = async () => {
     switch ($mode_name) {
       case "dialog_mode":
-        return await next_dialog()
+        return await next_dialog({ env, next })
       case "reader_input_mode":
-        return await next_reader_input()
+        return await reader_input_mode.onnext({ env, next })
       case "reader_comment_mode":
-        return await reader_comment_mode.next()
+        return await reader_comment_mode.onnext({ env, next })
     }
   }
 
@@ -92,20 +92,6 @@
 
     $contents = [...$contents, content]
     $mini_message = ""
-  }
-
-  const next_reader_input = async () => {
-    if (ut.string_is_blank($input_text)) {
-      $mini_message = "The input buffer is empty. You should enter your answer."
-    } else {
-      const data = yaml.safeLoad($input_text)
-      env.data_stack.push(data)
-      $contents = [...$contents, { ReaderInput: data }]
-      $input_text = ""
-      $mode_name = "dialog_mode"
-      $mini_message = "Back to dialog_mode from reader_input_mode."
-      await next()
-    }
   }
 </script>
 
