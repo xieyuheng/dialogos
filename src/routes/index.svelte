@@ -26,7 +26,7 @@
 </ul>
 
 <style>
-  :root {
+  * {
     background: #f9dbd2;
     color: #333333;
   }
