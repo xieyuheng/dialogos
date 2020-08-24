@@ -89,7 +89,6 @@
     }
   }
 
-
   const step_dialog = async () => {
     contents = [...contents, { Loading: "Loading next statement... ⏳" }]
     // TODO fix this use of stmts like GET_READER_INPUT in book.
