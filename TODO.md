@@ -1,6 +1,7 @@
 - emacs-like hooks for frame.
   - move books' local states to global stores.
-    - ok button click handler as global state.
+    - `reader-input-mode`
+    - `dialog-mode`
   - use store in frames.
 - db cache compiled content.
 - use grid to fix media hack.

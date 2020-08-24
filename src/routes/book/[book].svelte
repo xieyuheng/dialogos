@@ -21,15 +21,10 @@
 
   // -- GLOBAL STATE --
 
-  import {
-    contents,
-    mini_message,
-    input_text,
-  } from "../../stores"
+  import { contents, mini_message, input_text, mode_name } from "../../stores"
+  import * as reader_comment_mode from "../../modes/reader-comment-mode"
 
-  // -- LOCAL STATE --
-
-  let mode = "dialog_mode"
+  $mode_name = "dialog_mode"
 
   // -- DOM ELEMENT --
 
@@ -37,7 +32,7 @@
 
   let ok_click = ut.click_handler({
     onclick: async () => {
-      await step()
+      await next()
     },
   })
 
@@ -46,29 +41,16 @@
   let input_buffer
 
   let input_buffer_focus = () => {
-    if (mode === "dialog_mode") {
+    if ($mode_name === "dialog_mode") {
       $mini_message = "Entering reader_comment_mode from dialog_mode."
-      mode = "reader_comment_mode"
+      $mode_name = "reader_comment_mode"
     }
   }
 
   // -- LIFE CYCLE --
 
   onMount(async () => {
-    // NOTE first step.
-    await step()
-
-    input_buffer.addEventListener("keydown", (event) => {
-      if (mode === "reader_comment_mode") {
-        if (event.key === "Escape") {
-          $mini_message =
-            "Exiting reader_comment_mode and clear input (because Esc is pressed)."
-          mode = "dialog_mode"
-          $input_text = ""
-          input_buffer.blur()
-        }
-      }
-    })
+    await next()
   })
 
   // -- BUSINESS --
@@ -83,18 +65,18 @@
     },
   })
 
-  const step = async () => {
-    switch (mode) {
+  const next = async () => {
+    switch ($mode_name) {
       case "dialog_mode":
-        return await step_dialog()
+        return await next_dialog()
       case "reader_input_mode":
-        return await step_input()
+        return await next_reader_input()
       case "reader_comment_mode":
-        return await step_reader_comment()
+        return await reader_comment_mode.next()
     }
   }
 
-  const step_dialog = async () => {
+  const next_dialog = async () => {
     $contents = [...$contents, { Loading: "Loading next statement... ⏳" }]
     // TODO fix this use of stmts like GET_READER_INPUT in book.
     const content = await vm.Env.next(env)
@@ -103,7 +85,7 @@
     let prompt_contents = vm.Env.match_stmt_name(content, "GET_READER_INPUT")
     if (prompt_contents) {
       $contents = [...$contents, ...prompt_contents]
-      mode = "reader_input_mode"
+      $mode_name = "reader_input_mode"
       $mini_message = "Entering reader_input_mode."
       return
     }
@@ -112,7 +94,7 @@
     $mini_message = ""
   }
 
-  const step_input = async () => {
+  const next_reader_input = async () => {
     if (ut.string_is_blank($input_text)) {
       $mini_message = "The input buffer is empty. You should enter your answer."
     } else {
@@ -120,24 +102,9 @@
       env.data_stack.push(data)
       $contents = [...$contents, { ReaderInput: data }]
       $input_text = ""
-      mode = "dialog_mode"
+      $mode_name = "dialog_mode"
       $mini_message = "Back to dialog_mode from reader_input_mode."
-      await step()
-    }
-  }
-
-  const step_reader_comment = async () => {
-    if (ut.string_is_blank($input_text)) {
-      $mini_message =
-        "No input text, go back to dialog_mode from reader_comment_mode."
-      mode = "dialog_mode"
-      $input_text = ""
-    } else {
-      $mini_message =
-        "Write down reader comment, and go back to dialog_mode from reader_comment_mode."
-      mode = "dialog_mode"
-      $contents = [...$contents, { ReaderComment: $input_text }]
-      $input_text = ""
+      await next()
     }
   }
 </script>
@@ -156,16 +123,16 @@
   </div>
   <div class="reader-input">
     <button class="status" bind:this="{status}">
-      <abbr title="{mode}">
-        {#if mode === 'dialog_mode'}
+      <abbr title="{$mode_name}">
+        {#if $mode_name === 'dialog_mode'}
           <img src="cute-dialog-64px.png" alt="dialog" width="40" height="40" />
-        {:else if mode === 'reader_input_mode'}
+        {:else if $mode_name === 'reader_input_mode'}
           <img
             src="cute-ask-question-64px.png"
             alt="input"
             width="40"
             height="40" />
-        {:else if mode === 'reader_comment_mode'}
+        {:else if $mode_name === 'reader_comment_mode'}
           <img
             src="cute-edit-file-64px.png"
             alt="comment"
@@ -181,19 +148,19 @@
       bind:value="{$input_text}"
       on:focus="{input_buffer_focus}"></textarea>
     <button class="ok" bind:this="{ok}" on:click="{ok_click}">
-      {#if mode === 'dialog_mode'}
+      {#if $mode_name === 'dialog_mode'}
         <img
           src="cute-circled-chevron-down-64px.png"
           alt="next"
           width="40"
           height="40" />
-      {:else if mode === 'reader_input_mode'}
+      {:else if $mode_name === 'reader_input_mode'}
         <img
           src="cute-paper-plane-64px.png"
           alt="send"
           width="40"
           height="40" />
-      {:else if mode === 'reader_comment_mode'}
+      {:else if $mode_name === 'reader_comment_mode'}
         <img src="cute-ok-64px.png" alt="edit" width="40" height="40" />
       {/if}
     </button>
