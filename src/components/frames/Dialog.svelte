@@ -1,7 +1,3 @@
-<script context="module">
-  export const tag = "dialog"
-</script>
-
 <script>
   import Note from "./Dialog/Note.svelte"
 

@@ -1,23 +1,23 @@
-- comment: I developed a WebApp to create little books.
+- Comment: I developed a WebApp to create little books.
 
-- comment: |
+- Comment: |
     And this is my report on "The Little Typer".
 
 - label: start
-  get_reader_input:
-    - comment: Would you like to start?
+  GET_READER_INPUT:
+    - Comment: Would you like to start?
 
-- match:
+- MATCH:
     - pattern: Yes
       contents:
-      - comment: Ok let us start.
+      - Comment: Ok let us start.
     - pattern: No
       contents:
-      - comment: Really?
-      - comment: Let us try again.
-      - jump:
+      - Comment: Really?
+      - Comment: Let us try again.
+      - JUMP:
           module: developer-s-note
     - default_contents:
-      - comment: Invalid answer, please try again.
-      - jump:
+      - Comment: Invalid answer, please try again.
+      - JUMP:
           label: start

@@ -1,21 +1,26 @@
 import * as Env from "../env"
 import * as ut from "../ut"
 import * as Stmt from "./stmt"
-import * as Jump from "./stmt-jump"
-import * as Call from "./stmt-call"
-import * as Match from "./stmt-match"
 import { put_back_entry } from "./put-back-entry"
 
-function match_stmt(content: any, stmt: Stmt.Stmt): any {
+export function match_stmt_name(content: any, stmt_name: string): any {
   for (const name in content) {
-    if (name.toUpperCase() === stmt.name.toUpperCase()) {
+    if (name.toUpperCase() === stmt_name.toUpperCase()) {
       return content[name]
     }
   }
   return undefined
 }
 
-const stmts = [Jump, Call, Match]
+function match_stmt(content: any, stmt: Stmt.Stmt): any {
+  return match_stmt_name(content, stmt.name)
+}
+
+const stmts = [
+  require("./stmt-jump"),
+  require("./stmt-call"),
+  require("./stmt-match"),
+]
 
 export async function next(env: Env.Env): Promise<any> {
   const entry = env.return_stack.pop()

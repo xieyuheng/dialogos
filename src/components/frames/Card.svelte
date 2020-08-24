@@ -1,7 +1,3 @@
-<script context="module">
-  export const tag = "card"
-</script>
-
 <script>
   export let data
 

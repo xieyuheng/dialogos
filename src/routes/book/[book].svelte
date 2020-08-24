@@ -90,18 +90,22 @@
   }
 
   const step_dialog = async () => {
-    contents = [...contents, { loading: "Loading next statement." }]
-    const stmt = await vm.Env.next(env)
-    if (stmt["get_reader_input"]) {
+    contents = [...contents, { Loading: "Loading next statement." }]
+    // TODO fix this use of stmt.
+    const content = await vm.Env.next(env)
+
+    let prompt_contents = vm.Env.match_stmt_name(content, "GET_READER_INPUT")
+    if (prompt_contents) {
       contents.pop()
-      contents = [...contents, ...stmt["get_reader_input"]]
+      contents = [...contents, ...prompt_contents]
       mode = "reader_input_mode"
       mini_message = "Entering reader_input_mode."
-    } else {
-      contents.pop()
-      contents = [...contents, stmt]
-      mini_message = ""
+      return
     }
+
+    contents.pop()
+    contents = [...contents, content]
+    mini_message = ""
   }
 
   const step_input = async () => {
@@ -110,7 +114,7 @@
     } else {
       const data = yaml.safeLoad(input_text)
       env.data_stack.push(data)
-      contents = [...contents, { reader_input: data }]
+      contents = [...contents, { ReaderInput: data }]
       input_text = ""
       mode = "dialog_mode"
       mini_message = "Back to dialog_mode from reader_input_mode."
@@ -128,7 +132,7 @@
       mini_message =
         "Write down reader comment, and go back to dialog_mode from reader_comment_mode."
       mode = "dialog_mode"
-      contents = [...contents, { reader_comment: input_text }]
+      contents = [...contents, { ReaderComment: input_text }]
       input_text = ""
     }
   }

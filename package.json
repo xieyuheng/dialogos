@@ -15,7 +15,7 @@
     "format": "prettier src --write"
   },
   "dependencies": {
-    "@dialogos/vm": "0.0.2",
+    "@dialogos/vm": "0.1.1",
     "compression": "^1.7.4",
     "fastify": "^3.2.1",
     "fastify-express": "^0.1.0",

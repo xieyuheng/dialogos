@@ -1,7 +1,7 @@
 - ChapterStart:
     title: 1. The More Things Change, the More They Stay the Same
 
-- call:
+- CALL:
     module: developer-s-note
 
 - 师: 问
@@ -114,7 +114,7 @@
 
       But Greek letters are letters, so it must also be an Atom.
 
-- card:
+- Card:
     title: The Law of Tick Marks
     content: A tick mark directly followed by one or more letters and hyphens is an Atom.
 
@@ -229,7 +229,7 @@
     The aim of the above frames is to explain the following commandment.
 
 
-- card:
+- Card:
     title: The Commandment of Tick Marks
     content: |
       Two expressions are the same Atom if their values are tick marks
@@ -451,7 +451,7 @@
 
 
 
-- card:
+- Card:
     title: The Law of Atom
     content: Atom is a type.
 
@@ -489,7 +489,7 @@
       is a judgment, and we have reason to believe it.
 
 
-- card:
+- Card:
     title: The Four Forms of Judgment
     content: |
       (1)                   ___ is a ___.
@@ -506,5 +506,5 @@
     page:9
     frame:31
 
-- jump:
+- JUMP:
     module: index

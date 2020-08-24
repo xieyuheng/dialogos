@@ -1,7 +1,3 @@
-<script context="module">
-  export const tag = "reader_input"
-</script>
-
 <script>
   export let data
 
