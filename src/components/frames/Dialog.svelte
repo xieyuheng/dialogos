@@ -41,33 +41,40 @@
   }
 </script>
 
-<div class="dialog">
-  <div class="teacher">
-    <pre>
-      {@html markup(teacher).join('')}
-    </pre>
-    {#if teacher_note_array}
-      <hr />
-      {#each teacher_note_array as note}
-        <Note {...note} />
-      {/each}
-    {/if}
-  </div>
-  <div class="index">{index + 1}</div>
-  <div class="student">
-    <pre>
-      {@html markup(student).join('')}
-    </pre>
-    {#if student_note_array}
-      <hr />
-      {#each student_note_array as note}
-        <Note {...note} />
-      {/each}
-    {/if}
+<div class="frame">
+  <div class="dialog">
+    <div class="teacher">
+      <pre>
+        {@html markup(teacher).join('')}
+      </pre>
+      {#if teacher_note_array}
+        <hr />
+        {#each teacher_note_array as note}
+          <Note {...note} />
+        {/each}
+      {/if}
+    </div>
+    <div class="index">{index + 1}</div>
+    <div class="student">
+      <pre>
+        {@html markup(student).join('')}
+      </pre>
+      {#if student_note_array}
+        <hr />
+        {#each student_note_array as note}
+          <Note {...note} />
+        {/each}
+      {/if}
+    </div>
   </div>
 </div>
 
 <style>
+  .frame {
+    border-top: thin solid;
+    border-bottom: thin solid;
+  }
+
   .dialog {
     display: flex;
     flex-direction: row;

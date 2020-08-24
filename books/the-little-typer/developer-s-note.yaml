@@ -4,7 +4,7 @@
     And this is my report on "The Little Typer".
 
 - label: start
-  GET_READER_INPUT:
+  GetReaderInput:
     - Comment: Would you like to start?
 
 - MATCH:

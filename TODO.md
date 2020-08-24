@@ -1,6 +1,3 @@
-- frame set mode.
-- `GetReaderInput` instead `GET_READER_INPUT`
-- `reader-input-mode` for `GetReaderInput`.
 - `dialog-mode` for `Dialog`.
 - first teacher, then student. -- 用中文。
 - restore reader progress.

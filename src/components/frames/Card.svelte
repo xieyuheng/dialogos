@@ -8,12 +8,19 @@
   const { title, content } = data
 </script>
 
-<div class="card">
-  <h3 class="card-title">{title}</h3>
-  <pre>{content}</pre>
+<div class="frame">
+  <div class="card">
+    <h3 class="card-title">{title}</h3>
+    <pre>{content}</pre>
+  </div>
 </div>
 
 <style>
+  .frame {
+    border-top: thin solid;
+    border-bottom: thin solid;
+  }
+
   .card {
     text-align: center;
     padding: 1em;

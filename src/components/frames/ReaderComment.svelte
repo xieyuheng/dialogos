@@ -6,11 +6,18 @@
   export let data
 </script>
 
-<div class="reader-comment">
-  <pre>{data}</pre>
+<div class="frame">
+  <div class="reader-comment">
+    <pre>{data}</pre>
+  </div>
 </div>
 
 <style>
+  .frame {
+    border-top: thin solid;
+    border-bottom: thin solid;
+  }
+
   .reader-comment {
     margin: 1em;
     padding: 1em;
