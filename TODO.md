@@ -1,6 +1,7 @@
-- use grid to fix media hack.
 - emacs-like hooks for frame.
   - maybe use store.
+- db cache compiled content.
+- use grid to fix media hack.
 - compile our json inline schema to json schema.
 - use chinese tags.
 - first teacher, then student. -- 用中文。
