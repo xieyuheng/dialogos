@@ -1,3 +1,7 @@
+<script context="module">
+  export const tag = "ChapterStart"
+</script>
+
 <script>
   export let data
 

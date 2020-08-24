@@ -1,3 +1,7 @@
+<script context="module">
+  export const tag = "Card"
+</script>
+
 <script>
   export let data
 

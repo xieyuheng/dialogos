@@ -1,3 +1,7 @@
+<script context="module">
+  export const tag = "ReaderComment"
+</script>
+
 <script>
   export let data
 </script>

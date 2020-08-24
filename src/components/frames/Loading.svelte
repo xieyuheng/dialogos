@@ -1,3 +1,7 @@
+<script context="module">
+  export const tag = "Loading"
+</script>
+
 <script>
   export let data
 </script>

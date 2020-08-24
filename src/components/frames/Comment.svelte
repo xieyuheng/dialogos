@@ -1,3 +1,7 @@
+<script context="module">
+  export const tag = "Comment"
+</script>
+
 <script>
   export let data
 </script>
