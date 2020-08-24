@@ -1,7 +1,4 @@
-- emacs-like hooks for frame.
-  - move books' local states to global stores.
-    - `dialog-mode`
-  - use store in frames.
+- use store in frames.
 - db cache compiled content.
 - use grid to fix media hack.
 - compile our json inline schema to json schema.

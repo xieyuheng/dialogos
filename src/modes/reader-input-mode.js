@@ -1,11 +1,12 @@
+import { contents, mini_message, input_text, mode } from "../stores"
+import { dialog_mode } from "../modes"
 import { get } from "svelte/store"
-import { contents, mini_message, input_text, mode_name } from "../stores"
 import * as ut from "../ut"
 import yaml from "js-yaml"
 
 export const name = "reader-input-mode"
 
-export async function onnext({ env, next }) {
+export async function ok({ env, next }) {
   if (ut.string_is_blank(get(input_text))) {
     mini_message.set("The input buffer is empty. You should enter your answer.")
   } else {
@@ -13,8 +14,18 @@ export async function onnext({ env, next }) {
     env.data_stack.push(data)
     contents.set([...get(contents), { ReaderInput: data }])
     input_text.set("")
-    mode_name.set("dialog_mode")
+    mode.set(dialog_mode)
     mini_message.set("Back to dialog_mode from reader_input_mode.")
     await next()
   }
+}
+
+export const ok_icon = {
+  src: "cute-paper-plane-64px.png",
+  alt: "send",
+}
+
+export const status_icon = {
+  src: "cute-ask-question-64px.png",
+  alt: "input",
 }

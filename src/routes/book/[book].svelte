@@ -9,7 +9,6 @@
 
 <script>
   import vm from "@dialogos/vm"
-  import yaml from "js-yaml"
   import Frame from "../../components/Frame.svelte"
   import * as ut from "../../ut"
   import { onMount } from "svelte"
@@ -21,10 +20,15 @@
 
   // -- GLOBAL STATE --
 
-  import { contents, mini_message, input_text, mode_name } from "../../stores"
-  import { reader_input_mode, reader_comment_mode } from "../../modes"
+  import { contents, mini_message, input_text, mode } from "../../stores"
 
-  $mode_name = "dialog_mode"
+  import {
+    dialog_mode,
+    reader_input_mode,
+    reader_comment_mode,
+  } from "../../modes"
+
+  $mode = dialog_mode
 
   // -- DOM ELEMENT --
 
@@ -41,9 +45,9 @@
   let input_buffer
 
   let input_buffer_focus = () => {
-    if ($mode_name === "dialog_mode") {
-      $mini_message = "Entering reader_comment_mode from dialog_mode."
-      $mode_name = "reader_comment_mode"
+    if ($mode === dialog_mode) {
+      $mini_message = `Entering ${reader_comment_mode.name} from ${$mode.name}.`
+      $mode = reader_comment_mode
     }
   }
 
@@ -66,37 +70,12 @@
   })
 
   const next = async () => {
-    switch ($mode_name) {
-      case "dialog_mode":
-        return await next_dialog({ env, next })
-      case "reader_input_mode":
-        return await reader_input_mode.onnext({ env, next })
-      case "reader_comment_mode":
-        return await reader_comment_mode.onnext({ env, next })
-    }
-  }
-
-  const next_dialog = async () => {
-    $contents = [...$contents, { Loading: "Loading next statement... ⏳" }]
-    // TODO fix this use of stmts like GET_READER_INPUT in book.
-    const content = await vm.Env.next(env)
-    $contents.pop()
-
-    let prompt_contents = vm.Env.match_stmt_name(content, "GET_READER_INPUT")
-    if (prompt_contents) {
-      $contents = [...$contents, ...prompt_contents]
-      $mode_name = "reader_input_mode"
-      $mini_message = "Entering reader_input_mode."
-      return
-    }
-
-    $contents = [...$contents, content]
-    $mini_message = ""
+    await $mode.ok({ env, next })
   }
 </script>
 
 <svelte:head>
-  <title>Book: {book}</title>
+  <title>{book}</title>
 </svelte:head>
 
 <div class="book">
@@ -109,22 +88,11 @@
   </div>
   <div class="reader-input">
     <button class="status" bind:this="{status}">
-      <abbr title="{$mode_name}">
-        {#if $mode_name === 'dialog_mode'}
-          <img src="cute-dialog-64px.png" alt="dialog" width="40" height="40" />
-        {:else if $mode_name === 'reader_input_mode'}
-          <img
-            src="cute-ask-question-64px.png"
-            alt="input"
-            width="40"
-            height="40" />
-        {:else if $mode_name === 'reader_comment_mode'}
-          <img
-            src="cute-edit-file-64px.png"
-            alt="comment"
-            width="40"
-            height="40" />
-        {/if}
+      <abbr title="{$mode.name}">
+        <img src="{$mode.status_icon.src}"
+             alt="{$mode.status_icon.alt}"
+             width="40"
+             height="40" />
       </abbr>
     </button>
     <textarea
@@ -134,21 +102,10 @@
       bind:value="{$input_text}"
       on:focus="{input_buffer_focus}"></textarea>
     <button class="ok" bind:this="{ok}" on:click="{ok_click}">
-      {#if $mode_name === 'dialog_mode'}
-        <img
-          src="cute-circled-chevron-down-64px.png"
-          alt="next"
-          width="40"
-          height="40" />
-      {:else if $mode_name === 'reader_input_mode'}
-        <img
-          src="cute-paper-plane-64px.png"
-          alt="send"
-          width="40"
-          height="40" />
-      {:else if $mode_name === 'reader_comment_mode'}
-        <img src="cute-ok-64px.png" alt="edit" width="40" height="40" />
-      {/if}
+        <img src="{$mode.ok_icon.src}"
+             alt="{$mode.ok_icon.alt}"
+             width="40"
+             height="40" />
     </button>
   </div>
   <pre class="mini-buffer">
