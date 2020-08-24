@@ -21,11 +21,13 @@
 
   // -- GLOBAL STATE --
 
-  import { mini_message } from "../../stores"
+  import {
+    contents,
+    mini_message,
+  } from "../../stores"
 
   // -- LOCAL STATE --
 
-  let contents = []
   let mode = "dialog_mode"
   let input_text = ""
 
@@ -93,20 +95,20 @@
   }
 
   const step_dialog = async () => {
-    contents = [...contents, { Loading: "Loading next statement... ⏳" }]
+    $contents = [...$contents, { Loading: "Loading next statement... ⏳" }]
     // TODO fix this use of stmts like GET_READER_INPUT in book.
     const content = await vm.Env.next(env)
-    contents.pop()
+    $contents.pop()
 
     let prompt_contents = vm.Env.match_stmt_name(content, "GET_READER_INPUT")
     if (prompt_contents) {
-      contents = [...contents, ...prompt_contents]
+      $contents = [...$contents, ...prompt_contents]
       mode = "reader_input_mode"
       $mini_message = "Entering reader_input_mode."
       return
     }
 
-    contents = [...contents, content]
+    $contents = [...$contents, content]
     $mini_message = ""
   }
 
@@ -116,7 +118,7 @@
     } else {
       const data = yaml.safeLoad(input_text)
       env.data_stack.push(data)
-      contents = [...contents, { ReaderInput: data }]
+      $contents = [...$contents, { ReaderInput: data }]
       input_text = ""
       mode = "dialog_mode"
       $mini_message = "Back to dialog_mode from reader_input_mode."
@@ -134,7 +136,7 @@
       $mini_message =
         "Write down reader comment, and go back to dialog_mode from reader_comment_mode."
       mode = "dialog_mode"
-      contents = [...contents, { ReaderComment: input_text }]
+      $contents = [...$contents, { ReaderComment: input_text }]
       input_text = ""
     }
   }
@@ -146,7 +148,7 @@
 
 <div class="book">
   <div class="frame-list">
-    {#each contents as content, index (index)}
+    {#each $contents as content, index (index)}
       <div class="frame">
         <Frame {content} {index} />
       </div>
