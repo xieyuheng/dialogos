@@ -1,3 +1,4 @@
+- fix scroll to view -- on phone.
 - emacs-like hooks for frame.
   - maybe use store.
 - compile our json inline schema to json schema.
