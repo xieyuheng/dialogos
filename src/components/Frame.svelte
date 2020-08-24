@@ -29,8 +29,13 @@
     Loading,
   ]
 
-  $: frame = frames.find((frame) => content.hasOwnProperty(frame.tag))
-  $: data = frame && content[frame.tag]
+  const match_frame = (content, frame) => {
+    return content[frame.tag] || content[frame.default.name]
+  }
+
+  let data
+
+  $: frame = frames.find((frame) => (data = match_frame(content, frame)))
 
   // -- LIFE CYCLE --
 

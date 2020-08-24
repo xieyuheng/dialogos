@@ -3,7 +3,7 @@ import * as Env from "../env"
 export function init(the: {
   book: string
   module?: string
-  stmts: Array<any>
+  contents: Array<any>
   loader: Env.Loader
 }): Env.Env {
   return {
@@ -13,7 +13,7 @@ export function init(the: {
     return_stack: [
       {
         module: the.module || "index",
-        stmts: the.stmts,
+        contents: the.contents,
         index: 0,
       },
     ],

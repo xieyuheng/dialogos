@@ -2,8 +2,8 @@
   export async function preload({ params }) {
     const { book } = params
     const res = await this.fetch(`data/${book}`)
-    const stmts = await res.json()
-    return { book, stmts }
+    const init_contents = await res.json()
+    return { book, init_contents }
   }
 </script>
 
@@ -17,7 +17,7 @@
   // -- PROP --
 
   export let book
-  export let stmts
+  export let init_contents
 
   // -- LOCAL STATE --
 
@@ -70,11 +70,11 @@
 
   const env = vm.Env.init({
     book,
-    stmts,
+    contents: init_contents,
     loader: async (book, module) => {
       const res = await fetch(`data/${book}?module=${module}`)
-      const stmts = await res.json()
-      return stmts
+      const contents = await res.json()
+      return contents
     },
   })
 
