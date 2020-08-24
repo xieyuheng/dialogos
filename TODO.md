@@ -1,5 +1,8 @@
 - emacs-like hooks for frame.
-  - maybe use store.
+  - move books' local states to global stores.
+    - `contents` as global state.
+    - ok button click handler as global state.
+  - use store in frames.
 - db cache compiled content.
 - use grid to fix media hack.
 - compile our json inline schema to json schema.

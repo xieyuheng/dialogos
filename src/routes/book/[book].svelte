@@ -19,12 +19,15 @@
   export let book
   export let init_contents
 
+  // -- GLOBAL STATE --
+
+  import { mini_message } from "../../stores"
+
   // -- LOCAL STATE --
 
   let contents = []
   let mode = "dialog_mode"
   let input_text = ""
-  let mini_message = ""
 
   // -- DOM ELEMENT --
 
@@ -42,7 +45,7 @@
 
   let input_buffer_focus = () => {
     if (mode === "dialog_mode") {
-      mini_message = "Entering reader_comment_mode from dialog_mode."
+      $mini_message = "Entering reader_comment_mode from dialog_mode."
       mode = "reader_comment_mode"
     }
   }
@@ -56,7 +59,7 @@
     input_buffer.addEventListener("keydown", (event) => {
       if (mode === "reader_comment_mode") {
         if (event.key === "Escape") {
-          mini_message =
+          $mini_message =
             "Exiting reader_comment_mode and clear input (because Esc is pressed)."
           mode = "dialog_mode"
           input_text = ""
@@ -99,36 +102,36 @@
     if (prompt_contents) {
       contents = [...contents, ...prompt_contents]
       mode = "reader_input_mode"
-      mini_message = "Entering reader_input_mode."
+      $mini_message = "Entering reader_input_mode."
       return
     }
 
     contents = [...contents, content]
-    mini_message = ""
+    $mini_message = ""
   }
 
   const step_input = async () => {
     if (ut.string_is_blank(input_text)) {
-      mini_message = "The input buffer is empty. You should enter your answer."
+      $mini_message = "The input buffer is empty. You should enter your answer."
     } else {
       const data = yaml.safeLoad(input_text)
       env.data_stack.push(data)
       contents = [...contents, { ReaderInput: data }]
       input_text = ""
       mode = "dialog_mode"
-      mini_message = "Back to dialog_mode from reader_input_mode."
+      $mini_message = "Back to dialog_mode from reader_input_mode."
       await step()
     }
   }
 
   const step_reader_comment = async () => {
     if (ut.string_is_blank(input_text)) {
-      mini_message =
+      $mini_message =
         "No input text, go back to dialog_mode from reader_comment_mode."
       mode = "dialog_mode"
       input_text = ""
     } else {
-      mini_message =
+      $mini_message =
         "Write down reader comment, and go back to dialog_mode from reader_comment_mode."
       mode = "dialog_mode"
       contents = [...contents, { ReaderComment: input_text }]
@@ -194,7 +197,7 @@
     </button>
   </div>
   <pre class="mini-buffer">
-    {#if mini_message}➽ {mini_message}{/if}
+    {#if $mini_message}➽ {$mini_message}{/if}
   </pre>
 </div>
 
