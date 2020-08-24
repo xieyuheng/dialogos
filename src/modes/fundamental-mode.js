@@ -4,7 +4,7 @@ import { get } from "svelte/store"
 import * as ut from "../ut"
 import vm from "@dialogos/vm"
 
-export const name = "dialog-mode"
+export const name = "fundamental-mode"
 
 export async function ok({ env }) {
   contents.set([...get(contents), { Loading: "Loading next statement... ⏳" }])

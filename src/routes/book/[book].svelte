@@ -23,12 +23,12 @@
   import { contents, mini_message, input_text, mode } from "../../stores"
 
   import {
-    dialog_mode,
+    fundamental_mode,
     reader_input_mode,
     reader_comment_mode,
   } from "../../modes"
 
-  $mode = dialog_mode
+  $mode = fundamental_mode
 
   // -- DOM ELEMENT --
 
@@ -45,7 +45,7 @@
   let input_buffer
 
   let input_buffer_focus = () => {
-    if ($mode === dialog_mode) {
+    if ($mode === fundamental_mode) {
       $mini_message = `Entering ${reader_comment_mode.name} from ${$mode.name}.`
       $mode = reader_comment_mode
     }
@@ -58,6 +58,8 @@
   })
 
   // -- BUSINESS --
+
+  $contents = []
 
   const env = vm.Env.init({
     book,
@@ -89,10 +91,11 @@
   <div class="reader-input">
     <button class="status" bind:this="{status}">
       <abbr title="{$mode.name}">
-        <img src="{$mode.status_icon.src}"
-             alt="{$mode.status_icon.alt}"
-             width="40"
-             height="40" />
+        <img
+          src="{$mode.status_icon.src}"
+          alt="{$mode.status_icon.alt}"
+          width="40"
+          height="40" />
       </abbr>
     </button>
     <textarea
@@ -102,10 +105,11 @@
       bind:value="{$input_text}"
       on:focus="{input_buffer_focus}"></textarea>
     <button class="ok" bind:this="{ok}" on:click="{ok_click}">
-        <img src="{$mode.ok_icon.src}"
-             alt="{$mode.ok_icon.alt}"
-             width="40"
-             height="40" />
+      <img
+        src="{$mode.ok_icon.src}"
+        alt="{$mode.ok_icon.alt}"
+        width="40"
+        height="40" />
     </button>
   </div>
   <pre class="mini-buffer">

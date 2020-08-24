@@ -1,5 +1,5 @@
 import { contents, mini_message, input_text, mode } from "../stores"
-import { dialog_mode } from "../modes"
+import { fundamental_mode } from "../modes"
 import { get } from "svelte/store"
 import * as ut from "../ut"
 import yaml from "js-yaml"
@@ -14,8 +14,8 @@ export async function ok({ env, next }) {
     env.data_stack.push(data)
     contents.set([...get(contents), { ReaderInput: data }])
     input_text.set("")
-    mode.set(dialog_mode)
-    mini_message.set("Back to dialog_mode from reader_input_mode.")
+    mode.set(fundamental_mode)
+    mini_message.set("Back to fundamental_mode from reader_input_mode.")
     await next()
   }
 }

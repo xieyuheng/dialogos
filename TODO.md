@@ -1,9 +1,12 @@
-- use store in frames.
+- `GetReaderInput` instead `GET_READER_INPUT`
+- `reader-input-mode` for `GetReaderInput`.
+- `dialog-mode` for `Dialog`.
+- first teacher, then student. -- 用中文。
+- restore reader progress.
 - db cache compiled content.
 - use grid to fix media hack.
 - compile our json inline schema to json schema.
 - use chinese tags.
-- first teacher, then student. -- 用中文。
 - code block -- cicada/lang2. -- 用中文，
 - screen-mode.
 - local variable in `ReturnEntry`.
