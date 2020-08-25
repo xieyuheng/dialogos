@@ -1,3 +1,5 @@
+- add production build.
+  - expose 80 in Dockerfile.
 - `dialog-mode` for `Dialog`.
   - extends `fundamental-mode`
   - first teacher, then student. -- 用中文。
