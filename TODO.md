@@ -1,5 +1,6 @@
 - add production build.
   - expose 80 in Dockerfile.
+  - use https in production.
 - `dialog-mode` for `Dialog`.
   - extends `fundamental-mode`
   - first teacher, then student. -- 用中文。
