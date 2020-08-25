@@ -7,7 +7,7 @@
   <img src="cute-dialog-with-circle-200px.png" alt="cute-dialog-with-circle" />
 
   <p>
-    An online dialectic teaching system,
+    A dialectic learning platform,
     <br />
     inspired by Socrates, Plato, George Pólya and Dan Friedman.
   </p>

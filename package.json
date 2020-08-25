@@ -1,6 +1,6 @@
 {
   "name": "dialogos",
-  "description": "An online dialectic teaching system, inspired by Socrates, Plato, George Pólya and Dan Friedman.",
+  "description": "A dialectic learning platform, inspired by Socrates, Plato, George Pólya and Dan Friedman.",
   "version": "0.0.1",
   "license": "GPL-3.0-or-later",
   "engines": {

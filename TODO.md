@@ -11,8 +11,8 @@
     - t -- nil，f
     - 是 -- 否
     - 好 -- 不好，不
-- restore reader progress.
 - db cache compiled content.
+- restore reader progress.
 - compile our json inline schema to json schema.
 - use chinese tags.
 - code block -- cicada/lang2. -- 用中文，
