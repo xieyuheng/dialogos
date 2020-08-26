@@ -11,7 +11,7 @@
   import { reader_input_mode } from "../../modes"
 
   $contents = [...$contents, ...data]
-  $mode_stack = [ ...$mode_stack, $mode ]
+  $mode_stack = [...$mode_stack, $mode]
   $mode = reader_input_mode
   $mini_message = `Entering ${reader_input_mode.name}.`
 </script>

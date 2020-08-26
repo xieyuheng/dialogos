@@ -32,7 +32,9 @@ export function fundamental_mode(stores) {
   const input_buffer_focus = () => {
     get(mode_stack).push(get(mode))
     mini_message.set(
-      `Entering ${reader_comment_mode(stores).name} from ${get(mode)(stores).name}.`
+      `Entering ${reader_comment_mode(stores).name} from ${
+        get(mode)(stores).name
+      }.`
     )
     mode.set(reader_comment_mode)
   }
