@@ -8,6 +8,8 @@ import path from "path"
 const { PORT, NODE_ENV } = process.env
 const dev = NODE_ENV === "development"
 
+const cwd = process.cwd()
+
 const app_config = {
   logger: {
     prettyPrint: {

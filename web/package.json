@@ -11,7 +11,9 @@
     "dev": "BOOKS=books sapper dev",
     "build": "npx sapper build --legacy",
     "export": "BOOKS=books sapper export --legacy",
-    "start": "BOOKS=books node __sapper__/build",
+    "start": "run-p prod:*",
+    "prod:http": "BOOKS=books node __sapper__/build",
+    "prod:https": "node https.js",
     "format": "prettier src --write"
   },
   "dependencies": {
@@ -19,6 +21,7 @@
     "compression": "^1.7.4",
     "fastify": "^3.2.1",
     "fastify-express": "^0.1.0",
+    "http-proxy": "^1.18.1",
     "js-yaml": "^3.14.0",
     "pino-pretty": "^4.1.0",
     "prettyjson": "^1.2.1",
