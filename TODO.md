@@ -1,4 +1,4 @@
-- stores as modes' arg.
+- parameterize mode by stores.
 - ignore yes or no input case.
   - also allow true- false- like value:
     - 1 -- 0
