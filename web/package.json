@@ -11,7 +11,7 @@
     "dev": "BOOKS=books sapper dev",
     "build": "npx sapper build --legacy",
     "export": "BOOKS=books sapper export --legacy",
-    "start": "BOOKS=books node __sapper__/build",
+    "start": "PORT=80 BOOKS=books node __sapper__/build",
     "format": "prettier src --write"
   },
   "dependencies": {
