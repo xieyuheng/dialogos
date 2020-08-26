@@ -1,6 +1,4 @@
-- `dialog-mode` for `Dialog`.
-  - extends `fundamental-mode`
-  - first teacher, then student. -- 用中文。
+- stores as modes' arg.
 - ignore yes or no input case.
   - also allow true- false- like value:
     - 1 -- 0
@@ -12,6 +10,10 @@
     - 是 -- 否
     - 好 -- 不好，不
 - db cache compiled content.
+- put frames into separate packages, and use them with namespace.
+- `dialog-mode` for `Dialog`.
+  - extends `fundamental-mode`
+  - first teacher, then student. -- 用中文。
 - restore reader progress.
 - compile our json inline schema to json schema.
 - use chinese tags.
