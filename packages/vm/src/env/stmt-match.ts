@@ -8,7 +8,7 @@ export async function execute(
   env: Env.Env,
   entry: Env.ReturnEntry,
   clauses: Array<any>,
-  next: (env: Env.Env) => Promise<any>
+  next: (env: Env.Env) => Promise<any>,
 ): Promise<any> {
   const data = env.data_stack.pop()
   if (data === undefined) {
