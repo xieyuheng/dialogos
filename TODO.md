@@ -1,5 +1,3 @@
-- no `fundamental_mode` in `reader_input_mode`.
-  - use $mode_stack.
 - ignore yes or no input case.
   - also allow true- false- like value:
     - 1 -- 0

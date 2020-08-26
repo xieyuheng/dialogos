@@ -1,10 +1,9 @@
 import { get } from "svelte/store"
 import * as ut from "../ut"
 import yaml from "js-yaml"
-import { fundamental_mode } from "../modes"
 
 export function reader_input_mode(stores) {
-  const { contents, mini_message, input_text, mode } = stores
+  const { contents, mini_message, input_text, mode, mode_stack } = stores
 
   const name = "reader-input-mode"
 
@@ -18,8 +17,8 @@ export function reader_input_mode(stores) {
       env.data_stack.push(data)
       contents.set([...get(contents), { ReaderInput: data }])
       input_text.set("")
-      mode.set(fundamental_mode)
-      mini_message.set("Back to fundamental_mode from reader_input_mode.")
+      mode.set(get(mode_stack).pop())
+      mini_message.set(`Back to ${get(mode)(stores).name} from ${name}.`)
       await next()
     }
   }

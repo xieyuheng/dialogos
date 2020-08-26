@@ -6,5 +6,11 @@
     teacher: Man lives and works within social systems.
     student: Yes.
 
+- 师: 问
+
+- 问答:
+    师: 问
+    生: 答
+
 - JUMP:
     module: index
