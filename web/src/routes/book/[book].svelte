@@ -20,7 +20,10 @@
 
   // -- GLOBAL STATE --
 
-  import { contents, mini_message, input_text, mode } from "../../stores"
+  import * as stores from "../../stores"
+
+  const { contents, mini_message, input_text, mode } = stores
+
   import { fundamental_mode } from "../../modes"
 
   $mode = fundamental_mode
@@ -59,7 +62,7 @@
   })
 
   const next = async () => {
-    await $mode.ok({ env, next })
+    await $mode(stores).ok({ env, next })
   }
 </script>
 
@@ -77,10 +80,10 @@
   </div>
   <div class="reader-input">
     <button class="status" bind:this="{status}">
-      <abbr title="{$mode.name}">
+      <abbr title="{$mode(stores).name}">
         <img
-          src="{$mode.status_icon.src}"
-          alt="{$mode.status_icon.alt}"
+          src="{$mode(stores).status_icon.src}"
+          alt="{$mode(stores).status_icon.alt}"
           width="40"
           height="40" />
       </abbr>
@@ -90,11 +93,11 @@
       spellcheck="false"
       bind:this="{input_buffer}"
       bind:value="{$input_text}"
-      on:focus="{$mode.input_buffer_focus}"></textarea>
+      on:focus="{$mode(stores).input_buffer_focus}"></textarea>
     <button class="ok" bind:this="{ok}" on:click="{ok_click}">
       <img
-        src="{$mode.ok_icon.src}"
-        alt="{$mode.ok_icon.alt}"
+        src="{$mode(stores).ok_icon.src}"
+        alt="{$mode(stores).ok_icon.alt}"
         width="40"
         height="40" />
     </button>

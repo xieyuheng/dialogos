@@ -1,4 +1,5 @@
-- parameterize mode by stores.
+- no `fundamental_mode` in `reader_input_mode`.
+  - use $mode_stack.
 - ignore yes or no input case.
   - also allow true- false- like value:
     - 1 -- 0
@@ -10,7 +11,6 @@
     - 是 -- 否
     - 好 -- 不好，不
 - db cache compiled content.
-- put frames into separate packages, and use them with namespace.
 - `dialog-mode` for `Dialog`.
   - extends `fundamental-mode`
   - first teacher, then student. -- 用中文。
@@ -19,6 +19,7 @@
 - use chinese tags.
 - code block -- cicada/lang2. -- 用中文，
 - screen-mode.
+- put frames into separate packages, and use them with namespace.
 - local variable in `ReturnEntry`.
 - ws and filewatcher.
 # design
