@@ -4,13 +4,12 @@ import sirv from "sirv"
 import compression from "compression"
 import process from "process"
 import path from "path"
+import fs from "fs"
 
 const { PORT, NODE_ENV } = process.env
 const dev = NODE_ENV === "development"
 
-const cwd = process.cwd()
-
-const app_config = {
+const config = {
   logger: {
     prettyPrint: {
       colorize: true,
@@ -19,7 +18,7 @@ const app_config = {
 }
 
 async function main() {
-  const app = fastify(app_config)
+  const app = fastify(config)
   await app.register(require("fastify-express"))
   app.use(compression({ threshold: 0 }))
   app.use(sirv("static"))
