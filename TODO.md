@@ -2,15 +2,16 @@
 - scripts/database -- pg docker
 - `dialog-mode` for `Dialog`.
   - extends `fundamental-mode`.
-  - first teacher, then student. -- 用中文。
+  - first teacher, then student.
 - restore reader progress.
 - compile our json inline schema to json schema.
 - use chinese tags.
-- code block -- cicada/lang2. -- 用中文，
+- code block -- cicada/lang2.
 - screen-mode.
 - put frames into separate packages, and use them with namespace.
 - local variable in `ReturnEntry`.
 - ws and filewatcher.
+- 实现 translate 机制 -- 以方便用中文。
 # design
 - css for Comment, ReaderComment, ReaderInput.
 - css for loading.
