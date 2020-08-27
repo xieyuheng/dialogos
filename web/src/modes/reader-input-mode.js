@@ -5,18 +5,8 @@ import yaml from "js-yaml"
 const ignore_punctuation = (text) =>
   text.replace(/\p{Punctuation}/gu, "").replace(/\s+/g, " ")
 
-const true_like_words = ["yes", "ok", "#t", "t", "是", "是的", "好的", "好"]
-const false_like_words = [
-  "no",
-  "sorry",
-  "#f",
-  "f",
-  "nil",
-  "不好",
-  "不",
-  "不是",
-  "否",
-]
+const true_like_words = ["yes", "ok", "t", "是", "是的", "好的", "好"]
+const false_like_words = ["no", "sorry", "f", "nil", "不好", "不", "不是", "否"]
 
 const input_parsers = {
   to_boolean: (input) => {
@@ -48,9 +38,10 @@ export function reader_input_mode(stores) {
         "The input buffer is empty. You should enter your answer."
       )
     } else {
+      const raw = get(input_text)
+      const obj = yaml.safeLoad(raw)
       const input_parser_name = get(env).data_stack.pop()
-      const raw = yaml.safeLoad(get(input_text))
-      const data = input_parsers[input_parser_name](raw)
+      const data = input_parsers[input_parser_name](obj)
       get(env).data_stack.push(data)
       contents.set([...get(contents), { ReaderInput: raw }])
       input_text.set("")
