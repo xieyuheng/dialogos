@@ -1,7 +1,7 @@
 - scripts/benchmark -- autocannon
 - scripts/database -- pg docker
 - `dialog-mode` for `Dialog`.
-  - extends `fundamental-mode`
+  - extends `fundamental-mode`.
   - first teacher, then student. -- 用中文。
 - restore reader progress.
 - compile our json inline schema to json schema.

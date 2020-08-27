@@ -15,19 +15,19 @@ export async function execute(
     throw new Error("Empty env.data_stack.")
   }
   for (const clause of clauses) {
-    if (clause.pattern) {
+    if (clause.hasOwnProperty("pattern")) {
       // TODO use `match` instead of `ut.equal`,
       // - use matched variables to subst pattern variables in contents.
       if (ut.equal(clause.pattern, data)) {
         const contents = clause.contents
         put_back_entry(env, entry)
-        env.return_stack.push({ ...entry, contents: contents, index: 0 })
+        env.return_stack.push({ ...entry, contents, index: 0 })
         return await next(env)
       }
-    } else if (clause["default_contents"]) {
-      const contents = clause["default_contents"]
+    } else if (clause.hasOwnProperty("default_contents")) {
+      const contents = clause.default_contents
       put_back_entry(env, entry)
-      env.return_stack.push({ ...entry, contents: contents, index: 0 })
+      env.return_stack.push({ ...entry, contents, index: 0 })
       return await next(env)
     }
   }
