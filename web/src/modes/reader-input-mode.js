@@ -3,37 +3,18 @@ import * as ut from "../ut"
 import yaml from "js-yaml"
 
 const ignore_punctuation = (text) =>
-      text.replace(/[^\w\s]/g, "").replace(/\s+/g, " ")
+  text.replace(/\p{Punctuation}/gu, "").replace(/\s+/g, " ")
 
+const true_like_words = ["yes", "ok", "#t", "t", "是", "是的", "好的", "好"]
+const false_like_words = ["no", "sorry", "#f", "f", "nil", "不好", "不"， "不是", "否"]
 
 const input_parsers = {
   to_boolean: (input) => {
     if (typeof input === "string") {
       const text = ignore_punctuation(input.toLowerCase())
-      if (
-        text === "yes" ||
-        text === "ok" ||
-        text === "#t" ||
-        text === "t" ||
-        text === "是" ||
-        text === "好的" ||
-        text === "好"
-      ) {
-        return true
-      } else if (
-        text === "no" ||
-        text === "sorry" ||
-        text === "#f" ||
-        text === "f" ||
-        text === "nil" ||
-        text === "不好" ||
-        text === "不" ||
-        text === "否"
-      ) {
-        return false
-      } else {
-        return input
-      }
+      if (true_like_words.includes(text)) return true
+      else if (false_like_words.includes(text)) return false
+      else return input
     } else if (typeof input === "number") {
       const n = input
       if (n === 1) return true
