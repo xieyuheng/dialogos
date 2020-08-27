@@ -11,9 +11,7 @@ const dev = NODE_ENV === "development"
 
 const config = {
   logger: {
-    prettyPrint: {
-      colorize: true,
-    },
+    prettyPrint: true,
   },
 }
 
