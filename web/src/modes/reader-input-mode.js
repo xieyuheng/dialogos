@@ -38,7 +38,21 @@ export function reader_input_mode(stores) {
   return { name, ok, ok_icon, status_icon }
 }
 
-const true_like_words = ["yes", "y", "ok", "t", "1", "是", "是的", "好的", "好"]
+const true_like_words = [
+  "yes",
+  "y",
+  "ok",
+  "t",
+  "1",
+  "是",
+  "是是",
+  "是的",
+  "是的是的",
+  "好",
+  "好好",
+  "好的",
+  "好的好的",
+]
 
 const false_like_words = [
   "no",
@@ -47,10 +61,13 @@ const false_like_words = [
   "f",
   "0",
   "nil",
-  "不好",
-  "不",
-  "不是",
   "否",
+  "不",
+  "不不",
+  "不是",
+  "不是不是",
+  "不好",
+  "不好不好",
 ]
 
 const input_parsers = {
