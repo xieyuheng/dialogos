@@ -1,19 +1,27 @@
-- scripts/database -- pg docker
 - `dialog-mode` for `Dialog`.
   - extends `fundamental-mode`.
   - first teacher, then student.
+- scripts/database -- pg docker.
 - restore reader progress.
 - compile our json inline schema to json schema.
-- use chinese tags.
 - code block -- cicada/lang2.
 - screen-mode.
-- put frames into separate packages, and use them with namespace.
 - local variable in `ReturnEntry`.
 - ws and filewatcher.
 - 实现 translate 机制 -- 以方便用中文。
+  - for chinese field names.
+  - also for chinese tags.
+# for reader
+- reader login.
+- session to record reading progress.
+- let reader answer first, then show the answer.
+# menu
+- left `status` button -- click for menu.
 # design
+- wireframe.
+- sitemap.
 - css for Comment, ReaderComment, ReaderInput.
-- css for loading.
+- css for Loading.
 - ReaderComment datetime.
 - ReaderInput datetime.
 - be able to use big <textarea> sometimes.
@@ -21,11 +29,6 @@
 - report on im products.
 # test
 - use cypress to test control flow.
-# error handling
-- handle frame parsing error in a general way.
-- [maybe] handle `Env.next` error.
-# layout
-- `Nav` for navigation -- table of contents, jump to chapters.
 # content
 - finish chapter 1
 # 教学法调查报告。
@@ -38,12 +41,6 @@
 - 涂抹果酱的地方给一个 canvas 画板。
 # dialog gen
 - 可以生成解释程序运行的对话（程序，参数 -- 对话）。
-# for reader
-- reader login.
-- session to record reading progress.
-- let reader answer first, then show the answer.
-# menu
-- left `status` button -- click for menu.
 # export
 - right `export` button.
 - export new commented books.
@@ -54,5 +51,3 @@
   - 类似黑暗之魂。
   - 一个运营周期内的同学，也许可以互相分享笔记。
   - 助教可以以笔记的方式留下学习寄语。
-# deploy
-- fix heroku file.
