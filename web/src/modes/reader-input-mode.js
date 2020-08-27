@@ -38,9 +38,6 @@ export function reader_input_mode(stores) {
   return { name, ok, ok_icon, status_icon }
 }
 
-const ignore_punctuation = (text) =>
-  text.replace(/\p{Punctuation}/gu, "").replace(/\s+/g, " ")
-
 const true_like_words = ["yes", "y", "ok", "t", "1", "是", "是的", "好的", "好"]
 
 const false_like_words = [
@@ -59,7 +56,10 @@ const false_like_words = [
 const input_parsers = {
   to_boolean: (input) => {
     if (typeof input === "string") {
-      const text = ignore_punctuation(input.toLowerCase())
+      const text = input
+        .toLowerCase()
+        .replace(/\p{Punctuation}/gu, "")
+        .replace(/\s/g, "")
       if (true_like_words.includes(text)) return true
       else if (false_like_words.includes(text)) return false
       else return input
