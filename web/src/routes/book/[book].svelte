@@ -22,12 +22,23 @@
 
   import * as stores from "../../stores"
 
-  const { contents, mini_message, input_text, mode } = stores
+  const { contents, mini_message, input_text, mode, env } = stores
 
   import { fundamental_mode } from "../../modes"
 
   $mode = fundamental_mode
+
   $contents = []
+
+  $env = vm.Env.init({
+    book,
+    contents: init_contents,
+    loader: async (book, module) => {
+      const res = await fetch(`data/${book}?module=${module}`)
+      const contents = await res.json()
+      return contents
+    },
+  })
 
   // -- DOM ELEMENT --
 
@@ -51,18 +62,10 @@
 
   // -- BUSINESS --
 
-  const env = vm.Env.init({
-    book,
-    contents: init_contents,
-    loader: async (book, module) => {
-      const res = await fetch(`data/${book}?module=${module}`)
-      const contents = await res.json()
-      return contents
-    },
-  })
-
   const next = async () => {
-    await $mode(stores).ok({ env, next })
+    if ($env) {
+      await $mode(stores).ok({ next })
+    }
   }
 </script>
 

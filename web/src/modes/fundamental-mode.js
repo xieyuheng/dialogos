@@ -4,16 +4,16 @@ import vm from "@dialogos/vm"
 import { reader_comment_mode } from "../modes"
 
 export function fundamental_mode(stores) {
-  const { contents, mini_message, input_text, mode, mode_stack } = stores
+  const { contents, mini_message, input_text, mode, mode_stack, env } = stores
 
   const name = "fundamental-mode"
 
-  async function ok({ env }) {
+  async function ok() {
     contents.set([
       ...get(contents),
       { Loading: "Loading next statement... ⏳" },
     ])
-    const content = await vm.Env.next(env)
+    const content = await vm.Env.next(get(env))
     get(contents).pop()
     contents.set([...get(contents), content])
     mini_message.set("")

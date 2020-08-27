@@ -3,18 +3,18 @@ import * as ut from "../ut"
 import yaml from "js-yaml"
 
 export function reader_input_mode(stores) {
-  const { contents, mini_message, input_text, mode, mode_stack } = stores
+  const { contents, mini_message, input_text, mode, mode_stack, env } = stores
 
   const name = "reader-input-mode"
 
-  async function ok({ env, next }) {
+  async function ok({ next }) {
     if (ut.string_is_blank(get(input_text))) {
       mini_message.set(
         "The input buffer is empty. You should enter your answer."
       )
     } else {
       const data = yaml.safeLoad(get(input_text))
-      env.data_stack.push(data)
+      get(env).data_stack.push(data)
       contents.set([...get(contents), { ReaderInput: data }])
       input_text.set("")
       mode.set(get(mode_stack).pop())

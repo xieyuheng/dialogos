@@ -5,6 +5,7 @@
 
 - label: start
   GetReaderInput:
+    prompt_contents:
     - Comment: Would you like to start?
 
 - MATCH:
