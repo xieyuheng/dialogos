@@ -1,4 +1,3 @@
-- `GetReaderInput` use yaml parser explicitly.
 - scripts/benchmark -- autocannon
 - scripts/database -- pg docker
 - `dialog-mode` for `Dialog`.
