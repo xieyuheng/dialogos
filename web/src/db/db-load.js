@@ -4,8 +4,6 @@ import process from "process"
 import path from "path"
 import fs from "fs"
 
-const cache = new Map()
-
 export async function load(book, module) {
   if (!process.env.BOOKS) {
     throw new Error(
@@ -18,13 +16,7 @@ export async function load(book, module) {
     )
   }
   const file = path.resolve(process.env.BOOKS, book, `${module}.yaml`)
-  const cached_contents = cache.get(file)
-  if (cached_contents !== undefined) {
-    return cached_contents
-  } else {
-    const text = await fs.promises.readFile(file, "utf-8")
-    const contents = yaml.safeLoad(text)
-    cache.set(file, contents)
-    return contents
-  }
+  const text = await fs.promises.readFile(file, "utf-8")
+  const contents = yaml.safeLoad(text)
+  return contents
 }

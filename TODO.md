@@ -1,4 +1,3 @@
-- server should watch books and invalidate cache.
 - `GetReaderInput` use yaml parser explicitly.
 - scripts/benchmark -- autocannon
 - scripts/database -- pg docker
