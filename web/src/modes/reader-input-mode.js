@@ -5,8 +5,8 @@ import yaml from "js-yaml"
 const ignore_punctuation = (text) =>
   text.replace(/\p{Punctuation}/gu, "").replace(/\s+/g, " ")
 
-const true_like_words = ["yes", "ok", "t", "是", "是的", "好的", "好"]
-const false_like_words = ["no", "sorry", "f", "nil", "不好", "不", "不是", "否"]
+const true_like_words = ["yes", "y", "ok", "t", "是", "是的", "好的", "好"]
+const false_like_words = ["no", "n", "sorry", "f", "nil", "不好", "不", "不是", "否"]
 
 const input_parsers = {
   to_boolean: (input) => {
