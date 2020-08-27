@@ -1,3 +1,4 @@
+- fix `ignore_punctuation` for chinese
 - refactor `to_boolean`
 - db cache compiled content.
 - `dialog-mode` for `Dialog`.

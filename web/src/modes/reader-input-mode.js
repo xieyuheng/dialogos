@@ -3,7 +3,8 @@ import * as ut from "../ut"
 import yaml from "js-yaml"
 
 const ignore_punctuation = (text) =>
-  text.replace(/[^\w\s]/g, "").replace(/\s+/g, " ")
+      text.replace(/[^\w\s]/g, "").replace(/\s+/g, " ")
+
 
 const input_parsers = {
   to_boolean: (input) => {
