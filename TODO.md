@@ -1,4 +1,5 @@
 - scripts/benchmark -- autocannon
+scripts/benchmark/autocannon.sh
 - scripts/database -- pg docker
 - `dialog-mode` for `Dialog`.
   - extends `fundamental-mode`.
