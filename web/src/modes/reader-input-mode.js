@@ -2,31 +2,6 @@ import { get } from "svelte/store"
 import * as ut from "../ut"
 import yaml from "js-yaml"
 
-const ignore_punctuation = (text) =>
-  text.replace(/\p{Punctuation}/gu, "").replace(/\s+/g, " ")
-
-const true_like_words = ["yes", "y", "ok", "t", "是", "是的", "好的", "好"]
-const false_like_words = ["no", "n", "sorry", "f", "nil", "不好", "不", "不是", "否"]
-
-const input_parsers = {
-  to_boolean: (input) => {
-    if (typeof input === "string") {
-      const text = ignore_punctuation(input.toLowerCase())
-      if (true_like_words.includes(text)) return true
-      else if (false_like_words.includes(text)) return false
-      else return input
-    } else if (typeof input === "number") {
-      const n = input
-      if (n === 1) return true
-      else if (n === 0) return false
-      else return input
-    } else {
-      return input
-    }
-  },
-  raw_input: (input) => input,
-}
-
 export function reader_input_mode(stores) {
   const { contents, mini_message, input_text, mode, mode_stack, env } = stores
 
@@ -62,4 +37,29 @@ export function reader_input_mode(stores) {
   }
 
   return { name, ok, ok_icon, status_icon }
+}
+
+const ignore_punctuation = (text) =>
+  text.replace(/\p{Punctuation}/gu, "").replace(/\s+/g, " ")
+
+const true_like_words = ["yes", "y", "ok", "t", "是", "是的", "好的", "好"]
+const false_like_words = ["no", "n", "sorry", "f", "nil", "不好", "不", "不是", "否"]
+
+const input_parsers = {
+  to_boolean: (input) => {
+    if (typeof input === "string") {
+      const text = ignore_punctuation(input.toLowerCase())
+      if (true_like_words.includes(text)) return true
+      else if (false_like_words.includes(text)) return false
+      else return input
+    } else if (typeof input === "number") {
+      const n = input
+      if (n === 1) return true
+      else if (n === 0) return false
+      else return input
+    } else {
+      return input
+    }
+  },
+  raw_input: (input) => input,
 }
