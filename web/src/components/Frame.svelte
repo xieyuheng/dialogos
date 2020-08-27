@@ -36,12 +36,24 @@
   ]
 
   const match_frame = (content, frame) => {
-    return content[frame.tag] || content[frame.default.name]
+    if (content.hasOwnProperty(frame.tag)) {
+      return content[frame.tag]
+    } else {
+      return undefined
+    }
   }
 
   let data
 
-  $: frame = frames.find((frame) => (data = match_frame(content, frame)))
+  $: frame = frames.find((frame) => {
+    const matched = match_frame(content, frame)
+    if (matched !== undefined) {
+      data = matched
+      return true
+    } else {
+      return false
+    }
+  })
 
   $: {
     if (frame) {

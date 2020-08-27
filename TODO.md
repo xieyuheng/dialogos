@@ -1,13 +1,4 @@
-- ignore yes or no input case.
-  - also allow true- false- like value:
-    - 1 -- 0
-    - true -- false
-    - yes -- no
-    - ok -- sorry
-    - #t -- #f
-    - t -- nil，f
-    - 是 -- 否
-    - 好 -- 不好，不
+- refactor `to_boolean`
 - db cache compiled content.
 - `dialog-mode` for `Dialog`.
   - extends `fundamental-mode`
