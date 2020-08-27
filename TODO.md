@@ -1,5 +1,7 @@
 - db cache compiled content.
   - server should watch books and invalidate cache.
+- scripts/benchmark -- autocannon
+- scripts/database -- pg docker
 - `dialog-mode` for `Dialog`.
   - extends `fundamental-mode`
   - first teacher, then student. -- 用中文。
