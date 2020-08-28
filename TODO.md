@@ -1,6 +1,6 @@
+- compile our json inline schema to json schema.
 - scripts/database -- pg docker.
 - restore reader progress.
-- compile our json inline schema to json schema.
 - code block -- cicada/lang2.
 - screen-mode.
 - local variable in `ReturnEntry`.

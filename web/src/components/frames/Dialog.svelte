@@ -20,10 +20,8 @@
   $mini_message = `Teacher asks.`
   $mode = function teacher_ask_mode(stores) {
     const { mini_message, mode, mode_stack } = stores
-
     return {
       ...fundamental_mode(stores),
-
       async ok() {
         mode.set(get(mode_stack).pop())
         mini_message.set(`Student answers.`)
@@ -32,13 +30,8 @@
     }
   }
 
-  const get_notes = (obj) => {
-    const notes = []
-    for (const name in obj) {
-      notes.push({ name, content: obj[name] })
-    }
-    return notes
-  }
+  const get_notes = (obj) =>
+    Object.entries(obj).map(([name, content]) => ({ name, content }))
 
   const teacher_note_array = teacher_notes ? get_notes(teacher_notes) : []
   const student_note_array = student_notes ? get_notes(student_notes) : []
