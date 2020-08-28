@@ -3,11 +3,9 @@ import vm from "@dialogos/vm"
 import { reader_comment_mode } from "../modes"
 
 export function fundamental_mode(stores) {
-  const { contents, mini_message, input_text, mode, mode_stack, env } = stores
+  const { contents, mini_message, mode, mode_stack, env } = stores
 
   return {
-    name: "fundamental-mode",
-
     async ok() {
       const loading = { Loading: "Loading next statement... ⏳" }
       contents.set([...get(contents), loading])
@@ -29,11 +27,7 @@ export function fundamental_mode(stores) {
 
     input_buffer_focus() {
       get(mode_stack).push(get(mode))
-      mini_message.set(
-        `Entering ${reader_comment_mode(stores).name} from ${
-          get(mode)(stores).name
-        }.`
-      )
+      mini_message.set(`Entering reader_comment_mode from ${get(mode).name}.`)
       mode.set(reader_comment_mode)
     },
   }

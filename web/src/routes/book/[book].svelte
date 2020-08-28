@@ -21,15 +21,11 @@
   // -- GLOBAL STATE --
 
   import * as stores from "../../stores"
-
   const { contents, mini_message, input_text, mode, env } = stores
-
   import { fundamental_mode } from "../../modes"
 
   $mode = fundamental_mode
-
   $contents = []
-
   $env = vm.Env.init({
     book,
     contents: init_contents,
@@ -43,16 +39,14 @@
   // -- DOM ELEMENT --
 
   let ok
+  let status
+  let input_buffer
 
   let ok_click = ut.click_handler({
     onclick: async () => {
       await next()
     },
   })
-
-  let status
-
-  let input_buffer
 
   // -- LIFE CYCLE --
 
@@ -83,7 +77,7 @@
   </div>
   <div class="reader-input">
     <button class="status" bind:this="{status}">
-      <abbr title="{$mode(stores).name}">
+      <abbr title="{$mode.name}">
         <img
           src="{$mode(stores).status_icon.src}"
           alt="{$mode(stores).status_icon.alt}"

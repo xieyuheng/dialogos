@@ -5,8 +5,6 @@ export function reader_comment_mode(stores) {
   const { contents, mini_message, input_text, mode, mode_stack } = stores
 
   return {
-    name: "reader-comment-mode",
-
     ok() {
       mode.set(get(mode_stack).pop())
       if (ut.string_is_blank(get(input_text))) {

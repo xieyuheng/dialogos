@@ -1,4 +1,3 @@
-- no mode function name as mode name.
 - `dialog-mode` extends `fundamental-mode`.
 - scripts/database -- pg docker.
 - restore reader progress.

@@ -24,8 +24,6 @@
     const { mini_message, mode, mode_stack } = stores
 
     return {
-      name: "teacher-ask-mode",
-
       async ok() {
         mode.set(get(mode_stack).pop())
         mini_message.set(`Student answers.`)
@@ -44,9 +42,7 @@
 
       input_buffer_focus() {
         get(mode_stack).push(get(mode))
-        mini_message.set(
-          `Entering reader_comment_mode from ${get(mode)(stores).name}.`
-        )
+        mini_message.set(`Entering reader_comment_mode from ${get(mode).name}.`)
         mode.set(reader_comment_mode)
       },
     }
@@ -54,7 +50,9 @@
 
   const get_notes = (obj) => {
     const notes = []
-    for (const name in obj) notes.push({ name, content: obj[name] })
+    for (const name in obj) {
+      notes.push({ name, content: obj[name] })
+    }
     return notes
   }
 

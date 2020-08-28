@@ -5,8 +5,6 @@ export function reader_input_mode(stores) {
   const { contents, mini_message, input_text, mode, mode_stack, env } = stores
 
   return {
-    name: "reader-input-mode",
-
     async ok({ next }) {
       if (ut.string_is_blank(get(input_text))) {
         mini_message.set(
@@ -20,7 +18,7 @@ export function reader_input_mode(stores) {
         contents.set([...get(contents), { ReaderInput: input }])
         input_text.set("")
         mode.set(get(mode_stack).pop())
-        mini_message.set(`Back to ${get(mode)(stores).name} from ${name}.`)
+        mini_message.set(`Back to ${get(mode).name} from reader_input_mode.`)
         await next()
       }
     },
