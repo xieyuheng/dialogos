@@ -1,5 +1,5 @@
-- mode need to use local state.
 - `dialog-mode` for `Dialog`.
+  - use `$mode_stack` instead of local state.
   - extends `fundamental-mode`.
   - first teacher, then student.
 - scripts/database -- pg docker.

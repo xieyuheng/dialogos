@@ -16,7 +16,6 @@ export function reader_input_mode(stores) {
         const input = get(input_text)
         const input_parser_name = get(env).data_stack.pop()
         const data = input_parsers[input_parser_name](input)
-        console.log("input_parsers:", { data })
         get(env).data_stack.push(data)
         contents.set([...get(contents), { ReaderInput: input }])
         input_text.set("")
