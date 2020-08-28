@@ -1,3 +1,4 @@
+- mode need to use local state.
 - `dialog-mode` for `Dialog`.
   - extends `fundamental-mode`.
   - first teacher, then student.

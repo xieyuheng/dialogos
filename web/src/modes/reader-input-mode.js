@@ -4,38 +4,38 @@ import * as ut from "../ut"
 export function reader_input_mode(stores) {
   const { contents, mini_message, input_text, mode, mode_stack, env } = stores
 
-  const name = "reader-input-mode"
+  return {
+    name: "reader-input-mode",
 
-  async function ok({ next }) {
-    if (ut.string_is_blank(get(input_text))) {
-      mini_message.set(
-        "The input buffer is empty. You should enter your answer."
-      )
-    } else {
-      const input = get(input_text)
-      const input_parser_name = get(env).data_stack.pop()
-      const data = input_parsers[input_parser_name](input)
-      console.log("input_parsers:", { data })
-      get(env).data_stack.push(data)
-      contents.set([...get(contents), { ReaderInput: input }])
-      input_text.set("")
-      mode.set(get(mode_stack).pop())
-      mini_message.set(`Back to ${get(mode)(stores).name} from ${name}.`)
-      await next()
-    }
+    async ok({ next }) {
+      if (ut.string_is_blank(get(input_text))) {
+        mini_message.set(
+          "The input buffer is empty. You should enter your answer."
+        )
+      } else {
+        const input = get(input_text)
+        const input_parser_name = get(env).data_stack.pop()
+        const data = input_parsers[input_parser_name](input)
+        console.log("input_parsers:", { data })
+        get(env).data_stack.push(data)
+        contents.set([...get(contents), { ReaderInput: input }])
+        input_text.set("")
+        mode.set(get(mode_stack).pop())
+        mini_message.set(`Back to ${get(mode)(stores).name} from ${name}.`)
+        await next()
+      }
+    },
+
+    ok_icon: {
+      src: "cute-paper-plane-64px.png",
+      alt: "send",
+    },
+
+    status_icon: {
+      src: "cute-ask-question-64px.png",
+      alt: "input",
+    },
   }
-
-  const ok_icon = {
-    src: "cute-paper-plane-64px.png",
-    alt: "send",
-  }
-
-  const status_icon = {
-    src: "cute-ask-question-64px.png",
-    alt: "input",
-  }
-
-  return { name, ok, ok_icon, status_icon }
 }
 
 const true_like_words = [
