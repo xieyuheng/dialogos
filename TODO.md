@@ -1,7 +1,5 @@
-- `dialog-mode` for `Dialog`.
-  - use `$mode_stack` instead of local state.
-  - extends `fundamental-mode`.
-  - first teacher, then student.
+- no mode function name as mode name.
+- `dialog-mode` extends `fundamental-mode`.
 - scripts/database -- pg docker.
 - restore reader progress.
 - compile our json inline schema to json schema.

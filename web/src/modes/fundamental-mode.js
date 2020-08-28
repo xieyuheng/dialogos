@@ -1,5 +1,4 @@
 import { get } from "svelte/store"
-import * as ut from "../ut"
 import vm from "@dialogos/vm"
 import { reader_comment_mode } from "../modes"
 
@@ -10,10 +9,8 @@ export function fundamental_mode(stores) {
     name: "fundamental-mode",
 
     async ok() {
-      contents.set([
-        ...get(contents),
-        { Loading: "Loading next statement... ⏳" },
-      ])
+      const loading = { Loading: "Loading next statement... ⏳" }
+      contents.set([...get(contents), loading])
       const content = await vm.Env.next(get(env))
       get(contents).pop()
       contents.set([...get(contents), content])

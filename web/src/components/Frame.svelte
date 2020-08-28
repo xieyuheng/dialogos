@@ -18,10 +18,6 @@
 
   let container
 
-  // -- GLOBAL STATE --
-
-  import { mode } from "../stores"
-
   // -- BUSINESS --
 
   const frames = [
@@ -54,14 +50,6 @@
       return false
     }
   })
-
-  $: {
-    if (frame) {
-      if (frame.mode) {
-        $mode = frame.mode
-      }
-    }
-  }
 
   // -- LIFE CYCLE --
 
