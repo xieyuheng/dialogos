@@ -18,32 +18,16 @@
 
   $mode_stack.push($mode)
   $mini_message = `Teacher asks.`
-  $mode = teacher_ask_mode
-
-  function teacher_ask_mode(stores) {
+  $mode = function teacher_ask_mode(stores) {
     const { mini_message, mode, mode_stack } = stores
 
     return {
+      ...fundamental_mode(stores),
+
       async ok() {
         mode.set(get(mode_stack).pop())
         mini_message.set(`Student answers.`)
         hide_student = false
-      },
-
-      ok_icon: {
-        src: "cute-circled-chevron-down-64px.png",
-        alt: "next",
-      },
-
-      status_icon: {
-        src: "cute-dialog-64px.png",
-        alt: "dialog",
-      },
-
-      input_buffer_focus() {
-        get(mode_stack).push(get(mode))
-        mini_message.set(`Entering reader_comment_mode from ${get(mode).name}.`)
-        mode.set(reader_comment_mode)
       },
     }
   }

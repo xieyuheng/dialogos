@@ -1,4 +1,3 @@
-- `dialog-mode` extends `fundamental-mode`.
 - scripts/database -- pg docker.
 - restore reader progress.
 - compile our json inline schema to json schema.
