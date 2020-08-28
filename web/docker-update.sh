@@ -4,6 +4,6 @@
 set -e
 
 docker stop dialogos
-sh scripts/docker/docker-pull.sh
+docker pull xieyuheng/dialogos
 docker system prune --volumes --force
-sh scripts/docker/docker-run.sh
+docker run --name dialogos -d -p 80:80 xieyuheng/dialogos
