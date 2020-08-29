@@ -18,3 +18,7 @@ Icons:
 Manifest:
 - https://developer.mozilla.org/en-US/docs/Web/Manifest
 - https://web.dev/add-manifest
+
+## Backend
+
+- https://en.wikipedia.org/wiki/Multitier_architecture#Three-tier_architecture

@@ -1,5 +1,5 @@
-import fastify from "fastify"
 import * as sapper from "@sapper/server"
+import fastify from "fastify"
 import sirv from "sirv"
 import compression from "compression"
 import helmet from "helmet"
