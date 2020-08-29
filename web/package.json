@@ -19,6 +19,7 @@
     "compression": "^1.7.4",
     "fastify": "^3.3.0",
     "fastify-express": "^0.1.0",
+    "helmet": "^4.1.0",
     "js-yaml": "^3.14.0",
     "pino-pretty": "^4.1.0",
     "prettyjson": "^1.2.1",

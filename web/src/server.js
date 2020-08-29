@@ -2,6 +2,7 @@ import fastify from "fastify"
 import * as sapper from "@sapper/server"
 import sirv from "sirv"
 import compression from "compression"
+import helmet from "helmet"
 import process from "process"
 import path from "path"
 import fs from "fs"
@@ -21,6 +22,7 @@ async function main() {
   app.use(compression({ threshold: 0 }))
   app.use(sirv("static"))
   app.use(sapper.middleware())
+  app.use(helmet())
   await app.listen(PORT, "0.0.0.0")
 }
 
