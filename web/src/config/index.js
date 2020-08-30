@@ -1,6 +1,4 @@
 export const server = {
-  // host: "vmi436272.contaboserver.net",
-  scheme: "http",
-  host: "localhost",
-  port: 3000,
+  // url: "http://vmi436272.contaboserver.net:3000",
+  url: "http://localhost:3000",
 }

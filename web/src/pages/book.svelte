@@ -39,15 +39,13 @@
 
   // -- BUSINESS --
 
-  const server_url = `${config.server.scheme}://${config.server.host}:${config.server.port}`
-
   const fetch_init_contents = async () => {
-    const res = await fetch(`${server_url}/${params.book}`)
+    const res = await fetch(`${config.server.url}/${params.book}`)
     $env = vm.Env.init({
       book: params.book,
       contents: await res.json(),
       loader: async (book, module) => {
-        const res = await fetch(`${server_url}/${book}?module=${module}`)
+        const res = await fetch(`${config.server.url}/${book}?module=${module}`)
         const contents = await res.json()
         return contents
       },
