@@ -1,5 +1,13 @@
-- compile our json inline schema to json schema.
+- `services/`
+- real backend -- instead of sapper as backend.
+  - sapper only for ssr.
+- use page.js.
+  - use sapper only when we really need ssr.
+- `api/`
 - scripts/database -- pg docker.
+  - save books in pg as json.
+- reader login.
+- session to record reading progress.
 - restore reader progress.
 - code block -- cicada/lang2.
 - screen-mode.
@@ -8,9 +16,6 @@
 - 实现 translate 机制 -- 以方便用中文。
   - for chinese field names.
   - also for chinese tags.
-# for reader
-- reader login.
-- session to record reading progress.
 - let reader answer first, then show the answer.
 # menu
 - left `status` button -- click for menu.
