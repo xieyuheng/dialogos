@@ -9,7 +9,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public --single",
+    "start": "sirv public --port 80 --single",
     "format": "prettier src --write"
   },
   "dependencies": {

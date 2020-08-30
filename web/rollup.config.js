@@ -8,6 +8,14 @@ import { terser } from "rollup-plugin-terser"
 
 const production = !process.env.ROLLUP_WATCH
 
+function onwarn(warning) {
+  if (warning.code === "CIRCULAR_DEPENDENCY") {
+    // NOTE ignore CIRCULAR_DEPENDENCY
+  } else {
+    console.error(`(!) ${warning.message}`)
+  }
+}
+
 function serve() {
   let server
 
@@ -41,6 +49,7 @@ export default {
     name: "app",
     file: "public/build/bundle.js",
   },
+  onwarn,
   plugins: [
     svelte({
       // enable run-time checks when not in production

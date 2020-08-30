@@ -1,6 +1,6 @@
 - deploy both `server/` and `web/` in docker.
-- fix rollup error report on CIRCULAR_DEPENDENCY.
 - fix cors.
+- fix 404 on `/service-worker.js`.
 - scripts/database -- pg docker.
   - save books in pg as json.
 - reader login.

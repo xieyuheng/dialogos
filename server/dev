@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 function t {
-    test-lib node js
+    test-src node js
 }
 
-function test-lib {
+function test-src {
     prog=$1
     ext=$2
 
-    for file in $(find . | grep -v "node_modules/" | grep "./*/lib/" | grep "\.test.*$" | grep "\.${ext}$")
+    for file in $(find . | grep -v "node_modules/" | grep "./*/src/" | grep "\.test.*$" | grep "\.${ext}$")
     do
         echo ""
         echo "[test] $file"

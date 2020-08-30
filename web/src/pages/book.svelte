@@ -44,7 +44,9 @@
       book: params.book,
       contents: await res.json(),
       loader: async (book, module) => {
-        const res = await fetch(`http://localhost:3000/${book}?module=${module}`)
+        const res = await fetch(
+          `http://localhost:3000/${book}?module=${module}`
+        )
         const contents = await res.json()
         return contents
       },
