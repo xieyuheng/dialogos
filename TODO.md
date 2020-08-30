@@ -1,4 +1,3 @@
-- `services/`
 - real backend -- instead of sapper as backend.
   - sapper only for ssr.
 - use page.js.
