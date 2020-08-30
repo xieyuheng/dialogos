@@ -1,6 +1,6 @@
-- no sapper -- use page.js for frontend routes.
 - deploy both `server/` and `web/` in docker.
-- cors.
+- fix rollup error report on CIRCULAR_DEPENDENCY.
+- fix cors.
 - scripts/database -- pg docker.
   - save books in pg as json.
 - reader login.

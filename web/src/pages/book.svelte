@@ -1,41 +1,21 @@
-<script context="module">
-  export async function preload({ params }) {
-    const { book } = params
-    // const res = await this.fetch(`data/${book}`)
-    const res = await this.fetch(`http://0.0.0.0:3000/${book}`)
-    const init_contents = await res.json()
-    return { book, init_contents }
-  }
-</script>
-
 <script>
   import vm from "@dialogos/vm"
-  import Frame from "../../components/Frame.svelte"
-  import * as ut from "../../ut"
+  import Frame from "../components/Frame.svelte"
+  import * as ut from "../ut"
   import { onMount } from "svelte"
 
   // -- PROP --
 
-  export let book
-  export let init_contents
+  export let params
 
   // -- GLOBAL STATE --
 
-  import * as stores from "../../stores"
+  import * as stores from "../stores"
   const { contents, mini_message, input_text, mode, env } = stores
-  import { fundamental_mode } from "../../modes"
+  import { fundamental_mode } from "../modes"
 
   $mode = fundamental_mode
   $contents = []
-  $env = vm.Env.init({
-    book,
-    contents: init_contents,
-    loader: async (book, module) => {
-      const res = await fetch(`data/${book}?module=${module}`)
-      const contents = await res.json()
-      return contents
-    },
-  })
 
   // -- DOM ELEMENT --
 
@@ -52,10 +32,24 @@
   // -- LIFE CYCLE --
 
   onMount(async () => {
+    await fetch_init_contents()
     await next()
   })
 
   // -- BUSINESS --
+
+  const fetch_init_contents = async () => {
+    const res = await fetch(`http://localhost:3000/${params.book}`)
+    $env = vm.Env.init({
+      book: params.book,
+      contents: await res.json(),
+      loader: async (book, module) => {
+        const res = await fetch(`http://localhost:3000/${book}?module=${module}`)
+        const contents = await res.json()
+        return contents
+      },
+    })
+  }
 
   const next = async () => {
     if ($env) {
@@ -63,10 +57,6 @@
     }
   }
 </script>
-
-<svelte:head>
-  <title>{book}</title>
-</svelte:head>
 
 <div class="book">
   <div class="frame-list">

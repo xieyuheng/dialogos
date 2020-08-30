@@ -7,24 +7,13 @@ dist
 # npm
 node_modules
 
+# svelte
+/public/build/
+
 # emacs
 *~
 *#*
 .#*
 
-# sapper
-
-/src/node_modules/@sapper/
-/__sapper__/
-
-# yarn
-
-yarn-error.log
-
-# cypress
-
-/cypress/screenshots/
-
 # mics
-
 .DS_Store

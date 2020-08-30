@@ -1,7 +1,3 @@
-<svelte:head>
-  <title>ΔΙΑΛΟΓΟΣ</title>
-</svelte:head>
-
 <main>
   <h1>ΔΙΑΛΟΓΟΣ</h1>
   <img src="cute-dialog-with-circle-200px.png" alt="cute-dialog-with-circle" />
@@ -18,10 +14,10 @@
     List of dialogs:
     <ul>
       <li>
-        <a href="book/the-little-typer">The Little Typer</a>
+        <a href="the-little-typer">The Little Typer</a>
       </li>
       <li>
-        <a href="book/principles-of-systems">Principles of Systems</a>
+        <a href="principles-of-systems">Principles of Systems</a>
       </li>
     </ul>
   </div>
