@@ -1,4 +1,3 @@
-- `initializers/`
 - no sapper.
 - use page.js for frontend routes.
 - scripts/database -- pg docker.
