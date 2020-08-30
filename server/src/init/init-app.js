@@ -3,11 +3,12 @@ import fastify_cors from "fastify-cors"
 import compression from "compression"
 import helmet from "helmet"
 import api from "../api"
+import * as config from "../config"
 
 export async function app({ app }) {
   await app.register(fastify_express)
   app.register(fastify_cors, {
-    origin: "*",
+    origin: config.web.url,
   })
   app.use(compression({ threshold: 0 }))
   app.use(helmet())
