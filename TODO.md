@@ -1,4 +1,3 @@
-- deploy both `server/` and `web/` in docker.
 - fix cors.
 - fix 404 on `/service-worker.js`.
 - scripts/database -- pg docker.
