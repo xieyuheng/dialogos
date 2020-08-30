@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "version": "0.0.1",
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
+  },
+  "prettier": {
+    "semi": false,
+    "trailingComma": "es5"
+  },
+  "scripts": {
+    "dev": "PORT=3000 BOOKS=books NODE_ENV=development node --es-module-specifier-resolution=node src/index.js",
+    "start": "PORT=3000 BOOKS=books node --es-module-specifier-resolution=node src/index.js"
+  },
+  "devDependencies": {
+    "prettier": "^2.1.1"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "fastify": "^3.3.0",
+    "fastify-express": "^0.1.0",
+    "helmet": "^4.1.0",
+    "js-yaml": "^3.14.0",
+    "pino-pretty": "^4.2.0"
+  }
+}

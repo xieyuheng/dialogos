@@ -1,8 +1,7 @@
 {
-  "name": "dialogos",
-  "description": "A dialectic learning platform, inspired by Socrates, Plato, George Pólya and Dan Friedman.",
+  "private": true,
   "version": "0.0.1",
-  "license": "GPL-3.0-or-later",
+  "license": "UNLICENSED",
   "engines": {
     "node": "14.x",
     "npm": "6.x"

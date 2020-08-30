@@ -1,0 +1,25 @@
+- Comment: I developed a WebApp to create little books.
+
+- Comment: |
+    And this is my report on "The Little Typer".
+
+- label: start
+  GetReaderInput:
+    input_parser: to_boolean
+    prompt_contents:
+    - Comment: Would you like to start?
+
+- MATCH:
+    - pattern: true
+      contents:
+      - Comment: Ok let us start.
+    - pattern: false
+      contents:
+      - Comment: Really?
+      - Comment: Let us try again.
+      - JUMP:
+          module: developer-s-note
+    - default_contents:
+      - Comment: Invalid answer, please try again.
+      - JUMP:
+          label: start

@@ -1,8 +1,6 @@
-- real backend -- instead of sapper as backend.
-  - sapper only for ssr.
-- use page.js.
-  - use sapper only when we really need ssr.
-- `api/`
+- `initializers/`
+- no sapper.
+- use page.js for frontend routes.
 - scripts/database -- pg docker.
   - save books in pg as json.
 - reader login.
