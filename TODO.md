@@ -1,7 +1,6 @@
+- no sapper -- use page.js for frontend routes.
 - deploy both `server/` and `web/` in docker.
 - cors.
-- no sapper.
-- use page.js for frontend routes.
 - scripts/database -- pg docker.
   - save books in pg as json.
 - reader login.

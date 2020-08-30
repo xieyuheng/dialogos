@@ -1,6 +1,6 @@
 import fastify from "fastify"
 import process from "process"
-import { init_app } from "./init"
+import * as init from "./init"
 
 const { PORT, NODE_ENV } = process.env
 const dev = NODE_ENV === "development"
@@ -13,7 +13,7 @@ const config = {
 
 async function main() {
   const app = fastify(config)
-  await init_app({ app })
+  await init.app({ app })
   await app.listen(PORT, "0.0.0.0")
 }
 

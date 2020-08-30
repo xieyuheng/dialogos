@@ -3,7 +3,7 @@ import compression from "compression"
 import helmet from "helmet"
 import contents_routes from "../routes/contents"
 
-export async function init_app({ app }) {
+export async function app({ app }) {
   await app.register(fastify_express)
   app.use(compression({ threshold: 0 }))
   app.use(helmet())
