@@ -1,3 +1,4 @@
+- reader login.
 - add time tag to `docker-build.sh`
 - benchmark different book servers.
   - make it easy for different implementations to co-exist.
@@ -7,7 +8,6 @@
     - pg
 - scripts/database -- pg docker.
   - save books in pg as json.
-- reader login.
 - session to record reading progress.
 - restore reader progress.
 - code block -- cicada/lang2.
