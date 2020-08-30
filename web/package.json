@@ -7,10 +7,10 @@
     "npm": "6.x"
   },
   "scripts": {
-    "dev": "BOOKS=books sapper dev",
+    "dev": "sapper dev",
     "build": "npx sapper build --legacy",
-    "export": "BOOKS=books sapper export --legacy",
-    "start": "PORT=80 BOOKS=books node __sapper__/build",
+    "export": "sapper export --legacy",
+    "start": "PORT=80 node __sapper__/build",
     "format": "prettier src --write"
   },
   "dependencies": {

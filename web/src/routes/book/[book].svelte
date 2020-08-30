@@ -1,7 +1,8 @@
 <script context="module">
   export async function preload({ params }) {
     const { book } = params
-    const res = await this.fetch(`data/${book}`)
+    // const res = await this.fetch(`data/${book}`)
+    const res = await this.fetch(`http://0.0.0.0:3000/${book}`)
     const init_contents = await res.json()
     return { book, init_contents }
   }

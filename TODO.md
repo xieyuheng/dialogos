@@ -1,3 +1,5 @@
+- deploy both `server/` and `web/` in docker.
+- cors.
 - no sapper.
 - use page.js for frontend routes.
 - scripts/database -- pg docker.
