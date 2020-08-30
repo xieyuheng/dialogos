@@ -1,4 +1,12 @@
+- config web host and port in server.
 - fix cors.
+- different build for different config.
+- benchmark different book servers.
+  - make it easy for different implementations to co-exist.
+  - servers:
+    - fs cache
+    - fs no cache
+    - pg
 - scripts/database -- pg docker.
   - save books in pg as json.
 - reader login.
