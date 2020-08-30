@@ -2,7 +2,7 @@
   import vm from "@dialogos/vm"
   import Frame from "../components/Frame.svelte"
   import * as ut from "../ut"
-  import * as config from "../config"
+  import * as config from "../../config"
   import { onMount } from "svelte"
 
   // -- PROP --
