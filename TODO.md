@@ -1,5 +1,4 @@
 - fix cors.
-- fix 404 on `/service-worker.js`.
 - scripts/database -- pg docker.
   - save books in pg as json.
 - reader login.
