@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function t {
-    test-src node js
+    test-src "node --es-module-specifier-resolution=node" js
 }
 
 function test-src {

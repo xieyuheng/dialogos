@@ -3,7 +3,7 @@ import process from "process"
 import path from "path"
 import fs from "fs"
 
-export async function load(book, module) {
+export async function book_load(book, module) {
   if (!process.env.BOOKS) {
     throw new Error(
       `Require $BOOKS to load, book: "${book}", module: "${module}".`
