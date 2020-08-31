@@ -2,4 +2,7 @@
 
 set -e
 
-docker build . -f scripts/Dockerfile -t xieyuheng/dialogos-server
+docker build . \
+       --file scripts/Dockerfile \
+       --tag xieyuheng/dialogos-server:latest \
+       --tag xieyuheng/dialogos-server:$(date +%Y-%m-%d-%H-%M-%S)

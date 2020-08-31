@@ -1,5 +1,4 @@
 - reader login.
-- add time tag to `docker-build.sh`
 - benchmark different book servers.
   - make it easy for different implementations to co-exist.
   - servers:

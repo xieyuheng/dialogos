@@ -3,4 +3,7 @@
 set -e
 
 npm run build
-docker build . -f scripts/Dockerfile -t xieyuheng/dialogos-web
+docker build . \
+       --file scripts/Dockerfile \
+       --tag xieyuheng/dialogos-web:latest \
+       --tag xieyuheng/dialogos-web:$(date +%Y-%m-%d-%H-%M-%S)
