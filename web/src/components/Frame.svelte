@@ -31,13 +31,8 @@
     GetReaderInput,
   ]
 
-  const match_frame = (content, frame) => {
-    if (content.hasOwnProperty(frame.tag)) {
-      return content[frame.tag]
-    } else {
-      return undefined
-    }
-  }
+  const match_frame = (content, frame) =>
+    content.hasOwnProperty(frame.tag) ? content[frame.tag] : undefined
 
   let data
 
