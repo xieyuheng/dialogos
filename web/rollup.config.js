@@ -1,4 +1,5 @@
 import nodePolyfills from "rollup-plugin-node-polyfills"
+import replace from "@rollup/plugin-replace"
 import json from "@rollup/plugin-json"
 import svelte from "rollup-plugin-svelte"
 import resolve from "@rollup/plugin-node-resolve"
@@ -60,7 +61,7 @@ export default {
         css.write("bundle.css")
       },
     }),
-
+    replace({ __PRODUCTION__: production }),
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
     // some cases you'll need additional configuration -
