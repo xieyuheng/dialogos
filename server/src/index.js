@@ -2,12 +2,11 @@ import fastify from "fastify"
 import process from "process"
 import * as init from "./init"
 
-const { PORT, NODE_ENV } = process.env
-const dev = NODE_ENV === "development"
+const { PORT, __PRODUCTION__ } = process.env
 
 const config = {
   logger: {
-    prettyPrint: dev ? { colorize: true } : false,
+    prettyPrint: __PRODUCTION__ ? false : { colorize: true },
   },
 }
 
