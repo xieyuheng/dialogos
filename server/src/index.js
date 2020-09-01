@@ -6,7 +6,8 @@ const { PORT, __PRODUCTION__ } = process.env
 
 const config = {
   logger: {
-    prettyPrint: __PRODUCTION__ ? false : { colorize: true },
+    // prettyPrint: __PRODUCTION__ ? false : { colorize: true },
+    prettyPrint: { colorize: true },
   },
 }
 
