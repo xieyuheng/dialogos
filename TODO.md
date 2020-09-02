@@ -1,9 +1,11 @@
+- no report on "the little typer"
+  - teach our lang2 in Chinese.
+  - write note about "the little typer" on ipad.
 - reader login -- plaintext password.
 - scripts/database -- pg docker.
   - save books in pg as json.
 - session to record reading progress.
 - restore reader progress.
-
 - benchmark different book servers.
   - make it easy for different implementations to co-exist.
   - servers:
@@ -28,6 +30,10 @@
 - be able to use big <textarea> sometimes.
   - we need a **simple** solution.
 - report on im products.
+# test
+- use cypress to test control flow.
+# content
+- finish chapter 1
 # 教学法调查报告。
 - 考虑 little book 与所实现的语言之间的关系，
   little book 好像在于给每部分实现代码写测试用例。
