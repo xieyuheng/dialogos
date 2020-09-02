@@ -1,22 +1,21 @@
-- reader login.
+- reader login -- plaintext password.
+- scripts/database -- pg docker.
+  - save books in pg as json.
+- session to record reading progress.
+- restore reader progress.
+
 - benchmark different book servers.
   - make it easy for different implementations to co-exist.
   - servers:
     - fs cache
     - fs no cache
     - pg
-- scripts/database -- pg docker.
-  - save books in pg as json.
-- session to record reading progress.
-- restore reader progress.
-- code block -- cicada/lang2.
+- preview mode -- to debug contents.
 - screen-mode.
+- code block -- cicada/lang2.
+- reader login -- JWT.
 - local variable in `ReturnEntry`.
 - ws and filewatcher.
-- 实现 translate 机制 -- 以方便用中文。
-  - for chinese field names.
-  - also for chinese tags.
-- let reader answer first, then show the answer.
 # menu
 - left `status` button -- click for menu.
 # design
@@ -29,10 +28,6 @@
 - be able to use big <textarea> sometimes.
   - we need a **simple** solution.
 - report on im products.
-# test
-- use cypress to test control flow.
-# content
-- finish chapter 1
 # 教学法调查报告。
 - 考虑 little book 与所实现的语言之间的关系，
   little book 好像在于给每部分实现代码写测试用例。
