@@ -1,6 +1,4 @@
-- no report on "the little typer"
-  - teach our lang2 in Chinese.
-  - write note about "the little typer" on ipad.
+- be able to tran tags -- use `json-compact-schema`.
 - reader login -- plaintext password.
 - scripts/database -- pg docker.
   - save books in pg as json.
@@ -13,8 +11,11 @@
     - fs no cache
     - pg
 - preview mode -- to debug contents.
-- screen-mode.
 - code block -- cicada/lang2.
+- no report on "the little typer"
+  - teach our lang2 in Chinese.
+  - write note about "the little typer" on ipad.
+- screen-mode.
 - reader login -- JWT.
 - local variable in `ReturnEntry`.
 - ws and filewatcher.
