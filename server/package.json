@@ -29,6 +29,6 @@
     "fastify-express": "^0.1.0",
     "helmet": "^4.1.0",
     "js-yaml": "^3.14.0",
-    "pino-pretty": "^4.2.0"
+    "pino-pretty": "^4.2.1"
   }
 }
