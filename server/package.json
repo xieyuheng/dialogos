@@ -12,8 +12,8 @@
     "trailingComma": "es5"
   },
   "scripts": {
-    "dev": "PORT=3000 BOOKS=books node --es-module-specifier-resolution=node src/index.js",
-    "start": "__PRODUCTION__=true PORT=3000 BOOKS=books node --es-module-specifier-resolution=node src/index.js"
+    "dev": "PORT=3000 BOOKS=../books node --es-module-specifier-resolution=node src/index.js",
+    "start": "__PRODUCTION__=true PORT=3000 BOOKS=../books node --es-module-specifier-resolution=node src/index.js"
   },
   "devDependencies": {
     "prettier": "^2.1.1"

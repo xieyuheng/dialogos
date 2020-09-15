@@ -9,7 +9,7 @@ export async function book_load(book, module) {
       `Require $BOOKS to load, book: "${book}", module: "${module}".`
     )
   }
-  const file = path.resolve(process.env.BOOKS, book, `${module}.yaml`)
+  const file = path.resolve(process.env.BOOKS, book, "src", `${module}.yaml`)
   const text = await fs.promises.readFile(file, "utf-8")
   const contents = yaml.safeLoad(text)
   return contents
