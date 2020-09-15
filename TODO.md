@@ -1,5 +1,5 @@
-- use `json-compact-schema` in frame component.
-- be able to tran tags -- via `json-compact-schema`.
+- use `cya` in frame component.
+- be able to tran tags -- via `cya`.
 - reader login -- plaintext password.
 - scripts/database -- pg docker.
   - save books in pg as json.
