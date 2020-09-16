@@ -160,7 +160,7 @@
 - Dialog:
     teacher: |
       A form of judgment is an observation with blank spaces in it, such as
-        ___ is a ___.
+        ____ is a ____.
 
     student: |
       Are there other forms of judgment?
@@ -395,7 +395,7 @@
 - Dialog:
     teacher: |
       The third form of judgment is
-        ___ is a type.
+        ____ is a type.
 
     student: |
       This means that both
@@ -430,7 +430,7 @@
 - Dialog:
     teacher: |
       The fourth and final form of judgment is
-        ___ and ___ are the same type.
+        ____ and ____ are the same type.
 
     student: |
       Ah, so
@@ -440,10 +440,10 @@
 - Card:
     title: The Four Forms of Judgment
     content: |
-      (1)                   ___ is a ___.
-      (2)     ___ is the same ___ as ___.
-      (3)                  ___ is a type.
-      (4)  ___ and ___ are the same type.
+      (1)                   ____ is a ____.
+      (2)    ____ is the same ____ as ____.
+      (3)                   ____ is a type.
+      (4)  ____ and ____ are the same type.
 
 - Comment: |
     The (3) seems like special (1),
