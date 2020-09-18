@@ -1,3 +1,4 @@
+- move to vercel.app and maybe free mongodb
 - use `cya` in frame component.
 - be able to tran tags -- via `cya`.
 - reader login -- plaintext password.
