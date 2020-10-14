@@ -16,18 +16,18 @@
     "start": "__PRODUCTION__=true PORT=3000 BOOKS=../books node --es-module-specifier-resolution=node src/index.js"
   },
   "devDependencies": {
-    "prettier": "^2.1.1"
+    "prettier": "^2.1.2"
   },
   "dependencies": {
     "assert-diff": "^3.0.1",
     "compression": "^1.7.4",
     "dotenv": "^8.2.0",
     "fast-deep-equal": "^3.1.3",
-    "fastify": "^3.4.1",
+    "fastify": "^3.6.0",
     "fastify-cors": "^4.1.0",
-    "fastify-express": "^0.1.0",
+    "fastify-express": "^0.2.0",
     "helmet": "^4.1.1",
     "js-yaml": "^3.14.0",
-    "pino-pretty": "^4.2.1"
+    "pino-pretty": "^4.3.0"
   }
 }
