@@ -1,3 +1,4 @@
+- back to vue
 - move to vercel.app and use free mongodb
 - use `cya` in frame component.
 - be able to tran tags -- via `cya`.
