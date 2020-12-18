@@ -3,9 +3,9 @@
   <img src="cute-dialog-with-circle-200px.png" alt="cute-dialog-with-circle" />
 
   <p>
-    A dialectic learning platform,
-    <br />
-    inspired by Socrates, Plato, George Pólya and Dan Friedman.
+    A dialectic learning platform,<br />
+    inspired by Socrates, Plato,<br />
+    George Pólya and Dan Friedman.<br />
   </p>
 
   <br />
