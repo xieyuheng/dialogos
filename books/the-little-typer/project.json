@@ -1,0 +1,11 @@
+{
+  "project": "the-little-typer",
+  "title": "The Little Typer",
+  "version": "v0.0.1",
+  "input": "src",
+  "output": "out",
+  "schema": "schema",
+  "action": "action",
+  "target": "target",
+  "cache": "cache"
+}

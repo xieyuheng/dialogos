@@ -1,6 +1,0 @@
-input: src
-output: out
-schema: schema
-action: action
-target: target
-cache: cache
